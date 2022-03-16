@@ -692,31 +692,3 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,jetbrains,jetbrains+all,jetbrains+iml,rider
-
-*.cache
-*.dll
-*.exe
-*.pdb
-/build/
-*.suo
-*.user
-_ReSharper.*/
-*.sdf
-*.opensdf
-*.tlog
-*.log
-TestResult.xml
-*.VisualState.xml
-Version.cs
-Version.h
-Version.cpp
-.DS_Store
-
-*.cs
-*.cache
-*.editorconfig
-*.json
-*.props
-*.targets 
-*.info   
-*.targets 
