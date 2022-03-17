@@ -57,7 +57,7 @@ namespace AxiUnitTests.Classes
             var plank = new Plank();
             rack.AddPlank(plank);
             //act
-            rack.RemovePlank(plank);
+            rack.AddPlank(plank);
             //assert
             Assert.IsTrue(rack.GetPlanks().Count == 1);
         }
