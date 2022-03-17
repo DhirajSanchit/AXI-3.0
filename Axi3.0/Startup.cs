@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -23,6 +25,13 @@ namespace Axi3._0
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Haalt Connection string uit de appsettings.Json
+            var ConnectionString = Configuration.GetConnectionString("Default");
+            
+            //SELF-SERVICE SERVER INSTANCE | Wijst het toe aan de connectie van het project
+            services.AddTransient<IDbConnection>(sp => new SqlConnection(ConnectionString));
+
+            
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
