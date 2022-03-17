@@ -13,7 +13,7 @@ namespace AxiUnitTests.Classes
             //arrange
             var rack = new Rack();
             var plank = new Plank();
-            rack.CreatePlank(plank);
+            rack.AddPlank(plank);
             //act
             rack.RemovePlank(plank);
             //assert
@@ -28,11 +28,23 @@ namespace AxiUnitTests.Classes
             var rack = new Rack();
             var plank = new Plank();
             var plank2 = new Plank();
-            rack.CreatePlank(plank);
+            rack.AddPlank(plank);
             //act
             rack.RemovePlank(plank2);
             //assert
             Assert.IsTrue(rack.GetPlanks().Count == 1);
+        }
+        
+        [TestMethod]
+        public void TestAddPlank()
+        {
+            //arrange
+            var rack = new Rack();
+            var plank = new Plank();
+            //act
+            rack.AddPlank(plank);
+            //assert
+            Assert.IsTrue(rack.GetPlanks().Count == 0);
         }
     }
 }

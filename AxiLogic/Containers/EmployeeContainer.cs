@@ -27,7 +27,6 @@ namespace AxiLogic.Containers
             employee.SetPhoneNr(phoneNr);
             _employees.Add(employee);
         }
-
         public void RemoveEmployee(Employee employee)
         {
             _employees.Remove(employee);

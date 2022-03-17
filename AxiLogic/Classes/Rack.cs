@@ -11,7 +11,7 @@ namespace AxiLogic.Classes
         {
             return Planks;
         }
-        public void CreatePlank(Plank plank)
+        public void AddPlank(Plank plank)
         {
             Planks.Add(plank);
         }
