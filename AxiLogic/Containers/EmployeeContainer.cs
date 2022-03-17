@@ -17,16 +17,11 @@ namespace AxiLogic.Containers
             return _employees;
         }
         
-        public void CreateEmployee(string name, string email, string phoneNr)
+        public void AddEmployee(Employee employee)
         {
-            var id = 0; //todo replace this placeholder with id from database response
-            var employeeNr = ""; //todo replace this placeholder with id from database response encrypted to string
-            var employee = new Employee(name, email);
-            employee.SetName(name);
-            employee.SetEmail(email);
-            employee.SetPhoneNr(phoneNr);
-            _employees.Add(employee);
+           _employees.Add(employee);
         }
+        
         public void RemoveEmployee(Employee employee)
         {
             _employees.Remove(employee);
