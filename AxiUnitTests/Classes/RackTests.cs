@@ -61,5 +61,15 @@ namespace AxiUnitTests.Classes
             //assert
             Assert.IsTrue(rack.GetPlanks().Count == 1);
         }
+        
+        [TestMethod]
+        public void CreateRack()
+        {
+            //arrange
+            //act
+            var rack = new Rack();
+            //assert
+            Assert.IsNotNull(rack);
+        }
     }
 }

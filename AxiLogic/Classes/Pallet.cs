@@ -5,7 +5,7 @@ namespace AxiLogic.Classes
     public class Pallet
     {
         public int Amount { get; private set; }
-        public Article Article { get; private set; } = new();
+        public Article Article { get; private set; }
 
         public void PlaceArticle(Article article, int amount)
         {

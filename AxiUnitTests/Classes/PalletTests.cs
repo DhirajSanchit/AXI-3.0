@@ -7,13 +7,12 @@ namespace AxiUnitTests.Classes
     [TestClass]
     public class PalletTests
     {
-        //Place Article Tests vvv
         [TestMethod]
         public void PlaceNewArticle()
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
+            var article1 = new Article("testName",10.50);
             //act
             pallet.PlaceArticle(article1, 3);
             //assert
@@ -27,8 +26,8 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
-            var article2 = new Article();
+            var article1 = new Article("testName",10.50);
+            var article2 = new Article("testName2",10.33);
             pallet.PlaceArticle(article1, 3);
             //act
             pallet.PlaceArticle(article2, 5);
@@ -43,7 +42,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
+            var article1 = new Article("testName",10.50);
             pallet.PlaceArticle(article1, 2);
             //act
             pallet.PlaceArticle(article1, -3);
@@ -58,7 +57,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
+            var article1 = new Article("testName",10.50);
             pallet.PlaceArticle(article1, 2);
             //act
             pallet.PlaceArticle(article1, 0);
@@ -66,15 +65,13 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(article1, pallet.Article);
             Assert.AreEqual(2, pallet.Amount);
         }
-        //Place Article Tests ^^^
         
-        //Remove Article Tests vvv
         [TestMethod]
         public void RemoveValidAmount()
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
+            var article1 = new Article("testName",10.50);
             pallet.PlaceArticle(article1, 3);
             //act
             pallet.RemoveArticle(article1,3);
@@ -89,7 +86,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
+            var article1 = new Article("testName",10.50);
             pallet.PlaceArticle(article1, 4);
             //act
             pallet.RemoveArticle(article1,-3);
@@ -104,7 +101,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
+            var article1 = new Article("testName",10.50);
             pallet.PlaceArticle(article1, 4);
             //act
             pallet.RemoveArticle(article1,0);
@@ -119,7 +116,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
+            var article1 = new Article("testName",10.50);
             pallet.PlaceArticle(article1, 3);
             //act
             pallet.RemoveArticle(article1,4);
@@ -134,8 +131,8 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var pallet = new Pallet();
-            var article1 = new Article();
-            var article2 = new Article();
+            var article1 = new Article("testName",10.50);
+            var article2 = new Article("testName2",10.33);
             pallet.PlaceArticle(article1, 3);
             //act
             pallet.RemoveArticle(article2,2);
@@ -143,6 +140,15 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(article1, pallet.Article);
             Assert.AreEqual(3, pallet.Amount);
         }
-        //Remove Article Tests ^^^
+
+        [TestMethod]
+        public void CreatePallet()
+        {
+            //arrange
+            //act
+            var pallet = new Pallet();
+            //assert
+            Assert.IsNotNull(pallet);
+        }
     }
 }

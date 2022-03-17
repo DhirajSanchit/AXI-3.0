@@ -61,5 +61,15 @@ namespace AxiUnitTests.Classes
             //assert
             Assert.IsTrue(plank.GetPallets().Count == 1, "Adding duplicate was allowed");
         }
+        
+        [TestMethod]
+        public void CreatePlank()
+        {
+            //arrange
+            //act
+            var plank = new Plank();
+            //assert
+            Assert.IsNotNull(plank);
+        }
     }
 }

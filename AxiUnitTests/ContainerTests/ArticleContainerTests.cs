@@ -14,7 +14,7 @@ namespace AxiUnitTests.ContainerTests
         {
             //arrange
             Toolbox.ArticleContainer.ClearArticles();
-            var article1 = new Article();
+            var article1 = new Article("testName",10.50);
             //act
             Toolbox.ArticleContainer.AddArticle(article1);
             //assert
@@ -27,7 +27,7 @@ namespace AxiUnitTests.ContainerTests
         {
             //arrange
             Toolbox.ArticleContainer.ClearArticles();
-            var article1 = new Article(); 
+            var article1 = new Article("testName",10.50); 
             Toolbox.ArticleContainer.AddArticle(article1);
             //act
             Toolbox.ArticleContainer.AddArticle(article1);
@@ -40,9 +40,9 @@ namespace AxiUnitTests.ContainerTests
         {
             //arrange
             Toolbox.ArticleContainer.ClearArticles();
-            var article1 = new Article();
-            var article2 = new Article();
-            var article3 = new Article();
+            var article1 = new Article("testName",10.50);
+            var article2 = new Article("testName2",10.33);
+            var article3 = new Article("testName3",10.99);
             Toolbox.ArticleContainer.AddArticle(article1);
             Toolbox.ArticleContainer.AddArticle(article2);
             Toolbox.ArticleContainer.AddArticle(article3);
@@ -62,8 +62,8 @@ namespace AxiUnitTests.ContainerTests
         {
             //arrange
             Toolbox.ArticleContainer.ClearArticles();
-            var article1 = new Article(); 
-            var article2 = new Article(); 
+            var article1 = new Article("testName",10.50); 
+            var article2 = new Article("testName2",10.33); 
             Toolbox.ArticleContainer.AddArticle(article1);
             //act
             Toolbox.ArticleContainer.RemoveArticle(article2);

@@ -8,9 +8,12 @@
         public string Img { get; private set; }
         public string Name { get; private set; }
         public int Id { get; private set; }
-        
-       
-       
+
+
+        public Article(string name, double price)
+        {
+            
+        }
         
         public Category Category { get; private set; }
         
