@@ -21,7 +21,7 @@ namespace AxiLogic.Containers
         {
             var id = 0; //todo replace this placeholder with id from database response
             var employeeNr = ""; //todo replace this placeholder with id from database response encrypted to string
-            var employee = new Employee();
+            var employee = new Employee(name, email);
             employee.SetName(name);
             employee.SetEmail(email);
             employee.SetPhoneNr(phoneNr);
