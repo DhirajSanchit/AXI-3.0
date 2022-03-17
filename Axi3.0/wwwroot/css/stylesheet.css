@@ -129,8 +129,8 @@
     position:absolute;
     background-color:transparent;
     height:100%;
-    width:125%;
-    margin-left:-250px;
+    width:103.9%;
+    margin-left:-25%;
     display:none;
     z-index:1;
 }
@@ -277,4 +277,31 @@
 .view-article-modal-image-box img {
     height: 200px;
     width: 200px;
+}
+.view-article-modal p{
+    position:absolute;
+    color:black;
+    font-weight:bold;
+    margin-left:250px;
+}
+.view-article-modal-name-label{
+    margin-top:50px;
+}
+.view-article-modal-category-label{
+    margin-top:100px;
+}
+.view-article-modal-price-label{
+    margin-top:50px;
+    margin-left:80%;
+    color:black;
+}
+.view-article-modal-textarea{
+    margin-top:170px;
+    margin-left:30%;
+    height:425px;
+    width:65%;
+    text-align:left;
+    resize:none;
+    color:black;
+    min-width:400px;
 }
