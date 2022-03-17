@@ -11,7 +11,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var name = "Name";
-            var email = "somemail@hotmail.com";
+            var email = "someemail@hotmail.com";
             //act
             var employee = new Employee(name,email);
             //assert
