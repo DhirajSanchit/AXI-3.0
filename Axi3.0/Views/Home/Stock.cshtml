@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Stock";
+    Layout = Layout;
+}
+<body>
+@* Button to add article *@
+<div class="btn-add-article" onclick="showElement('new-article-modal')">
+    <p>Add Article</p>
+</div>
+@* searchbar *@
+<input type="text" class="search-bar" placeholder="Type to start searching...">
+@*Sheet containing info about articles*@
+<div class="sheet-top">
+    <div class="name-column-top">Name</div>
+    <div class="id-column-top">ID</div>
+    <div class="quantity-column-top">Quantity</div>
+    <div class="category-column-top">Category</div>
+    <div class="location-column-top">Location</div>
+</div>
+<div class="article-sheet">
+     
+    @*For loop to create divs containing article info*@
+    @for (int i = 0;
+        i < 30;
+        i++)
+    {
+        <div class="name-column">Placeholder</div>
+        <div class="id-column">Placeholder</div>
+        <div class="quantity-column">Placeholder</div>
+        <div class="category-column">Placeholder</div>
+        <div class="location-column">Placeholder</div>
+    }
+</div>
+<div class="new-article-modal" id="new-article-modal">
+    <div class="new-article-modal-image-box">
+        <img src="~/images/vector-Search.png" alt="Search-Icon">
+    </div>
+    <div class="btn-add-modal-img">
+        <h4>Add Image</h4>
+    </div>
+    <p class="new-article-modal-name-input-label">Name:</p>
+    <input class="new-article-modal-name-input">
+    <p class="new-article-modal-category-input-label">Category:</p>
+    <input class="new-article-modal-category-input">
+    <p class="new-article-modal-price-input-label">Price:</p>
+    <input class="new-article-modal-price-input">
+    <div class="exit-cross-container">
+        <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
+    </div>
+    <form>
+    <textarea class="new-article-modal-description-input" placeholder="Description"></textarea>
+    </form>
+   
+</div>
+</body>

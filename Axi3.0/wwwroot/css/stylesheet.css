@@ -1,0 +1,221 @@
+/* Sets font-family and font color for each page containing stylesheet.css*/
+* {
+    font-family: stratos,sans-serif;
+    color: #5020bb;
+    user-select:none;
+}
+
+/*top-navigation*/
+.top_nav {
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    border-bottom:1px grey solid;
+}
+.top_nav_logo{
+    position:absolute;
+    height:75px;
+    width:75px;
+    margin-left:10px;
+    margin-top:20px;
+}
+.top_nav_button_container{
+    position:relative;
+    float:right;
+    height:70px;
+    width:280px;
+    margin-right:25px;
+}
+
+/*Style for each href in top_nav*/
+.top_nav_button_container a {
+    display: inline-block;
+    height: 70px;
+    width: 135px;
+    border-right: 1px grey solid;
+    border-left: 1px grey solid;
+    margin-left: -4px;
+}
+.top_nav_button_container a p{
+    text-align:center;
+    margin-top:22px;
+    color:black;
+}
+/*End top_nav*/
+
+/*Style for Stock page*/
+
+/*Add article button*/
+.btn-add-article{
+    position:absolute;
+    margin-top: 120px;
+    margin-left:65%;
+    height:35px;
+    width:150px;
+    border:1px solid black;
+    box-shadow:2px 5px dimgrey;
+    cursor:pointer;
+}
+.btn-add-article p{
+    color:black;
+    text-align:center;
+    margin-top:4px;
+}
+/*Search bar styling*/
+.search-bar{
+    margin-left:10px;
+    position:absolute;
+    margin-top:125px;
+    width:400px;
+    border-radius:12px;
+    color:black;
+}
+/*Style for stock article-sheet*/
+.sheet-top{
+    position:absolute;
+    width:79%;
+    max-width:1100px;
+    height:1px;
+}
+.name-column-top, .id-column-top, .quantity-column-top, .category-column-top, .location-column-top {
+    width: 19%;
+    height: 35px;
+    display: inline-block;
+    color: black;
+    margin-top:185px;
+    font-weight:bold;
+}
+
+.article-sheet{
+    position:absolute;
+    height:650px;
+    width:80%;
+    max-width:1100px;
+    border:1px solid black;
+    box-shadow:1px 1px dimgrey;
+    margin-top:210px;
+    overflow:auto;
+    border-radius:3px ;
+}
+
+.name-column-top{
+    margin-left:1.5%;
+}
+/*style for columns within article-sheet*/
+.name-column, .id-column, .quantity-column, .category-column, .location-column{
+    width:19%;
+    height:35px;
+    border: 1px solid black;
+    display:inline-block;
+    color:black;
+    user-select: text;
+}
+/*To prevent columns from lining up on the left side of div while not giving every column a margin*/
+.name-column{
+    margin-left:1.5%;
+}
+/*End article-sheet*/
+
+/*Style for new-article-modal*/
+.new-article-modal{
+    position:fixed;
+    background-color:white;
+    border:1px solid black;
+    margin-top:175px;
+    height:700px;
+    width:80%;
+    max-width:1250px;
+    display:none;
+    border-radius:5px;
+    box-shadow:2px 5px dimgrey;
+}
+.new-article-modal input{
+    border-radius:4px;
+    position:absolute;
+    color:black;
+    width:25%;
+    min-width:100px;
+}
+.new-article-modal p{
+    position:absolute;
+    color:black;
+}
+.new-article-modal-name-input-label{
+    margin-left:300px;
+    margin-top:5px;
+}
+.new-article-modal-category-input-label{
+    margin-left:300px;
+    margin-top:75px;
+}
+.new-article-modal-price-input-label{
+    margin-left:66%;
+    margin-top:5px;
+}
+.new-article-modal-image-box{
+    position:absolute;
+    height:180px;
+    width:180px;
+    margin-left:30px;
+    margin-top:30px;
+    border:1px solid black;
+}
+.new-article-modal-image-box img{
+    height:180px;
+    width:180px;
+}
+
+.btn-add-modal-img{
+    position:absolute;
+    margin-top: 220px;
+    margin-left:45px;
+    height:35px;
+    width:150px;
+    border:1px solid black;
+    box-shadow:2px 5px dimgrey;
+    cursor:pointer;
+}
+.btn-add-modal-img h4{
+    color: black;
+    text-align: center;
+    font-size:20px;
+    margin-top: 4px;
+}
+.new-article-modal-name-input{
+    margin-top:30px;
+    margin-left:300px;
+}
+
+.new-article-modal-category-input{
+    margin-top:100px;
+    margin-left:300px;
+}
+
+.new-article-modal-price-input{
+    margin-top:30px;
+    margin-left:66%;
+}
+
+.new-article-modal-description-input{
+    margin-top:230px;
+    margin-left:30%;
+    height:450px;
+    width:65%;
+    text-align:left;
+    resize:none;
+    color:black;
+    min-width:400px;
+}
+.exit-cross-container{
+    position:relative;
+    float:right;
+    height:30px;
+    width:30px;
+    margin-right:5px;
+    margin-top:5px;
+    cursor:pointer;
+}
+.exit-cross-container img{
+    height:30px;
+    width:30px;
+}
