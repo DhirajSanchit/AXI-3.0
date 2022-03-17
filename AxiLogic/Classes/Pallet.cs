@@ -15,7 +15,7 @@ namespace AxiLogic.Classes
             }
             if (amount <= 0)
             {
-                throw new ArgumentOutOfRangeException("Amount can not be negative");
+                throw new ArgumentOutOfRangeException("amount");
             }
             Amount += amount;
             Article = article;
