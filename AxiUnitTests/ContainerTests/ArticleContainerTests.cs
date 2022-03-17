@@ -13,6 +13,7 @@ namespace AxiUnitTests.ContainerTests
         public void AddArticleTest()
         {
             //arrange
+            Toolbox.ArticleContainer.ClearArticles();
             var article1 = new Article();
             //act
             Toolbox.ArticleContainer.AddArticle(article1);
@@ -25,6 +26,7 @@ namespace AxiUnitTests.ContainerTests
         public void AddDuplicateArticleTest()
         {
             //arrange
+            Toolbox.ArticleContainer.ClearArticles();
             var article1 = new Article(); 
             Toolbox.ArticleContainer.AddArticle(article1);
             //act
@@ -37,6 +39,7 @@ namespace AxiUnitTests.ContainerTests
         public void RemoveArticleTest()
         {
             //arrange
+            Toolbox.ArticleContainer.ClearArticles();
             var article1 = new Article();
             var article2 = new Article();
             var article3 = new Article();
@@ -58,6 +61,7 @@ namespace AxiUnitTests.ContainerTests
         public void RemoveNonContainedArticle()
         {
             //arrange
+            Toolbox.ArticleContainer.ClearArticles();
             var article1 = new Article(); 
             var article2 = new Article(); 
             Toolbox.ArticleContainer.AddArticle(article1);
