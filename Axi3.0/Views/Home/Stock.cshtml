@@ -4,7 +4,7 @@
 }
 <body>
 @* Button to add article *@
-<div class="btn-add-article" onclick="showElement('new-article-modal')">
+<div class="btn-add-article btn-active" onclick="showElement('new-article-modal'); showElement('modal-background')">
     <p>Add Article</p>
 </div>
 @* searchbar *@
@@ -18,26 +18,31 @@
     <div class="location-column-top">Location</div>
 </div>
 <div class="article-sheet">
-     
     @*For loop to create divs containing article info*@
     @for (int i = 0;
-        i < 30;
+        i < 100;
         i++)
     {
-        <div class="name-column">Placeholder</div>
-        <div class="id-column">Placeholder</div>
-        <div class="quantity-column">Placeholder</div>
-        <div class="category-column">Placeholder</div>
-        <div class="location-column">Placeholder</div>
+        <div class="name-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
+        <div class="id-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
+        <div class="quantity-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
+        <div class="category-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
+        <div class="location-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
     }
 </div>
+<div class="modal-background" id="modal-background" onclick="hideElement('new-article-modal'); hideElement('view-article-modal'); hideElement('modal-background')"></div>
+@*Modal for adding a new article*@
 <div class="new-article-modal" id="new-article-modal">
     <div class="new-article-modal-image-box">
         <img src="~/images/vector-Search.png" alt="Search-Icon">
     </div>
-    <div class="btn-add-modal-img">
+    <div class="btn-add-modal-img btn-active">
         <h4>Add Image</h4>
     </div>
+    <div class="btn-submit-article btn-active" onclick="showElement('new-article-modal')">
+        <h4>Submit Article</h4>
+    </div>
+    @*Inputs fields and labels*@
     <p class="new-article-modal-name-input-label">Name:</p>
     <input class="new-article-modal-name-input">
     <p class="new-article-modal-category-input-label">Category:</p>
@@ -48,8 +53,16 @@
         <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
     </div>
     <form>
-    <textarea class="new-article-modal-description-input" placeholder="Description"></textarea>
+        <textarea class="new-article-modal-description-input" placeholder="Description"></textarea>
     </form>
-   
+</div>
+@*Modal for showing existing articles*@
+<div class="view-article-modal" id="view-article-modal">
+    <div class="view-article-modal-image-box">
+        <img src="~/images/vector-Search.png" alt="Search-Icon">
+    </div>
+    <div class="exit-cross-container">
+            <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('view-article-modal')">
+        </div>
 </div>
 </body>
