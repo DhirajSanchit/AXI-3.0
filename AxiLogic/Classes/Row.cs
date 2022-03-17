@@ -6,11 +6,7 @@ namespace AxiLogic.Classes
     {
         List <Rack> racks = new List<Rack>();
         public string Name { get; set; }
-
-        public Row()
-        {
-            
-        }
+        
  
         public IReadOnlyList<Rack> GetRacks()
         {
