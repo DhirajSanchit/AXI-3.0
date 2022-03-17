@@ -33,7 +33,7 @@ namespace AxiUnitTests.Classes
             //act
             row.RemoveRack(rack2);
             //assert
-            Assert.IsTrue(row.GetRacks().Count == 1);
+            Assert.IsTrue(row.GetRacks().Count == 1, "Remove function removed object even though it was not contained");
         }
         
         [TestMethod]
