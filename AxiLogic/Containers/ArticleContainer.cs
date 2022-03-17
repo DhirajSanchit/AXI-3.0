@@ -36,5 +36,9 @@ namespace AxiLogic.Containers
             _articles.Remove(article);
         }
         
+        public void ClearArticles()
+        {
+            _articles.Clear();
+        }
     }
 }

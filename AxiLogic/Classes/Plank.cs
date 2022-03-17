@@ -28,5 +28,10 @@ namespace AxiLogic.Classes
             }
             Pallets.Remove(pallet);
         }
+        
+        public void ClearPallets()
+        {
+            Pallets.Clear();
+        }
     }
 }

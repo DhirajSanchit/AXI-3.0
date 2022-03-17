@@ -27,5 +27,10 @@ namespace AxiLogic.Classes
             }
             Planks.Remove(plank);
         }
+
+        public void ClearPlanks()
+        {
+            Planks.Clear();
+        }
     }
 }
