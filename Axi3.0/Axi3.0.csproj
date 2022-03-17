@@ -32,4 +32,8 @@
       <Content Include="Areas\.DS_Store" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\images" />
+    </ItemGroup>
+
 </Project>
