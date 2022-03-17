@@ -8,13 +8,12 @@
         public string PhoneNr { get; private set; }
         public int Id { get; private set; }
 
-        public Employee(string EmployeeNr, string Name, int id)
-        {
-            this.EmployeeNr = EmployeeNr;
-            this.Name = Name;
-            this.Id = id;
-
+        public Employee(string name, string email)
+        { 
+            Email = email;
+            Name = name;
         }
+        
         public void SetName(string name)
         {
             Name = name;
