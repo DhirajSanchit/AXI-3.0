@@ -12,7 +12,7 @@ namespace AxiLogic.Classes
             return Pallets;
         }
 
-        public void CreatePallet(Pallet pallet)
+        public void AddPallet(Pallet pallet)
         {
             Pallets.Add(pallet);
         }
