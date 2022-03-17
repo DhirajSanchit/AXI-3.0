@@ -116,6 +116,15 @@
 }
 /*End article-sheet*/
 
+.modal-background{
+    position:absolute;
+    background-color:transparent;
+    height:100%;
+    width:125%;
+    margin-left:-250px;
+    display:none;
+    z-index:1;
+}
 /*Style for new-article-modal*/
 .new-article-modal{
     position:fixed;
@@ -128,6 +137,7 @@
     display:none;
     border-radius:5px;
     box-shadow:2px 5px dimgrey;
+    z-index:2;
 }
 .new-article-modal input{
     border-radius:4px;
@@ -164,7 +174,6 @@
     height:180px;
     width:180px;
 }
-
 .btn-add-modal-img{
     position:absolute;
     margin-top: 220px;
@@ -185,7 +194,30 @@
     margin-top:30px;
     margin-left:300px;
 }
-
+.btn-submit-article{
+    position:absolute;
+    margin-top: 630px;
+    margin-left:50px;
+    height:35px;
+    width:150px;
+    border:1px solid black;
+    box-shadow:2px 5px dimgrey;
+    cursor:pointer;
+}
+.btn-active:hover{
+    background-color:lightgrey;
+}
+.btn-active:active{
+    background-color:darkgrey;
+    box-shadow:1px 3px black;
+    transform: translateY(4px);
+}
+.btn-submit-article h4 {
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 4px;
+}
 .new-article-modal-category-input{
     margin-top:100px;
     margin-left:300px;
@@ -218,4 +250,30 @@
 .exit-cross-container img{
     height:30px;
     width:30px;
+}
+
+.view-article-modal{
+    position:fixed;
+    background-color:white;
+    border:1px solid black;
+    margin-top:175px;
+    height:700px;
+    width:80%;
+    max-width:1250px;
+    display:none;
+    border-radius:5px;
+    box-shadow:2px 5px dimgrey;
+    z-index:2;
+}
+.view-article-modal-image-box{
+    position:absolute;
+    height:280px;
+    width:280px;
+    margin-left:30px;
+    margin-top:30px;
+    border:1px solid black;
+}
+.view-article-modal-image-box img {
+    height: 280px;
+    width: 280px;
 }
