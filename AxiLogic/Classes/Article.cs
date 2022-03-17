@@ -7,6 +7,7 @@
         public string BarCode { get; private set; }
         public string Img { get; private set; }
         public string Name { get; private set; }
+        public string Description { get; private set; }
         public int Id { get; private set; }
 
 
@@ -21,6 +22,11 @@
         public void SetName(string name)
         {
             Name = name;
+        }
+        
+        public void SetDescription(string description)
+        {
+            Description = description;
         }
 
         public void SetCategory(Category category)
