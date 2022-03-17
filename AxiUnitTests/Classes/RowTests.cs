@@ -66,10 +66,12 @@ namespace AxiUnitTests.Classes
         public void TestCreateRow()
         {
             //arrange
+            var name = "row3";
             //act
-            var row = new Row();
+            var row = new Row(name);
             //assert
             Assert.IsNotNull(row);
+            Assert.AreEqual(name, row.Name);
         }
 
         [TestMethod]
