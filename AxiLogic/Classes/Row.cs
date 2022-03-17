@@ -4,6 +4,7 @@ namespace AxiLogic.Classes
 {
     public class Row
     {
+        List <Rack> racks = new List<Rack>();
         public string Name { get; set; }
 
         public Row()
@@ -18,26 +19,22 @@ namespace AxiLogic.Classes
         
         public void AddRack(Rack rack)
         {
-            
+            racks.Add(rack);
         }
         
         public void RemoveRack(Rack rack)
         {
-            
+            racks.Remove(rack);
         }
 
         public void SetName(string name)
         {
-            
+            Name = name;
         }
 
         public Row(string Name)
         {
             this.Name = Name;
-        }
-        public void CreateRack(Rack rack)
-        {
-            
         }
     }
 }
