@@ -6,6 +6,7 @@ namespace AxiLogic.Classes
     {
         public string Name { get; set; }
 
+<<<<<<< Updated upstream
         public IReadOnlyList<Rack> GetRacks()
         {
             return new List<Rack>();
@@ -22,6 +23,18 @@ namespace AxiLogic.Classes
         }
         
         public void SetName (string name)
+=======
+        public Row(string Name)
+        {
+            this.Name = Name;
+        }
+        public void CreateRack(Rack rack)
+        {
+            
+        }
+
+        public void RemoveRack(Rack rack)
+>>>>>>> Stashed changes
         {
             
         }
