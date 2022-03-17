@@ -12,7 +12,8 @@
 
         public Article(string name, double price)
         {
-            
+            this.Name = name;
+            this.Price = price;
         }
         
         public Category Category { get; private set; }
