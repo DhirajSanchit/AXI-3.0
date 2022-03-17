@@ -29,6 +29,7 @@
 
     <ItemGroup>
       <Content Remove="Data\**" />
+      <Content Include="Areas\.DS_Store" />
     </ItemGroup>
 
 </Project>
