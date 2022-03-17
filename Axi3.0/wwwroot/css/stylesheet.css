@@ -70,6 +70,15 @@
     border-radius:12px;
     color:black;
 }
+/*Makes divs look like clickable buttons*/
+.btn-active:hover{
+    background-color:lightgrey;
+}
+.btn-active:active{
+    background-color:darkgrey;
+    box-shadow:1px 3px black;
+    transform: translateY(4px);
+}
 /*Style for stock article-sheet*/
 .sheet-top{
     position:absolute;
@@ -139,6 +148,7 @@
     box-shadow:2px 5px dimgrey;
     z-index:2;
 }
+/*Style for new article modal*/
 .new-article-modal input{
     border-radius:4px;
     position:absolute;
@@ -150,6 +160,7 @@
     position:absolute;
     color:black;
 }
+/*Divs on the modal itself*/
 .new-article-modal-name-input-label{
     margin-left:300px;
     margin-top:5px;
@@ -204,14 +215,6 @@
     box-shadow:2px 5px dimgrey;
     cursor:pointer;
 }
-.btn-active:hover{
-    background-color:lightgrey;
-}
-.btn-active:active{
-    background-color:darkgrey;
-    box-shadow:1px 3px black;
-    transform: translateY(4px);
-}
 .btn-submit-article h4 {
     color: black;
     text-align: center;
@@ -222,12 +225,10 @@
     margin-top:100px;
     margin-left:300px;
 }
-
 .new-article-modal-price-input{
     margin-top:30px;
     margin-left:66%;
 }
-
 .new-article-modal-description-input{
     margin-top:230px;
     margin-left:30%;
@@ -251,7 +252,7 @@
     height:30px;
     width:30px;
 }
-
+/*Style for existing article modal*/
 .view-article-modal{
     position:fixed;
     background-color:white;
@@ -267,13 +268,13 @@
 }
 .view-article-modal-image-box{
     position:absolute;
-    height:280px;
-    width:280px;
+    height:200px;
+    width:200px;
     margin-left:30px;
     margin-top:30px;
     border:1px solid black;
 }
 .view-article-modal-image-box img {
-    height: 280px;
-    width: 280px;
+    height: 200px;
+    width: 200px;
 }
