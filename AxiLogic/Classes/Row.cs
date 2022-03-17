@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AxiLogic.Classes
 {
@@ -10,16 +11,24 @@ namespace AxiLogic.Classes
  
         public IReadOnlyList<Rack> GetRacks()
         {
-            return new List<Rack>();
+            return racks;
         }
         
         public void AddRack(Rack rack)
         {
+            if (racks.Contains(rack))
+            {
+                throw new ArgumentException("Adding duplicate rack not allowed");
+            }
             racks.Add(rack);
         }
         
         public void RemoveRack(Rack rack)
         {
+            if (!racks.Contains(rack))
+            {
+                throw new ArgumentException("Does not contain given rack");
+            }
             racks.Remove(rack);
         }
 
