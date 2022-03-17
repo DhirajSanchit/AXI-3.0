@@ -12,7 +12,7 @@ namespace AxiUnitTests.Classes
         public void TestRemoveRack()
         {
             //arrange
-            var row = new Row();
+            var row = new Row("testName");
             var rack = new Rack();
             row.AddRack(rack);
             //act
@@ -26,7 +26,7 @@ namespace AxiUnitTests.Classes
         public void TestRemoveNotContainedRack()
         {
             //arrange
-            var row = new Row();
+            var row = new Row("testName");
             var rack = new Rack();
             var rack2 = new Rack();
             row.AddRack(rack);
@@ -40,7 +40,7 @@ namespace AxiUnitTests.Classes
         public void TestAddRack()
         {
             //arrange
-            var row = new Row();
+            var row = new Row("testName");
             var rack = new Rack();
             //act
             row.AddRack(rack);
@@ -53,7 +53,7 @@ namespace AxiUnitTests.Classes
         public void TestAddDuplicateRack()
         {
             //arrange
-            var row = new Row();
+            var row = new Row("testName");
             var rack = new Rack();
             row.AddRack(rack);
             //act
@@ -78,7 +78,7 @@ namespace AxiUnitTests.Classes
         public void TestSetName()
         {
             //arrange
-            var row = new Row();
+            var row = new Row("testName");
             var name = "someName";
             //act
             row.SetName(name);
