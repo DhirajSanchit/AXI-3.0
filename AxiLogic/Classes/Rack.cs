@@ -13,6 +13,10 @@ namespace AxiLogic.Classes
         }
         public void AddPlank(Plank plank)
         {
+            if (Planks.Contains(plank))
+            {
+                throw new ArgumentException("Can not add a duplicate plank");
+            }
             Planks.Add(plank);
         }
 

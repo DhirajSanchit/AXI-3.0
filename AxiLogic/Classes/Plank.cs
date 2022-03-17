@@ -14,6 +14,10 @@ namespace AxiLogic.Classes
 
         public void AddPallet(Pallet pallet)
         {
+            if (Pallets.Contains(pallet))
+            {
+                throw new ArgumentException("Can not add duplicate pallet");
+            }
             Pallets.Add(pallet);
         }
 
