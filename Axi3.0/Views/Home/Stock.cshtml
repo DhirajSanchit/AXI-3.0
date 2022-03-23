@@ -1,12 +1,10 @@
+@model StockModel
 @{
     ViewData["Title"] = "Stock";
-    Layout = Layout;
+    Layout = "_Layout";
 }
 <body>
-@* Button to add article *@
-<div class="btn-add-article btn-active" onclick="showElement('new-article-modal'); showElement('modal-background')">
-    <p>Add Article</p>
-</div>
+
 @* searchbar *@
 <input type="text" class="search-bar" placeholder="Type to start searching...">
 @*Sheet containing info about articles*@
@@ -19,43 +17,20 @@
 </div>
 <div class="article-sheet">
     @*For loop to create divs containing article info*@
-    @for (int i = 0;
-        i < 100;
-        i++)
+    @if (Model.StockRows.Any())
     {
-        <div class="name-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
-        <div class="id-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
-        <div class="quantity-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
-        <div class="category-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
-        <div class="location-column" onclick="showElement('view-article-modal'); showElement('modal-background')">Placeholder</div>
+        foreach (var row in Model.StockRows)
+        {
+            <div class="name-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.ArticleName</div>
+            <div class="id-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.ArticleId</div>
+            <div class="quantity-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.Quantity</div>
+            <div class="category-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.Category</div>
+            <div class="location-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.Locations</div>
+        }
     }
 </div>
 <div class="modal-background" id="modal-background" onclick="hideElement('new-article-modal'); hideElement('view-article-modal'); hideElement('modal-background')"></div>
-@*Modal for adding a new article*@
-<div class="new-article-modal" id="new-article-modal">
-    <div class="new-article-modal-image-box">
-        <img src="~/images/vector-Search.png" alt="Search-Icon">
-    </div>
-    <div class="btn-add-modal-img btn-active">
-        <h4>Add Image</h4>
-    </div>
-    <div class="btn-submit-article btn-active" onclick="showElement('new-article-modal')">
-        <h4>Submit Article</h4>
-    </div>
-    @*Inputs fields and labels*@
-    <p class="new-article-modal-name-input-label">Name:</p>
-    <input class="new-article-modal-name-input">
-    <p class="new-article-modal-category-input-label">Category:</p>
-    <input class="new-article-modal-category-input">
-    <p class="new-article-modal-price-input-label">Price:</p>
-    <input class="new-article-modal-price-input">
-    <div class="exit-cross-container">
-        <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
-    </div>
-    <form>
-        <textarea class="new-article-modal-description-input" placeholder="Description"></textarea>
-    </form>
-</div>
+
 @*Modal for showing existing articles*@
 <div class="view-article-modal" id="view-article-modal">
     <div class="view-article-modal-image-box">

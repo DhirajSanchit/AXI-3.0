@@ -6,12 +6,12 @@ namespace AxiLogic.Classes
     public class Article
     {
         public double Price { get; private set; }
-        public string BarCode { get; private set; }
+        public string Barcode { get; private set; }
         public string ImgRef { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public int Id { get; private set; }
-
+        public Category Category { get; private set; }
 
         public Article(string name, double price)
         {
@@ -19,7 +19,6 @@ namespace AxiLogic.Classes
             Price = price;
         }
         
-        public Category Category { get; private set; }
         
         public void SetName(string name)
         {
@@ -36,9 +35,9 @@ namespace AxiLogic.Classes
             Category = category;
         }
         
-        public void SetBarCode(string barcode)
+        public void SetBarcode(string barcode)
         {
-            BarCode = barcode;
+            Barcode = barcode;
         }
         
         public void SetImg(string img)
@@ -60,7 +59,7 @@ namespace AxiLogic.Classes
                 Description = Description,
                 ImgRef = ImgRef,
                 Price = Price,
-                BarCode = BarCode
+                Barcode = Barcode
             };
         }
     }

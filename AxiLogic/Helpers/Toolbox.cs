@@ -1,10 +1,7 @@
 ﻿using AxiDAL.DAL;
-using AxiLogic.Classes;
 using AxiLogic.Containers;
-using AxiLogic.Helpers;
 
-
-namespace Axi3._0
+namespace AxiLogic.Helpers
 {
     public static class Toolbox
     {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Axi3._0.Controllers
 {
@@ -30,7 +31,17 @@ namespace Axi3._0.Controllers
 
         public IActionResult Stock()
         {
-            return View();
+            var stockModel = new StockModel();
+            stockModel.GetStockRows();
+            return View(stockModel);
+        }
+
+        public IActionResult Articles()
+        {
+            var articleViewModel = new ArticleViewModel();
+            articleViewModel.GetArticleModels();
+            return View(articleViewModel);
+            
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
