@@ -31,6 +31,16 @@ namespace AxiLogic.Classes
             PhoneNr = phoneNr;
         }
 
-        
+        public EmployeeDto ToDto()
+        {
+            return new EmployeeDto
+            {
+                EmployeeNr = EmployeeNr,
+                Name = Name,
+                Email = Email,
+                PhoneNr = PhoneNr,
+                Id = Id
+            };
+        }
     }
 }
