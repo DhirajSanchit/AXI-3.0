@@ -39,9 +39,9 @@ namespace AxiLogic.Classes
 
         public PalletDto ToDto()
         {
-            ArticleDto articleDtos = new();
+            ArticleDto articleDto = new();
             Article.ToDto();
-            return new PalletDto {Article = articleDtos,
+            return new PalletDto {Article = articleDto,
                                   Amount = Amount};
         }
     }

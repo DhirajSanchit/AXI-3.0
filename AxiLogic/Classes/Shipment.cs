@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxiInterfaces.DTOs;
+using System;
 using System.Collections.Generic;
 
 namespace AxiLogic.Classes
@@ -51,6 +52,17 @@ namespace AxiLogic.Classes
         public void RemoveShipmentArticle(ShipmentArticle shipmentArticle)
         {
             ShipmentArticles.Remove(shipmentArticle);
+        }
+
+        public ShipmentDto ToDto()
+        {
+            return new ShipmentDto
+            {
+                Date = Date,
+                InvoiceId = InvoiceId,
+                Name = Name,
+                Id = Id
+            };
         }
     }
 }
