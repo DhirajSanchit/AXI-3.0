@@ -5,12 +5,8 @@ namespace AxiLogic.Classes
 {
     public class Rack
     {
-        private List<Plank> Planks = new();
-
-        public IReadOnlyList<Plank> GetPlanks()
-        {
-            return Planks;
-        }
+        public readonly List<Plank> Planks = new();
+        
         public void AddPlank(Plank plank)
         {
             if (Planks.Contains(plank))

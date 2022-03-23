@@ -18,7 +18,7 @@ namespace AxiUnitTests.Classes
             //act
             rack.RemovePlank(plank);
             //assert
-            Assert.IsTrue(rack.GetPlanks().Count == 0);
+            Assert.IsTrue(rack.Planks.Count == 0);
         }
         
         [TestMethod]
@@ -33,7 +33,7 @@ namespace AxiUnitTests.Classes
             //act
             rack.RemovePlank(plank2);
             //assert
-            Assert.IsTrue(rack.GetPlanks().Count == 1);
+            Assert.IsTrue(rack.Planks.Count == 1);
         }
         
         [TestMethod]
@@ -45,7 +45,7 @@ namespace AxiUnitTests.Classes
             //act
             rack.AddPlank(plank);
             //assert
-            Assert.IsTrue(rack.GetPlanks().Contains(plank),"Plank was not added to the list");
+            Assert.IsTrue(rack.Planks.Contains(plank),"Plank was not added to the list");
         }
         
         [TestMethod]
@@ -59,7 +59,7 @@ namespace AxiUnitTests.Classes
             //act
             rack.AddPlank(plank);
             //assert
-            Assert.IsTrue(rack.GetPlanks().Count == 1);
+            Assert.IsTrue(rack.Planks.Count == 1);
         }
         
         [TestMethod]

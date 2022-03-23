@@ -18,7 +18,7 @@ namespace AxiUnitTests.Classes
             //act
             row.RemoveRack(rack);
             //assert
-            Assert.IsTrue(row.GetRacks().Count == 0);
+            Assert.IsTrue(row.Racks.Count == 0);
         }
         
         [TestMethod]
@@ -33,7 +33,7 @@ namespace AxiUnitTests.Classes
             //act
             row.RemoveRack(rack2);
             //assert
-            Assert.IsTrue(row.GetRacks().Count == 1, "Remove function removed object even though it was not contained");
+            Assert.IsTrue(row.Racks.Count == 1, "Remove function removed object even though it was not contained");
         }
         
         [TestMethod]
@@ -45,7 +45,7 @@ namespace AxiUnitTests.Classes
             //act
             row.AddRack(rack);
             //assert
-            Assert.IsTrue(row.GetRacks().Contains(rack),"Rack was not added");
+            Assert.IsTrue(row.Racks.Contains(rack),"Rack was not added");
         }
         
         [TestMethod]
@@ -59,7 +59,7 @@ namespace AxiUnitTests.Classes
             //act
             row.AddRack(rack);
             //assert
-            Assert.IsTrue(row.GetRacks().Count == 1, "Adding duplicate was allowed");
+            Assert.IsTrue(row.Racks.Count == 1, "Adding duplicate was allowed");
         }
         
         [TestMethod]
