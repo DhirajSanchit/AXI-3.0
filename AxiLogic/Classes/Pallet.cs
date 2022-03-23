@@ -6,6 +6,7 @@ namespace AxiLogic.Classes
 {
     public class Pallet
     {
+        public string Location;
         public int Amount { get; private set; }
         public Article Article { get; private set; }
 

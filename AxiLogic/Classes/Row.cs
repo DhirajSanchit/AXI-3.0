@@ -7,7 +7,7 @@ namespace AxiLogic.Classes
     public class Row
     {
         public readonly List <Rack> Racks = new ();
-        public string Name { get; set; }
+        public string Name;
         
  
        
