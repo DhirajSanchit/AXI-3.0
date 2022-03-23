@@ -14,7 +14,7 @@ namespace AxiLogic.Helpers
         {
             var stockRows = new List<StockRow>();
             var addedArticles = new List<int>();
-            foreach (var row in Toolbox.RowContainer._rows)
+            foreach (var row in Toolbox.RowContainer.Rows)
             {
                 LoopRacks(row, addedArticles, stockRows);
             }
