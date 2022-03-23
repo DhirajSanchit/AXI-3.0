@@ -4,7 +4,7 @@ namespace AxiInterfaces.DTOs
 {
     public class RowDto
     {
-        public List<RackDto> Racks;
+        public List<RackDto> RackDtos;
         public string Name { get; set; }
     }
 }

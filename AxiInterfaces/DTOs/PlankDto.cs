@@ -4,6 +4,6 @@ namespace AxiInterfaces.DTOs
 {
     public class PlankDto
     {
-        private List<PalletDto> Pallets;
+        public List<PalletDto> palletsDtos;
     }
 }
