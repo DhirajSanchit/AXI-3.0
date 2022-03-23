@@ -6,30 +6,30 @@ namespace AxiLogic.Containers
 {
     public class RowContainer
     {
-        private List<Row> _rows;
+        public readonly List<Row> Rows;
 
         public RowContainer()
         {
-            _rows = new List<Row>();
+            Rows = new List<Row>();
         }
 
 
-        public void CreateRow(Row row)
+        public void AddRow(Row row)
         {
-            if (_rows.Contains(row))
+            if (Rows.Contains(row))
             {
                 throw new ArgumentException("Can not add duplicate row");
             }
-            _rows.Add(row);
+            Rows.Add(row);
         }
 
         public void RemoveRow(Row row)
         {
-           if (!_rows.Contains(row))
+           if (!Rows.Contains(row))
            {
                 throw new ArgumentException("Row does not exist");
            }
-           _rows.Remove(row);
+           Rows.Remove(row);
         }
     }
 }

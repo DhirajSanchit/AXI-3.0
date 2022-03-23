@@ -42,23 +42,21 @@ namespace AxiLogic.Containers
             //todo make async?
         }
         
-        public void CreateShipment(string name, DateTime date, int invoiceId, List<ShipmentArticle> shipmentArticles)
+        public void AddShipment(Shipment shipment)
         {
-            //todo add Shipment to database with the given parameters
-            var id = 0; //todo replace this placeholder with id from database response
-            var shipment = new Shipment(id);
-            shipment.SetName(name);
-            shipment.SetDate(date);
-            shipment.SetInvoiceId(invoiceId);
-            foreach (var shipmentArticle in shipmentArticles)
+            if (_shipments.Contains(shipment))
             {
-                shipment.AddShipmentArticle(shipmentArticle);
+                throw new ArgumentException("Can not add duplicate shipment to list");
             }
             _shipments.Add(shipment);
         }
 
         public void RemoveShipment(Shipment shipment)
         {
+            if (_shipments.Contains(shipment))
+            {
+                throw new ArgumentException("Can not remove non-contained shipment from list");
+            }
             _shipments.Remove(shipment);
         }
     }
