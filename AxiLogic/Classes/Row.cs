@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxiInterfaces.DTOs;
+using System;
 using System.Collections.Generic;
 
 namespace AxiLogic.Classes
@@ -37,6 +38,18 @@ namespace AxiLogic.Classes
         public Row(string name)
         {
             Name = name;
+        }
+
+        public RowDto ToDto()
+        {
+                
+            List < RackDto > RackDtos = new();
+            foreach (var Rack in Racks)
+            {
+                RackDtos.Add(Rack.ToDto());
+            }
+            return new RowDto { RackDtos = RackDtos,
+                                Name = Name};
         }
     }
 }

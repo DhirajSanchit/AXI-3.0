@@ -4,6 +4,6 @@ namespace AxiInterfaces.DTOs
 {
     public class RackDto
     {
-        private List<PlankDto> plankDtos;
+        public List<PlankDto> plankDtos;
     }
 }

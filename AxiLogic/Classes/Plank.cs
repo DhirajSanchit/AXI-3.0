@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxiInterfaces.DTOs;
+using System;
 using System.Collections.Generic;
 
 namespace AxiLogic.Classes
@@ -36,6 +37,16 @@ namespace AxiLogic.Classes
         public void ClearPallets()
         {
             Pallets.Clear();
+        }
+
+        public PlankDto ToDto()
+        {
+            List<PalletDto> palletDtos = new();
+            foreach (var Pallet in Pallets)
+            {
+                palletDtos.Add(Pallet.ToDto());
+            }
+            return new PlankDto { palletDtos = palletDtos };
         }
     }
 }

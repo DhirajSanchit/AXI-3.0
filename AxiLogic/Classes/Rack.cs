@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxiInterfaces.DTOs;
+using System;
 using System.Collections.Generic;
 
 namespace AxiLogic.Classes
@@ -31,6 +32,16 @@ namespace AxiLogic.Classes
         public void ClearPlanks()
         {
             Planks.Clear();
+        }
+
+        public RackDto ToDto()
+        {
+            List<PlankDto> plankDtos = new();
+                foreach (var Plank in Planks)
+                {
+                plankDtos.Add(Plank.ToDto());
+                }
+            return new RackDto { plankDtos = plankDtos };
         }
     }
 }
