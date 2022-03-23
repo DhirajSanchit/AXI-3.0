@@ -5,9 +5,9 @@ namespace AxiInterfaces.DTOs
 {
     public class ShipmentDto
     {
-        public DateTime Date { get; private set; }
-        public int InvoiceId { get; private set; }
-        public string Name { get; private set; }
-        public int Id { get; private set; }
+        public DateTime Date;
+        public int InvoiceId;
+        public string Name;
+        public int Id;
     }
 }
