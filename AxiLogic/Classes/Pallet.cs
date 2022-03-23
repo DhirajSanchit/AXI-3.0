@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AxiInterfaces.DTOs;
+using System.Collections.Generic;
+using System;
 
 namespace AxiLogic.Classes
 {
@@ -33,6 +35,14 @@ namespace AxiLogic.Classes
                 throw new ArgumentOutOfRangeException("amount");
             }
             Amount -= amount;
+        }
+
+        public PalletDto ToDto()
+        {
+            ArticleDto articleDtos = new();
+            Article.ToDto();
+            return new PalletDto {Article = articleDtos,
+                                  Amount = Amount};
         }
     }
 }
