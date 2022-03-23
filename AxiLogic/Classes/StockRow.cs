@@ -1,9 +1,8 @@
-using System.Collections.Generic;
-using AxiLogic.Classes;
+﻿using System.Collections.Generic;
 
-namespace Axi3._0.Models
+namespace AxiLogic.Classes
 {
-    public class StockRowModel
+    public class StockRow
     {
         public string ArticleName;
         public int ArticleId;

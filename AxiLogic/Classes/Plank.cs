@@ -6,8 +6,8 @@ namespace AxiLogic.Classes
 {
     public class Plank
     {
-        public string Location;
-        private List<Pallet> Pallets = new();
+        public int Location;
+        public readonly List<Pallet> Pallets = new();
 
         public IReadOnlyList<Pallet> GetPallets()
         {

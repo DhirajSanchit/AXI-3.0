@@ -6,14 +6,13 @@ namespace AxiLogic.Containers
 {
     public class RowContainer
     {
-        private List<Row> _rows;
+        public readonly List<Row> _rows;
 
         public RowContainer()
         {
             _rows = new List<Row>();
         }
-
-
+        
         public void CreateRow(Row row)
         {
             if (_rows.Contains(row))

@@ -6,7 +6,7 @@ namespace AxiLogic.Classes
 {
     public class Rack
     {
-        public string Location;
+        public int Location;
         public readonly List<Plank> Planks = new();
         
         public void AddPlank(Plank plank)
