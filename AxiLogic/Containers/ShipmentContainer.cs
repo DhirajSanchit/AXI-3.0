@@ -53,7 +53,7 @@ namespace AxiLogic.Containers
 
         public void RemoveShipment(Shipment shipment)
         {
-            if (_shipments.Contains(shipment))
+            if (!_shipments.Contains(shipment))
             {
                 throw new ArgumentException("Can not remove non-contained shipment from list");
             }
