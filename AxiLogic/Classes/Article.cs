@@ -1,11 +1,13 @@
-﻿namespace AxiLogic.Classes
+﻿using AxiInterfaces.DTOs;
+
+namespace AxiLogic.Classes
 { 
 
     public class Article
     {
         public double Price { get; private set; }
         public string BarCode { get; private set; }
-        public string Img { get; private set; }
+        public string ImgRef { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public int Id { get; private set; }
@@ -41,19 +43,33 @@
         
         public void SetImg(string img)
         {
-            Img = img;
+            ImgRef = img;
         }
         
         public void SetPrice(double price)
         {
             Price = price;
         }
-    }
 
+        public void ToDto()
+        {
+            var articleDto = new ArticleDto
+            {
+                Name = Name,
+                Id = Id,
+                Description = Description,
+                ImgRef = ImgRef,
+                Price = Price,
+                BarCode = BarCode
+            };
+        }
+    }
+    
     public enum Category
     {
         Electronics,
         Cosmetics,
         Tools
     }
+    
 }

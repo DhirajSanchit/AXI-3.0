@@ -1,4 +1,6 @@
-﻿namespace AxiLogic.Classes
+﻿using AxiInterfaces.DTOs;
+
+namespace AxiLogic.Classes
 {
     public class Employee
     { 
@@ -28,5 +30,7 @@
         {
             PhoneNr = phoneNr;
         }
+
+        
     }
 }

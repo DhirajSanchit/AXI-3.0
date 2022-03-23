@@ -4,7 +4,7 @@ namespace AxiInterfaces.DTOs
     {
         public double Price;
         public string BarCode;
-        public string Img;
+        public string ImgRef;
         public string Name;
         public string Description;
         public int Id;
