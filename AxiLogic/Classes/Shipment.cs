@@ -8,8 +8,10 @@ namespace AxiLogic.Classes
         public DateTime Date { get; private set; }
         public int InvoiceId { get; private set; }
         public string Name { get; private set; }
-        private List<ShipmentArticle> ShipmentArticles = new();
         public int Id { get; private set; }
+        
+        private List<ShipmentArticle> ShipmentArticles = new();
+        
         
         public Shipment(int id)
         {

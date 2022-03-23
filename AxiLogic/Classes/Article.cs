@@ -36,7 +36,7 @@ namespace AxiLogic.Classes
             Category = category;
         }
         
-        public void  SetBarCode(string barcode)
+        public void SetBarCode(string barcode)
         {
             BarCode = barcode;
         }
@@ -62,7 +62,6 @@ namespace AxiLogic.Classes
                 Price = Price,
                 BarCode = BarCode
             };
-            
         }
     }
     
