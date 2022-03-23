@@ -12,11 +12,9 @@
 <input type="text" class="search-bar" placeholder="Type to start searching...">
 @*Sheet containing info about articles*@
 <div class="sheet-top">
-    <div class="name-column-top">Name</div>
-    <div class="id-column-top">ID</div>
-    <div class="quantity-column-top">Quantity</div>
-    <div class="category-column-top">Category</div>
-    <div class="location-column-top">Location</div>
+    <div class="name-column-top-articles">Name</div>
+    <div class="id-column-top-articles">ID</div>
+    <div class="category-column-top-articles">Category</div>
 </div>
 <div class="article-sheet">
     @*For loop to create divs containing article info*@
@@ -24,9 +22,9 @@
     {
         foreach(var article in Model.ArticleModels)
         {
-            <div class="name-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Name</div>
-            <div class="id-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Id</div>
-            <div class="category-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Category</div>
+            <div class="name-column-articles" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Name</div>
+            <div class="id-column-articles" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Id</div>
+            <div class="category-column-articles" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Category</div>
         }
     }
 </div>
@@ -36,24 +34,25 @@
     <div class="new-article-modal-image-box">
         <img src="~/images/vector-Search.png" alt="Search-Icon">
     </div>
-    <div class="btn-add-modal-img btn-active">
-        <h4>Add Image</h4>
-    </div>
-    <div class="btn-submit-article btn-active" onclick="showElement('new-article-modal')">
+    <a asp-controller="Home" asp-action="CreateArticles">
+    <div class="btn-submit-article btn-active">
         <h4>Submit Article</h4>
     </div>
+    </a>
+    @*todo Create functions to check if name and price are null or whitespace > exception*@
     @*Inputs fields and labels*@
     <p class="new-article-modal-name-input-label">Name:</p>
-    <input class="new-article-modal-name-input">
+    <input class="new-article-modal-name-input" runat="server" id="myName">
     <p class="new-article-modal-category-input-label">Category:</p>
-    <input class="new-article-modal-category-input">
+    <input class="new-article-modal-category-input" id="category">
     <p class="new-article-modal-price-input-label">Price:</p>
-    <input class="new-article-modal-price-input">
+    <input class="new-article-modal-price-input" id="price">
+    <input class="new-article-modal-add-img-input" id="imgRef">
     <div class="exit-cross-container">
         <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
     </div>
     <form>
-        <textarea class="new-article-modal-description-input" placeholder="Description"></textarea>
+        <textarea class="new-article-modal-description-input" id="description" placeholder="Description"></textarea>
     </form>
 </div>
 @*Modal for showing existing articles*@

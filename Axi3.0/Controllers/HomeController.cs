@@ -41,8 +41,15 @@ namespace Axi3._0.Controllers
             var articleViewModel = new ArticleViewModel();
             articleViewModel.GetArticleModels();
             return View(articleViewModel);
-            
         }
+
+        public ArticleViewModel CreateArticles() //todo delete maybe?
+        {
+            var articleViewModel = new ArticleViewModel();
+            //articleViewModel.CreateArticle(name, price, imgRef, category, description);
+            return articleViewModel;
+        }
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

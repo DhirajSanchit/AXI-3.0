@@ -1,4 +1,5 @@
-﻿using AxiInterfaces.DTOs;
+﻿using System;
+using AxiInterfaces.DTOs;
 
 namespace AxiLogic.Classes
 { 
@@ -18,7 +19,14 @@ namespace AxiLogic.Classes
             Name = name;
             Price = price;
         }
-        
+        public Article(ArticleDto articleDto)
+        {
+            Name = articleDto.Name;
+            Price = articleDto.Price;
+            ImgRef = articleDto.ImgRef;
+            Category = Enum.Parse<Category>(articleDto.Category);  
+            Description = articleDto.Description;
+        }
         
         public void SetName(string name)
         {
@@ -59,7 +67,8 @@ namespace AxiLogic.Classes
                 Description = Description,
                 ImgRef = ImgRef,
                 Price = Price,
-                Barcode = Barcode
+                Barcode = Barcode,
+                Category = Category.ToString()
             };
         }
     }

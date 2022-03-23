@@ -8,5 +8,6 @@ namespace AxiInterfaces.DTOs
         public string Name;
         public string Description;
         public int Id;
+        public string Category;
     }
 }

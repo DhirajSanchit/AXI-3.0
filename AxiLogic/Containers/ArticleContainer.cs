@@ -40,5 +40,15 @@ namespace AxiLogic.Containers
         {
             _articles.Clear();
         }
+        
+        //Test function | dumped later
+        public void CreateRandomContent() //todo test function delete later
+        {
+            var rand = new Random();
+            for (var i=0; i<21; i++)
+            {
+                _articles.Add(new Article(rand.Next(0, 100).ToString(), rand.Next(1, 100))); 
+            }
+        }
     }
 }
