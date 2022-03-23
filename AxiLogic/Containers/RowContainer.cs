@@ -28,8 +28,8 @@ namespace AxiLogic.Containers
            if (!_rows.Contains(row))
            {
                 throw new ArgumentException("Row does not exist");
-            }
-            _rows.Remove(row);
+           }
+           _rows.Remove(row);
         }
     }
 }
