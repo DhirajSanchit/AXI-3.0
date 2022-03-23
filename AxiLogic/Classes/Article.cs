@@ -51,9 +51,9 @@ namespace AxiLogic.Classes
             Price = price;
         }
 
-        public void ToDto()
+        public ArticleDto ToDto()
         {
-            var articleDto = new ArticleDto
+            return new ArticleDto
             {
                 Name = Name,
                 Id = Id,
@@ -62,6 +62,7 @@ namespace AxiLogic.Classes
                 Price = Price,
                 BarCode = BarCode
             };
+            
         }
     }
     
