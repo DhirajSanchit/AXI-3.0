@@ -218,22 +218,24 @@
     width:25%;
     min-width:100px;
 }
-.new-article-modal p{
-    position:absolute;
-    color:black;
-}
 /*Divs on the modal itself*/
 .new-article-modal-name-input-label{
     margin-left:300px;
-    margin-top:5px;
+    margin-top:22px;
+    position:absolute;
+    color:black;
 }
 .new-article-modal-category-input-label{
     margin-left:300px;
     margin-top:75px;
+    position:absolute;
+    color:black;
 }
 .new-article-modal-price-input-label{
     margin-left:66%;
     margin-top:5px;
+    position:absolute;
+    color:black;
 }
 .new-article-modal-image-box{
     position:absolute;
