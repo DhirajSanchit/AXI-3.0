@@ -13,7 +13,7 @@
 @*Sheet containing info about articles*@
 <div class="sheet-top">
     <div class="name-column-top-articles">Name</div>
-    <div class="id-column-top-articles">ID</div>
+    <div class="price-column-top-articles">Price</div>
     <div class="category-column-top-articles">Category</div>
 </div>
 <div class="article-sheet">
@@ -23,7 +23,7 @@
         foreach(var article in Model.ArticleModels)
         {
             <div class="name-column-articles" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Name</div>
-            <div class="id-column-articles" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Id</div>
+            <div class="price-column-articles" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Price</div>
             <div class="category-column-articles" onclick="showElement('view-article-modal'); showElement('modal-background')">@article.Category</div>
         }
     }
@@ -42,7 +42,7 @@
     @*todo Create functions to check if name and price are null or whitespace > exception*@
     @*Inputs fields and labels*@
     <p class="new-article-modal-name-input-label">Name:</p>
-    <input class="new-article-modal-name-input" runat="server" id="myName">
+    <input class="new-article-modal-name-input" id="myName">
     <p class="new-article-modal-category-input-label">Category:</p>
     <input class="new-article-modal-category-input" id="category">
     <p class="new-article-modal-price-input-label">Price:</p>

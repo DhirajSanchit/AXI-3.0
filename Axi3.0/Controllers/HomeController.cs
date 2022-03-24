@@ -42,12 +42,12 @@ namespace Axi3._0.Controllers
             articleViewModel.GetArticleModels();
             return View(articleViewModel);
         }
-
-        public ArticleViewModel CreateArticles() //todo delete maybe?
+        [HttpPost]
+        public RedirectToActionResult CreateArticles(ArticleViewModel articleViewModel) //todo delete maybe?
         {
-            var articleViewModel = new ArticleViewModel();
             //articleViewModel.CreateArticle(name, price, imgRef, category, description);
-            return articleViewModel;
+            return RedirectToAction("Articles", "Home");
+            //return articleViewModel;
         }
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

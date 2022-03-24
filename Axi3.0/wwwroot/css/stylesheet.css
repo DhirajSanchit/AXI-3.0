@@ -126,7 +126,7 @@
     font-weight:bold;
 }
 
-.name-column-top-articles, .id-column-top-articles, .category-column-top-articles {
+.name-column-top-articles, .price-column-top-articles, .category-column-top-articles {
     width: 32%;
     height: 35px;
     display: inline-block;
@@ -137,11 +137,11 @@
 .name-column-top-articles{
     margin-left:1.5%;
 }
-.id-column-top-articles{
+.price-column-top-articles{
     margin-left:-0.5%;
 }
 .category-column-top-articles{
-    margin-left:-0.5%;
+    margin-left:-0.7%;
 }
 
 .article-sheet{
@@ -173,7 +173,7 @@
     margin-left:1.5%;
 }
 
-.name-column-articles, .id-column-articles, .category-column-articles{
+.name-column-articles, .price-column-articles, .category-column-articles{
     width:32%;
     height:35px;
     border: 1px solid black;
@@ -187,6 +187,7 @@
 }
 /*End article-sheet*/
 
+/*Clickable background which closes modal when clicked*/
 .modal-background{
     position:absolute;
     background-color:transparent;
