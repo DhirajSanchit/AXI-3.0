@@ -1,0 +1,41 @@
+﻿@model ArticleModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+@using (Html.BeginForm("AddArticle", "Home", FormMethod.Post))
+{
+    <div class="new-article-modal" id="new-article-modal">
+        <div class="new-article-modal-image-box">
+            <img src="~/images/vector-Search.png" alt="Search-Icon">
+        </div>
+        <button class="btn-submit-article btn-active" type="submit">
+                <h4>Submit Article</h4>
+            </button>
+        @*todo Create functions to check if name and price are null or whitespace > exception*@
+        @*Inputs fields and labels*@
+        <p class="new-article-modal-name-input-label">Name:</p>
+        <input class="new-article-modal-name-input" id="myName">
+        <p class="new-article-modal-category-input-label">Category:</p>
+        <input class="new-article-modal-category-input" id="category">
+        <p class="new-article-modal-price-input-label">Price:</p>
+        <input class="new-article-modal-price-input" id="price">
+        <input class="new-article-modal-add-img-input" id="imgRef">
+        <div class="exit-cross-container">
+            <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
+        </div>
+        <form>
+            <textarea class="new-article-modal-description-input" id="description" placeholder="Description"></textarea>
+        </form>
+    </div>
+}
+</body>
+</html>

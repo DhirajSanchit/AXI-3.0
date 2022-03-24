@@ -5,8 +5,9 @@
 }
 <body>
 @* Button to add article *@
-<div class="btn-add-article btn-active" onclick="showElement('new-article-modal'); showElement('modal-background')">
-    <p>Add Article</p>
+<div class="btn-add-article btn-active">
+    <a asp-controller="Home" asp-action="AddArticle">
+        <p>AddArticle</p></a>
 </div>
 @* searchbar *@
 <input type="text" class="search-bar" placeholder="Type to start searching...">
@@ -28,33 +29,33 @@
         }
     }
 </div>
-<div class="modal-background" id="modal-background" onclick="hideElement('new-article-modal'); hideElement('view-article-modal'); hideElement('modal-background')"></div>
+@* <div class="modal-background" id="modal-background" onclick="hideElement('new-article-modal'); hideElement('view-article-modal'); hideElement('modal-background')"></div> *@
 @*Modal for adding a new article*@
-<div class="new-article-modal" id="new-article-modal">
-    <div class="new-article-modal-image-box">
-        <img src="~/images/vector-Search.png" alt="Search-Icon">
-    </div>
-    <a asp-controller="Home" asp-action="CreateArticles">
-    <div class="btn-submit-article btn-active">
-        <h4>Submit Article</h4>
-    </div>
-    </a>
-    @*todo Create functions to check if name and price are null or whitespace > exception*@
-    @*Inputs fields and labels*@
-    <p class="new-article-modal-name-input-label">Name:</p>
-    <input class="new-article-modal-name-input" id="myName">
-    <p class="new-article-modal-category-input-label">Category:</p>
-    <input class="new-article-modal-category-input" id="category">
-    <p class="new-article-modal-price-input-label">Price:</p>
-    <input class="new-article-modal-price-input" id="price">
-    <input class="new-article-modal-add-img-input" id="imgRef">
-    <div class="exit-cross-container">
-        <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
-    </div>
-    <form>
-        <textarea class="new-article-modal-description-input" id="description" placeholder="Description"></textarea>
-    </form>
-</div>
+@* <div class="new-article-modal" id="new-article-modal"> *@
+@*     <div class="new-article-modal-image-box"> *@
+@*         <img src="~/images/vector-Search.png" alt="Search-Icon"> *@
+@*     </div> *@
+@*     <a asp-controller="Home" asp-action="CreateArticles"> *@
+@*     <div class="btn-submit-article btn-active"> *@
+@*         <h4>Submit Article</h4> *@
+@*     </div> *@
+@*     </a> *@
+@* $1$todo Create functions to check if name and price are null or whitespace > exception*/ *@
+@*     $1$Inputs fields and labels#1# *@
+@*     <p class="new-article-modal-name-input-label">Name:</p> *@
+@*     <input class="new-article-modal-name-input" id="myName"> *@
+@*     <p class="new-article-modal-category-input-label">Category:</p> *@
+@*     <input class="new-article-modal-category-input" id="category"> *@
+@*     <p class="new-article-modal-price-input-label">Price:</p> *@
+@*     <input class="new-article-modal-price-input" id="price"> *@
+@*     <input class="new-article-modal-add-img-input" id="imgRef"> *@
+@*     <div class="exit-cross-container"> *@
+@*         <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')"> *@
+@*     </div> *@
+@*     <form> *@
+@*         <textarea class="new-article-modal-description-input" id="description" placeholder="Description"></textarea> *@
+@*     </form> *@
+@* </div> *@
 @*Modal for showing existing articles*@
 <div class="view-article-modal" id="view-article-modal">
     <div class="view-article-modal-image-box">

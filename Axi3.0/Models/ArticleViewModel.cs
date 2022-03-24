@@ -14,7 +14,6 @@ namespace Axi3._0.Models
        public void GetArticleModels()
        {
            ArticleModels.Clear();
-           Toolbox.ArticleContainer.CreateRandomContent();
            var articles = Toolbox.ArticleContainer.GetArticles();
            foreach (var article in articles)
            {

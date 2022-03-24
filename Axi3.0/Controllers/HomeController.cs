@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
+using AxiInterfaces.DTOs;
+using AxiLogic.Classes;
+using AxiLogic.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Axi3._0.Controllers
@@ -35,21 +38,36 @@ namespace Axi3._0.Controllers
             stockModel.GetStockRows();
             return View(stockModel);
         }
+        
+        [HttpPost]
+        public IActionResult AddArticle(ArticleModel model)
+        {
+            Toolbox.ArticleContainer.AddArticle(new Article(new ArticleDto()
+            {
+                Name = model.Name,
+                Price = model.Price,
+                ImgRef = model.ImgRef,
+                Description = model.Description,
+                Category = model.Category.ToString()
+            }));
 
+            return RedirectToAction("AddArticle");
+        }
+
+        [HttpGet]
+        public IActionResult AddArticle()
+        {
+            return View();
+        }
+
+       
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();
             articleViewModel.GetArticleModels();
             return View(articleViewModel);
         }
-        [HttpPost]
-        public RedirectToActionResult CreateArticles(ArticleViewModel articleViewModel) //todo delete maybe?
-        {
-            //articleViewModel.CreateArticle(name, price, imgRef, category, description);
-            return RedirectToAction("Articles", "Home");
-            //return articleViewModel;
-        }
-        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
