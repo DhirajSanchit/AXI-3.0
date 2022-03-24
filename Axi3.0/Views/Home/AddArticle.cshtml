@@ -41,13 +41,14 @@
         <p>@Html.LabelFor(model => model.Price, new {@class = "new-article-modal-price-input-label"})</p>
         @Html.TextBoxFor(model => model.Price, new {@class = "new-article-modal-price-input"})
             @* </div> *@
-            @* *@
+        @* *@
+        @Html.TextBoxFor(model => model.ImgRef, new {@class = "new-article-modal-add-img-input"})
             @*   <div class="form-group"> *@
         @Html.TextAreaFor(model => model.Description, new {@class = "new-article-modal-description-input"})
         @*       </div>           *@
         
         @*     <div class="form-group"> *@
-        @Html.TextBoxFor(model => model.ImgRef, new {@class = "new-article-modal-add-img-input"})
+        
             @* </div> *@
          
         <div class="exit-cross-container"> 
