@@ -4,4 +4,14 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.0.123" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="AxiLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\Axi3.0\bin\Debug\net5.0\AxiLogic.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

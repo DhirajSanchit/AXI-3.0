@@ -1,9 +1,16 @@
-﻿@model TestViewModel
+@model TestViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    Layout ="_Layout";
 }
 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>DB - Test</title>
+</head>
+<body>
 <div>
      
     @if (Model is not null)
@@ -20,4 +27,5 @@
 
 <p>Use this page to detail your site's privacy policy.</p>
 </div>
-
+</body>
+</html>

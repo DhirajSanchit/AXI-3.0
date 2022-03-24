@@ -6,21 +6,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
+using AxiInterfaces;
+using AxiLogic.Containers;
 
 namespace Axi3._0.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ITestDapperContainer _tdc;
+        
+        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc)
         {
             _logger = logger;
+            _tdc = tdc;
         }
 
         public IActionResult Index()
         {
-            return View();
+            TestViewModel tvm = new TestViewModel();
+            _tdc.dt = _tdc.GetAll();
+            tvm.tData = _tdc.dt;
+            return View(tvm);
         }
 
         public IActionResult Privacy()
