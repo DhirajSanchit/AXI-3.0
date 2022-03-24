@@ -22,7 +22,7 @@
         </div>
         
         <button type="submit" class="btn-submit-article btn-active">
-            <span class="glyphicon glyphicon-save"></span><h4>Save</h4>
+            <h4>Save</h4>
         </button>
         
         @*todo Create functions to check if name and price are null or whitespace > exception*@
@@ -43,16 +43,19 @@
             @* </div> *@
             @* *@
             @*   <div class="form-group"> *@
-        @Html.TextBoxFor(model => model.Description, new {@class = "new-article-modal-description-input"})
+        @Html.TextAreaFor(model => model.Description, new {@class = "new-article-modal-description-input"})
         @*       </div>           *@
-        @* *@
+        
         @*     <div class="form-group"> *@
         @Html.TextBoxFor(model => model.ImgRef, new {@class = "new-article-modal-add-img-input"})
             @* </div> *@
-            @* *@
-                <div class="exit-cross-container">
-                    <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
-                </div>
+         
+        <div class="exit-cross-container"> 
+            <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
+            @*TODO: Implement redirect action below on exit cross img *@
+            @* <a asp-controller="Home" asp-action="Articles" class=""></a> *@
+            
+        </div>
     </div>
         @* <form> *@
         @*     <textarea class="new-article-modal-description-input" id="description" placeholder="Description"></textarea> *@
