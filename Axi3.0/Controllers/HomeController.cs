@@ -50,8 +50,8 @@ namespace Axi3._0.Controllers
                 Description = model.Description,
                 Category = model.Category.ToString()
             }));
-
-            return RedirectToAction("AddArticle");
+            
+            return RedirectToAction("AddArticle", "Home");
         }
 
         [HttpGet]

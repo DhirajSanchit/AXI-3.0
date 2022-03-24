@@ -5,12 +5,12 @@ namespace Axi3._0.Models
 {
     public class ArticleModel
     {
-        public double Price;
-        public string Barcode;
-        public string ImgRef;
-        public string Name;
-        public string Description;
-        public int Id;
-        public Category Category;
+        public double Price { get; set; }
+        public string Barcode { get; set; }
+        public string ImgRef{ get; set; }
+        public string Name{ get; set; }
+        public string Description{ get; set; }
+        public int Id{ get; set; }
+        public Category Category{ get; set; }
     }
 }
