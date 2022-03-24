@@ -12,8 +12,8 @@ namespace AxiUnitTests.Classes
         public void TestRemovePallet()
         {
             //arrange
-            var plank = new Plank();
-            var pallet = new Pallet();
+            var plank = new Plank(134);
+            var pallet = new Pallet(134);
             plank.AddPallet(pallet);
             //act
             plank.RemovePallet(pallet);
@@ -26,9 +26,9 @@ namespace AxiUnitTests.Classes
         public void TestRemoveNotContainedPallet()
         {
             //arrange
-            var plank = new Plank();
-            var pallet = new Pallet();
-            var pallet2 = new Pallet();
+            var plank = new Plank(134);
+            var pallet = new Pallet(134);
+            var pallet2 = new Pallet(134);
             plank.AddPallet(pallet);
             //act
             plank.RemovePallet(pallet2);
@@ -40,8 +40,8 @@ namespace AxiUnitTests.Classes
         public void TestAddPallet()
         {
             //arrange
-            var plank = new Plank();
-            var pallet = new Pallet();
+            var plank = new Plank(134);
+            var pallet = new Pallet(134);
             //act
             plank.AddPallet(pallet);
             //assert
@@ -53,8 +53,8 @@ namespace AxiUnitTests.Classes
         public void TestAddDuplicatePallet()
         {
             //arrange
-            var plank = new Plank();
-            var pallet = new Pallet();
+            var plank = new Plank(134);
+            var pallet = new Pallet(134);
             plank.AddPallet(pallet);
             //act
             plank.AddPallet(pallet);
@@ -67,7 +67,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             //act
-            var plank = new Plank();
+            var plank = new Plank(134);
             //assert
             Assert.IsNotNull(plank);
         }

@@ -16,6 +16,14 @@ namespace AxiLogic.Classes
             Name = name;
         }
 
+        public Employee(EmployeeDto employeeDto)
+        {
+            EmployeeNr = employeeDto.EmployeeNr;
+            Name = employeeDto.Name;
+            Email = employeeDto.Email;
+            PhoneNr = employeeDto.PhoneNr;
+            Id = employeeDto.Id;
+        }
         public void SetName(string name)
         {
             Name = name;

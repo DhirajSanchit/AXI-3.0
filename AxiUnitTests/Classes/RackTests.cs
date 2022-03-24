@@ -12,8 +12,8 @@ namespace AxiUnitTests.Classes
         public void TestRemovePlank()
         {
             //arrange
-            var rack = new Rack();
-            var plank = new Plank();
+            var rack = new Rack(134);
+            var plank = new Plank(134);
             rack.AddPlank(plank);
             //act
             rack.RemovePlank(plank);
@@ -26,9 +26,9 @@ namespace AxiUnitTests.Classes
         public void TestRemoveNotContainedPlank()
         {
             //arrange
-            var rack = new Rack();
-            var plank = new Plank();
-            var plank2 = new Plank();
+            var rack = new Rack(134);
+            var plank = new Plank(134);
+            var plank2 = new Plank(134);
             rack.AddPlank(plank);
             //act
             rack.RemovePlank(plank2);
@@ -40,8 +40,8 @@ namespace AxiUnitTests.Classes
         public void TestAddPlank()
         {
             //arrange
-            var rack = new Rack();
-            var plank = new Plank();
+            var rack = new Rack(134);
+            var plank = new Plank(134);
             //act
             rack.AddPlank(plank);
             //assert
@@ -53,8 +53,8 @@ namespace AxiUnitTests.Classes
         public void TestAddDuplicatePlank()
         {
             //arrange
-            var rack = new Rack();
-            var plank = new Plank();
+            var rack = new Rack(134);
+            var plank = new Plank(134);
             rack.AddPlank(plank);
             //act
             rack.AddPlank(plank);
@@ -67,7 +67,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             //act
-            var rack = new Rack();
+            var rack = new Rack(134);
             //assert
             Assert.IsNotNull(rack);
         }

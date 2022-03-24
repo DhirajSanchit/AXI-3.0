@@ -8,9 +8,21 @@ namespace AxiLogic.Classes
     {
         public readonly List <Rack> Racks = new ();
         public string Name;
+
+        public Row(string name)
+        {
+            Name = name;
+        }
         
- 
-       
+        public Row(RowDto rowDto)
+        {
+            Name = rowDto.Name;
+            Racks = new List<Rack>();
+            foreach (var rackDto in rowDto.RackDtos)
+            {
+                Racks.Add(new Rack(rackDto));
+            }
+        }
         
         public void AddRack(Rack rack)
         {
@@ -34,21 +46,16 @@ namespace AxiLogic.Classes
         {
             Name = name;
         }
-
-        public Row(string name)
-        {
-            Name = name;
-        }
-
+        
         public RowDto ToDto()
         {
                 
-            List < RackDto > RackDtos = new();
-            foreach (var Rack in Racks)
+            List < RackDto > rackDtos = new();
+            foreach (var rack in Racks)
             {
-                RackDtos.Add(Rack.ToDto());
+                rackDtos.Add(rack.ToDto());
             }
-            return new RowDto { RackDtos = RackDtos,
+            return new RowDto { RackDtos = rackDtos,
                                 Name = Name};
         }
     }

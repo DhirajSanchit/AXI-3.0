@@ -11,7 +11,7 @@ namespace AxiLogic.Classes
         public string Name { get; private set; }
         public int Id { get; private set; }
         
-        private List<ShipmentArticle> ShipmentArticles = new();
+        private List<ShipmentArticle> _shipmentArticles = new();
         
         
         public Shipment(int id)
@@ -19,9 +19,17 @@ namespace AxiLogic.Classes
             Id = id;
         }
 
+        public Shipment(ShipmentDto shipmentDto)
+        {
+            Date = shipmentDto.Date;
+            InvoiceId = shipmentDto.InvoiceId;
+            Name = shipmentDto.Name;
+            Id = shipmentDto.Id;
+            //Add list :-)
+        }
         public void ClearShipmentArticles()
         {
-            ShipmentArticles.Clear();
+            _shipmentArticles.Clear();
         }
         
         public void SetDate(DateTime date)
@@ -41,17 +49,17 @@ namespace AxiLogic.Classes
 
         public IReadOnlyList<ShipmentArticle> GetShipmentArticles()
         {
-            return ShipmentArticles;
+            return _shipmentArticles;
         }
 
         public void AddShipmentArticle(ShipmentArticle shipmentArticle)
         {
-            ShipmentArticles.Add(shipmentArticle);
+            _shipmentArticles.Add(shipmentArticle);
         }
 
         public void RemoveShipmentArticle(ShipmentArticle shipmentArticle)
         {
-            ShipmentArticles.Remove(shipmentArticle);
+            _shipmentArticles.Remove(shipmentArticle);
         }
 
         public ShipmentDto ToDto()

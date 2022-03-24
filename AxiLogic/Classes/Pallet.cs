@@ -10,6 +10,25 @@ namespace AxiLogic.Classes
         public int Amount { get; private set; }
         public Article Article { get; private set; }
 
+
+        public Pallet(int location)
+        {
+            Location = location;
+        }
+        
+        public Pallet(int location, int amount, Article article)
+        {
+            Location = location;
+            Amount = amount;
+            Article = article;
+        }
+
+        public Pallet(PalletDto palletDto)
+        {
+            Location = palletDto.Location;
+            Amount = palletDto.Amount;
+            Article = new Article(palletDto.Article);
+        }
         public void PlaceArticle(Article article, int amount)
         {
             if (article != Article && Amount != 0) 

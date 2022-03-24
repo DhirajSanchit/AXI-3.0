@@ -14,6 +14,17 @@ namespace AxiLogic.Classes
             return Pallets;
         }
 
+        public Plank(int location)
+        {
+            Location = location;
+        }
+
+        public Plank(PlankDto plankDto)
+        {
+            Location = plankDto.Location;
+            Pallets = new List<Pallet>();
+        }
+        
         public void AddPallet(Pallet pallet)
         {
             if (Pallets.Contains(pallet))
@@ -43,16 +54,11 @@ namespace AxiLogic.Classes
         public PlankDto ToDto()
         {
             List<PalletDto> palletDtos = new();
-            foreach (var Pallet in Pallets)
+            foreach (var pallet in Pallets)
             {
-                palletDtos.Add(Pallet.ToDto());
+                palletDtos.Add(pallet.ToDto());
             }
             return new PlankDto { palletDtos = palletDtos };
-        }
-        public Plank(PlankDto plankDto)
-        {
-            Location = plankDto.Location;
-            Pallets = new List<Pallet>();
         }
     }
 }

@@ -8,6 +8,22 @@ namespace AxiLogic.Classes
     {
         public int Location;
         public readonly List<Plank> Planks = new();
+
+
+        public Rack(int location)
+        {
+            Location = location;
+        }
+
+        public Rack(RackDto rackDto)
+        {
+            Location = rackDto.Location;
+            Planks = new List<Plank>();
+            foreach (var plankDto in rackDto.plankDtos)
+            {
+                Planks.Add(new Plank(plankDto));
+            }
+        }
         
         public void AddPlank(Plank plank)
         {
@@ -38,9 +54,9 @@ namespace AxiLogic.Classes
         public RackDto ToDto()
         {
             List<PlankDto> plankDtos = new();
-                foreach (var Plank in Planks)
+                foreach (var plank in Planks)
                 {
-                plankDtos.Add(Plank.ToDto());
+                plankDtos.Add(plank.ToDto());
                 }
             return new RackDto { plankDtos = plankDtos };
         }
