@@ -13,7 +13,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var row = new Row("testName");
-            var rack = new Rack();
+            var rack = new Rack(134);
             row.AddRack(rack);
             //act
             row.RemoveRack(rack);
@@ -27,8 +27,8 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var row = new Row("testName");
-            var rack = new Rack();
-            var rack2 = new Rack();
+            var rack = new Rack(134);
+            var rack2 = new Rack(134);
             row.AddRack(rack);
             //act
             row.RemoveRack(rack2);
@@ -41,7 +41,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var row = new Row("testName");
-            var rack = new Rack();
+            var rack = new Rack(134);
             //act
             row.AddRack(rack);
             //assert
@@ -54,7 +54,7 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             var row = new Row("testName");
-            var rack = new Rack();
+            var rack = new Rack(134);
             row.AddRack(rack);
             //act
             row.AddRack(rack);
