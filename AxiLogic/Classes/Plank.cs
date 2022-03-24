@@ -49,5 +49,10 @@ namespace AxiLogic.Classes
             }
             return new PlankDto { palletDtos = palletDtos };
         }
+        public Plank(PlankDto plankDto)
+        {
+            Location = plankDto.Location;
+            Pallets = new List<Pallet>();
+        }
     }
 }
