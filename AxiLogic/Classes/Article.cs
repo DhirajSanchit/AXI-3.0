@@ -19,6 +19,7 @@ namespace AxiLogic.Classes
             Name = name;
             Price = price;
         }
+        
         public Article(ArticleDto articleDto)
         {
             Name = articleDto.Name;

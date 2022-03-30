@@ -7,6 +7,7 @@ function hideElement(elementId){
 function showElement(elementId){
     document.getElementById(elementId).style.display = "block"
 }
+
 function showArticleElement(elementId, name, category, price, description, imgurl){
     $("#" + elementId).show()
     $("#articleImg").attr("src", imgurl)
