@@ -45,7 +45,7 @@ namespace Axi3._0
             //DEPENDCY INJECTION    
 
             //Containers
-            services.AddScoped<IArticleContainer, ArticleContainer>();
+            // services.AddScoped<IArticleContainer, ArticleContainer>();
             
             //Data Absctraction Layers
             services.AddScoped<IArticleDAL, ArticleDAL>();
