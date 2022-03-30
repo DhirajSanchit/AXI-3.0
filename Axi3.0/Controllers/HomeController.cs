@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
-using AxiDAL.DTOs;
-using AxiLogic.Containers;
+using AxiDAL.DTOs; 
 using AxiLogic.Interfaces; 
 using AxiLogic.Classes;
 using AxiLogic.Helpers;
-using Microsoft.EntityFrameworkCore;
 
 namespace Axi3._0.Controllers
 {
@@ -81,7 +75,5 @@ namespace Axi3._0.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
-
-        
     }
 }
