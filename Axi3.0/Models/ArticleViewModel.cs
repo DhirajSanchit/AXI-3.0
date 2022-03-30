@@ -52,5 +52,6 @@ namespace Axi3._0.Models
            //todo call onto DAL
            Toolbox.ArticleContainer.AddArticle(new Article(articleDto));
        }
+       
     }
 }

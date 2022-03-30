@@ -7,4 +7,12 @@ function hideElement(elementId){
 function showElement(elementId){
     document.getElementById(elementId).style.display = "block"
 }
+function showArticleElement(elementId, name, category, price, description, imgurl){
+    $("#" + elementId).show()
+    $("#articleImg").attr("src", imgurl)
+    $("#articleName").text(name)
+    $("#articleCategory").text(category)
+    $("#articlePrice").text(price)
+    $("#articleDescription").text(description)
+}
 // Write your JavaScript code.
