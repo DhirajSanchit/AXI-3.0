@@ -1,6 +1,6 @@
-﻿using AxiInterfaces.DTOs;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
+using AxiDAL.DTOs;
 
 namespace AxiLogic.Classes
 {

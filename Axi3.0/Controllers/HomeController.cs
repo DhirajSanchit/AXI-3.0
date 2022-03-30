@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
+using AxiDAL.DTOs;
 using AxiLogic.Containers;
 using AxiLogic.Interfaces; 
 using AxiLogic.Classes;
@@ -41,7 +42,7 @@ namespace Axi3._0.Controllers
         public IActionResult Stock()
         {
             var stockModel = new StockModel();
-            stockModel.GetStockRows();
+            //stockModel.GetStockRows();
             return View(stockModel);
         }
         

@@ -1,5 +1,5 @@
 ﻿using System;
-using AxiInterfaces.DTOs;
+using AxiDAL.DTOs;
 
 namespace AxiLogic.Classes
 { 
