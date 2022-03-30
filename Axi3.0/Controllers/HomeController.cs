@@ -28,10 +28,11 @@ namespace Axi3._0.Controllers
 
         public IActionResult Index()
         {
-            TestViewModel tvm = new TestViewModel();
-             _tdc.dt = _tdc.GetAll();
-             tvm.tData = _tdc.dt;
-            return View(tvm);
+            //Keep code below for debug purposes
+            // TestViewModel tvm = new TestViewModel();
+            //  _tdc.dt = _tdc.GetAll();
+            //  tvm.tData = _tdc.dt;
+            return View();
         }
 
         public IActionResult Privacy()
