@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using System.Data;
+using AxiDAL.DTOs;
 
-namespace AxiInterfaces
+namespace AxiDAL.Interfaces
 {
     public interface ITestDAL
     {

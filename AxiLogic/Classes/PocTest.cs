@@ -1,20 +1,20 @@
-using AxiDAL;
+using AxiDAL.DTOs;
 
 namespace AxiLogic.Classes
 {
-    public class Test
+    public class PocTest
     {
         public int id { get; set;}
         public string value { get; set; }
 
-        public Test(TestDTO dto)
+        public PocTest(TestDTO dto)
         {
             id = dto.id;
             value = dto.value;
         }
         
 
-        public Test(int id, string value)
+        public PocTest(int id, string value)
         {
             this.id = id;
             this.value = value;

@@ -9,7 +9,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AxiInterfaces\AxiInterfaces.csproj" />
+      <ProjectReference Include="..\AxiDAL\AxiDAL.csproj" />
     </ItemGroup>
+
 
 </Project>

@@ -1,44 +1,48 @@
 ﻿using System.Collections.Generic;
 using AxiLogic.Classes;
 using System;
+using AxiLogic.Interfaces;
 
 namespace AxiLogic.Containers
 {
-    public class ArticleContainer
+    public class ArticleContainer : IArticleContainer
+
     {
-        private List<Article> _articles;
+    private List<Article> _articles;
 
-        public ArticleContainer()
-        {
-            _articles = new List<Article>();
-        }
+    public ArticleContainer()
+    {
+        _articles = new List<Article>();
+    }
 
-        public IReadOnlyCollection<Article> GetArticles()
+    public IReadOnlyCollection<Article> GetArticles()
+    {
+        return _articles;
+    }
+
+    public void AddArticle(Article article)
+    {
+        if (_articles.Contains(article))
         {
-            return _articles;
-        }
-        
-        public void AddArticle(Article article)
-        {
-            if (_articles.Contains(article))
-            {
-                throw new ArgumentException("Can not add duplicate article");
-            }
-            _articles.Add(article);
+            throw new ArgumentException("Can not add duplicate article");
         }
 
-        public void RemoveArticle(Article article)
+        _articles.Add(article);
+    }
+
+    public void RemoveArticle(Article article)
+    {
+        if (!_articles.Contains(article))
         {
-            if (!_articles.Contains(article))
-            {
-                throw new ArgumentException("Article does not exist");
-            }
-            _articles.Remove(article);
+            throw new ArgumentException("Article does not exist");
         }
-        
-        public void ClearArticles()
-        {
-            _articles.Clear();
-        }
+
+        _articles.Remove(article);
+    }
+
+    public void ClearArticles()
+    {
+        _articles.Clear();
+    }
     }
 }

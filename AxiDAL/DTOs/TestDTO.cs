@@ -1,4 +1,4 @@
-namespace AxiInterfaces
+namespace AxiDAL.DTOs
 {
     public class TestDTO
     {

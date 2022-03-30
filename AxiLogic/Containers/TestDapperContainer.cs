@@ -1,29 +1,33 @@
 using System.Collections.Generic;
-using AxiDAL;
-using AxiInterfaces;
+using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 using AxiLogic.Classes;
+using AxiLogic.Interfaces;
+
 
 namespace AxiLogic.Containers
 {
 
     public class TestDapperContainer : ITestDapperContainer
     {
-        public IList<Test> dt { get; set; }
+        
+        
+        public IList<PocTest> dt { get; set; }
 
-        private  ITestDAL _itd;
+        private  ITestDAL _context;
 
-        public TestDapperContainer(ITestDAL itd)
+        public TestDapperContainer(ITestDAL context)
         {
-            _itd = itd;
+            _context = context;
         }
 
-        public IList<Test> GetAll()
+        public IList<PocTest> GetAll()
         {
-            dt = new List<Test>();
-            IList<TestDTO> TestDtoList = _itd.GetAllTestData();
+            dt = new List<PocTest>();
+            IList<TestDTO> TestDtoList = _context.GetAllTestData();
             foreach (TestDTO dto in TestDtoList)
             {
-                dt.Add(new Test(dto));
+                dt.Add(new PocTest(dto));
             }
 
             return dt;

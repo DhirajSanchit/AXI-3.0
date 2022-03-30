@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using AxiInterfaces;
-using Dapper;
+using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
+using Dapper; 
 
 namespace AxiDAL.DAL
 {
@@ -40,4 +41,4 @@ namespace AxiDAL.DAL
         }
         
     }
-}
+}                        

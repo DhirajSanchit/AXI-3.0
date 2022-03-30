@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
-using AxiInterfaces;
 using AxiLogic.Containers;
+using AxiLogic.Interfaces;
 
 namespace Axi3._0.Controllers
 {
@@ -25,8 +25,8 @@ namespace Axi3._0.Controllers
         public IActionResult Index()
         {
             TestViewModel tvm = new TestViewModel();
-            _tdc.dt = _tdc.GetAll();
-            tvm.tData = _tdc.dt;
+             _tdc.dt = _tdc.GetAll();
+             tvm.tData = _tdc.dt;
             return View(tvm);
         }
 
@@ -44,7 +44,5 @@ namespace Axi3._0.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
-
-        
     }
 }

@@ -14,4 +14,14 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Interfaces" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="TestDTO.cs" />
+      <Compile Remove="ITestDapperContainer.cs" />
+      <Compile Remove="ITestDAL.cs" />
+    </ItemGroup>
+
 </Project>

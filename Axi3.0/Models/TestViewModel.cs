@@ -5,7 +5,7 @@ namespace Axi3._0.Models
 {
     public class TestViewModel
     {
-        public IList<Test> tData { get; set; }
+        public IList<PocTest> tData { get; set; }
 
     }
 }

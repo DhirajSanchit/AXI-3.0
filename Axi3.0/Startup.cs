@@ -5,8 +5,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using AxiDAL.DAL;
-using AxiInterfaces;
+using AxiDAL.Interfaces;
 using AxiLogic.Containers;
+using AxiLogic.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,26 +37,28 @@ namespace Axi3._0
             //SELF-SERVICE SERVER INSTANCE | Wijst het toe aan de connectie van het project
             services.AddTransient<IDbConnection>(sp => new SqlConnection(ConnectionString));
             
-            //Tests DB Connection
+            //Tests DB Connection | Keep for debugging / demo puproses
             services.AddScoped<ITestDAL, TestDAL>();
             services.AddScoped<ITestDapperContainer, TestDapperContainer>();
-            //TODO: Develop Proof of Concept below for SQLReader Version
-            //services.addScoped<ITestReaderContainer, TestReaderContainer>();
+            
+            
+            //DEPENDCY INJECTION    
 
+            //Containers
+            services.AddScoped<IArticleContainer, ArticleContainer>();
             
-            
-            //Dependency Injection for Data Layer classes and objects  
-            
-            //Dependency Injection for Logic Layer classes and objects
+            //Data Absctraction Layers
+            services.AddScoped<IArticleDAL, ArticleDAL>();
+                
+            //TODO: Develop Proof of Concept below for SQLReader Version
+            //services.addScoped<ITestReaderContainer, TestReaderContainer>(); 
             
             
             
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
             //Library enabling front-end compiling when pressing F5
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
