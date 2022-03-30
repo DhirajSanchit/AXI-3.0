@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using AxiLogic.Classes;
+using AxiLogic.Helpers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace AxiLogic.Containers
 {
@@ -10,10 +14,10 @@ namespace AxiLogic.Containers
 
         public RowContainer()
         {
-            Rows = new List<Row>();
+            var json = JObject.Parse(File.ReadAllText(@"..\AxiLogic\Jsons\StockLayout.json"));
+            Rows = json["Rows"].ToObject<List<Row>>();
         }
-
-
+        
         public void AddRow(Row row)
         {
             if (Rows.Contains(row))

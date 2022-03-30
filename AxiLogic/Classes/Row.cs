@@ -9,9 +9,17 @@ namespace AxiLogic.Classes
         public readonly List <Rack> Racks = new ();
         public string Name;
 
+        public Row(){}
+        
         public Row(string name)
         {
             Name = name;
+        }
+        
+        public Row(string Name, List<Rack> Racks)
+        {
+            this.Name = Name;
+            this.Racks = Racks;
         }
         
         public Row(RowDto rowDto)

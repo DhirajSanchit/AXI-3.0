@@ -5,7 +5,7 @@ using AxiLogic.Interfaces;
 
 namespace AxiLogic.Containers
 {
-    public class ArticleContainer : IArticleContainer
+    public class ArticleContainer
 
     {
     private List<Article> _articles;

@@ -8,11 +8,18 @@ namespace AxiLogic.Classes
     {
         public int Location;
         public readonly List<Plank> Planks = new();
-
-
+        
+        public Rack(){}
+        
         public Rack(int location)
         {
             Location = location;
+        }
+        
+        public Rack(int location, List<Plank> planks)
+        {
+            Location = location;
+            Planks = planks;
         }
 
         public Rack(RackDto rackDto)

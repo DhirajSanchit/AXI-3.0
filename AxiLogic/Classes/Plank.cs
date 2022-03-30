@@ -14,9 +14,17 @@ namespace AxiLogic.Classes
             return Pallets;
         }
 
+        public Plank(){}
+        
         public Plank(int location)
         {
             Location = location;
+        }
+        
+        public Plank(int location, List<Pallet> pallets)
+        {
+            Location = location;
+            Pallets = pallets;
         }
 
         public Plank(PlankDto plankDto)

@@ -20,6 +20,17 @@ namespace AxiLogic.Classes
             Price = price;
         }
         
+        public Article(string name, double price, string barcode, string imgRef, string description,  int id, Category category)
+        {
+            Name = name;
+            Price = price;
+            Barcode = barcode;
+            ImgRef = imgRef;
+            Description = description;
+            Id = id;
+            Category = category;
+        }
+        
         public Article(ArticleDto articleDto)
         {
             Name = articleDto.Name;
