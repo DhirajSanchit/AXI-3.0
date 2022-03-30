@@ -1,6 +1,8 @@
-﻿namespace AxiDAL.DAL
+﻿using AxiDAL.Interfaces;
+
+namespace AxiDAL.DAL
 {
-    public class ArticleDAL
+    public class ArticleDAL : IArticleDAL
     {
         
     }

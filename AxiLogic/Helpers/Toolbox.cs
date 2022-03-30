@@ -1,4 +1,4 @@
-﻿using AxiDAL.DAL;
+﻿
 using AxiLogic.Containers;
 
 namespace AxiLogic.Helpers
@@ -9,15 +9,14 @@ namespace AxiLogic.Helpers
         public static ArticleContainer ArticleContainer = new();
         public static RowContainer RowContainer = new();
         //TODO: ADD DATA
-        //public static DataBaseClient DataBaseClient = new();
-        public static RackDAL RackDal = new();
-        public static RowDAL RowDal = new();
-        public static PalletDAL PalletDal = new();
-        public static PlankDAL PlankDal = new();
-        public static ArticleDAL ArticleDal = new();
-        public static EmployeeDAL EmployeeDal = new();
-        public static ShipmentDAL ShipmentDal = new();
-        public static ShipmentArticleDAL ShipmentArticleDal = new();
-        public static StockRowModelHelper StockRowModelHelper = new();
+        // //public static DataBaseClient DataBaseClient = new();
+        // public static RackDAL RackDal = new();
+        // public static RowDAL RowDal = new();
+        // public static PalletDAL PalletDal = new();
+        // public static PlankDAL PlankDal = new();
+        // public static ArticleDAL ArticleDal = new();
+        // public static EmployeeDAL EmployeeDal = new();
+        // public static ShipmentDAL ShipmentDal = new();
+        // public static ShipmentArticleDAL ShipmentArticleDal = new();
     }
 }

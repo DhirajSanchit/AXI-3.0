@@ -5,8 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AxiDAL\AxiDAL.csproj" />
-      <ProjectReference Include="..\AxiInterfaces\AxiInterfaces.csproj" />
+      <PackageReference Include="Dapper" Version="2.0.123" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AxiDAL\AxiDAL.csproj" />
+    </ItemGroup>
+
 
 </Project>
