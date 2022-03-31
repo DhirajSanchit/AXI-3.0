@@ -40,6 +40,7 @@ namespace AxiLogic.Containers
         }
 
         _articles.Add(article);
+        SaveArticles();
     }
 
     public void RemoveArticle(Article article)
@@ -55,6 +56,14 @@ namespace AxiLogic.Containers
     public void ClearArticles()
     {
         _articles.Clear();
+    }
+
+    public void SaveArticles()
+    {
+        var jsonObj = new JObject();
+        jsonObj["articles"] = JToken.FromObject(_articles);
+        var jsonString = JsonConvert.SerializeObject(jsonObj);
+        File.WriteAllText(@"..\AxiLogic\Jsons\Articles.json",jsonString);
     }
 
     /*
