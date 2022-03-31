@@ -11,6 +11,12 @@ namespace AxiDAL.DAL
     public class TestDAL : ITestDAL
     {
         
+        /* Purpose of the TestDAL & Container:
+         * testing if the proof of concept works. If the connection works, extrapolate on the other DAL's
+         *  and containers
+         */
+        
+        
         private IDbConnection _dbConnection;
         
         public TestDAL(IDbConnection dbConnection)
@@ -37,6 +43,10 @@ namespace AxiDAL.DAL
                 
                 Console.WriteLine(ex.Message); 
                 throw new Exception(ex.Message);
+            }
+            finally
+            {
+                _dbConnection.Close();
             }
         }
         

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using AxiLogic.Classes;
 using System;
+using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 using AxiLogic.Interfaces;
 
 namespace AxiLogic.Containers
@@ -9,6 +11,13 @@ namespace AxiLogic.Containers
 
     {
     private List<Article> _articles;
+    private  IArticleDAL _context;
+
+    public ArticleContainer(IArticleDAL context)
+    {
+        _context = context;
+    }
+ 
 
     public ArticleContainer()
     {
@@ -44,5 +53,32 @@ namespace AxiLogic.Containers
     {
         _articles.Clear();
     }
+
+    /*
+    public IList<ArticleDto> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public ArticleDto GetById()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool AddArticle()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool DeleteArticle()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool UpdateArticle()
+    {
+        throw new NotImplementedException();
+    }*/
+    
     }
 }

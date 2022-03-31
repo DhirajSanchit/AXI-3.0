@@ -6,8 +6,11 @@ namespace AxiLogic.Interfaces
 {
     public interface IArticleContainer
     {
-        public IList<ArticleDto> GetAll();
-        public ArticleDto GetById();
-        public bool AddArticle();
+        // public IList<ArticleDto> GetAll();
+        // public ArticleDto GetById();
+        // public bool AddArticle();
+        // public bool DeleteArticle();
+        // public bool UpdateArticle();
+
     }
 }

@@ -7,7 +7,10 @@ using AxiLogic.Interfaces;
 
 namespace AxiLogic.Containers
 {
-
+    /* This class serves as a Proof Of Concept: 
+     * To be used as a reference point
+     */
+    
     public class TestDapperContainer : ITestDapperContainer
     {
         
