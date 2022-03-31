@@ -8,5 +8,8 @@ namespace AxiDAL.Interfaces
         public IList<ArticleDto> GetAll();
         public ArticleDto GetById();
         public bool AddArticle();
+
+        public bool UpdateArticle();
+        public bool DeleteArticle();
     }
 }

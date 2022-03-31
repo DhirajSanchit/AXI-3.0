@@ -2,6 +2,8 @@
 using AxiLogic.Classes;
 using System;
 using System.IO;
+using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 using AxiLogic.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -11,6 +13,13 @@ namespace AxiLogic.Containers
     public class ArticleContainer
     {
     private List<Article> _articles;
+    private  IArticleDAL _context;
+
+    public ArticleContainer(IArticleDAL context)
+    {
+        _context = context;
+    }
+ 
 
     public ArticleContainer()
     {
@@ -48,5 +57,31 @@ namespace AxiLogic.Containers
         _articles.Clear();
     }
 
+    /*
+    public IList<ArticleDto> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public ArticleDto GetById()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool AddArticle()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool DeleteArticle()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool UpdateArticle()
+    {
+        throw new NotImplementedException();
+    }*/
+    
     }
 }

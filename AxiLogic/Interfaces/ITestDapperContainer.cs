@@ -4,7 +4,7 @@ using AxiLogic.Classes;
 namespace AxiLogic.Interfaces
 {
     
-    //TODO: TO BE REVISED
+    //Interface for Proof of Concept container
     public interface ITestDapperContainer
     {
          IList<PocTest> dt { get; set; }

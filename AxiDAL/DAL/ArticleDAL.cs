@@ -13,36 +13,50 @@ namespace AxiDAL.DAL
 
         private IDbConnection _dbConnection;
         public IList<ArticleDto> dataset;
-
+        
+        //Assign connectionstring from appsettings.json
         public ArticleDAL(IDbConnection dbConnection)
         {
             _dbConnection = dbConnection;
         }
          
-        
+        //Rtetrieves all articles
         public IList<ArticleDto> GetAll()
-        {
+        {   
+            //Prepary Query
             var sql = @"SELECT * FROM [Article]";
-
+                
+            //Execute statement
                 try
                 {
-
+                   
                     using (_dbConnection)
-                    {
-                        // var tests = (IList<TestDto>) await _dbConnection.QueryAsync("sql");
-                        var dataset = /*(IList<TestDto>)*/ _dbConnection.Query<ArticleDto>(sql).ToList();
+                    {   
+                        //Execute query on Database, and return dataset
+                        dataset = _dbConnection.Query<ArticleDto>(sql).ToList();
                         return dataset;
                     }
                 }
+                
+                //TODO: Catch and handle possible exceptions
+                //Catches possible exceptions
                 catch (Exception ex)
                 {
                 
                     Console.WriteLine(ex.Message); 
                     throw new Exception(ex.Message);
                 }
-            }
+                
+                //Closes DB connection when finishing statement regardless of result(s)
+                finally
+                {
+                    
+                    _dbConnection.Close();
+                }
+                
+        }
         
-
+        
         public ArticleDto GetById()
         {
             throw new System.NotImplementedException();
@@ -51,6 +65,16 @@ namespace AxiDAL.DAL
         public bool AddArticle()
         {
             throw new System.NotImplementedException();
+        }
+
+        public bool UpdateArticle()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteArticle()
+        {
+            throw new NotImplementedException();
         }
     }
 }
