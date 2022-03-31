@@ -21,19 +21,17 @@
     {
         foreach (var row in Model.StockRows)
         {
-            <div class="name-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.ArticleName</div>
-            <div class="id-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.ArticleId</div>
-            <div class="quantity-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.Quantity</div>
-            <div class="category-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.Category</div>
-            <div class="location-column" onclick="showElement('view-article-modal'); showElement('modal-background')">
-                @{
-                    string locations = "";
-                    foreach (var rowLocation in row.Locations)
-                    {
-                        locations += rowLocation + ", ";
-                    }
-                    locations = locations.Substring(0, locations.Length - 2);
-                }
+            var locations = "";
+            foreach (var rowLocation in row.Locations)
+            {
+                locations += rowLocation + ", ";
+            }
+            locations = locations.Substring(0, locations.Length - 2);
+            <div class="name-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.ArticleName</div>
+            <div class="id-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.ArticleId</div>
+            <div class="quantity-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.Quantity</div>
+            <div class="category-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.Category</div>
+            <div class="location-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">
                 @locations
             </div>
         }
@@ -49,9 +47,9 @@
     <div class="exit-cross-container">
         <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('view-article-modal'); hideElement('modal-background')">
     </div>
-    <p class="view-article-modal-name-label">!Name!</p>
-    <p class="view-article-modal-category-label">!Category</p>
-    <h4 class="view-article-modal-price-label">!Price!</h4>
-    <textarea class="view-article-modal-textarea">!Description!</textarea>
+    <p class="view-article-modal-name-label" id="view-article-modal-name-label">!Name!</p>
+    <p class="view-article-modal-category-label" id="view-article-modal-category-label">!Category</p>
+    <h4 class="view-article-modal-quantity-label" id="view-article-modal-quantity-label">!Quantity!</h4>
+    <textarea class="view-article-modal-textarea" id="view-article-modal-textarea">!Description!</textarea>
 </div>
 </body>

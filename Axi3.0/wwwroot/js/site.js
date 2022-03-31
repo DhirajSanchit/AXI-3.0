@@ -16,4 +16,12 @@ function showArticleElement(elementId, name, category, price, description, imgur
     $("#articlePrice").text(price)
     $("#articleDescription").text(description)
 }
+
+function showArticleView(elementId, name, category, quantity, locations){
+    $("#" + elementId).show()
+    $("#view-article-modal-name-label").text(name)
+    $("#view-article-modal-category-label").text(category)
+    $("#view-article-modal-quantity-label").text(quantity)
+    $("#view-article-modal-textarea").text(locations)
+}
 // Write your JavaScript code.
