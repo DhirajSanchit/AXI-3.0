@@ -37,7 +37,7 @@ namespace Axi3._0.Controllers
         public IActionResult Stock()
         {
             var stockModel = new StockModel();
-            //stockModel.GetStockRows();
+            stockModel.GetStockRows();
             return View(stockModel);
         }
         

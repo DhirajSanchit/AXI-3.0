@@ -25,7 +25,17 @@
             <div class="id-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.ArticleId</div>
             <div class="quantity-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.Quantity</div>
             <div class="category-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.Category</div>
-            <div class="location-column" onclick="showElement('view-article-modal'); showElement('modal-background')">@row.Locations</div>
+            <div class="location-column" onclick="showElement('view-article-modal'); showElement('modal-background')">
+                @{
+                    string locations = "";
+                    foreach (var rowLocation in row.Locations)
+                    {
+                        locations += rowLocation + ", ";
+                    }
+                    locations = locations.Substring(0, locations.Length - 2);
+                }
+                @locations
+            </div>
         }
     }
 </div>

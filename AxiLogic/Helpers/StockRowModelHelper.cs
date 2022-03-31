@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AxiLogic.Classes;
 using AxiLogic.Containers;
 
@@ -6,6 +7,7 @@ namespace AxiLogic.Helpers
 {
     public class StockRowModelHelper
     {
+        private Random _random = new();
         /// <summary>
         /// Returns a row for any type of article within the stock.
         /// </summary>
@@ -53,20 +55,25 @@ namespace AxiLogic.Helpers
         /// </summary>
         private void ModifyStockRows(List<int> addedArticles, Pallet pallet, List<StockRow> stockRows, string plankLocation)
         {
-            if (addedArticles.Contains(pallet.Article.Id))
+            if (pallet.Article != null)
             {
-                ModifyArticleStockRow(stockRows, pallet.Article.Id, $"{plankLocation}.{pallet.Location}", pallet.Amount);
-            }
-            else
-            {
-                stockRows.Add(new StockRow()
+                if (addedArticles.Contains(pallet.Article.Id))
                 {
-                    ArticleId = pallet.Article.Id,
-                    ArticleName = pallet.Article.Name,
-                    Category = pallet.Article.Category,
-                    Locations = new List<string>() {$"{plankLocation}.{pallet.Location}"},
-                    Quantity = pallet.Amount
-                });
+                    ModifyArticleStockRow(stockRows, pallet.Article.Id, $"{plankLocation}.{pallet.Location}",
+                        pallet.Amount);
+                }
+                else
+                {
+                    stockRows.Add(new StockRow()
+                    {
+                        ArticleId = pallet.Article.Id,
+                        ArticleName = pallet.Article.Name,
+                        Category = pallet.Article.Category,
+                        Locations = new List<string>() {$"{plankLocation}.{pallet.Location}"},
+                        Quantity = pallet.Amount
+                    });
+                    addedArticles.Add(pallet.Article.Id);
+                }
             }
         }
         

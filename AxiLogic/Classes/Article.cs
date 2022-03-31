@@ -6,13 +6,17 @@ namespace AxiLogic.Classes
 
     public class Article
     {
-        public double Price { get; private set; }
-        public string Barcode { get; private set; }
-        public string ImgRef { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public int Id { get; private set; }
-        public Category Category { get; private set; }
+        public double Price;
+        public string Barcode;
+        public string ImgRef;
+        public string Name;
+        public string Description;
+        public int Id;
+        public Category Category;
+
+        public Article()
+        {
+        }
 
         public Article(string name, double price)
         {

@@ -7,9 +7,8 @@ namespace AxiLogic.Classes
     public class Pallet
     {
         public int Location;
-        public int Amount { get; private set; }
-        public Article Article { get; private set; }
-        
+        public int Amount;
+        public Article Article;
         public Pallet(){}
         
         public Pallet(int location)

@@ -1,18 +1,21 @@
 ﻿using System.Collections.Generic;
 using AxiLogic.Classes;
 using System;
+using System.IO;
 using AxiLogic.Interfaces;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace AxiLogic.Containers
 {
     public class ArticleContainer
-
     {
     private List<Article> _articles;
 
     public ArticleContainer()
     {
-        _articles = new List<Article>();
+        var jObject = JObject.Parse(File.ReadAllText(@"..\AxiLogic\Jsons\Articles.json"));
+        _articles = jObject["articles"].ToObject<List<Article>>();
     }
 
     public IReadOnlyCollection<Article> GetArticles()
@@ -44,5 +47,6 @@ namespace AxiLogic.Containers
     {
         _articles.Clear();
     }
+
     }
 }

@@ -330,8 +330,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 12,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -495,8 +503,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 12,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -545,8 +561,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 4,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -1180,8 +1204,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 6,
+                  "Article": {
+                    "Price": 2.23,
+                    "Barcode": "barcode 2",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+                    "Name": "cable",
+                    "Description": "description nr 2",
+                    "Id": 3,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -1425,8 +1457,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 9,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 },
                 {
                   "Location": 2,
@@ -1515,8 +1555,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 8,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 }
               ]
             },
@@ -2350,8 +2398,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 2,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -2725,8 +2781,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 16,
+                  "Article": {
+                    "Price": 2.23,
+                    "Barcode": "barcode 2",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+                    "Name": "cable",
+                    "Description": "description nr 2",
+                    "Id": 3,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -2885,8 +2949,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 3,
+                  "Article": {
+                    "Price": 2.23,
+                    "Barcode": "barcode 2",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+                    "Name": "cable",
+                    "Description": "description nr 2",
+                    "Id": 3,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -3205,8 +3277,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 7,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -3425,8 +3505,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 9,
+                  "Article": {
+                    "Price": 2.23,
+                    "Barcode": "barcode 2",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+                    "Name": "cable",
+                    "Description": "description nr 2",
+                    "Id": 3,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -3450,8 +3538,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 16,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -3700,8 +3796,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 13,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 },
                 {
                   "Location": 1,
@@ -3910,8 +4014,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 1,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -4380,8 +4492,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 14,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -4400,8 +4520,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 1,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 },
                 {
                   "Location": 2,
@@ -4505,8 +4633,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 18,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -5295,8 +5431,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 5,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -5335,8 +5479,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 15,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -5455,8 +5607,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 11,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -5725,8 +5885,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 2,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -6040,8 +6208,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 17,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -6050,8 +6226,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 11,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 }
               ]
             },
@@ -6385,8 +6569,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 2,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 },
                 {
                   "Location": 2,
@@ -6485,8 +6677,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 3,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -6790,8 +6990,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 19,
+                  "Article": {
+                    "Price": 2.23,
+                    "Barcode": "barcode 2",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+                    "Name": "cable",
+                    "Description": "description nr 2",
+                    "Id": 3,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -7030,8 +7238,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 5,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 },
                 {
                   "Location": 1,
@@ -7435,8 +7651,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 21,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -7545,8 +7769,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 7,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -7590,8 +7822,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 17,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 }
               ]
             }
@@ -7795,8 +8035,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 18,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -8455,13 +8703,29 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 3,
+                  "Article": {
+                    "Price": 3.23,
+                    "Barcode": "barcode 3",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+                    "Name": "drill",
+                    "Description": "description nr 3",
+                    "Id": 4,
+                    "Category": 2
+                  }
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 4,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -8685,8 +8949,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 6,
+                  "Article": {
+                    "Price": 2.23,
+                    "Barcode": "barcode 2",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+                    "Name": "cable",
+                    "Description": "description nr 2",
+                    "Id": 3,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -8845,8 +9117,16 @@
               "Pallets": [
                 {
                   "Location": 0,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 14,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 1,
@@ -9655,8 +9935,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 2,
+                  "Article": {
+                    "Price": 1.23,
+                    "Barcode": "barcode 1",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+                    "Name": "light",
+                    "Description": "description nr 1",
+                    "Id": 2,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
@@ -9955,8 +10243,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 14,
+                  "Article": {
+                    "Price": 0.23,
+                    "Barcode": "barcode 0",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+                    "Name": "battery",
+                    "Description": "description nr 0",
+                    "Id": 1,
+                    "Category": 0
+                  }
                 }
               ]
             },
@@ -10225,8 +10521,16 @@
                 },
                 {
                   "Location": 2,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 7,
+                  "Article": {
+                    "Price": 2.23,
+                    "Barcode": "barcode 2",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+                    "Name": "cable",
+                    "Description": "description nr 2",
+                    "Id": 3,
+                    "Category": 0
+                  }
                 }
               ]
             }
@@ -10495,8 +10799,16 @@
                 },
                 {
                   "Location": 1,
-                  "Amount": 0,
-                  "Article": null
+                  "Amount": 10,
+                  "Article": {
+                    "Price": 2.23,
+                    "Barcode": "barcode 2",
+                    "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+                    "Name": "cable",
+                    "Description": "description nr 2",
+                    "Id": 3,
+                    "Category": 0
+                  }
                 },
                 {
                   "Location": 2,
