@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AxiLogic.Helpers
 {
-   public class AddArticletoLocation
+   public class AddArticletoLocationHelper
    {
         public void AddArticletoLocation(Article article, string locationstring, int amount)
         {
@@ -16,9 +16,9 @@ namespace AxiLogic.Helpers
 
             RowContainer rowContainer = Toolbox.RowContainer;
             Row row = rowContainer.GetRowByName(locations[0]);
-            Rack rack = row.GetRack(locationstring);
-            Plank plank = rack.GetPlankByLocation(locationstring);
-            Pallet pallet = plank.GetPallet(locationstring);
+            Rack rack = row.GetRack(locationstring[1]);
+            Plank plank = rack.GetPlankByLocation(locationstring[2]);
+            Pallet pallet = plank.GetPallet(locationstring[3]);
             pallet.PlaceArticle(article, amount);
 
         }
