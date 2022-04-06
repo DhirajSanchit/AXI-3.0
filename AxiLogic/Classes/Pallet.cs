@@ -37,7 +37,7 @@ namespace AxiLogic.Classes
             }
             if (amount <= 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new ArgumentOutOfRangeException("Can not add negative amount");
             }
             Amount += amount;
             Article = article;
@@ -45,13 +45,22 @@ namespace AxiLogic.Classes
 
         public void RemoveArticle(Article article, int amount)
         {
-            if(article != Article || Amount < amount)
+            if(article != Article)
             {
-                throw new ArgumentException("Articles do not match or not enough articles");
+                throw new ArgumentException("Articles do not match");
+            }
+            if (Amount < amount)
+            {
+                //to do: write test for exception
+                throw new ArgumentOutOfRangeException("Not enough articles to remove");
             }
             if (amount <= 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new ArgumentOutOfRangeException("Can not remove negative amount");
+            }
+            if (Amount - amount == 0)
+            {
+                Article = null;
             }
             Amount -= amount;
         }

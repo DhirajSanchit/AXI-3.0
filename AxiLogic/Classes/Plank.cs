@@ -60,6 +60,7 @@ namespace AxiLogic.Classes
         }
 
         public Pallet GetPallet(int location)
+            //to do: write test
         {
             foreach(var pallet in Pallets)
             {
