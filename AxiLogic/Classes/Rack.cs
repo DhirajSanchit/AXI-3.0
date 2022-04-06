@@ -67,5 +67,16 @@ namespace AxiLogic.Classes
                 }
             return new RackDto { plankDtos = plankDtos };
         }
+        public Plank GetPlankByLocation(int location)
+        {
+            foreach (var plank in Planks)
+            {
+                if (plank.Location == location)
+                {
+                    return plank;
+                }
+            }
+            return null;
+        }
     }
 }

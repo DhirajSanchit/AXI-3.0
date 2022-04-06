@@ -17,7 +17,7 @@ namespace AxiLogic.Containers
             var json = JObject.Parse(File.ReadAllText(@"..\AxiLogic\Jsons\StockLayout.json"));
             Rows = json["Rows"].ToObject<List<Row>>();
         }
-        
+
         public void AddRow(Row row)
         {
             if (Rows.Contains(row))
@@ -29,16 +29,23 @@ namespace AxiLogic.Containers
 
         public void RemoveRow(Row row)
         {
-           if (!Rows.Contains(row))
-           {
+            if (!Rows.Contains(row))
+            {
                 throw new ArgumentException("Row does not exist");
-           }
-           Rows.Remove(row);
+            }
+            Rows.Remove(row);
         }
-
-        public int GetRow(Row row)
+        public Row GetRowByName(string name)
         {
-            row.
+            foreach (var row in Rows)
+            {
+                if (row.Name == name)
+                {
+                    return row;
+                }
+            }
+            return null;
+
         }
     }
 }
