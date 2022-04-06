@@ -59,6 +59,17 @@ namespace AxiLogic.Classes
             Pallets.Clear();
         }
 
+        public Pallet GetPallet(int location)
+        {
+            foreach(var pallet in Pallets)
+            {
+                if (pallet.Location == location)
+                {
+                    return pallet;
+                }
+            }
+            return null;
+        }
         public PlankDto ToDto()
         {
             List<PalletDto> palletDtos = new();

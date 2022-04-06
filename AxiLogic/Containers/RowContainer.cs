@@ -35,5 +35,10 @@ namespace AxiLogic.Containers
            }
            Rows.Remove(row);
         }
+
+        public int GetRow(Row row)
+        {
+            row.
+        }
     }
 }

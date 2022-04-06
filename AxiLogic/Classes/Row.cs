@@ -55,6 +55,19 @@ namespace AxiLogic.Classes
             Name = name;
         }
         
+
+        public Rack GetRack(int location)
+        {
+            //to do: write test for this function
+            foreach(var rack in Racks)
+            {
+                if (rack.Location == location)
+                {
+                    return rack;
+                }
+            }
+            return null;
+        }
         public RowDto ToDto()
         {
                 
