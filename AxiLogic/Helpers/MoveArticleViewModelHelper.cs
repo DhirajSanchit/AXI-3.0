@@ -9,7 +9,7 @@ using AxiLogic.Helpers;
 
 namespace AxiLogic.Helpers
 {
-    public class PlaceTakeArticleViewModelHelper
+    public class MoveArticleViewModelHelper
     {
         public void PlaceArticle(int articleID, string locationstring, int amount)
         {

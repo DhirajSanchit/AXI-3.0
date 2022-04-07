@@ -83,5 +83,17 @@ namespace Axi3._0.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
+        [HttpPost]
+        public IActionResult PlaceArticle(MoveArticleViewModel moveArticleViewModel)
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult TakeArticle(MoveArticleViewModel moveArticleViewModel)
+        {
+            return View();
+        }
+
     }
 }
