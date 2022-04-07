@@ -61,8 +61,16 @@ namespace Axi3._0.Controllers
         {
             return View();
         }
+        
+        public IActionResult ScannerIndex()
+        {
+            return View();
+        }
 
-       
+        public IActionResult PlaceArticle()
+        {
+            return View();
+        }
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();

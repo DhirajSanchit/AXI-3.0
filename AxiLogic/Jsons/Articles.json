@@ -1,1 +1,76 @@
-{"articles":[{"Price":0.23,"Barcode":"barcode 0","ImgRef":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU","Name":"battery","Description":"description nr 0","Id":1,"Category":0},{"Price":1.23,"Barcode":"barcode 1","ImgRef":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU","Name":"light","Description":"description nr 1","Id":2,"Category":0},{"Price":2.23,"Barcode":"barcode 2","ImgRef":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU","Name":"cable","Description":"description nr 2","Id":3,"Category":0},{"Price":3.23,"Barcode":"barcode 3","ImgRef":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU","Name":"drill","Description":"description nr 3","Id":4,"Category":2},{"Price":1.89,"Barcode":null,"ImgRef":"https://i.imgur.com/wagd5AZ.jpeg","Name":"Test","Description":"hgwdgjkwvhdw","Id":0,"Category":2}]}
+{
+  "articles": [
+    {
+      "Price": 0.23,
+      "Barcode": "barcode 0",
+      "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqbWEKejKmETSkb9uZkgo0UBHimijt_6lgsmShw949Hc1rh-mzJ9v93vYvVPGCIUgzK2o&usqp=CAU",
+      "Name": "battery",
+      "Description": "description nr 0",
+      "Id": 1,
+      "Category": 0
+    },
+    {
+      "Price": 1.23,
+      "Barcode": "barcode 1",
+      "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvFouSJJBXlZLAi_AT7KQBOU3uSt0Oh5zpQ&usqp=CAU",
+      "Name": "light",
+      "Description": "description nr 1",
+      "Id": 2,
+      "Category": 0
+    },
+    {
+      "Price": 2.23,
+      "Barcode": "barcode 2",
+      "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6jkyg14xbTVsJw8N3Z-moFe2PHj1VPUUP-g&usqp=CAU",
+      "Name": "cable",
+      "Description": "description nr 2",
+      "Id": 3,
+      "Category": 0
+    },
+    {
+      "Price": 3.23,
+      "Barcode": "barcode 3",
+      "ImgRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwgWD6GhEAdxSl8gvscTgBtfKJElBAp3pqUA&usqp=CAU",
+      "Name": "drill",
+      "Description": "description nr 3",
+      "Id": 4,
+      "Category": 2
+    },
+    {
+      "Price": 1.89,
+      "Barcode": null,
+      "ImgRef": "https://i.imgur.com/wagd5AZ.jpeg",
+      "Name": "Test",
+      "Description": "hgwdgjkwvhdw",
+      "Id": 0,
+      "Category": 2
+    },
+    {
+      "Price": 5.01,
+      "Barcode": null,
+      "ImgRef": "yournan",
+      "Name": "test",
+      "Description": "help me I've fallen over",
+      "Id": 0,
+      "Category": 2
+    },
+    {
+      "Price": 5.88,
+      "Barcode": null,
+      "ImgRef": "test",
+      "Name": "Beer",
+      "Description": "test",
+      "Id": 0,
+      "Category": 2
+    },
+    {
+      "Price": 4.01,
+      "Barcode": null,
+      "ImgRef": null,
+      "Name": "test2",
+      "Description": "A 0.1.21",
+      "Id": 0,
+      "Category": 2
+    }
+  ]
+}
