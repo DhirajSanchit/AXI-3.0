@@ -10,6 +10,7 @@ namespace AxiLogic.Helpers
         public static ArticleContainer ArticleContainer = new();
         public static RowContainer RowContainer = new();
         public static StockRowModelHelper StockRowModelHelper = new ();
+        public static PlaceTakeArticleViewModelHelper PlaceTakeArticleViewModelHelper = new(); 
         //TODO: ADD DATA
         // //public static DataBaseClient DataBaseClient = new();
         // public static RackDAL RackDal = new();

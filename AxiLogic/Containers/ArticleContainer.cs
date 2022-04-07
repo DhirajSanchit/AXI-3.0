@@ -66,6 +66,18 @@ namespace AxiLogic.Containers
         File.WriteAllText(@"..\AxiLogic\Jsons\Articles.json",jsonString);
     }
 
+        public Article GetArticleByID(int articleID)
+        {
+            foreach (var article in _articles)
+            {
+                if(article.Id == articleID)
+                {
+                    return article;
+                }
+            }
+            return null;
+        }
+
     /*
     public IList<ArticleDto> GetAll()
     {
