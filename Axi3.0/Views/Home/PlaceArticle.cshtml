@@ -1,6 +1,7 @@
 @{
     Layout = null;
 }
+@model MoveArticleViewModel
 
 <!DOCTYPE html>
 
@@ -14,10 +15,31 @@
     }
 </style>
 <body>
-<p id="articleId">!aricleId!</p>
-<p id="location">!location!</p>
-<p id="amount">!amount!</p>
-<button type="submit" style="height:5rem; width: 10rem" value="Place Article">Place Article</button>
-<button type="submit" style="height:5rem; width: 10rem" value="Take Article">Take Article</button>
+    @using (Html.BeginForm())
+    {
+        <p>@Html.LabelFor(model => model.articleID, new { })</p>
+        @Html.TextBoxFor(model => model.articleID, new { })
+        <p>@Html.LabelFor(model => model.locationstring, new { })</p>
+        @Html.TextBoxFor(model => model.locationstring, new { })
+        <p>@Html.LabelFor(model => model.amount, new { })</p>
+        @Html.TextBoxFor(model => model.amount, new { })
+        @*<button type="submit" style="height:5rem; width: 10rem" value="Place Article">Place Article</button>
+            <button type="submit" style="height:5rem; width: 10rem" value="Take Article">Take Article</button>*@
+        <button type="submit">
+            Place Article
+        </button>
+    }
+    @using (Html.BeginForm("TakeArticle", "Home", FormMethod.Post))
+    {
+        <p>@Html.LabelFor(model => model.articleID, new { })</p>
+        @Html.TextBoxFor(model => model.articleID, new { })
+        <p>@Html.LabelFor(model => model.locationstring, new { })</p>
+        @Html.TextBoxFor(model => model.locationstring, new { })
+        <p>@Html.LabelFor(model => model.amount, new { })</p>
+        @Html.TextBoxFor(model => model.amount, new { })
+        <button type="submit">
+            Take Article
+        </button>
+    }
 </body>
 </html>

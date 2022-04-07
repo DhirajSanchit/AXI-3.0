@@ -16,10 +16,10 @@ namespace AxiLogic.Classes
             Location = location;
         }
         
-        public Rack(int location, List<Plank> planks)
+        public Rack(int Location, List<Plank> Planks)
         {
-            Location = location;
-            Planks = planks;
+            this.Location = Location;
+            this.Planks = Planks;
         }
 
         public Rack(RackDto rackDto)

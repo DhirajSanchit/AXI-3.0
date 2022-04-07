@@ -67,10 +67,7 @@ namespace Axi3._0.Controllers
             return View();
         }
 
-        public IActionResult PlaceArticle()
-        {
-            return View();
-        }
+       
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();
@@ -84,16 +81,22 @@ namespace Axi3._0.Controllers
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
         [HttpPost]
-        public IActionResult PlaceArticle(MoveArticleViewModel moveArticleViewModel)
+        public IActionResult PlaceArticle(MoveArticleViewModel model)
         {
-
+            model.PlaceArticle();
+            return RedirectToAction("PlaceArticle", "Home");            
+        }
+        [HttpGet]
+        public IActionResult PlaceArticle()
+        {
             return View();
         }
         
         [HttpPost]
-        public IActionResult TakeArticle(MoveArticleViewModel moveArticleViewModel)
+        public IActionResult TakeArticle(MoveArticleViewModel model)
         {
-            return null;
+            model.TakeArticle();
+            return RedirectToAction("PlaceArticle", "Home");
         }
 
     }
