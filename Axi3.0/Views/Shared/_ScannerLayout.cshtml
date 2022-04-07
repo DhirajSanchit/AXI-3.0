@@ -11,12 +11,14 @@
     @RenderBody()
 </main>
 
-<header class="header"></header>
+<header class="header">
+    <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQGwJFQ2XPiwNw/company-logo_200_200/0/1607522193548?e=2147483647&v=beta&t=P6IhJnuNBUgDqJlBywkxK0l0R6wz7IJe6yINb1q8UcM" alt="nav-bar-icon" id="nav-bar-icon">
+</header>
 
-<div class="slide-menu-btn">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png" alt="hamburger-icon">
+<div class="slide-menu-btn" onclick="scrollMenuLeft()" id="slide-menu-btn">
+    <img src="https://icons-for-free.com/download-icon-close+cross+delete+exit+remove+icon-1320085939816384527_512.png" alt="hamburger-icon" id="hamburger-icon">
 </div>
-<div class="slide-menu">
+<div class="slide-menu" id="slide-menu">
     <ul>
         <li>Deliveries</li>
         <li>Order</li>
@@ -30,5 +32,7 @@
 @* <div class="btn-take-article"> *@
 @*     <p>Take Article</p> *@
 @* </div> *@
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 </body>
 </html>

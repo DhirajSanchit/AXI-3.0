@@ -2,48 +2,66 @@
     font-family: stratos,sans-serif;
     user-select:none;
 }
+/*Style for shared scanner layout*/
+body{
+    background-color:lightgray;
+}
 .header{
     position:fixed;
     width:100%;
     height:12rem;
-    background-color:rebeccapurple;
+    background-color:#7a42f9;
     left:0;
     top:0;
 }
-
-.slide-menu-btn{
-    margin-top:2rem;
-    height:8rem;
-    width:8rem;
-    left:15px;
-    position:absolute;
+.header img{
+    height:12rem;
+    width:12rem;
+    float:right;
+    margin-right:30px;
 }
-.slide-menu-btn img{
-    height:8rem;
-    width:8rem;
+
+#slide-menu-btn {
+    padding:2rem;
+    position:absolute;
+    height:3rem;
+    width:3rem;
+}
+
+#slide-menu-btn img{
+    height:7rem;
+    width:7rem;
 }
 .slide-menu{
     position:absolute;
-    width:30rem;
-    height:100%;
-    border:2px solid black;
+    width:27rem;
+    height:96.5rem;
     left:0;
     top:0;
-    margin-top:14rem;
+    margin-top:12rem;
+    background-color:white;
+    box-shadow: 3px 3px black;
+    z-index:1;
 }
 .slide-menu ul{
-    margin-top:70px;
     list-style-type:none;
-    margin-right:75%;
+    margin-left:-3rem;
+    width:100%;
 }
 .slide-menu ul li{
-    padding-top:6rem;
-    padding-bottom:6rem;
+    width:100%;
+    padding-top:5rem;
+    padding-bottom:5rem;
     font-size:3rem;
     font-weight:bold;
     font-style: oblique;
     white-space:nowrap;
     text-align:center;
+    border-bottom:1px solid black;
+}
+.slide-menu ul li a{
+    color:black;
+    text-decoration: none;
 }
 /*.btn-place-article{*/
 /*    position:fixed;*/
@@ -92,3 +110,33 @@
 /*    font-weight:bold;*/
 /*    white-space:nowrap;*/
 /*}*/
+
+/*style for ScannerDelivery.cshtml*/
+.main-screen{
+    position:fixed;
+    margin-top:12rem;
+    height:97rem;
+    width:100%;
+    top:0;
+    left:0;
+    background-color:white;
+}
+.delivery-container{
+    top:0;
+    width:90%;
+    height:12rem;
+    margin-left:5%;
+    background-color:pink;
+}
+.delivery-container p{
+    font-size:3rem;
+}
+#delivery-container-name{
+    margin-top:10px;
+}
+#delivery-container-id{
+    
+}
+#delivery-container-date{
+
+}

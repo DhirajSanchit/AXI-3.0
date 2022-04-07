@@ -62,7 +62,7 @@ namespace Axi3._0.Controllers
             return View();
         }
         
-        public IActionResult ScannerIndex()
+        public IActionResult ScannerDelivery()
         {
             return View();
         }
@@ -92,7 +92,7 @@ namespace Axi3._0.Controllers
         [HttpPost]
         public IActionResult TakeArticle(MoveArticleViewModel moveArticleViewModel)
         {
-            return View();
+            return null;
         }
 
     }

@@ -24,4 +24,24 @@ function showArticleView(elementId, name, category, quantity, locations){
     $("#view-article-modal-quantity-label").text(quantity)
     $("#view-article-modal-textarea").text(locations)
 }
+let menuOpen;
+function scrollMenuLeft(){
+    if(menuOpen){
+        $('#slide-menu').each(function() {
+            $(this).animate({
+                left: '-30rem',
+            }, 300 );
+        });
+        $('#hamburger-icon').attr("src","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png")
+    }
+    else{
+        $('#slide-menu').each(function() {
+            $(this).animate({
+                left: '0',
+            }, 300 );
+        });
+        $('#hamburger-icon').attr("src","https://icons-for-free.com/download-icon-close+cross+delete+exit+remove+icon-1320085939816384527_512.png")
+    }
+    menuOpen= !menuOpen;
+}
 // Write your JavaScript code.
