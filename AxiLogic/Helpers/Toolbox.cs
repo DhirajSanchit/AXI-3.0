@@ -27,6 +27,5 @@ namespace AxiLogic.Helpers
         // public static ShipmentArticleDAL ShipmentArticleDal = new();
         
         
-        
     }
 }

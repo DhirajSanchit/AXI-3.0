@@ -25,6 +25,12 @@ namespace AxiLogic.Containers
     {
         var jObject = JObject.Parse(File.ReadAllText(@"/Users/graciousmacbook/RiderProjects/AXI-3.0/AxiLogic/Jsons/Articles.json"));
         _articles = jObject["articles"].ToObject<List<Article>>();
+        
+        //GetAll Articles
+        
+        //Return list
+        
+        
     }
 
     public IReadOnlyCollection<Article> GetArticles()

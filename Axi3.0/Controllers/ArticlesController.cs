@@ -1,4 +1,6 @@
+using System.Diagnostics;
 using Axi3._0.Models;
+using AxiLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -7,7 +9,7 @@ namespace Axi3._0.Controllers
     public class ArticlesController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        // private ITestDapperContainer _tdc;
+        private IArticleContainer _tdc;
         
         public ArticlesController(ILogger<HomeController> logger)
         {
@@ -36,6 +38,25 @@ namespace Axi3._0.Controllers
         public IActionResult PlaceArticle()
         {
             return View();
+        }
+        
+        
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+        }
+        [HttpPost]
+        public IActionResult PlaceArticle(MoveArticleViewModel moveArticleViewModel)
+        {
+
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult TakeArticle(MoveArticleViewModel moveArticleViewModel)
+        {
+            return null;
         }
         
     }

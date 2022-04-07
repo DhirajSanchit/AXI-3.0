@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <Compile Remove="Data\**" />
+      <Compile Remove="Views\Articles\Articles.cshtml.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -31,6 +32,7 @@
     <ItemGroup>
       <Content Remove="Data\**" />
       <Content Include="Areas\.DS_Store" />
+      <Content Remove="Views\Articles\Articles.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
