@@ -7,7 +7,6 @@ using AxiLogic.Classes;
 using AxiLogic.Containers;
 using AxiLogic.Helpers;
 
-
 namespace AxiLogic.Helpers
 {
     class RemoveArticleHelper
