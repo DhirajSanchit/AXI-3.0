@@ -10,14 +10,35 @@
 </head>
 <body>
 <div class="main-screen">
-    <input type="search" class="search-bar" placeholder="&nbsp;Type to search...">    @for (int i = 0; i < 10; i++)
+    <input type="search" class="search-bar" placeholder="&nbsp;Type to search...">    
+    @for (var i = 0; i < 10; i++)
     {
-        <div class="delivery-container">
+        <div class="delivery-container" onclick="showElement('delivery-modal')">
             <p id="delivery-container-name">TestDelivery</p>
             <p id="delivery-container-id">0</p>
             <p id="delivery-container-date">@DateTime.Now</p>
         </div>
     }
+   
+    <div class="delivery-modal" id="delivery-modal">
+        <div class="info-box">
+            <div class="delivery-modal-return" onclick="hideElement('delivery-modal')"> < </div> @*TODO shouldn't be on the page > confirm delivery button instead*@
+            <p id="info-box-id">Invoice Id: 0</p>
+            <p id="info-box-date">Date: @DateTime.Now</p>
+        </div>
+        <div class="info-box-back-wall"></div>
+        @for (var i = 0; i < 10; i++)
+        {
+            <div class="article-container">
+                <div class="article-image-box">
+                    <img src="~/images/vector-Search.png" alt="article-image" id="article-image">
+                </div>
+                <p id="article-container-name">ArticleName</p>
+                <p id="article-container-amount">0/10</p>
+            </div>
+        }
+    </div>
+    
 </div>
 </body>
 </html>
