@@ -9,9 +9,9 @@ using AxiLogic.Helpers;
 
 namespace AxiLogic.Helpers
 {
-    class RemoveArticleHelper
+    class RemoveArticleFromLocationHelper
     {
-        public void RemoveArticle(Article article, string locationstring, int amount)
+        public void RemoveArticleFromLocation(Article article, string locationstring, int amount)
         {
             //to do: write test
             string[] locations = locationstring.Split('.');
