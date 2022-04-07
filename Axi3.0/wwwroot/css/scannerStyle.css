@@ -120,23 +120,42 @@ body{
     top:0;
     left:0;
     background-color:white;
+    overflow:auto;
+}
+.search-bar{
+    margin-top:20px;
+    margin-left:10%;
+    width:80%;
+    height:5rem;
+    border-radius:20px;
+    font-size:3rem;
+    box-shadow: 3px 1px 3px 1px gray;
 }
 .delivery-container{
     top:0;
     width:90%;
     height:12rem;
+    margin-top:3%;
     margin-left:5%;
-    background-color:pink;
+    margin-bottom:3%;
+    border:2px solid black;
 }
 .delivery-container p{
     font-size:3rem;
+    position:absolute;
+    font-weight:bold;
 }
 #delivery-container-name{
-    margin-top:10px;
+    margin-left:40px;
+    margin-top:2rem;
 }
 #delivery-container-id{
-    
+    margin-left:40px;
+    margin-top:6rem;
+    font-size:2rem;
 }
 #delivery-container-date{
-
+    right:0;
+    margin-right:10%;
+    margin-top:6rem;
 }

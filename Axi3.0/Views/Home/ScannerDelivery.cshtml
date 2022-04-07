@@ -10,11 +10,14 @@
 </head>
 <body>
 <div class="main-screen">
-    <div class="delivery-container">
-        <p id="delivery-container-name">!name!</p>
-        <p id="delivery-container-id">!id!</p>
-        <p id="delivery-container-date">!date!</p>
-    </div>
+    <input type="search" class="search-bar" placeholder="&nbsp;Type to search...">    @for (int i = 0; i < 10; i++)
+    {
+        <div class="delivery-container">
+            <p id="delivery-container-name">TestDelivery</p>
+            <p id="delivery-container-id">0</p>
+            <p id="delivery-container-date">@DateTime.Now</p>
+        </div>
+    }
 </div>
 </body>
 </html>
