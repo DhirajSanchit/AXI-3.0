@@ -1,9 +1,14 @@
 ﻿@model TestViewModel
 
 @{
+    // Page for Proof of concept to check if DBconnection works
+
     ViewData["Title"] = "Home Page";
     Layout = "_Layout";
+    
 }
+
+
 
 <body>
 <div class="twin-container">
@@ -16,10 +21,7 @@
 </div>
 
 
-
-
 <div>
-     
     @if (Model is not null)
     {
         @foreach (var record in Model.tData)

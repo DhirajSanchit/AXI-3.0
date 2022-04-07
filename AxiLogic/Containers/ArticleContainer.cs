@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace AxiLogic.Containers
 {
-    public class ArticleContainer
+    public class ArticleContainer : IArticleContainer
     {
     private List<Article> _articles;
     private  IArticleDAL _context;
@@ -23,7 +23,7 @@ namespace AxiLogic.Containers
 
     public ArticleContainer()
     {
-        var jObject = JObject.Parse(File.ReadAllText(@"..\AxiLogic\Jsons\Articles.json"));
+        var jObject = JObject.Parse(File.ReadAllText(@"/Users/graciousmacbook/RiderProjects/AXI-3.0/AxiLogic/Jsons/Articles.json"));
         _articles = jObject["articles"].ToObject<List<Article>>();
     }
 
@@ -63,7 +63,7 @@ namespace AxiLogic.Containers
         var jsonObj = new JObject();
         jsonObj["articles"] = JToken.FromObject(_articles);
         var jsonString = JsonConvert.SerializeObject(jsonObj);
-        File.WriteAllText(@"..\AxiLogic\Jsons\Articles.json",jsonString);
+        File.WriteAllText(@"/Users/graciousmacbook/RiderProjects/AXI-3.0/AxiLogic/Jsons/Articles.json",jsonString);
     }
 
         public Article GetArticleByID(int articleID)

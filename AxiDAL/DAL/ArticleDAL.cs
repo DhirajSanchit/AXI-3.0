@@ -12,7 +12,7 @@ namespace AxiDAL.DAL
     {
 
         private IDbConnection _dbConnection;
-        public IList<ArticleDto> dataset;
+        private IList<ArticleDto> _dataset;
         
         //Assign connectionstring from appsettings.json
         public ArticleDAL(IDbConnection dbConnection)
@@ -32,9 +32,9 @@ namespace AxiDAL.DAL
                    
                     using (_dbConnection)
                     {   
-                        //Execute query on Database, and return dataset
-                        dataset = _dbConnection.Query<ArticleDto>(sql).ToList();
-                        return dataset;
+                        //Execute query on Database, and return _dataset
+                        _dataset = _dbConnection.Query<ArticleDto>(sql).ToList();
+                        return _dataset;
                     }
                 }
                 

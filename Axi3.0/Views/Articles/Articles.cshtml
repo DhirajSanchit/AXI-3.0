@@ -1,0 +1,82 @@
+@model ArticleViewModel
+@{
+    ViewData["Title"] = "Stock";
+    Layout = "_Layout";
+}
+<body>
+@* Button to add article *@
+<div class="btn-add-article btn-active">
+    <a asp-controller="Home" asp-action="AddArticle">
+        <p>AddArticle</p></a>
+</div>
+@* searchbar *@
+<input type="text" class="search-bar" placeholder="Type to start searching...">
+@*Sheet containing info about articles*@
+<div class="sheet-top">
+    <div class="name-column-top-articles">Name</div>
+    <div class="price-column-top-articles">Price</div>
+    <div class="category-column-top-articles">Category</div>
+</div>
+<div class="article-sheet">
+    @*For loop to create divs containing article info*@
+    @if (Model.ArticleModels.Any())
+    {
+        
+        foreach(var article in Model.ArticleModels)
+        {
+            <div class="name-column-articles"
+                 onclick="showArticleElement('view-article-modal', '@article.Name', '@article.Category', '@article.Price', '@article.Description', '@article.ImgRef'); showElement('modal-background')">
+                @article.Name
+            </div>
+            <div class="price-column-articles"
+                 onclick="showArticleElement('view-article-modal', '@article.Name', '@article.Category', '@article.Price', '@article.Description', '@article.ImgRef'); showElement('modal-background')">
+                @article.Price
+            </div>
+            <div class="category-column-articles"
+                 onclick="showArticleElement('view-article-modal', '@article.Name', '@article.Category', '@article.Price', '@article.Description', '@article.ImgRef'); showElement('modal-background')">
+                @article.Category
+            </div>
+        }
+    }
+</div>
+@* <div class="modal-background" id="modal-background" onclick="hideElement('new-article-modal'); hideElement('view-article-modal'); hideElement('modal-background')"></div> *@
+@*Modal for adding a new article*@
+@* <div class="new-article-modal" id="new-article-modal"> *@
+@*     <div class="new-article-modal-image-box"> *@
+@*         <img src="~/images/vector-Search.png" alt="Search-Icon"> *@
+@*     </div> *@
+@*     <a asp-controller="Home" asp-action="CreateArticles"> *@
+@*     <div class="btn-submit-article btn-active"> *@
+@*         <h4>Submit Article</h4> *@
+@*     </div> *@
+@*     </a> *@
+@* $1$todo Create functions to check if name and price are null or whitespace > exception*/ *@
+@*     $1$Inputs fields and labels#1# *@
+@*     <p class="new-article-modal-name-input-label">Name:</p> *@
+@*     <input class="new-article-modal-name-input" id="myName"> *@
+@*     <p class="new-article-modal-category-input-label">Category:</p> *@
+@*     <input class="new-article-modal-category-input" id="category"> *@
+@*     <p class="new-article-modal-price-input-label">Price:</p> *@
+@*     <input class="new-article-modal-price-input" id="price"> *@
+@*     <input class="new-article-modal-add-img-input" id="imgRef"> *@
+@*     <div class="exit-cross-container"> *@
+@*         <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')"> *@
+@*     </div> *@
+@*     <form> *@
+@*         <textarea class="new-article-modal-description-input" id="description" placeholder="Description"></textarea> *@
+@*     </form> *@
+@* </div> *@
+@*Modal for showing existing articles*@
+<div class="view-article-modal" id="view-article-modal">
+    <div class="view-article-modal-image-box">
+        <img src="~/images/vector-Search.png" alt="Search-Icon" id="articleImg">
+    </div>
+    <div class="exit-cross-container">
+        <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('view-article-modal')">
+    </div>
+    <p class="view-article-modal-name-label" id="articleName">!Name!</p>
+    <p class="view-article-modal-category-label" id="articleCategory">!Category</p>
+    <h4 class="view-article-modal-price-label" id="articlePrice">!Price!</h4>
+    <textarea class="view-article-modal-textarea" id="articleDescription">!Description!</textarea>
+</div>
+</body>

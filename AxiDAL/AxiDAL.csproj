@@ -5,11 +5,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-<!--        <ProjectReference Include="..\AxiInterfaces\AxiInterfaces.csproj" />-->
+      <PackageReference Include="Dapper" Version="2.0.123" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Dapper" Version="2.0.123" />
+      <Compile Remove="Interface\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Interface\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Interface\**" />
     </ItemGroup>
 
 </Project>

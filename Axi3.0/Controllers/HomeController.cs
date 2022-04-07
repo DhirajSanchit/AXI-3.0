@@ -12,12 +12,12 @@ namespace Axi3._0.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private ITestDapperContainer _tdc;
+       // private ITestDapperContainer _tdc;
         
-        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _tdc = tdc;
+            //_tdc = tdc;
         }
 
         public IActionResult Index()
@@ -89,6 +89,7 @@ namespace Axi3._0.Controllers
 
             return View();
         }
+        
         [HttpPost]
         public IActionResult TakeArticle(MoveArticleViewModel moveArticleViewModel)
         {

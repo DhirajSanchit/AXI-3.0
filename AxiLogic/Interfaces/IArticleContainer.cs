@@ -11,6 +11,5 @@ namespace AxiLogic.Interfaces
         // public bool AddArticle();
         // public bool DeleteArticle();
         // public bool UpdateArticle();
-
     }
 }

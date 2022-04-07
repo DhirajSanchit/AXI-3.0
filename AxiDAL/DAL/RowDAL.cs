@@ -1,6 +1,8 @@
-﻿namespace AxiDAL.DAL
+﻿using AxiDAL.Interfaces;
+
+namespace AxiDAL.DAL
 {
-    public class RowDAL
+    public class RowDAL : IRowDAL
     {
     }
 }

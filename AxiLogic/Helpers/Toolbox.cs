@@ -1,6 +1,7 @@
 ﻿
 using AxiLogic.Classes;
 using AxiLogic.Containers;
+using AxiLogic.Interfaces;
 
 namespace AxiLogic.Helpers
 {
@@ -10,7 +11,10 @@ namespace AxiLogic.Helpers
         public static ArticleContainer ArticleContainer = new();
         public static RowContainer RowContainer = new();
         public static StockRowModelHelper StockRowModelHelper = new ();
+
+        public static IArticleContainer iac;
         public static MoveArticleViewModelHelper PlaceTakeArticleViewModelHelper = new(); 
+        
         //TODO: ADD DATA
         // //public static DataBaseClient DataBaseClient = new();
         // public static RackDAL RackDal = new();
@@ -21,5 +25,8 @@ namespace AxiLogic.Helpers
         // public static EmployeeDAL EmployeeDal = new();
         // public static ShipmentDAL ShipmentDal = new();
         // public static ShipmentArticleDAL ShipmentArticleDal = new();
+        
+        
+        
     }
 }

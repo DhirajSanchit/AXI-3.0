@@ -1,6 +1,8 @@
-﻿namespace AxiDAL.DAL
+﻿using AxiDAL.Interfaces;
+
+namespace AxiDAL.DAL
 {
-    public class PlankDAL
+    public class PlankDAL : IPlankDAL
     {
     }
 }
