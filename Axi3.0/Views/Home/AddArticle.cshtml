@@ -8,7 +8,7 @@
 
 <html lang="en">
 <head>
-    <title>title</title>
+    <title>AddArticle</title>
 </head>
 <body>
 @using (Html.BeginForm())
@@ -42,7 +42,7 @@
         @Html.TextBoxFor(model => model.Price, new {@class = "new-article-modal-price-input"})
             @* </div> *@
         @* *@
-        @Html.TextBoxFor(model => model.ImgRef, new {@class = "new-article-modal-add-img-input"})
+        @Html.TextBoxFor(model => model.ImgRef, new {type="file", @class = "new-article-modal-add-img-input"})
             @*   <div class="form-group"> *@
         @Html.TextAreaFor(model => model.Description, new {@class = "new-article-modal-description-input"})
         @*       </div>           *@

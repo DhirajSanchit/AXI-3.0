@@ -14,7 +14,7 @@ namespace AxiLogic.Containers
 
         public RowContainer()
         {
-            var json = JObject.Parse(File.ReadAllText(@"/Users/graciousmacbook/RiderProjects/AXI-3.0/AxiLogic/Jsons/StockLayout.json"));
+            var json = JObject.Parse(File.ReadAllText(@"../AxiLogic/Jsons/StockLayout.json"));
             Rows = json["Rows"].ToObject<List<Row>>();
         }
 

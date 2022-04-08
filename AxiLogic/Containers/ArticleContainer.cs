@@ -23,7 +23,7 @@ namespace AxiLogic.Containers
 
     public ArticleContainer()
     {
-        var jObject = JObject.Parse(File.ReadAllText(@"/Users/graciousmacbook/RiderProjects/AXI-3.0/AxiLogic/Jsons/Articles.json"));
+        var jObject = JObject.Parse(File.ReadAllText(@"../AxiLogic/Jsons/Articles.json"));
         _articles = jObject["articles"].ToObject<List<Article>>();
         
         //GetAll Articles
