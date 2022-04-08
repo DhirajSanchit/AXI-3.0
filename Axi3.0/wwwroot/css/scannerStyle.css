@@ -133,12 +133,11 @@ body{
 }
 .delivery-container{
     top:0;
-    width:90%;
+    width:100%;
     height:16rem;
     margin-top:3%;
-    margin-left:5%;
     margin-bottom:3%;
-    border:2px solid black;
+    border-top:2px solid black;
 }
 .delivery-container p{
     font-size:3rem;
