@@ -20,10 +20,10 @@ namespace AxiDAL.DAL
             _dbConnection = dbConnection;
         }
          
-        //Rtetrieves all articles
+        //Retrieves all articles
         public IList<ArticleDto> GetAll()
         {   
-            //Prepary Query
+            //Prepare Query
             var sql = @"SELECT * FROM [Article]";
                 
             //Execute statement
