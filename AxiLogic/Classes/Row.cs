@@ -70,7 +70,7 @@ namespace AxiLogic.Classes
         }
         public RowDto ToDto()
         {
-                
+         
             List < RackDto > rackDtos = new();
             foreach (var rack in Racks)
             {

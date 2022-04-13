@@ -71,7 +71,6 @@ namespace Axi3._0.Controllers
         {
             return View();
         }
-       
         
         public IActionResult Articles()
         {

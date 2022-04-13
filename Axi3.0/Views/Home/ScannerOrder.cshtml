@@ -9,8 +9,34 @@
     <title>Orders</title>
 </head>
 <body>
-<div>
-      
+<div class="main-screen">
+    <input type="search" class="search-bar" placeholder="&nbsp;Type to search...">
+    @for (var i = 0; i < 10; i++)
+        {
+            <div class="order-container" onclick="showElement('order-modal')">
+                <p id="order-container-name">Testorder</p>
+                <p id="order-container-id">0</p>
+                <p id="order-container-date">@DateTime.Now</p>
+            </div>
+        }
+    <div class="order-modal" id="order-modal">
+            <div class="info-box">
+                <div class="order-modal-return" onclick="hideElement('order-modal')"> < </div> @*TODO shouldn't be on the page > confirm order button instead*@
+                <p id="info-box-id">Invoice Id: 0</p>
+                <p id="info-box-date">Date: @DateTime.Now</p>
+            </div>
+        <div class="info-box-back-wall"></div>
+        @for (var i = 0; i < 10; i++)
+                {
+                    <div class="article-container">
+                        <div class="article-image-box">
+                            <img src="~/images/vector-Search.png" alt="article-image" id="article-image">
+                        </div>
+                        <p id="article-container-name">ArticleName</p>
+                        <p id="article-container-amount">0/10</p>
+                    </div>
+                }
+    </div>   
 </div>
 </body>
 </html>
