@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using AxiDAL.DTOs;
 using AxiDAL.Interfaces;
@@ -62,9 +63,9 @@ namespace AxiDAL.DAL
             throw new System.NotImplementedException();
         }
 
-        public bool AddArticle()
+        public bool AddArticle(ArticleDto articleDto)
         {
-            throw new System.NotImplementedException();
+            using var connection = new SqlConnection
         }
 
         public bool UpdateArticle()
