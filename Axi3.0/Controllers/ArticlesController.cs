@@ -17,13 +17,14 @@ namespace Axi3._0.Controllers
             //_tdc = tdc;
         }
 
-        // public IActionResult Articles()
-        // {
-        //     var articleViewModel = new ArticleViewModel();
-        //     articleViewModel.GetArticleModels();
-        //     return View(articleViewModel);
-        // }
-        //
+        public IActionResult Articles()
+        {
+            var articleViewModel = new ArticleViewModel();
+            articleViewModel.GetArticleModels();
+            //return View(articleViewModel);
+            return null;
+        }
+        
         [HttpGet]
         public IActionResult AddArticle()
         {
