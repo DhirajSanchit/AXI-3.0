@@ -9,7 +9,7 @@ namespace Axi3._0.Controllers
     public class ArticlesController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IArticleContainer _tdc;
+        private IArticleContainer _container;
         
         public ArticlesController(ILogger<HomeController> logger)
         {
