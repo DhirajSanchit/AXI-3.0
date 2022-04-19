@@ -1,11 +1,12 @@
 ﻿
+using AxiDAL.DAL;
 using AxiLogic.Classes;
 using AxiLogic.Containers;
 using AxiLogic.Interfaces;
 
 namespace AxiLogic.Helpers
 {
-    public static class Toolbox
+    public class Toolbox
     {
         public static ShipmentContainer ShipmentContainer = new();
         public static ArticleContainer ArticleContainer = new();
@@ -13,7 +14,32 @@ namespace AxiLogic.Helpers
         public static StockRowModelHelper StockRowModelHelper = new ();
 
         public static IArticleContainer iac;
-        public static MoveArticleViewModelHelper PlaceTakeArticleViewModelHelper = new(); 
+        public static MoveArticleViewModelHelper PlaceTakeArticleViewModelHelper = new();
+
+        public ITestDapperContainer CreateItdc()
+        {
+            //return new TestDapperContainer();
+            return null;
+            
+        }
+         
+        
+        
+        
+        // public static IArticleContainer Build()
+        // {
+        //   return new ArticleContainer();   
+        // }
+
+
+        // public static ITestDapperContainer CreateContainer()
+        // {
+        //     return new TestDapperContainer();
+        //     return null;
+        // }
+        
+        
+        
         
         //TODO: ADD DATA
         // //public static DataBaseClient DataBaseClient = new();

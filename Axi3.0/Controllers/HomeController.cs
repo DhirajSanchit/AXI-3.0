@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
-using AxiDAL.DTOs; 
-using AxiLogic.Interfaces; 
+using AxiDAL.DTOs;  
 using AxiLogic.Classes;
 using AxiLogic.Helpers;
 

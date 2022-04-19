@@ -6,10 +6,10 @@ namespace AxiDAL.Interfaces
     public interface IArticleDAL
     {
         public IList<ArticleDto> GetAll();
-        public ArticleDto GetById();
-        public bool AddArticle();
+        public ArticleDto GetByBarcode();
+        public bool AddArticle(ArticleDto articleDto);
 
-        public bool UpdateArticle();
-        public bool DeleteArticle();
+        public bool UpdateArticle(ArticleDto articleDto);
+        public bool DeleteArticle(ArticleDto articleDto);
     }
 }
