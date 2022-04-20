@@ -44,6 +44,7 @@ namespace AxiDAL.DAL
         public bool AddPallet(PalletDto palletDto)
         {
             var sql = "Insert Into [Pallet] Values(@ArticleId, @PlankId, @Location, @)";
+            return true; //temp true, change later!!!
         }
     }
 }

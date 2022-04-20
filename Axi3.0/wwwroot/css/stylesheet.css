@@ -160,6 +160,8 @@
 .name-column-top{
     margin-left:1.5%;
 }
+
+
 /*style for columns within article-sheet*/
 .name-column, .id-column, .quantity-column, .category-column, .location-column{
     width:19%;
@@ -167,7 +169,11 @@
     border: 1px solid black;
     display:inline-block;
     color:black;
-    user-select: text;}
+    user-select: text;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /*To prevent columns from lining up on the left side of div while not giving every column a margin*/
 .name-column{
