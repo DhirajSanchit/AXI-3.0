@@ -67,7 +67,6 @@ namespace AxiUnitTests.Classes
         }
         
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void RemoveValidAmount()
         {
             //arrange
@@ -77,7 +76,7 @@ namespace AxiUnitTests.Classes
             //act
             pallet.RemoveArticle(article1,3);
             //assert
-            Assert.AreEqual(article1, pallet.Article);
+            Assert.AreEqual(null, pallet.Article);
             Assert.AreEqual(0, pallet.Amount);
         } 
         
