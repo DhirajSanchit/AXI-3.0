@@ -38,8 +38,8 @@ namespace AxiLogic.Containers
         /// </summary>
         public void LoadAllShipments()
         {
-            //todo get data from DB
-            //todo make async?
+            //TODO get data from DB
+            //TODO make async?
         }
         
         public void AddShipment(Shipment shipment)

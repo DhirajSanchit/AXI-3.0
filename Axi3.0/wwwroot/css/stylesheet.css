@@ -86,6 +86,7 @@
     border:1px solid black;
     box-shadow:2px 5px dimgrey;
     cursor:pointer;
+    text-decoration: none;
 }
 .btn-add-article p{
     color:black;

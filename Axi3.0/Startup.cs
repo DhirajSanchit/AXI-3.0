@@ -51,7 +51,7 @@ namespace Axi3._0
             services.AddScoped<IArticleDAL, ArticleDAL>();
                 
             //TODO: Develop Proof of Concept below for SQLReader Version
-            //services.addScoped<ITestReaderContainer, TestReaderContainer>(); 
+            //services.AddScoped<ITestReaderContainer, TestReaderContainer>(); 
             
             
             
