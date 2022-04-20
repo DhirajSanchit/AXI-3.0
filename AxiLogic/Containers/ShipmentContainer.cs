@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AxiDAL.Interfaces;
 using AxiLogic.Classes;
 
 namespace AxiLogic.Containers
@@ -7,12 +8,18 @@ namespace AxiLogic.Containers
     public class ShipmentContainer
     {
         private List<Shipment> _shipments = new();
-
+        private IShipmentDAL Shipment;
+        
         public IReadOnlyCollection<Shipment> GetShipments()
         {
             return _shipments;
         }
 
+        public ShipmentContainer(IShipmentDAL iShipmentDAL)
+        {
+            Shipment = iShipmentDAL;
+        }
+        
         public Shipment GetShipment(int index)
         {
             return _shipments[index];

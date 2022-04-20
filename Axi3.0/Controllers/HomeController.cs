@@ -39,6 +39,13 @@ namespace Axi3._0.Controllers
             stockModel.GetStockRows();
             return View(stockModel);
         }
+        public IActionResult Articles()
+        {
+            var articleViewModel = new ArticleViewModel();
+            Toolbox.ArticleContainer.GetAllArticles();
+            articleViewModel.GetArticleModels();
+            return View(articleViewModel);
+        }
         
         [HttpPost]
         public IActionResult AddArticle(ArticleModel model)
@@ -71,12 +78,12 @@ namespace Axi3._0.Controllers
             return View();
         }
         
-        public IActionResult Articles()
-        {
-            var articleViewModel = new ArticleViewModel();
-            articleViewModel.GetArticleModels();
-            return View(articleViewModel);
-        }
+        // public IActionResult Articles()
+        // {
+        //     var articleViewModel = new ArticleViewModel();
+        //     articleViewModel.GetArticleModels();
+        //     return View(articleViewModel);
+        // }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

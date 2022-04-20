@@ -84,6 +84,18 @@ namespace AxiLogic.Containers
             return null;
         }
 
+        public void GetAllArticles()
+        {
+            var articleDTOs = _context.GetAll();
+            List<Article> articles = new();
+            foreach (var articleDTO in articleDTOs)
+            {
+                articles.Add(new Article(articleDTO));
+            }
+
+            _articles = articles;
+        }
+
     /*
     public IList<ArticleDto> GetAll()
     {

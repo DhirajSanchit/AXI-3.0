@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Axi3._0.Models;
+using AxiLogic.Helpers;
 using AxiLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,13 +18,7 @@ namespace Axi3._0.Controllers
             //_tdc = tdc;
         }
 
-        public IActionResult Articles()
-        {
-            var articleViewModel = new ArticleViewModel();
-            articleViewModel.GetArticleModels();
-            //return View(articleViewModel);
-            return null;
-        }
+        
         
         [HttpGet]
         public IActionResult AddArticle()

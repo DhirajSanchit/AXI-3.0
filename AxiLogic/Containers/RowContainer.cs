@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using AxiDAL.DAL;
+using AxiDAL.Interfaces;
 using AxiLogic.Classes;
 using AxiLogic.Helpers;
 using Newtonsoft.Json;
@@ -11,6 +13,12 @@ namespace AxiLogic.Containers
     public class RowContainer
     {
         public readonly List<Row> Rows;
+        private IRowDAL RowDal;
+
+        public RowContainer(IRowDAL iRowDal)
+        {
+            RowDal = iRowDal;
+        }
 
         public RowContainer()
         {

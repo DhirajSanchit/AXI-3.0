@@ -1,4 +1,6 @@
-﻿using AxiDAL.DAL;
+﻿using System.Data;
+using System.Data.SqlClient;
+using AxiDAL.DAL;
 using AxiLogic.Classes;
 using AxiLogic.Containers;
 using AxiLogic.Interfaces;
@@ -7,9 +9,9 @@ namespace AxiLogic.Helpers
 {
     public class Toolbox
     {
-        public static ShipmentContainer ShipmentContainer = new();
-        public static ArticleContainer ArticleContainer = new();
-        public static RowContainer RowContainer = new();
+        public static ShipmentContainer ShipmentContainer = new(new ShipmentDAL());
+        public static ArticleContainer ArticleContainer = new(new ArticleDAL(new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;")));
+        public static RowContainer RowContainer = new(new RowDAL());
         public static StockRowModelHelper StockRowModelHelper = new ();
 
         public static IArticleContainer iac;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 
 namespace AxiLogic.Classes
 {
@@ -18,7 +19,7 @@ namespace AxiLogic.Classes
         {
             Id = id;
         }
-
+        
         public Shipment(ShipmentDto shipmentDto)
         {
             Date = shipmentDto.Date;
