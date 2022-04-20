@@ -11,8 +11,7 @@ namespace AxiDAL.DAL
 {
     public class ArticleDAL : IArticleDAL
     {
-        private const string ConnectionString =
-            "Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;";
+
         private IDbConnection _dbConnection;
         private IList<ArticleDto> _dataset;
         
@@ -31,7 +30,6 @@ namespace AxiDAL.DAL
             //Execute statement
                 try
                 {
-                   
                     using (_dbConnection)
                     {   
                         //Execute query on Database, and return _dataset
@@ -61,20 +59,28 @@ namespace AxiDAL.DAL
         
         public ArticleDto GetByBarcode()
         {
-            
-            using var connection = new SqlConnection(ConnectionString);
-            connection.Open();
-
             const string sql = "Select * From [Article] Where Barcode = @Barcode";
-
             ArticleDto articleDto = new();
-            using (var cmd = new SqlCommand(sql, connection))
+            try
             {
-                cmd.Parameters.AddWithValue("@Barcode", articleDto.Id);
+                using (_dbConnection)
+                {
+                    var result = _dbConnection.Execute(sql, new
+                    {
+                        @Barcode = articleDto.Barcode
+                    });
+                    return articleDto;
+                }
             }
-
-            connection.Close();
-            return articleDto;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                _dbConnection.Close();
+            }
         }
 
         public bool AddArticle(ArticleDto articleDto)
