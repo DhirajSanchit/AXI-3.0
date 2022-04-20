@@ -51,7 +51,7 @@ namespace AxiLogic.Classes
             }
             if (Amount < amount)
             {
-                //to do: write test for exception
+
                 throw new ArgumentOutOfRangeException("Not enough articles to remove");
             }
             if (amount <= 0)

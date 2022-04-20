@@ -67,6 +67,7 @@ namespace AxiUnitTests.Classes
         }
         
         [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void RemoveValidAmount()
         {
             //arrange
@@ -111,7 +112,7 @@ namespace AxiUnitTests.Classes
         } 
         
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void RemoveTooMuch()
         {
             //arrange
