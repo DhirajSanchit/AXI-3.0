@@ -1,5 +1,4 @@
-﻿
-using AxiDAL.DAL;
+﻿using AxiDAL.DAL;
 using AxiLogic.Classes;
 using AxiLogic.Containers;
 using AxiLogic.Interfaces;
@@ -20,7 +19,6 @@ namespace AxiLogic.Helpers
         {
             //return new TestDapperContainer();
             return null;
-            
         }
          
         
