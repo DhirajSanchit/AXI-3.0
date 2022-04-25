@@ -45,7 +45,7 @@ namespace Axi3._0.Models
                Name = name,
                Price = price,
                ImgRef = imgRef,
-               Category = Enum.Parse<Category>(category), 
+               Category = category, 
                Description = description
            };
            ArticleModels.Add(articleModel);

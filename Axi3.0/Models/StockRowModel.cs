@@ -8,7 +8,7 @@ namespace Axi3._0.Models
         public string ArticleName;
         public int ArticleId;
         public int Quantity;
-        public Category Category;
+        public string Category;
         public List<string> Locations;
     }
 }

@@ -46,5 +46,6 @@ namespace AxiDAL.DAL
             var sql = "Insert Into [Pallet] Values(@ArticleId, @PlankId, @Location, @)";
             return true; //temp true, change later!!!
         }
+        
     }
 }
