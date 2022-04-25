@@ -96,6 +96,11 @@ namespace AxiLogic.Containers
             _articles = articles;
         }
 
+        // public Article AddArticle()
+        // {
+        //     
+        // }
+
     /*
     public IList<ArticleDto> GetAll()
     {
