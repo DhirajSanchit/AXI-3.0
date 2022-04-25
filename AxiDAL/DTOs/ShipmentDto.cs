@@ -2,7 +2,7 @@ using System;
 
 namespace AxiDAL.DTOs
 {
-    public class ShipmentDto
+    public struct ShipmentDto
     {
         public DateTime Date;
         public int InvoiceId;

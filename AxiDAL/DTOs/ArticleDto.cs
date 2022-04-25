@@ -1,6 +1,6 @@
 namespace AxiDAL.DTOs
 {
-    public class ArticleDto
+    public struct ArticleDto
     {
         public double Price;
         public string Barcode;

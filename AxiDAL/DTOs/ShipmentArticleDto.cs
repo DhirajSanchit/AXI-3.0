@@ -1,6 +1,6 @@
 namespace AxiDAL.DTOs
 {
-    public class ShipmentArticleDto
+    public struct ShipmentArticleDto
     {
         public int Amount;
         public ArticleDto Article;

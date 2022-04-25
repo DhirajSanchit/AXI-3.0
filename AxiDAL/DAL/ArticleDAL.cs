@@ -20,7 +20,11 @@ namespace AxiDAL.DAL
         {
             _dbConnection = dbConnection;
         }
-         
+        
+        public ArticleDAL()
+        {
+
+        }
         //Retrieves all articles
         public IList<ArticleDto> GetAll()
         {   

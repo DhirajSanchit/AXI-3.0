@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace AxiDAL.DTOs
 {
-    public class PlankDto
+    public struct PlankDto
     {
         public List<PalletDto> palletDtos;
         public int Location;

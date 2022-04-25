@@ -12,7 +12,7 @@ namespace AxiLogic.Classes
         public string Name;
         public string Description;
         public int Id;
-        public Category Category;
+        public string Category;
 
         public Article()
         {
@@ -24,23 +24,23 @@ namespace AxiLogic.Classes
             Price = price;
         }
         
-        public Article(string name, double price, string barcode, string imgRef, string description,  int id, Category category)
+        public Article(string name, double price, string barcode, string imgRef, string description, string category)
         {
             Name = name;
             Price = price;
             Barcode = barcode;
             ImgRef = imgRef;
             Description = description;
-            Id = id;
             Category = category;
         }
         
         public Article(ArticleDto articleDto)
         {
+            Id = articleDto.Id;
             Name = articleDto.Name;
             Price = articleDto.Price;
             ImgRef = articleDto.ImgRef;
-            Category = Enum.Parse<Category>(articleDto.Category);  
+            Category = articleDto.Category;
             Description = articleDto.Description;
         }
         
@@ -54,7 +54,7 @@ namespace AxiLogic.Classes
             Description = description;
         }
 
-        public void SetCategory(Category category)
+        public void SetCategory(string category)
         {
             Category = category;
         }
@@ -84,16 +84,8 @@ namespace AxiLogic.Classes
                 ImgRef = ImgRef,
                 Price = Price,
                 Barcode = Barcode,
-                Category = Category.ToString()
+                Category = Category
             };
         }
     }
-    
-    public enum Category
-    {
-        Electronics,
-        Cosmetics,
-        Tools
-    }
-    
 }

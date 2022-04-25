@@ -1,6 +1,6 @@
 namespace AxiDAL.DTOs
 {
-    public class EmployeeDto
+    public struct EmployeeDto
     {
         public string EmployeeNr;
         public string Name;

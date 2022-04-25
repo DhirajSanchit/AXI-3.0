@@ -10,14 +10,14 @@ using Newtonsoft.Json.Linq;
 
 namespace AxiLogic.Containers
 {
-    public class ArticleContainer : IArticleContainer
+    public class ArticleContainer
     {
     private List<Article> _articles;
-    private  IArticleDAL _context;
+    private  IArticleDAL iArticleDAL;
 
     public ArticleContainer(IArticleDAL context)
     {
-        _context = context;
+        iArticleDAL = context;
     }
  
 
@@ -38,15 +38,18 @@ namespace AxiLogic.Containers
         return _articles;
     }
 
-    public void AddArticle(Article article)
+    public bool AddArticle(Article article)
     {
-        if (_articles.Contains(article))
-        {
-            throw new ArgumentException("Can not add duplicate article");
-        }
-
-        _articles.Add(article);
-        SaveArticles();
+            ArticleDto articleDto = new ArticleDto()
+            {
+                Name = article.Name,
+                Price = article.Price,
+                Barcode = article.Barcode,
+                ImgRef = article.ImgRef,
+                Description = article.Description,
+                Category = article.Category
+            };
+            return iArticleDAL.AddArticle(articleDto);
     }
 
     public void RemoveArticle(Article article)
@@ -86,7 +89,7 @@ namespace AxiLogic.Containers
 
         public void GetAllArticles()
         {
-            var articleDTOs = _context.GetAll();
+            var articleDTOs = iArticleDAL.GetAll();
             List<Article> articles = new();
             foreach (var articleDTO in articleDTOs)
             {

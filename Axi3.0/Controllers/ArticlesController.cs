@@ -1,5 +1,8 @@
 using System.Diagnostics;
 using Axi3._0.Models;
+using AxiDAL.DAL;
+using AxiLogic.Classes;
+using AxiLogic.Containers;
 using AxiLogic.Helpers;
 using AxiLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +23,11 @@ namespace Axi3._0.Controllers
 
         
         
-        [HttpGet]
-        public IActionResult AddArticle()
+        [HttpPost]
+        public IActionResult AddArticle(ArticleModel articleModel)
         {
+            ArticleContainer articleContainer = new ArticleContainer(new ArticleDAL());
+            articleContainer.AddArticle(new Article(articleModel.Name, articleModel.Price, articleModel.Barcode, articleModel.ImgRef, articleModel.Description, articleModel.Category));
             return View();
         }
         

@@ -2,7 +2,7 @@
 
 namespace AxiDAL.DTOs
 {
-    public class PalletDto
+    public struct PalletDto
     {
         public int Location;
         public int Amount;
