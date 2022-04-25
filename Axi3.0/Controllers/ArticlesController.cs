@@ -13,7 +13,7 @@ namespace Axi3._0.Controllers
     public class ArticlesController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IArticleContainer _container;
+        private ArticleContainer _container;
         
         public ArticlesController(ILogger<HomeController> logger)
         {
@@ -26,8 +26,7 @@ namespace Axi3._0.Controllers
         [HttpPost]
         public IActionResult AddArticle(ArticleModel articleModel)
         {
-            ArticleContainer articleContainer = new ArticleContainer(new ArticleDAL());
-            articleContainer.AddArticle(new Article(articleModel.Name, articleModel.Price, articleModel.Barcode, articleModel.ImgRef, articleModel.Description, articleModel.Category));
+            _container.AddArticle(new Article(articleModel.Name, articleModel.Price, articleModel.Barcode, articleModel.ImgRef, articleModel.Description, articleModel.Category));
             return View();
         }
         

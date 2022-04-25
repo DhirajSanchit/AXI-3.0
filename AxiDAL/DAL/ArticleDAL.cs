@@ -14,6 +14,7 @@ namespace AxiDAL.DAL
 
         private IDbConnection _dbConnection;
         private IList<ArticleDto> _dataset;
+        //private const string connectionstring = ""Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674; Password=DatabaseAXItim;"
         
         //Assign connectionstring from appsettings.json
         public ArticleDAL(IDbConnection dbConnection)
@@ -21,10 +22,7 @@ namespace AxiDAL.DAL
             _dbConnection = dbConnection;
         }
         
-        public ArticleDAL()
-        {
-
-        }
+     
         //Retrieves all articles
         public IList<ArticleDto> GetAll()
         {   
