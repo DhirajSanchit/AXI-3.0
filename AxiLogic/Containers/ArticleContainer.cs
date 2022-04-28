@@ -28,7 +28,11 @@ namespace AxiLogic.Containers
 
         public void AddArticle(Article article)
         {
-            ArticleDto articleDto = new ArticleDto()
+            if (_articles.Contains(article))
+            {
+                throw new ArgumentException("Cannot add duplicate article");
+            }
+            var articleDto = new ArticleDto()
             {
                 Name = article.Name,
                 Price = article.Price,
@@ -38,6 +42,7 @@ namespace AxiLogic.Containers
                 Category = article.Category
             }; 
             iArticleDAL.AddArticle(articleDto);
+            _articles.Add(article);
         }
 
         public void RemoveArticle(Article article)
