@@ -53,8 +53,9 @@ namespace AxiUnitTests.Scrubs
 
         public int AddArticle(ArticleDto articleDto)
         {
+            var id = _articleDtos.Count + 1;
+            articleDto.Id = id;
             _articleDtos.Add(articleDto);
-            var id = _articleDtos.Count;
             return id;
         }
 

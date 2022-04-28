@@ -1,6 +1,9 @@
-﻿namespace AxiUnitTests.Scrubs
+﻿using AxiDAL.Interfaces;
+using AxiLogic.Classes;
+
+namespace AxiUnitTests.Scrubs
 {
-    public class EmployeeScrub
+    public class EmployeeScrub : IEmployeeDAL
     {
         
     }
