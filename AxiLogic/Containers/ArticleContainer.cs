@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
 using AxiLogic.Classes;
 using System;
-using System.IO;
 using AxiDAL.DTOs;
 using AxiDAL.Interfaces;
-using AxiLogic.Interfaces;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace AxiLogic.Containers
 {
@@ -18,17 +14,11 @@ namespace AxiLogic.Containers
         public ArticleContainer(IArticleDAL context)
         {
             iArticleDAL = context;
-        }
-
-
-        public ArticleContainer()
-        {
-            var jObject = JObject.Parse(File.ReadAllText(@"../AxiLogic/Jsons/Articles.json"));
-            _articles = jObject["articles"].ToObject<List<Article>>();
-
-            //GetAll Articles
-
-            //Return list
+            _articles = new List<Article>();
+            foreach (var articleDto in iArticleDAL.GetAll())
+            {
+                _articles.Add(new Article(articleDto));
+            }
         }
 
         public IReadOnlyCollection<Article> GetArticles()
@@ -65,15 +55,7 @@ namespace AxiLogic.Containers
             _articles.Clear();
         }
 
-        public void SaveArticles()
-        {
-            var jsonObj = new JObject();
-            jsonObj["articles"] = JToken.FromObject(_articles);
-            var jsonString = JsonConvert.SerializeObject(jsonObj);
-            File.WriteAllText(@"/Users/graciousmacbook/RiderProjects/AXI-3.0/AxiLogic/Jsons/Articles.json", jsonString);
-        }
-
-        public Article GetArticleByID(int articleID)
+        public Article GetArticleById(int articleID)
         {
             foreach (var article in _articles)
             {
@@ -102,31 +84,30 @@ namespace AxiLogic.Containers
         // {
         //     
         // }
-
-        /*
-        public IList<ArticleDto> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-    
-        public ArticleDto GetById()
-        {
-            throw new NotImplementedException();
-        }
-    
-        public bool AddArticle()
-        {
-            throw new NotImplementedException();
-        }
-    
-        public bool DeleteArticle()
-        {
-            throw new NotImplementedException();
-        }
-    
-        public bool UpdateArticle()
-        {
-            throw new NotImplementedException();
-        }*/
+        
+        // public IList<ArticleDto> GetAll()
+        // {
+        //     throw new NotImplementedException();
+        // }
+       
+        // public ArticleDto GetById()
+        // {
+        //     throw new NotImplementedException();
+        // }
+        
+        // public bool AddArticle()
+        // {
+        //     throw new NotImplementedException();
+        // }
+       
+        // public bool DeleteArticle()
+        // {
+        //     throw new NotImplementedException();
+        // }
+        
+        // public bool UpdateArticle()
+        // {
+        //     throw new NotImplementedException();
+        // }
     }
 }

@@ -16,7 +16,7 @@ namespace AxiLogic.Helpers
             string[] locations = locationstring.Split(".");
 
             ArticleContainer articleContainer = Toolbox.ArticleContainer;
-            Article article = articleContainer.GetArticleByID(articleID);
+            Article article = articleContainer.GetArticleById(articleID);
             RowContainer rowContainer = Toolbox.RowContainer;
             Row row = rowContainer.GetRowByName(locations[0]);
             Rack rack = row.GetRack(Convert.ToInt32(locations[1]));
@@ -31,7 +31,7 @@ namespace AxiLogic.Helpers
             string[] locations = locationstring.Split('.');
 
             ArticleContainer articleContainer = Toolbox.ArticleContainer;
-            Article article = articleContainer.GetArticleByID(articleID);
+            Article article = articleContainer.GetArticleById(articleID);
             RowContainer rowContainer = Toolbox.RowContainer;
             Row row = rowContainer.GetRowByName(locations[0]);
             Rack rack = row.GetRack(Convert.ToInt32(locations[1]));

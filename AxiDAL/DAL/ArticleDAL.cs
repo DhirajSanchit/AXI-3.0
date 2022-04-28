@@ -59,10 +59,9 @@ namespace AxiDAL.DAL
         }
         
         
-        public ArticleDto GetByBarcode()
+        public ArticleDto GetByBarcode(ArticleDto articleDto)
         {
             const string sql = "Select * From [Article] Where Barcode = @Barcode";
-            ArticleDto articleDto = new();
             try
             {
                 using (_dbConnection)
