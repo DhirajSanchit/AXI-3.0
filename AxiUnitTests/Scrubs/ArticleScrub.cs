@@ -9,6 +9,30 @@ namespace AxiUnitTests.Scrubs
     {
         public List<ArticleDto> _articleDtos = new();
         
+        public ArticleScrub()
+        {
+            _articleDtos.Add(new ArticleDto()
+            {
+                Id = 1,
+                Barcode = "1",
+                Category = "Tools",
+                Description = "description1",
+                ImgRef = "someUrl1",
+                Name = "name1",
+                Price = 90.30
+            });
+            _articleDtos.Add(new ArticleDto()
+            {
+                Id = 2,
+                Barcode = "2",
+                Category = "Tools",
+                Description = "description2",
+                ImgRef = "someUrl2",
+                Name = "name2",
+                Price = 8.15
+            });
+        }
+        
         public IList<ArticleDto> GetAll()
         {
             return _articleDtos;
@@ -27,10 +51,11 @@ namespace AxiUnitTests.Scrubs
             return returnDto;
         }
 
-        public bool AddArticle(ArticleDto articleDto)
+        public int AddArticle(ArticleDto articleDto)
         {
             _articleDtos.Add(articleDto);
-            return true;
+            var id = _articleDtos.Count;
+            return id;
         }
 
         public bool UpdateArticle(ArticleDto articleDto)

@@ -26,7 +26,7 @@ namespace AxiLogic.Containers
             return _articles;
         }
 
-        public bool AddArticle(Article article)
+        public void AddArticle(Article article)
         {
             ArticleDto articleDto = new ArticleDto()
             {
@@ -36,8 +36,8 @@ namespace AxiLogic.Containers
                 ImgRef = article.ImgRef,
                 Description = article.Description,
                 Category = article.Category
-            };
-            return iArticleDAL.AddArticle(articleDto);
+            }; 
+            iArticleDAL.AddArticle(articleDto);
         }
 
         public void RemoveArticle(Article article)

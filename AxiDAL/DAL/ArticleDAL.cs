@@ -84,9 +84,10 @@ namespace AxiDAL.DAL
             }
         }
 
-        public bool AddArticle(ArticleDto articleDto)
+        public int AddArticle(ArticleDto articleDto)
         {
             const string sql = "insert into [Article] values(@Name, @Price, @ImgRef, @Category, @Description)";
+            const string sql2 = "SELECT ID FROM [Article] WHERE [Name] = @Name, [Price] = @Price, [ImgRef] = @ImgRef, [Category] = @Category, [Description] = @Description)";
             try
             {
                 using (_dbConnection)
@@ -99,8 +100,7 @@ namespace AxiDAL.DAL
                          articleDto.Category,
                          articleDto.Description 
                         });
-                    //possibly replace bool with int rowsAffected?
-                    return true;
+                    return _dbConnection.QuerySingle<ArticleDto>(sql2).Id;
                 }
             }
 
@@ -109,7 +109,7 @@ namespace AxiDAL.DAL
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
-
+           
             finally
             {
                 _dbConnection.Close();
