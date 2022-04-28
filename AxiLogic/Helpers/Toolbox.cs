@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using AxiDAL.DAL;
 using AxiLogic.Classes;
@@ -9,6 +10,11 @@ namespace AxiLogic.Helpers
 {
     public class Toolbox
     {
+        
+        private IServiceProvider serviceProvider;
+
+        
+        
         public static ShipmentContainer ShipmentContainer = new(new ShipmentDAL());
         public static ArticleContainer ArticleContainer = new(new ArticleDAL());
         public static RowContainer RowContainer = new(new RowDAL());
@@ -17,15 +23,24 @@ namespace AxiLogic.Helpers
         public static IArticleContainer iac;
         public static MoveArticleViewModelHelper PlaceTakeArticleViewModelHelper = new();
 
-        public ITestDapperContainer CreateItdc()
+        public static ITestDapperContainer _tdc;
+
+
+        public Toolbox(IServiceProvider ServiceProvider)
         {
-            //return new TestDapperContainer();
-            return null;
+            serviceProvider = ServiceProvider;
         }
-         
-        
-        
-        
+
+        public ITestDapperContainer GetTestDapperContainer()
+        {
+            return (ITestDapperContainer)serviceProvider.GetService(typeof(TestDapperContainer));
+
+        }
+
+ 
+
+
+
         // public static IArticleContainer Build()
         // {
         //   return new ArticleContainer();   

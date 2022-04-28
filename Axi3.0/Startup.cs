@@ -5,14 +5,17 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using AxiDAL.DAL;
+using AxiDAL.Factories;
 using AxiDAL.Interfaces;
 using AxiLogic.Containers;
+using AxiLogic.Helpers;
 using AxiLogic.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
 namespace Axi3._0
@@ -30,26 +33,35 @@ namespace Axi3._0
         public void ConfigureServices(IServiceCollection services)
         {
             //Haalt Connection string uit de appsettings.Json
-            var ConnectionString = "Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;";
-            var dbConnection = ConnectionString;
-            
+            //var ConnectionString = Configuration.GetConnectionString("Default"); 
+            services.AddScoped<Toolbox>();
+            services.AddScoped<DalFactory>();
 
             //SELF-SERVICE SERVER INSTANCE | Wijst het toe aan de connectie van het project
-            services.AddTransient<IDbConnection>(sp => new SqlConnection(ConnectionString));
+            services.AddTransient<IDbConnection>(sp => new SqlConnection(Configuration.GetConnectionString("Default")));
             
-            //Tests DB Connection | Keep for debugging / demo puproses
-            services.AddScoped<ITestDAL, TestDAL>();
-            services.AddScoped<ITestDapperContainer, TestDapperContainer>();
+            // //Tests DB Connection | Keep for debugging / demo puproses
+
+            //Service DAL
+            services.AddTransient<TestDAL>()
+                .AddTransient<ITestDAL, TestDAL>(s => s.GetService<TestDAL>());
+                
+            //Service Container; 
+            services.AddTransient<TestDapperContainer>()
+                .AddTransient<ITestDapperContainer, TestDapperContainer>(s => s.GetService<TestDapperContainer>());
+        
+            
             
             
             //DEPENDCY INJECTION    
 
-            //Containers
-            // services.AddScoped<IArticleContainer, ArticleContainer>();
-            
             //Data Absctraction Layers
             services.AddScoped<IArticleDAL, ArticleDAL>();
-                
+
+            //Containers
+            // services.AddScoped<IArticleContainer, ArticleContainer>();
+            //services.AddScoped<IArticleContainer, ArticleContainer>();
+
             //TODO: Develop Proof of Concept below for SQLReader Version
             //services.AddScoped<ITestReaderContainer, TestReaderContainer>(); 
             

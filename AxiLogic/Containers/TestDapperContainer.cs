@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AxiDAL.DTOs;
+using AxiDAL.Factories;
 using AxiDAL.Interfaces;
 using AxiLogic.Classes;
 using AxiLogic.Interfaces;
@@ -13,21 +14,29 @@ namespace AxiLogic.Containers
     
     public class TestDapperContainer : ITestDapperContainer
     {
-        
+
+        private DalFactory _dalFactory;
         
         public IList<PocTest> dt { get; set; }
-
-        private  ITestDAL _context;
-
-        public TestDapperContainer(ITestDAL context)
+ 
+        public TestDapperContainer(DalFactory dalFactory)
         {
-            _context = context;
+            //_context = context;
+            _dalFactory = dalFactory;
         }
+        
+        public TestDapperContainer GetContainer()
+        {
+            return null;
+
+        }
+        
+        
         
         public IList<PocTest> GetAll()
         {
             dt = new List<PocTest>();
-            IList<TestDTO> TestDtoList = _context.GetAllTestData();
+            IList<TestDTO> TestDtoList = _dalFactory.GetTestDal().GetAllTestData();
             foreach (TestDTO dto in TestDtoList)
             {
                 dt.Add(new PocTest(dto));
