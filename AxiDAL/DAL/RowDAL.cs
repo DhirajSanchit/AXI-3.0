@@ -4,6 +4,7 @@ using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace AxiDAL.DAL
@@ -12,12 +13,11 @@ namespace AxiDAL.DAL
     {
         private IDbConnection _dbConnection;
         private IList<ArticleDto> _dataset;
-        //private const string connectionstring = "Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674; Password=DatabaseAXItim;";
-
+        
         //Assign connectionstring from appsettings.json
-        public RowDAL(IDbConnection dbConnection)
+        public RowDAL()
         {
-            _dbConnection = dbConnection;
+            _dbConnection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;");
         }
 
 
@@ -108,7 +108,6 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
-
         public bool DeleteArticle(RowDto rowDto)
         {
             const string sql = "Delete from [Row] " +
@@ -120,7 +119,7 @@ namespace AxiDAL.DAL
                 {
                     var result = _dbConnection.Execute(sql, new
                     {
-                        @Name = rowDto.Name
+                        rowDto.Name
                     });
                     return true;
                 }
