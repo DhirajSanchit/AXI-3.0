@@ -28,7 +28,11 @@ namespace AxiLogic.Containers
 
         public bool AddArticle(Article article)
         {
-            ArticleDto articleDto = new ArticleDto()
+            if (_articles.Contains(article))
+            {
+                throw new ArgumentException("Cannot add duplicate article");
+            }
+            var articleDto = new ArticleDto()
             {
                 Name = article.Name,
                 Price = article.Price,
@@ -37,6 +41,7 @@ namespace AxiLogic.Containers
                 Description = article.Description,
                 Category = article.Category
             };
+            _articles.Add(article);
             return iArticleDAL.AddArticle(articleDto);
         }
 
@@ -47,6 +52,7 @@ namespace AxiLogic.Containers
                 throw new ArgumentException("Article does not exist");
             }
 
+            iArticleDAL.DeleteArticle(article.ToDto());
             _articles.Remove(article);
         }
 
