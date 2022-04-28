@@ -13,7 +13,7 @@ namespace AxiUnitTests
         {
             var dal = new ShipmentDAL();
             var test = dal.GetAll();
-            Assert.AreEqual(test, true);
+            Assert.AreEqual(true, test);
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@ namespace AxiUnitTests
                 InvoiceId = 1,
                 Processed = true
             });
-            Assert.AreEqual(test, true);
+            Assert.AreEqual(true, test);
         }
         
         [TestMethod]
@@ -42,7 +42,7 @@ namespace AxiUnitTests
                 Processed = true,
                 Id = 1
             });
-            Assert.AreEqual(test, true);
+            Assert.AreEqual(true, test);
         }
     }
 }

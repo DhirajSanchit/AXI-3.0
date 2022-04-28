@@ -50,9 +50,10 @@ namespace AxiDAL.DAL
             }
         }
         
-        public bool AddShipment(ShipmentDto shipmentDto)  //Reminder names are different from database names, Database names will be changed.
+        public bool AddShipment(ShipmentDto shipmentDto)  //Reminder names are different from database names, database names will be changed.
         {
             const string sql = "insert into [Shipment] ([ShipmentDate], [InvoiceID], [ShipmentName], [Processed]) values(@Date, @InvoiceId, @Name, @Processed)";
+            
             try
             {
                 using (_dbConnection)
@@ -68,6 +69,7 @@ namespace AxiDAL.DAL
                     return true;
                 }
             }
+            
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -114,6 +116,7 @@ namespace AxiDAL.DAL
                                "[ShipmentName] = @Name," +
                                "[Processed] = @Processed " +
                                "WHERE [ShipmentID] = @Id";
+            
             try
             {
                 using (_dbConnection)
@@ -124,16 +127,18 @@ namespace AxiDAL.DAL
                         shipmentDto.InvoiceId,
                         shipmentDto.Name,
                         shipmentDto.Processed,
-                        shipmentDto.Id
+                        Id = shipmentDto.Id
                     });
                     return true;
                 }
             }
+            
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
+            
             finally
             {
                 _dbConnection.Close();
