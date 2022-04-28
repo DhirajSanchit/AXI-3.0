@@ -11,14 +11,9 @@ namespace AxiDAL.DAL
 {
     public class ShipmentDAL : IShipmentDAL
     {
-        //add
-        //remove
-        //getall
-
         private IDbConnection _dbConnection;
         private IList<ShipmentDto> _dataset;
         
-        //Assign connectionstring from appsettings.json
         public ShipmentDAL()
         {
             _dbConnection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;");
@@ -55,7 +50,7 @@ namespace AxiDAL.DAL
             }
         }
         
-        public bool AddShipment(ShipmentDto shipmentDto)  //Reminder names are different from Database names, Database names will be changed.
+        public bool AddShipment(ShipmentDto shipmentDto)  //Reminder names are different from database names, Database names will be changed.
         {
             const string sql = "insert into [Shipment] ([ShipmentDate], [InvoiceID], [ShipmentName], [Processed]) values(@Date, @InvoiceId, @Name, @Processed)";
             try
@@ -73,7 +68,6 @@ namespace AxiDAL.DAL
                     return true;
                 }
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -85,7 +79,34 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
-        public bool UpdateArticle(ShipmentDto shipmentDto)
+
+        public bool RemoveShipment(ShipmentDto shipmentDto)
+        {
+            const string sql = "DELETE FROM [Shipment] WHERE [ShipmentID] = @ShipmentId";
+
+            try
+            {
+                using (_dbConnection)
+                {
+                    var result = _dbConnection.Execute(sql, shipmentDto.Id);
+                }
+                return true;
+            }
+            
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            
+            finally
+            {
+                _dbConnection.Close();
+            }
+        }
+        
+        
+        public bool UpdateShipment(ShipmentDto shipmentDto)
         {
             const string sql = "UPDATE [Shipment] " +
                                "Set [ShipmentDate] = @Date," +

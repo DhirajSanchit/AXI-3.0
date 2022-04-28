@@ -34,7 +34,7 @@ namespace AxiUnitTests
         public void UpdateShipmentTest()
         {
             var dal = new ShipmentDAL();
-            var test = dal.UpdateArticle(new ShipmentDto()
+            var test = dal.UpdateShipment(new ShipmentDto()
             {
                 Name = "TestName",
                 Date = DateTime.Now,
