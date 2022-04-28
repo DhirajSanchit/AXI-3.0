@@ -12,34 +12,32 @@ namespace AxiLogic.Containers
 {
     public class ArticleContainer
     {
-    private List<Article> _articles;
-    private  IArticleDAL iArticleDAL;
+        private List<Article> _articles;
+        private IArticleDAL iArticleDAL;
 
-    public ArticleContainer(IArticleDAL context)
-    {
-        iArticleDAL = context;
-    }
- 
+        public ArticleContainer(IArticleDAL context)
+        {
+            iArticleDAL = context;
+        }
 
-    public ArticleContainer()
-    {
-        var jObject = JObject.Parse(File.ReadAllText(@"../AxiLogic/Jsons/Articles.json"));
-        _articles = jObject["articles"].ToObject<List<Article>>();
-        
-        //GetAll Articles
-        
-        //Return list
-        
-        
-    }
 
-    public IReadOnlyCollection<Article> GetArticles()
-    {
-        return _articles;
-    }
+        public ArticleContainer()
+        {
+            var jObject = JObject.Parse(File.ReadAllText(@"../AxiLogic/Jsons/Articles.json"));
+            _articles = jObject["articles"].ToObject<List<Article>>();
 
-    public bool AddArticle(Article article)
-    {
+            //GetAll Articles
+
+            //Return list
+        }
+
+        public IReadOnlyCollection<Article> GetArticles()
+        {
+            return _articles;
+        }
+
+        public bool AddArticle(Article article)
+        {
             ArticleDto articleDto = new ArticleDto()
             {
                 Name = article.Name,
@@ -50,40 +48,41 @@ namespace AxiLogic.Containers
                 Category = article.Category
             };
             return iArticleDAL.AddArticle(articleDto);
-    }
-
-    public void RemoveArticle(Article article)
-    {
-        if (!_articles.Contains(article))
-        {
-            throw new ArgumentException("Article does not exist");
         }
 
-        _articles.Remove(article);
-    }
+        public void RemoveArticle(Article article)
+        {
+            if (!_articles.Contains(article))
+            {
+                throw new ArgumentException("Article does not exist");
+            }
 
-    public void ClearArticles()
-    {
-        _articles.Clear();
-    }
+            _articles.Remove(article);
+        }
 
-    public void SaveArticles()
-    {
-        var jsonObj = new JObject();
-        jsonObj["articles"] = JToken.FromObject(_articles);
-        var jsonString = JsonConvert.SerializeObject(jsonObj);
-        File.WriteAllText(@"/Users/graciousmacbook/RiderProjects/AXI-3.0/AxiLogic/Jsons/Articles.json",jsonString);
-    }
+        public void ClearArticles()
+        {
+            _articles.Clear();
+        }
+
+        public void SaveArticles()
+        {
+            var jsonObj = new JObject();
+            jsonObj["articles"] = JToken.FromObject(_articles);
+            var jsonString = JsonConvert.SerializeObject(jsonObj);
+            File.WriteAllText(@"/Users/graciousmacbook/RiderProjects/AXI-3.0/AxiLogic/Jsons/Articles.json", jsonString);
+        }
 
         public Article GetArticleByID(int articleID)
         {
             foreach (var article in _articles)
             {
-                if(article.Id == articleID)
+                if (article.Id == articleID)
                 {
                     return article;
                 }
             }
+
             return null;
         }
 
@@ -104,31 +103,30 @@ namespace AxiLogic.Containers
         //     
         // }
 
-    /*
-    public IList<ArticleDto> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
-    public ArticleDto GetById()
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool AddArticle()
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool DeleteArticle()
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool UpdateArticle()
-    {
-        throw new NotImplementedException();
-    }*/
+        /*
+        public IList<ArticleDto> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     
+        public ArticleDto GetById()
+        {
+            throw new NotImplementedException();
+        }
+    
+        public bool AddArticle()
+        {
+            throw new NotImplementedException();
+        }
+    
+        public bool DeleteArticle()
+        {
+            throw new NotImplementedException();
+        }
+    
+        public bool UpdateArticle()
+        {
+            throw new NotImplementedException();
+        }*/
     }
 }
