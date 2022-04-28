@@ -40,8 +40,8 @@ namespace AxiLogic.Containers
                 ImgRef = article.ImgRef,
                 Description = article.Description,
                 Category = article.Category
-            }; 
-            iArticleDAL.AddArticle(articleDto);
+            };
+            article.Id = iArticleDAL.AddArticle(articleDto);
             _articles.Add(article);
         }
 
@@ -52,6 +52,7 @@ namespace AxiLogic.Containers
                 throw new ArgumentException("Article does not exist");
             }
 
+            iArticleDAL.DeleteArticle(article.ToDto());
             _articles.Remove(article);
         }
 

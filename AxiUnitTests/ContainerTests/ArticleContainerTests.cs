@@ -73,9 +73,9 @@ namespace AxiUnitTests.ContainerTests
             Assert.IsTrue( container.GetArticles().Contains(article1),"Article 1 should not be removed");
             Assert.IsFalse( container.GetArticles().Contains(article2),"Article 2 should be removed");
             Assert.IsTrue( container.GetArticles().Contains(article3),"Article 3 should not be removed");
-            Assert.IsTrue(dal._articleDtos.Contains(article1.ToDto()), "Article 1 should not be removed");
-            Assert.IsFalse(dal._articleDtos.Contains(article2.ToDto()), "Article 2 should be removed");
-            Assert.IsTrue(dal._articleDtos.Contains(article3.ToDto()), "Article 3 should not be removed");
+            Assert.IsTrue(dal._articleDtos.Contains(article1.ToDto()), "Article 1 should not be removed from database");
+            Assert.IsFalse(dal._articleDtos.Contains(article2.ToDto()), "Article 2 should be removed from database");
+            Assert.IsTrue(dal._articleDtos.Contains(article3.ToDto()), "Article 3 should not be removed from database");
         }
         
         [TestMethod]
@@ -108,7 +108,7 @@ namespace AxiUnitTests.ContainerTests
             container.ClearArticles();
             //assert
             Assert.AreEqual(0, container.GetArticles().Count, "Articles weren't cleared");
-            Assert.AreEqual(0, dal._articleDtos.Count,"Articles should not be removed from database");
+            Assert.IsFalse(dal._articleDtos.Count==0,"Articles should not be removed from database");
         }
 
         [TestMethod]
