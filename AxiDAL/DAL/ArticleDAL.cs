@@ -14,7 +14,7 @@ namespace AxiDAL.DAL
 
         private IDbConnection _dbConnection;
         private IList<ArticleDto> _dataset;
-        //private const string connectionstring = "Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674; Password=DatabaseAXItim;";
+        //private const string connectionstring = ""Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674; Password=DatabaseAXItim;"
         
         //Assign connectionstring from appsettings.json
         public ArticleDAL(IDbConnection dbConnection)

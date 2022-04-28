@@ -30,7 +30,7 @@ namespace Axi3._0
         public void ConfigureServices(IServiceCollection services)
         {
             //Haalt Connection string uit de appsettings.Json
-            var ConnectionString = Configuration.GetConnectionString("Default");
+            var ConnectionString = "Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;";
             var dbConnection = ConnectionString;
             
 
