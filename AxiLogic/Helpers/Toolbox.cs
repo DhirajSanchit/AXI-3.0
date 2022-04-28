@@ -10,7 +10,7 @@ namespace AxiLogic.Helpers
     public class Toolbox
     {
         public static ShipmentContainer ShipmentContainer = new(new ShipmentDAL());
-        public static ArticleContainer ArticleContainer = new(new ArticleDAL(new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;")));
+        public static ArticleContainer ArticleContainer = new(new ArticleDAL());
         public static RowContainer RowContainer = new(new RowDAL());
         public static StockRowModelHelper StockRowModelHelper = new ();
 

@@ -12,6 +12,8 @@ namespace AxiLogic.Classes
         public string Name { get; private set; }
         public int Id { get; private set; }
         
+        public bool Processed { get; private set; }
+        
         private List<ShipmentArticle> _shipmentArticles = new();
         
         
@@ -26,6 +28,7 @@ namespace AxiLogic.Classes
             InvoiceId = shipmentDto.InvoiceId;
             Name = shipmentDto.Name;
             Id = shipmentDto.Id;
+            Processed = shipmentDto.Processed;
             //Add list :-)
         }
         public void ClearShipmentArticles()
@@ -70,7 +73,8 @@ namespace AxiLogic.Classes
                 Date = Date,
                 InvoiceId = InvoiceId,
                 Name = Name,
-                Id = Id
+                Id = Id,
+                Processed = Processed
             };
         }
     }

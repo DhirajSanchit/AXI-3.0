@@ -17,9 +17,9 @@ namespace AxiDAL.DAL
         //private const string connectionstring = ""Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674; Password=DatabaseAXItim;"
         
         //Assign connectionstring from appsettings.json
-        public ArticleDAL(IDbConnection dbConnection)
+        public ArticleDAL()
         {
-            _dbConnection = dbConnection;
+            _dbConnection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674; Password=DatabaseAXItim;");
         }
         
      
@@ -68,7 +68,7 @@ namespace AxiDAL.DAL
                 {
                     var result = _dbConnection.Execute(sql, new
                     {
-                        @Barcode = articleDto.Barcode
+                        articleDto.Barcode
                     });
                     return articleDto;
                 }
@@ -93,11 +93,11 @@ namespace AxiDAL.DAL
                 {
                     var result = _dbConnection.Execute(sql, new 
                         {
-                         @Name = articleDto.Name,
-                         @Price = articleDto.Price,
-                         @ImgRef = articleDto.ImgRef,
-                         @Category = articleDto.Category,
-                         @Description = articleDto.Description 
+                         articleDto.Name,
+                         articleDto.Price,
+                         articleDto.ImgRef,
+                         articleDto.Category,
+                         articleDto.Description 
                         });
                     //possibly replace bool with int rowsAffected?
                     return true;
