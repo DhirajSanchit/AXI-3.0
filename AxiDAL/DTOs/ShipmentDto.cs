@@ -8,5 +8,6 @@ namespace AxiDAL.DTOs
         public int InvoiceId;
         public string Name;
         public int Id;
+        public bool Processed;
     }
 }

@@ -9,6 +9,7 @@ namespace AxiLogic.Classes
         public Article Article { get; private set; }
         public int Id { get; private set; }
 
+        public int ScannedAmount { get; private set; }
         public ShipmentArticle(int id)
         {
             Id = id;
