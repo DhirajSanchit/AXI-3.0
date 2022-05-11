@@ -6,6 +6,8 @@ namespace AxiDAL.DTOs
         public string Name;
         public string Email;
         public string PhoneNr;
+        public string Description;
         public int Id;
+        
     }
 }
