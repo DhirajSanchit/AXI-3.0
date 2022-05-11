@@ -5,7 +5,7 @@ namespace AxiDAL.Interfaces
 {
     public interface IRowDAL
     {
-        public IList<ArticleDto> GetAll();
+        public IList<RowDto> GetAll();
 
         public int AddRow(RowDto rowDto);
 
