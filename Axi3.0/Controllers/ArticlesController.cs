@@ -27,7 +27,7 @@ namespace Axi3._0.Controllers
         public IActionResult AddArticle(ArticleModel articleModel)
         {
             _container.AddArticle(new Article(articleModel.Name, articleModel.Price, articleModel.Barcode, articleModel.ImgRef, articleModel.Description, articleModel.Category));
-            return View();
+            return RedirectToAction("AddArticle", "Articles");
         }
         
         public IActionResult ScannerIndex()
