@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
 using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 using AxiLogic.Classes;
 using AxiLogic.Helpers;
 using AxiLogic.Interfaces;
@@ -14,16 +15,15 @@ namespace Axi3._0.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ITestDapperContainer _tdc;
-        private readonly CategoryHelper _categoryHelper;
+        private readonly ICategoryHelper _categoryHelper;
         public readonly ContainerFactory _containerFactory;
 
-        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc,
-            ContainerFactory ContainerFactory, CategoryHelper categoryHelper)
+        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc, ContainerFactory ContainerFactory, ICategoryHelper CategoryHelper)
         {
             _logger = logger;
             _tdc = tdc;
             _containerFactory = ContainerFactory;
-            _categoryHelper = categoryHelper;
+            _categoryHelper = CategoryHelper;
         }
 
         public IActionResult Index()
@@ -32,7 +32,6 @@ namespace Axi3._0.Controllers
             //TestViewModel tvm = new TestViewModel();
             //tvm.tData = _containerFactory.GetTestDapperContainer().GetAll();
             //return View(tvm);
-
             return View();
         }
 

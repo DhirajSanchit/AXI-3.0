@@ -34,9 +34,11 @@ namespace AxiLogic.Helpers
         {
             return (IArticleContainer)_serviceProvider.GetService(typeof(ArticleContainer));
         }
+
         
 
- 
+
+
 
 
 
@@ -51,10 +53,10 @@ namespace AxiLogic.Helpers
         //     return new TestDapperContainer();
         //     return null;
         // }
-        
-        
-        
-        
+
+
+
+
         //TODO: ADD DATA
         // //public static DataBaseClient DataBaseClient = new();
         // public static RackDAL RackDal = new();
@@ -65,7 +67,7 @@ namespace AxiLogic.Helpers
         // public static EmployeeDAL EmployeeDal = new();
         // public static ShipmentDAL ShipmentDal = new();
         // public static ShipmentArticleDAL ShipmentArticleDal = new();
-        
-        
+
+
     }
 }

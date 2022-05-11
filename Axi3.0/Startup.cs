@@ -70,6 +70,8 @@ namespace Axi3._0
             //Containers
             // services.AddScoped<IArticleContainer, ArticleContainer>();
             //services.AddScoped<IArticleContainer, ArticleContainer>();
+            
+            services.AddScoped<ICategoryHelper, CategoryHelper>();
 
             //TODO: Develop Proof of Concept below for SQLReader Version
             //services.AddScoped<ITestReaderContainer, TestReaderContainer>(); 
