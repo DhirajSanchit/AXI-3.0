@@ -19,7 +19,7 @@ namespace AxiDAL.DAL
             _dbConnection = dbConnection;
         }
 
-        //Retrieves all articles
+        //Retrieves all planks
         public IList<PlankDto> GetAll()
         {
             //Prepare Query
@@ -49,13 +49,15 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
+        
+        //Add plank to database
         public int AddPlank(PlankDto PlankDto)
         {
             //Prepare Queries
             var sql = "insert into [Plank] " +
                                "values(@RackId, " +
-                               "@Location";
-
+                               "@Location)";
+            
             var sql2 = @"Select @@IDENTITY";
 
             //Execute statement
@@ -69,11 +71,8 @@ namespace AxiDAL.DAL
                         PlankDto.RackId,
                         PlankDto.Location
                     });
-                    return _dbConnection.QuerySingle<ArticleDto>(sql2, new
-                    {
-                        PlankDto.RackId,
-                        PlankDto.Location
-                    }).Id;
+
+                    return _dbConnection.QuerySingle<int>(sql2);
                 }
             }
 
@@ -96,7 +95,8 @@ namespace AxiDAL.DAL
             //Prepare Queries
             var sql = @"Update [Plank] " +
                 "Set [RackID] = @RackId " +
-                "[Location] = @Location";
+                "[Location] = @Location " +
+                "Where [Id] = @Id";
 
             //Execute statement
             try
@@ -107,7 +107,8 @@ namespace AxiDAL.DAL
                     _dbConnection.Execute(sql, new
                     {
                         plankDto.RackId,
-                        plankDto.Location
+                        plankDto.Location,
+                        plankDto.Id
                     });
                 }
             }
@@ -126,11 +127,11 @@ namespace AxiDAL.DAL
             }
         }
 
-        public void RemovePlank(PlankDto plankDto)
+        public void DeletePlank(PlankDto plankDto)
         {
             //Prepare Queries
             var sql = "Delete from [Plank] " +
-                "Where ID = @Id";
+                "Where [Id] = @Id";
 
             //Execute statement
             try
