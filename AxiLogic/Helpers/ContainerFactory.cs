@@ -8,34 +8,36 @@ using AxiLogic.Interfaces;
 
 namespace AxiLogic.Helpers
 {
-    public class Toolbox
+    public class ContainerFactory
     {
         
-        private IServiceProvider serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
 
         
         
-        public static ShipmentContainer ShipmentContainer = new(new ShipmentDAL());
-        public static ArticleContainer ArticleContainer = new(new ArticleDAL());
+        public static ShipmentContainer ShipmentContainer = new(new ShipmentDAL()); 
         public static RowContainer RowContainer = new(new RowDAL());
         public static StockRowModelHelper StockRowModelHelper = new ();
-
-        public static IArticleContainer iac;
         public static MoveArticleViewModelHelper PlaceTakeArticleViewModelHelper = new();
+ 
 
-        public static ITestDapperContainer _tdc;
-
-
-        public Toolbox(IServiceProvider ServiceProvider)
+        public ContainerFactory(IServiceProvider ServiceProvider)
         {
-            serviceProvider = ServiceProvider;
+            _serviceProvider = ServiceProvider;
         }
 
+        //Method below is only used to return the test container. Used for proof of concept and testing of IoC and DI
         public ITestDapperContainer GetTestDapperContainer()
         {
-            return (ITestDapperContainer)serviceProvider.GetService(typeof(TestDapperContainer));
+            return (ITestDapperContainer)_serviceProvider.GetService(typeof(TestDapperContainer));
 
         }
+
+        public IArticleContainer GetArticleContainer()
+        {
+            return (IArticleContainer)_serviceProvider.GetService(typeof(ArticleContainer));
+        }
+        
 
  
 

@@ -25,14 +25,6 @@ namespace AxiLogic.Containers
             _dalFactory = dalFactory;
         }
         
-        public TestDapperContainer GetContainer()
-        {
-            return null;
-
-        }
-        
-        
-        
         public IList<PocTest> GetAll()
         {
             dt = new List<PocTest>();

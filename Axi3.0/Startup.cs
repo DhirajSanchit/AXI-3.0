@@ -34,7 +34,7 @@ namespace Axi3._0
         {
             //Haalt Connection string uit de appsettings.Json
             //var ConnectionString = Configuration.GetConnectionString("Default"); 
-            services.AddScoped<Toolbox>();
+            services.AddScoped<ContainerFactory>();
             services.AddScoped<DalFactory>();
 
             //SELF-SERVICE SERVER INSTANCE | Wijst het toe aan de connectie van het project
@@ -45,19 +45,23 @@ namespace Axi3._0
             //Service DAL
             services.AddTransient<TestDAL>()
                 .AddTransient<ITestDAL, TestDAL>(s => s.GetService<TestDAL>());
-                
+            
+            services.AddTransient<ArticleDAL>()
+                .AddTransient<IArticleDAL, ArticleDAL>(s => s.GetService<ArticleDAL>());
+            
             //Service Container; 
             services.AddTransient<TestDapperContainer>()
                 .AddTransient<ITestDapperContainer, TestDapperContainer>(s => s.GetService<TestDapperContainer>());
         
-            
+            services.AddTransient<ArticleContainer>()
+                .AddTransient<IArticleContainer, ArticleContainer>(s => s.GetService<ArticleContainer>());
             
             
             //DEPENDCY INJECTION    
 
             //Data Absctraction Layers
-            services.AddScoped<IArticleDAL, ArticleDAL>();
-
+            //services.AddScoped<IArticleDAL, ArticleDAL>();
+ 
             //Containers
             // services.AddScoped<IArticleContainer, ArticleContainer>();
             //services.AddScoped<IArticleContainer, ArticleContainer>();

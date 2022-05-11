@@ -18,6 +18,11 @@ namespace AxiDAL.Factories
         {
             return (ITestDAL)serviceProvider.GetService(typeof(TestDAL));
         }
+
+        public IArticleDAL GetArticleDal()
+        {
+            return (IArticleDAL)serviceProvider.GetService(typeof(ArticleDAL));
+        }
         
     }
 }
