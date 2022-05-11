@@ -26,11 +26,11 @@ namespace Axi3._0.Controllers
         public IActionResult Index()
         {
             //Keep code below for debug purposes
-            TestViewModel tvm = new TestViewModel();
-            tvm.tData = _containerFactory.GetTestDapperContainer().GetAll();
-            return View(tvm);
+            //TestViewModel tvm = new TestViewModel();
+            //tvm.tData = _containerFactory.GetTestDapperContainer().GetAll();
+            //return View(tvm);
 
-             //return View();
+            return View();
         }
 
         public IActionResult Privacy()
