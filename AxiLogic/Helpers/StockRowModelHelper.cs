@@ -13,7 +13,7 @@ namespace AxiLogic.Helpers
             var stockRows = new List<StockRow>();
             //keeps track of id's of articles that have been added to stock rows
             var addedArticles = new List<int>();
-            foreach (var row in Toolbox.RowContainer.Rows)
+            foreach (var row in ContainerFactory.RowContainer.Rows)
             {
                 LoopRacks(row, addedArticles, stockRows);
             }

@@ -6,7 +6,7 @@ namespace Axi3._0.PageLogic
     {
         public void OnLoad()
         {
-           Toolbox.ShipmentContainer.LoadProcessableShipments();
+           ContainerFactory.ShipmentContainer.LoadProcessableShipments();
         }
     }
 }

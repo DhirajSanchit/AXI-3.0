@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.Data;
 using AxiDAL.DTOs;
+using AxiLogic.Classes;
 
 namespace AxiLogic.Interfaces
 {
     public interface IArticleContainer
     {
-        // public IList<ArticleDto> GetAll();
-        // public ArticleDto GetById();
-        // public bool AddArticle();
-        // public bool DeleteArticle();
-        // public bool UpdateArticle();
+        public void GetAllArticles();
+        public Article GetArticleById(int articleID);
+        public void AddArticle(Article article);
+        public void RemoveArticle(Article article);
+        public void UpdateArticle(Article article);
         
         
         

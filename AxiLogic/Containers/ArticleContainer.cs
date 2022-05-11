@@ -2,20 +2,40 @@
 using AxiLogic.Classes;
 using System;
 using AxiDAL.DTOs;
+using AxiDAL.Factories;
 using AxiDAL.Interfaces;
+using AxiLogic.Interfaces;
 
 namespace AxiLogic.Containers
 {
-    public class ArticleContainer
+    public class ArticleContainer : IArticleContainer
     {
         private List<Article> _articles;
         private IArticleDAL iArticleDAL;
+        private DalFactory _factory;
 
         public ArticleContainer(IArticleDAL context)
         {
+            
+            /**
+             *factory = factory;
+            _articles = new List<Article>();
+            iArticleDAL = dal;
+            foreach (var articleDto in factory.GetArticleDal().GetAll())
+            {
+                _articles.Add(new Article(articleDto));
+            }
+             * 
+             **/
+            
             iArticleDAL = context;
         }
 
+        public ArticleContainer()
+        {
+            
+        }
+        
         public IReadOnlyCollection<Article> GetArticles()
         {
             return _articles;
@@ -50,6 +70,8 @@ namespace AxiLogic.Containers
             iArticleDAL.DeleteArticle(article.ToDto());
             _articles.Remove(article);
         }
+
+
 
         public void ClearArticles()
         {
@@ -86,29 +108,10 @@ namespace AxiLogic.Containers
         //     
         // }
         
-        // public IList<ArticleDto> GetAll()
-        // {
-        //     throw new NotImplementedException();
-        // }
-       
-        // public ArticleDto GetById()
-        // {
-        //     throw new NotImplementedException();
-        // }
-        
-        // public bool AddArticle()
-        // {
-        //     throw new NotImplementedException();
-        // }
-       
-        // public bool DeleteArticle()
-        // {
-        //     throw new NotImplementedException();
-        // }
-        
-        // public bool UpdateArticle()
-        // {
-        //     throw new NotImplementedException();
-        // }
+    
+        public void UpdateArticle(Article article)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

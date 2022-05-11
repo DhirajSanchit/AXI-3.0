@@ -15,9 +15,9 @@ namespace AxiLogic.Helpers
         {
             string[] locations = locationstring.Split(".");
 
-            ArticleContainer articleContainer = Toolbox.ArticleContainer;
+            ArticleContainer articleContainer = new(); // = ContainerFactory.ArticleContainer;
             Article article = articleContainer.GetArticleById(articleID);
-            RowContainer rowContainer = Toolbox.RowContainer;
+            RowContainer rowContainer = ContainerFactory.RowContainer;
             Row row = rowContainer.GetRowByName(locations[0]);
             Rack rack = row.GetRack(Convert.ToInt32(locations[1]));
             Plank plank = rack.GetPlankByLocation(Convert.ToInt32(locations[2]));
@@ -30,9 +30,9 @@ namespace AxiLogic.Helpers
             //to do: write test
             string[] locations = locationstring.Split('.');
 
-            ArticleContainer articleContainer = Toolbox.ArticleContainer;
+            ArticleContainer articleContainer = new(); // = ContainerFactory.ArticleContainer;
             Article article = articleContainer.GetArticleById(articleID);
-            RowContainer rowContainer = Toolbox.RowContainer;
+            RowContainer rowContainer = ContainerFactory.RowContainer;
             Row row = rowContainer.GetRowByName(locations[0]);
             Rack rack = row.GetRack(Convert.ToInt32(locations[1]));
             Plank plank = rack.GetPlankByLocation(Convert.ToInt32(locations[2]));

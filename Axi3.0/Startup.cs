@@ -40,6 +40,7 @@ namespace Axi3._0
             //SELF-SERVICE SERVER INSTANCE | Wijst het toe aan de connectie van het project
             services.AddTransient<IDbConnection>(sp => new SqlConnection(Configuration.GetConnectionString("Default")));
             
+            //var test = services.GetType().
             // //Tests DB Connection | Keep for debugging / demo puproses
 
             //Service DAL

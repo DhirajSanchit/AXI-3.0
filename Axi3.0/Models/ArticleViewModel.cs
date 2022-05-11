@@ -13,21 +13,21 @@ namespace Axi3._0.Models
        
        public void GetArticleModels()
        {
-           ArticleModels.Clear();
-           var articles = Toolbox.ArticleContainer.GetArticles();
-           foreach (var article in articles)
-           {
-               ArticleModels.Add(new ArticleModel()
-               {
-                   Name = article.Name,
-                   Id = article.Id,
-                   Category = article.Category,
-                   Barcode = article.Barcode,
-                   ImgRef = article.ImgRef,
-                   Description = article.Description,
-                   Price = article.Price
-               });
-           }
+           // ArticleModels.Clear();
+           // //var articles = ContainerFactory.ArticleContainer.GetArticles();
+           // foreach (var article in articles)
+           // {
+           //     ArticleModels.Add(new ArticleModel()
+           //     {
+           //         Name = article.Name,
+           //         Id = article.Id,
+           //         Category = article.Category,
+           //         Barcode = article.Barcode,
+           //         ImgRef = article.ImgRef,
+           //         Description = article.Description,
+           //         Price = article.Price
+           //     });
+           // }
        }
 
        public void CreateArticle(string name, double price, string imgRef, string category, string description)
@@ -49,7 +49,7 @@ namespace Axi3._0.Models
                Description = description
            };
            ArticleModels.Add(articleModel);
-           Toolbox.ArticleContainer.AddArticle(new Article(articleDto));
+           //ContainerFactory.ArticleContainer.AddArticle(new Article(articleDto));
        }
        
     }

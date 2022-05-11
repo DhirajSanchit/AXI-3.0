@@ -3,7 +3,7 @@ using AxiLogic.Classes;
 
 namespace Axi3._0.Models
 {
-    public class ArticleModel
+    public class  ArticleModel
     {
         public double Price { get; set; }
         public string Barcode { get; set; }

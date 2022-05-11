@@ -13,7 +13,7 @@ namespace Axi3._0.Models
         public void GetStockRows()
         {
             StockRows.Clear();
-            var stockRows = Toolbox.StockRowModelHelper.GetStockRows();
+            var stockRows = ContainerFactory.StockRowModelHelper.GetStockRows();
             foreach (var row in stockRows)
             {
                 StockRows.Add(new StockRowModel()

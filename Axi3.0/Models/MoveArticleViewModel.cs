@@ -10,13 +10,13 @@ namespace Axi3._0.Models
 
         public void PlaceArticle()
         {
-            MoveArticleViewModelHelper moveTakeArticleViewModelHelper = Toolbox.PlaceTakeArticleViewModelHelper;
+            MoveArticleViewModelHelper moveTakeArticleViewModelHelper = ContainerFactory.PlaceTakeArticleViewModelHelper;
             moveTakeArticleViewModelHelper.PlaceArticle(articleID, locationstring, amount);        
         }
 
         public void TakeArticle()
         {
-            MoveArticleViewModelHelper moveTakeArticleViewModelHelper = Toolbox.PlaceTakeArticleViewModelHelper;
+            MoveArticleViewModelHelper moveTakeArticleViewModelHelper = ContainerFactory.PlaceTakeArticleViewModelHelper;
             moveTakeArticleViewModelHelper.TakeArticle(articleID, locationstring, amount);
         }
     }
