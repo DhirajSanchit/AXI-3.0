@@ -18,7 +18,7 @@ namespace AxiDAL.DAL
             _dbConnection = dbConnection;
         }
         
-        public IList<CategoryDto> GetAllCategories()
+        public IList<string> GetAllCategories()
         {   
             //Prepare Query
             var sql = @"SELECT Category FROM [Category]";
@@ -29,11 +29,10 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {   
                     //Execute query on Database, and return _dataset
-                    return _dbConnection.Query<CategoryDto>(sql).ToList();
+                    return _dbConnection.Query<string>(sql).ToList();
                 }
             }
-                
-            //TODO: Catch and handle possible exceptions
+            
             //Catches possible exceptions
             catch (Exception ex)
             {

@@ -5,6 +5,6 @@ namespace AxiDAL.Interfaces
 {
     public interface ICategoryDAL
     {
-        public IList<CategoryDto> GetAllCategories();
+        public IList<string> GetAllCategories();
     }
 }

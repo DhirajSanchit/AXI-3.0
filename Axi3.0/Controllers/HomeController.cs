@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
-using AxiDAL.DTOs;  
+using AxiDAL.DTOs;
 using AxiLogic.Classes;
 using AxiLogic.Helpers;
 using AxiLogic.Interfaces;
@@ -13,14 +14,16 @@ namespace Axi3._0.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ITestDapperContainer _tdc;
-
+        private readonly CategoryHelper _categoryHelper;
         public readonly ContainerFactory _containerFactory;
-        
-        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc, ContainerFactory ContainerFactory)
+
+        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc,
+            ContainerFactory ContainerFactory, CategoryHelper categoryHelper)
         {
             _logger = logger;
             _tdc = tdc;
             _containerFactory = ContainerFactory;
+            _categoryHelper = categoryHelper;
         }
 
         public IActionResult Index()
@@ -44,6 +47,7 @@ namespace Axi3._0.Controllers
             stockModel.GetStockRows();
             return View(stockModel);
         }
+
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();
@@ -51,10 +55,10 @@ namespace Axi3._0.Controllers
             articleViewModel.GetArticleModels(); //TODO < Should be from factory, not from articleViewModel
             return View(articleViewModel);
         }
-        
+
         [HttpPost]
         public IActionResult AddArticle(ArticleModel model)
-        { 
+        {
             _containerFactory.GetArticleContainer().AddArticle(new Article(new ArticleDto()
             {
                 Name = model.Name,
@@ -63,7 +67,7 @@ namespace Axi3._0.Controllers
                 Description = model.Description,
                 Category = model.Category
             }));
-            
+
             return RedirectToAction("AddArticle", "Home");
         }
 
@@ -71,9 +75,10 @@ namespace Axi3._0.Controllers
         public IActionResult AddArticle()
         {
             var articleModel = new ArticleModel();
+            articleModel.CategoryEnum = (List<string>) _categoryHelper.GetCategories();
             return View(articleModel);
         }
-        
+
         public IActionResult ScannerDelivery()
         {
             return View();
@@ -83,7 +88,7 @@ namespace Axi3._0.Controllers
         {
             return View();
         }
-        
+
         // public IActionResult Articles()
         // {
         //     var articleViewModel = new ArticleViewModel();
@@ -96,24 +101,25 @@ namespace Axi3._0.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
+
         [HttpPost]
         public IActionResult PlaceArticle(MoveArticleViewModel model)
         {
             model.PlaceArticle();
-            return RedirectToAction("PlaceArticle", "Home");            
+            return RedirectToAction("PlaceArticle", "Home");
         }
+
         [HttpGet]
         public IActionResult PlaceArticle()
         {
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult TakeArticle(MoveArticleViewModel model)
         {
             model.TakeArticle();
             return RedirectToAction("PlaceArticle", "Home");
         }
-
     }
 }
