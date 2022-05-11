@@ -6,6 +6,7 @@ namespace AxiDAL.DTOs
     {
         public int Location;
         public int Id;
+        public int RowId;
         public List<PlankDto> plankDtos;
     }
 }

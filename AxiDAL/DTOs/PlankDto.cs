@@ -6,6 +6,7 @@ namespace AxiDAL.DTOs
     {
         public List<PalletDto> palletDtos;
         public int Id;
+        public int RackId;
         public int Location;
     }
 }
