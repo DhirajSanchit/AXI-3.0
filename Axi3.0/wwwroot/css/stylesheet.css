@@ -265,6 +265,12 @@
     margin-top:30px;
     margin-left:300px;
 }
+.category-dropdown{
+    position:absolute;
+    width:200px;
+    left:40px;
+    top:50%;
+}
 .btn-submit-article{
     position:absolute;
     margin-top: 630px;
@@ -364,4 +370,7 @@
     resize:none;
     color:black;
     min-width:400px;
+}
+select{
+    color:black;
 }

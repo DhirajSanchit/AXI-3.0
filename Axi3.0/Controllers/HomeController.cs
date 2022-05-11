@@ -69,7 +69,8 @@ namespace Axi3._0.Controllers
         [HttpGet]
         public IActionResult AddArticle()
         {
-            return View();
+            var articleModel = new ArticleModel();
+            return View(articleModel);
         }
         
         public IActionResult ScannerDelivery()

@@ -12,5 +12,6 @@ namespace Axi3._0.Models
         public string Description{ get; set; }
         public int Id{ get; set; }
         public string Category{ get; set; }
+        public List<string> CategoryEnum { get; set; }
     }
 }

@@ -48,9 +48,17 @@
         @*       </div>           *@
         
         @*     <div class="form-group"> *@
-        
-            @* </div> *@
-         ``
+        <select class="category-dropdown">
+            <option value="none">No Category Selected</option>
+            @if (Model.CategoryEnum != null)
+            {
+                foreach (var category in Model.CategoryEnum)
+                {
+                    <option value="@category">@category</option>
+                }
+            }
+        </select>
+        @* </div> *@
         <div class="exit-cross-container"> 
             <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
             @*TODO: Implement redirect action below on exit cross img *@
