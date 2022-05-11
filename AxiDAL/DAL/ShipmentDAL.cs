@@ -13,12 +13,14 @@ namespace AxiDAL.DAL
     {
         private IDbConnection _dbConnection;
         private IList<ShipmentDto> _dataset;
-        
+
         public ShipmentDAL()
         {
-            _dbConnection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;");
+            _dbConnection =
+                new SqlConnection(
+                    "Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;");
         }
-        
+
         //Retrieves all Rows
         public IList<ShipmentDto> GetAll()
         {
@@ -35,7 +37,7 @@ namespace AxiDAL.DAL
                     return _dataset;
                 }
             }
-            
+
             //Catches possible exceptions
             catch (Exception ex)
             {
@@ -49,16 +51,19 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
-        
-        public bool AddShipment(ShipmentDto shipmentDto)  //Reminder names are different from database names, database names will be changed.
+
+        public bool
+            AddShipment(
+                ShipmentDto shipmentDto)
         {
-            const string sql = "insert into [Shipment] ([ShipmentDate], [InvoiceID], [ShipmentName], [Processed]) values(@Date, @InvoiceId, @Name, @Processed)";
-            
+            const string sql =
+                "insert into [Shipment] ([ShipmentDate], [InvoiceID], [ShipmentName], [Processed]) values(@Date, @InvoiceId, @Name, @Processed)";
+
             try
             {
                 using (_dbConnection)
                 {
-                    var result = _dbConnection.Execute(sql, new 
+                    var result = _dbConnection.Execute(sql, new
                     {
                         shipmentDto.Date,
                         shipmentDto.InvoiceId,
@@ -69,7 +74,7 @@ namespace AxiDAL.DAL
                     return true;
                 }
             }
-            
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -92,22 +97,23 @@ namespace AxiDAL.DAL
                 {
                     var result = _dbConnection.Execute(sql, shipmentDto.Id);
                 }
+
                 return true;
             }
-            
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
-            
+
             finally
             {
                 _dbConnection.Close();
             }
         }
-        
-        
+
+
         public bool UpdateShipment(ShipmentDto shipmentDto)
         {
             const string sql = "UPDATE [Shipment] " +
@@ -116,7 +122,7 @@ namespace AxiDAL.DAL
                                "[ShipmentName] = @Name," +
                                "[Processed] = @Processed " +
                                "WHERE [ShipmentID] = @Id";
-            
+
             try
             {
                 using (_dbConnection)
@@ -127,18 +133,18 @@ namespace AxiDAL.DAL
                         shipmentDto.InvoiceId,
                         shipmentDto.Name,
                         shipmentDto.Processed,
-                        Id = shipmentDto.Id
+                        shipmentDto.Id
                     });
                     return true;
                 }
             }
-            
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
-            
+
             finally
             {
                 _dbConnection.Close();
