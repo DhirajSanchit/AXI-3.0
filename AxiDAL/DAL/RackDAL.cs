@@ -21,11 +21,12 @@ namespace AxiDAL.DAL
         /// <summary>
         /// retrieves all racks
         /// </summary>
-        public IList<RackDto> GetAll()
+        public IList<RackDto> GetAllFromRow(RowDto row)
         {
             //prepare query
             var sql = @"SELECT * " +
-                      "FROM [Rack]";
+                      "FROM [Rack] " +
+                      "WHERE [RowId] = @RowId";
 
             //execute statement
             try
@@ -33,7 +34,11 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //execute query on database and return results
-                    return _dbConnection.Query<RackDto>(sql).ToList();
+                    return _dbConnection.Query<RackDto>(sql, new
+                    {
+                        row.Id
+                    }
+                    ).ToList();
                 }
             }
 
