@@ -5,26 +5,30 @@ using Axi3._0.Models;
 using AxiDAL.DTOs;  
 using AxiLogic.Classes;
 using AxiLogic.Helpers;
+using AxiLogic.Interfaces;
 
 namespace Axi3._0.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-       // private ITestDapperContainer _tdc;
+        private ITestDapperContainer _tdc;
+
+        public readonly ContainerFactory _containerFactory;
         
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc, ContainerFactory ContainerFactory)
         {
             _logger = logger;
-            //_tdc = tdc;
+            _tdc = tdc;
+            _containerFactory = ContainerFactory;
         }
 
         public IActionResult Index()
         {
             //Keep code below for debug purposes
-            // TestViewModel tvm = new TestViewModel();
-            //  _tdc.dt = _tdc.GetAll();
-            //  tvm.tData = _tdc.dt;
+            //TestViewModel tvm = new TestViewModel();
+             //_tdc.dt = _tdc.GetAll();
+             //tvm.tData = _containerFactory.GetTestDapperContainer().GetAll();
             return View();
         }
 
@@ -42,15 +46,15 @@ namespace Axi3._0.Controllers
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();
-            Toolbox.ArticleContainer.GetAllArticles();
+            //ContainerFactory.ArticleContainer.GetAllArticles();
             articleViewModel.GetArticleModels();
             return View(articleViewModel);
         }
         
         [HttpPost]
         public IActionResult AddArticle(ArticleModel model)
-        {
-            Toolbox.ArticleContainer.AddArticle(new Article(new ArticleDto()
+        { 
+            _containerFactory.GetArticleContainer().AddArticle(new Article(new ArticleDto()
             {
                 Name = model.Name,
                 Price = model.Price,
