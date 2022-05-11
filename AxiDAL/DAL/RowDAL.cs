@@ -82,6 +82,7 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
+        
         public bool UpdateArticle(RowDto rowDto)
         {
             const string sql = "Update [Row] " +
@@ -108,6 +109,7 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
+        
         public bool DeleteArticle(RowDto rowDto)
         {
             const string sql = "Delete from [Row] " +
