@@ -7,10 +7,10 @@ namespace AxiDAL.Interfaces
     {
         public IList<ArticleDto> GetAll();
 
-        public bool AddRow(RowDto rowDto);
+        public int AddRow(RowDto rowDto);
 
-        public bool UpdateArticle(RowDto rowDto);
+        public void UpdateArticle(RowDto rowDto);
 
-        public bool DeleteArticle(RowDto rowDto);
+        public void DeleteArticle(RowDto rowDto);
     }
 }
