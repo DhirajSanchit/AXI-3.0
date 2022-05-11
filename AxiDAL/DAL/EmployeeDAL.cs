@@ -79,13 +79,7 @@ namespace AxiDAL.DAL
                         employee.PhoneNr, 
                         employee.Description
                     });
-                    return _dbConnection.QuerySingle<ArticleDto>(sql2, new
-                    {
-                        employee.Name, 
-                        employee.Email, 
-                        employee.PhoneNr, 
-                        employee.Description
-                    }).Id;
+                    return _dbConnection.QuerySingle<int>(sql2);
                 }
             }
 
