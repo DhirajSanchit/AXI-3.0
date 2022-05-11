@@ -19,7 +19,7 @@ namespace AxiDAL.DAL
         //Assign connectionstring from appsettings.json
         public ArticleDAL()
         {
-            _dbConnection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674; Password=DatabaseAXItim;");
+            _dbConnection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674;Password=DatabaseAXItim;");
         }
         
      
@@ -35,8 +35,7 @@ namespace AxiDAL.DAL
                     using (_dbConnection)
                     {   
                         //Execute query on Database, and return _dataset
-                        _dataset = _dbConnection.Query<ArticleDto>(sql).ToList();
-                        return _dataset;
+                        return _dbConnection.Query<ArticleDto>(sql).ToList();
                     }
                 }
                 
@@ -49,13 +48,11 @@ namespace AxiDAL.DAL
                     throw new Exception(ex.Message);
                 }
                 
-                //Closes DB connection when finishing statement regardless of result(s)
-                finally
-                {
-                    
-                    _dbConnection.Close();
-                }
-                
+                // Closes DB connection when finishing statement regardless of result(s)
+                 finally
+                 {
+                     _dbConnection.Close();
+                 }
         }
         
         

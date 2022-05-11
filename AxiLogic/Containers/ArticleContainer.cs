@@ -14,11 +14,6 @@ namespace AxiLogic.Containers
         public ArticleContainer(IArticleDAL context)
         {
             iArticleDAL = context;
-            _articles = new List<Article>();
-            foreach (var articleDto in iArticleDAL.GetAll())
-            {
-                _articles.Add(new Article(articleDto));
-            }
         }
 
         public IReadOnlyCollection<Article> GetArticles()

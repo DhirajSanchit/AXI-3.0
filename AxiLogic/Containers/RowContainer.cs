@@ -20,11 +20,11 @@ namespace AxiLogic.Containers
             RowDal = iRowDal;
         }
 
-        public RowContainer()
-        {
-            var json = JObject.Parse(File.ReadAllText(@"../AxiLogic/Jsons/StockLayout.json"));
-            Rows = json["Rows"].ToObject<List<Row>>();
-        }
+        // public RowContainer()
+        // {
+        //     var json = JObject.Parse(File.ReadAllText(@"../AxiLogic/Jsons/StockLayout.json"));
+        //     Rows = json["Rows"].ToObject<List<Row>>();
+        // }
 
         public void AddRow(Row row)
         {
@@ -43,6 +43,7 @@ namespace AxiLogic.Containers
             }
             Rows.Remove(row);
         }
+        
         public Row GetRowByName(string name)
         {
             foreach (var row in Rows)
