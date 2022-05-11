@@ -11,41 +11,170 @@ namespace AxiDAL.DAL
     public class PalletDAL : IPalletDAL
     {
         private IDbConnection _dbConnection;
-        private IList<PalletDto> _dataset;
 
         public PalletDAL(IDbConnection dbConnection)
         {
             _dbConnection = dbConnection;
         }
 
+        //Get all pallets
         public IList<PalletDto> GetAll()
         {
-            var sql = "Select * From [Pallet]";
+            //Prepare query
+            var sql = @"Select * " +
+                      "From [Pallet]";
 
+            //Execute statement
             try
             {
                 using (_dbConnection)
                 {
-                    _dataset = _dbConnection.Query<PalletDto>(sql).ToList();
-                    return _dataset;
+                    //execute query on database and return result
+                    return _dbConnection.Query<PalletDto>(sql).ToList();
                 }
             }
+
+            //catch any errors
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
+
+            //close connection
             finally
             {
                 _dbConnection.Close();
             }
         }
 
-        public bool AddPallet(PalletDto palletDto)
+        //Add a pallet to the database
+        //variables: ArticleId, PlankId, Amount, Location
+        public int AddPallet(PalletDto palletDto)
         {
-            var sql = "Insert Into [Pallet] Values(@ArticleId, @PlankId, @Location, @)";
-            return true; //temp true, change later!!!
+            //Prepare queries
+            var sql = @"Insert Into [Pallet] " +
+                      "([ArticleId], " +
+                      "[PlankId], " +
+                      "[Amount], " +
+                      "[Location]) " +
+                      "Values " +
+                      "(@ArticleId, " +
+                      "@PlankId, " +
+                      "@Amount, " +
+                      "@Location)";
+
+            var sql2 = @"Select @@IDENTITY";
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //execute query on database and return result
+                    _dbConnection.Execute(sql, new
+                    {
+                        palletDto.Article.Id,
+                        palletDto.PlankId,
+                        palletDto.Amount,
+                        palletDto.Location
+                    });
+
+                    return _dbConnection.QuerySingle<int>(sql2);
+                }
+            }
+
+            //catch any errors
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+
+            //close connection
+            finally
+            {
+                _dbConnection.Close();
+            }
         }
         
+        //Update a pallet in the database
+        //variables: Id, ArticleId, PlankId, Amount, Location
+        public void UpdatePallet(PalletDto palletDto)
+        {
+            //Prepare query
+            var sql = @"Update [Pallet] " + 
+                      "Set [ArticleId] = @ArticleId, " +
+                      "[PlankId] = @PlankId, " +
+                      "[Amount] = @Amount, " +
+                      "[Location] = @Location " +
+                      "Where [Id] = @Id";
+            
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //execute query on database and return result
+                    _dbConnection.Execute(sql, new
+                    {
+                        palletDto.Id,
+                        ArticleId = palletDto.Article.Id,
+                        palletDto.PlankId,
+                        palletDto.Amount,
+                        palletDto.Location
+                    });
+                }
+            }
+            
+            //catch any errors
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            
+            //close connection
+            finally
+            {
+                _dbConnection.Close();
+            }
+        }
+            
+        
+        //Delete a pallet from the database
+        //variables: Id
+        public void DeletePallet(PalletDto palletDto)
+        {
+            //Prepare query
+            var sql = @"Delete From [Pallet] " +
+                      "Where [Id] = @Id";
+            
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //execute query on database and return result
+                    _dbConnection.Execute(sql, new
+                    {
+                        palletDto.Id
+                    });
+                }
+            }
+            
+            //catch any errors
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            
+            //close connection
+            finally
+            {
+                _dbConnection.Close();
+            }
+        }
     }
 }
