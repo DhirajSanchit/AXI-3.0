@@ -8,5 +8,6 @@ namespace AxiDAL.DTOs
         public int Amount;
         public int Id;
         public ArticleDto Article;
+        public int PlankId;
     }
 }
