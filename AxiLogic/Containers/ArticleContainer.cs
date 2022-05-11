@@ -13,7 +13,7 @@ namespace AxiLogic.Containers
         private List<Article> _articles;
         private IArticleDAL iArticleDAL;
         private DalFactory _factory;
-
+        
         public ArticleContainer(IArticleDAL context)
         {
             
@@ -40,7 +40,7 @@ namespace AxiLogic.Containers
         {
             return _articles;
         }
-
+        
         public void AddArticle(Article article)
         {
             if (_articles.Contains(article))
@@ -59,7 +59,7 @@ namespace AxiLogic.Containers
             article.Id = iArticleDAL.AddArticle(articleDto);
             _articles.Add(article);
         }
-
+        
         public void RemoveArticle(Article article)
         {
             if (!_articles.Contains(article))
@@ -72,12 +72,12 @@ namespace AxiLogic.Containers
         }
 
 
-
+        
         public void ClearArticles()
         {
             _articles.Clear();
         }
-
+        
         public Article GetArticleById(int articleID)
         {
             foreach (var article in _articles)
@@ -90,7 +90,7 @@ namespace AxiLogic.Containers
 
             return null;
         }
-
+        
         public void GetAllArticles()
         {
             var articleDTOs = iArticleDAL.GetAll();
@@ -102,7 +102,7 @@ namespace AxiLogic.Containers
 
             _articles = articles;
         }
-
+        
         // public Article AddArticle()
         // {
         //     
