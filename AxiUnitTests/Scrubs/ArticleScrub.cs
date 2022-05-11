@@ -59,7 +59,7 @@ namespace AxiUnitTests.Scrubs
             return id;
         }
 
-        public bool UpdateArticle(ArticleDto articleDto)
+        public void UpdateArticle(ArticleDto articleDto)
         {
             foreach (var dto in _articleDtos)
             {
@@ -69,13 +69,11 @@ namespace AxiUnitTests.Scrubs
                     _articleDtos.Add(articleDto);
                 }
             }
-            return true;
         }
 
-        public bool DeleteArticle(ArticleDto articleDto)
+        public void DeleteArticle(ArticleDto articleDto)
         {
             _articleDtos.Remove(articleDto);
-            return true;
         }
     }
 }

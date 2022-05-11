@@ -8,6 +8,6 @@ namespace AxiDAL.Interfaces
         public IList<PlankDto> GetAll();
         public int AddPlank(PlankDto plankDto);
         public void UpdatePlank(PlankDto plankDto);
-        public void RemovePlank(PlankDto plankDto);
+        public void DeletePlank(PlankDto plankDto);
     }
 }
