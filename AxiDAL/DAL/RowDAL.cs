@@ -20,6 +20,10 @@ namespace AxiDAL.DAL
             _dbConnection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;");
         }
 
+        public RowDAL(IDbConnection dbConnection)
+        {
+            _dbConnection = dbConnection;
+        }
 
         //Retrieves all Rows
         public IList<ArticleDto> GetAll()
@@ -33,8 +37,7 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //Execute query on Database, and return _dataset
-                    _dataset = (IList<ArticleDto>)_dbConnection.Query<RowDto>(sql).ToList();
-                    return _dataset;
+                    return (IList<ArticleDto>)_dbConnection.Query<RowDto>(sql).ToList();
                 }
             }
 
@@ -54,20 +57,20 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
-        public bool AddRow(RowDto rowDto)
+        public int AddRow(RowDto rowDto)
         {
-            const string sql = "insert into [Row] values(@Name)";
+            const string sql1 = "insert into [Row] values(@Name)";
+            const string sql2 = "Select ID From [Row] Where [Name] = @Name";
             try
             {
                 using (_dbConnection)
                 {
-                    var result = _dbConnection.Execute(sql, new
+                    var result = _dbConnection.Execute(sql1, new
                     {
-                        @Name = rowDto.Name,
-                        
+                        rowDto.Name
                     });
                     //possibly replace bool with int rowsAffected?
-                    return true;
+                    return _dbConnection.QuerySingle<RowDto>(sql2).Id;
                 }
             }
 
@@ -83,7 +86,7 @@ namespace AxiDAL.DAL
             }
         }
         
-        public bool UpdateArticle(RowDto rowDto)
+        public void UpdateArticle(RowDto rowDto)
         {
             const string sql = "Update [Row] " +
                 "Set [Name] = @Name";
@@ -96,7 +99,6 @@ namespace AxiDAL.DAL
                     {
                         @Name = rowDto.Name,
                     });
-                    return true;
                 }
             }
             catch (Exception ex)
@@ -110,7 +112,7 @@ namespace AxiDAL.DAL
             }
         }
         
-        public bool DeleteArticle(RowDto rowDto)
+        public void DeleteArticle(RowDto rowDto)
         {
             const string sql = "Delete from [Row] " +
                 "Where Name = @Name";
@@ -123,7 +125,6 @@ namespace AxiDAL.DAL
                     {
                         rowDto.Name
                     });
-                    return true;
                 }
             }
             catch (Exception ex)

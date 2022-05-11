@@ -6,6 +6,7 @@ namespace AxiDAL.DTOs
     {
         public int Location;
         public int Amount;
+        public int Id;
         public ArticleDto Article;
     }
 }
