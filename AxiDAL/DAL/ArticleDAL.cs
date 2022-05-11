@@ -118,7 +118,7 @@ namespace AxiDAL.DAL
             }
         }
 
-        public bool UpdateArticle(ArticleDto articleDto)
+        public void UpdateArticle(ArticleDto articleDto)
         {
             const string sql = "Update [Article] " +
                 "Set [Name] = @Name," +
@@ -140,8 +140,7 @@ namespace AxiDAL.DAL
                         @Category = articleDto.Category,
                         @Description = articleDto.Description,
                         @Barcode = articleDto.Barcode
-                    });
-                    return true;
+                    }); 
                 }
             }
             catch (Exception ex)
@@ -155,7 +154,7 @@ namespace AxiDAL.DAL
             }
         }
 
-        public bool DeleteArticle(ArticleDto articleDto)
+        public void DeleteArticle(ArticleDto articleDto)
         {
             const string sql = "Delete from [Article] " +
                 "Where Barcode = @Barcode";
@@ -168,7 +167,7 @@ namespace AxiDAL.DAL
                     {
                         @Barcode = articleDto.Barcode
                     });
-                    return true;
+                    
                 }
             }
             catch (Exception ex)
