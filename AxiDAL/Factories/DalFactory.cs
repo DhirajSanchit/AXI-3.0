@@ -24,6 +24,12 @@ namespace AxiDAL.Factories
             return (IArticleDAL)serviceProvider.GetService(typeof(ArticleDAL));
         }
         
+        
+        public ICategoryDAL GetCategoryDal()
+        {
+            return (ICategoryDAL)serviceProvider.GetService(typeof(CategoryDAL));
+        }
+        
     }
 }
 

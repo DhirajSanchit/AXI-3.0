@@ -48,7 +48,7 @@ namespace Axi3._0.Controllers
         {
             var articleViewModel = new ArticleViewModel();
             //ContainerFactory.ArticleContainer.GetAllArticles();
-            articleViewModel.GetArticleModels();
+            articleViewModel.GetArticleModels(); //TODO < Should be from factory, not from articleViewModel
             return View(articleViewModel);
         }
         
@@ -61,7 +61,7 @@ namespace Axi3._0.Controllers
                 Price = model.Price,
                 ImgRef = model.ImgRef,
                 Description = model.Description,
-                Category = model.Category.ToString()
+                Category = model.Category
             }));
             
             return RedirectToAction("AddArticle", "Home");
