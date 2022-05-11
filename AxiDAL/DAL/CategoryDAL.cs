@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 using Dapper;
 
 namespace AxiDAL.DAL
 {
-    public class CategoryDAL
+    public class CategoryDAL : ICategoryDAL
     {
         private IDbConnection _dbConnection;
         private IList<ArticleDto> _dataset;

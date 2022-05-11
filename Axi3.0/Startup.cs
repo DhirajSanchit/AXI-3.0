@@ -50,6 +50,10 @@ namespace Axi3._0
             services.AddTransient<ArticleDAL>()
                 .AddTransient<IArticleDAL, ArticleDAL>(s => s.GetService<ArticleDAL>());
             
+            services.AddTransient<CategoryDAL>()
+                .AddTransient<ICategoryDAL, CategoryDAL>(s => s.GetService<CategoryDAL>());
+
+            
             //Service Container; 
             services.AddTransient<TestDapperContainer>()
                 .AddTransient<ITestDapperContainer, TestDapperContainer>(s => s.GetService<TestDapperContainer>());
