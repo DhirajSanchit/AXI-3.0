@@ -22,7 +22,12 @@ namespace AxiDAL.DAL
             _dbConnection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674;Password=DatabaseAXItim;");
         }
         
-     
+        public ArticleDAL(IDbConnection dbConnection)
+        {
+            _dbConnection = dbConnection;
+        }
+
+
         //Retrieves all articles
         public IList<ArticleDto> GetAll()
         {   
