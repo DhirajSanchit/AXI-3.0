@@ -108,14 +108,7 @@ namespace AxiDAL.DAL
                             articleDto.Category,
                             articleDto.Description 
                         });
-                    return _dbConnection.QuerySingle<ArticleDto>(sql2, new
-                    {
-                        articleDto.Name,
-                        articleDto.Price,
-                        articleDto.ImgRef,
-                        articleDto.Category,
-                        articleDto.Description
-                    }).Id;
+                    return _dbConnection.QuerySingle<int>(sql2);
                 }
             }
 
