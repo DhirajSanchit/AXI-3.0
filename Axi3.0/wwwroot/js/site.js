@@ -31,7 +31,7 @@ function openShipment(shipmentId) {
             clonedContent = $("#article-container").clone(true, true)
                 .attr('id', "shipmentArticle-" + x)
                 .show();
-            $("#delivery-modal").append($(clonedContent));
+            $("#delivery-container").append($(clonedContent));
             $(clonedContent).find(".article-container-name").text(element.Article.Name)
             $(clonedContent).find(".article-container-amount").text(element.ScannedAmount + "/" + element.Amount)
             $(clonedContent).find(".article-image").attr('src', element.Article.ImgRef)
@@ -44,7 +44,7 @@ function openShipment(shipmentId) {
 
 //adds 1 to the amount of scanned articles from this barcode
 function scanArticle(barcode) {
-    $("#delivery-modal").children().each(function (element) {
+    $("#delivery-container").children().each(function (element) {
         if ($(element).find(".article-barcode").text() === barcode) {
             let values = $(clonedContent).find(".article-container-amount").text().split("/");
             if (values[0] < values[1]) {
@@ -59,7 +59,7 @@ function scanArticle(barcode) {
 //adds the given amount to the amount of scanned articles from this barcode
 function scanArticleAmount(barcode, amount) {
     if (amount > 0) {
-        $("#delivery-modal").children().each(function (element) {
+        $("#delivery-container").children().each(function (element) {
             if ($(element).find(".article-barcode").text() === barcode) {
                 let values = $(clonedContent).find(".article-container-amount").text().split("/");
                 if (values[0] + amount <= values[1]) {
@@ -73,6 +73,38 @@ function scanArticleAmount(barcode, amount) {
         alert("Amount must be greater than 0");
     }
 }
+
+//submits the scanned articles to the server
+function submitShipment() {
+    let shipmentId = $("#info-box-id").text();
+    let shipmentArticles = [];
+    $("#delivery-container").children().each(function (element) {
+        let values = $(element).find(".article-container-amount").text().split("/");
+        shipmentArticles.push({
+            ShipmentId: shipmentId,
+            ArticleId: $(element).find(".article-barcode").text(),
+            ScannedAmount: values[0]
+        });
+    });
+    var settings = {
+        "url": "https://localhost:5001/Shipment/PostShipmentProcess/",//todo test this
+        "method": "Post",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(shipmentArticles)
+    };
+    $.ajax(settings).done(function (response) {
+        if (response.success) {
+            hideElement('delivery-modal');
+            alert("Shipment submitted");
+        } else {
+            alert("Shipment could not be submitted");
+        }
+    });
+}
+        
 
 function showArticleElement(elementId, name, category, price, description, imgurl) {
     $("#" + elementId).show()
