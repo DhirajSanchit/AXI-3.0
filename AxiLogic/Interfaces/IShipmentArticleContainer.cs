@@ -1,4 +1,5 @@
-﻿using AxiLogic.Classes;
+﻿using AxiDAL.DTOs;
+using AxiLogic.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace AxiLogic.Interfaces
 {
     public interface IShipmentArticleContainer
     {
-        public IReadOnlyCollection<ShipmentArticle> GetShipmentArticles();
+        public IReadOnlyCollection<ShipmentArticle> GetShipmentArticle();
         public void ClearShipmentArticles();
-        public List<IShipmentArticleDto>
+        public List<ShipmentArticleDto> GetAllShipmentArticles();
     }
 }
