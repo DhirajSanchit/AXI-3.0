@@ -20,11 +20,10 @@ namespace Axi3._0.Controllers
             //_tdc = tdc;
         }
 
-        public IActionResult Shipments()
-        {
-            var shipmentViewModel = new ShipmentViewModel();
-            //shipmentViewModel.
-            return null;
-        }
+        // public IActionResult Shipments()
+        // {
+        //     var shipmentViewModel = new ShipmentViewModel();
+        //     shipmentViewModel.
+        // }
     }
 }
