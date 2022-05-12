@@ -34,9 +34,23 @@ function openShipment(shipmentId) {
             $(clonedContent).find(".article-container-name").text(element.Article.Name)
             $(clonedContent).find(".article-container-amount").text(element.ScannedAmount + "/" + element.Amount)
             $(clonedContent).find(".article-image").attr('src', element.Article.ImgRef)
+            $(clonedContent).find(".article-barcode").text(element.Article.Barcode)
             x++;
         });
         showElement('delivery-modal');
+    });
+}
+
+function scanArticle(barcode) {
+    $("#delivery-modal").children().each(function(element) {
+        if ($(element).find(".article-barcode").text() === barcode) {
+            let values = $(clonedContent).find(".article-container-amount").text().split("/");
+            if (values[0] < values[1]) {
+                $(element).find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
+            } else {
+                alert("Article max amount is already scanned");
+            }
+        }            
     });
 }
 
