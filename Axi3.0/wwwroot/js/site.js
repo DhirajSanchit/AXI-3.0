@@ -24,7 +24,8 @@ function openShipment(shipmentId) {
         let res = JSON.parse(response);
         //fill in modal with data
         $("#info-box-id").text(shipmentId);
-        $("#info-box-date").text(res.shipment.Date);
+        let date = new Date(res.shipment.Date)
+        $("#info-box-date").text(date.toISOString().substring(0,10));
         let x = 0;
         res.shipmentArticles.forEach(element => {
             clonedContent = $("#article-container").clone(true, true)

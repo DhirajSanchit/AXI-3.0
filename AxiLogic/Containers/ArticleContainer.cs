@@ -38,7 +38,7 @@ namespace AxiLogic.Containers
             }
             var articleDto = new ArticleDto()
             {
-                Name = article.Name,
+                Name = article.Name, 
                 Price = article.Price,
                 Barcode = article.Barcode,
                 ImgRef = article.ImgRef,

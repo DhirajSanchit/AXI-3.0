@@ -137,7 +137,8 @@ body{
     height:16rem;
     margin-top:3%;
     margin-bottom:3%;
-    border-top:2px solid black;
+    border-top:1px solid black;
+    border-bottom:1px solid black;
 }
 .delivery-container p{
     font-size:3rem;
@@ -217,15 +218,19 @@ overflow:auto;
     width:16rem;
     height:16rem;
 }
-#article-container-name{
+.article-container-name{
     margin-left:17rem;
     margin-top:2rem;
 }
 
-#article-container-amount{
+.article-container-amount{
     right:0;
     margin-right:10%;
     margin-top:10rem;
+}
+
+.article-barcode{
+    display:none;
 }
 /*Style for Order*/
 .order-container{

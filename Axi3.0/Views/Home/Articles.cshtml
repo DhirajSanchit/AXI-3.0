@@ -20,7 +20,7 @@
 </div>
 <div class="article-sheet">
     @*For loop to create divs containing article info*@
-    @if (Model.ArticleModels.Any())
+    @if (Model.ArticleModels != null)
     {
         foreach(var article in Model.ArticleModels)
         {
