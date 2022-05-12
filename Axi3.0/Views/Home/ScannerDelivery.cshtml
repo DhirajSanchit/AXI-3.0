@@ -15,9 +15,9 @@
     @foreach (var shipment in Model.ShipmentModels)
     {
         <div class="delivery-container" onclick="showElement('delivery-modal')">
-            <p id="delivery-container-name">TestDelivery</p>
-            <p id="delivery-container-id">0</p>
-            <p id="delivery-container-date">@DateTime.Now</p>
+            <p id="delivery-container-name">@shipment.Name</p>
+            <p id="delivery-container-id">@shipment.InvoiceId</p>
+            <p id="delivery-container-date">@shipment.Date</p>
         </div>
     }
    
