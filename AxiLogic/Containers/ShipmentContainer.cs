@@ -1,24 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using AxiDAL.DTOs;
+using AxiDAL.Factories;
 using AxiDAL.Interfaces;
 using AxiLogic.Classes;
+using AxiLogic.Interfaces;
 
 namespace AxiLogic.Containers
 {
-    public class ShipmentContainer
+    public class ShipmentContainer : IShipmentContainer
     {
         private List<Shipment> _shipments;
-        private IShipmentDAL dal;
+        private DalFactory _dalFactory;
         
         public IReadOnlyCollection<Shipment> GetShipment()
         {
             return _shipments;
         }
 
-        public ShipmentContainer(IShipmentDAL iShipmentDAL)
+        
+        
+        public ShipmentContainer(DalFactory dalFactory)
         {
-            dal = iShipmentDAL;
+            _dalFactory = dalFactory;
         }
 
         public void ClearShipments()
@@ -32,7 +36,7 @@ namespace AxiLogic.Containers
         /// </summary>
         public List<ShipmentDto> GetProcessableShipments()
         {
-            var ShipmentDtos = dal.GetAllUnfinishedShipments();
+            var ShipmentDtos = _dalFactory.GetShipmentDal().GetAllUnfinishedShipments();
             List<ShipmentDto> shipments = new();
             foreach (var shipmentDto in ShipmentDtos)
             {

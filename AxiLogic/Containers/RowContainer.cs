@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using System.IO;
 using AxiDAL.DAL;
+using AxiDAL.Factories;
 using AxiDAL.Interfaces;
 using AxiLogic.Classes;
 using AxiLogic.Helpers;
+using AxiLogic.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace AxiLogic.Containers
 {
-    public class RowContainer
+    public class RowContainer : IRowContainer
     {
         public readonly List<Row> Rows;
-        private IRowDAL RowDal;
+        private DalFactory _dalFactory;
 
-        public RowContainer(IRowDAL iRowDal)
+        public RowContainer(DalFactory dalFactory)
         {
-            RowDal = iRowDal;
+            _dalFactory = dalFactory;
         }
 
         public void AddRow(Row row)

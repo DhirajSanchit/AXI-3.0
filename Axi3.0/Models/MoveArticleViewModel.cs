@@ -1,4 +1,5 @@
-﻿using AxiLogic.Helpers;
+﻿using AxiLogic.Factories;
+using AxiLogic.Helpers;
 
 namespace Axi3._0.Models
 {

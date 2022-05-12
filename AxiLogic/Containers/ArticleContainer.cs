@@ -10,11 +10,10 @@ namespace AxiLogic.Containers
 {
     public class ArticleContainer : IArticleContainer
     {
-        private List<Article> _articles;
-        private IArticleDAL iArticleDAL;
-        private DalFactory _factory;
+        private List<Article> _articles; 
+        private DalFactory _dalFactory;
         
-        public ArticleContainer(IArticleDAL context)
+        public ArticleContainer(DalFactory dalFactory)
         {
             
             /**
@@ -28,7 +27,7 @@ namespace AxiLogic.Containers
              * 
              **/
             
-            iArticleDAL = context;
+            _dalFactory = dalFactory;
         }
 
         public ArticleContainer()
@@ -56,7 +55,7 @@ namespace AxiLogic.Containers
                 Description = article.Description,
                 Category = article.Category
             };
-            article.Id = iArticleDAL.AddArticle(articleDto);
+            article.Id = _dalFactory.GetArticleDal().AddArticle(articleDto);
             _articles.Add(article);
         }
         
@@ -67,7 +66,7 @@ namespace AxiLogic.Containers
                 throw new ArgumentException("Article does not exist");
             }
 
-            iArticleDAL.DeleteArticle(article.ToDto());
+            _dalFactory.GetArticleDal().DeleteArticle(article.ToDto());
             _articles.Remove(article);
         }
 
@@ -93,7 +92,7 @@ namespace AxiLogic.Containers
         
         public void GetAllArticles()
         {
-            var articleDTOs = iArticleDAL.GetAll();
+            var articleDTOs = _dalFactory.GetArticleDal().GetAll();
             List<Article> articles = new();
             foreach (var articleDTO in articleDTOs)
             {

@@ -23,7 +23,8 @@ namespace Axi3._0.Controllers
         public IActionResult Shipments()
         {
             var shipmentViewModel = new ShipmentViewModel();
-            shipmentViewModel.
+            //shipmentViewModel.
+            return null;
         }
     }
 }

@@ -8,28 +8,10 @@ using AxiLogic.Helpers;
 namespace Axi3._0.Models
 {
     public class ArticleViewModel
-    {
-       public readonly List<ArticleModel> ArticleModels= new ();
-       
-       public void GetArticleModels()
-       {
-           // ArticleModels.Clear();
-           // //var articles = ContainerFactory.ArticleContainer.GetArticles();
-           // foreach (var article in articles)
-           // {
-           //     ArticleModels.Add(new ArticleModel()
-           //     {
-           //         Name = article.Name,
-           //         Id = article.Id,
-           //         Category = article.Category,
-           //         Barcode = article.Barcode,
-           //         ImgRef = article.ImgRef,
-           //         Description = article.Description,
-           //         Price = article.Price
-           //     });
-           // }
-       }
-
+    { 
+        
+        public readonly IList<ArticleModel> _articleModels;
+        
        public void CreateArticle(string name, double price, string imgRef, string category, string description)
        {
            var articleDto = new ArticleDto()
@@ -48,7 +30,7 @@ namespace Axi3._0.Models
                Category = category, 
                Description = description
            };
-           ArticleModels.Add(articleModel);
+           _articleModels.Add(articleModel);
            //ContainerFactory.ArticleContainer.AddArticle(new Article(articleDto));
        }
        

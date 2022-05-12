@@ -8,6 +8,7 @@ using AxiDAL.DAL;
 using AxiDAL.Factories;
 using AxiDAL.Interfaces;
 using AxiLogic.Containers;
+using AxiLogic.Factories;
 using AxiLogic.Helpers;
 using AxiLogic.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -43,7 +44,7 @@ namespace Axi3._0
             //var test = services.GetType().
             // //Tests DB Connection | Keep for debugging / demo puproses
 
-            //Service DAL
+            //Services for DalFactory; 
             services.AddTransient<TestDAL>()
                 .AddTransient<ITestDAL, TestDAL>(s => s.GetService<TestDAL>());
             
@@ -52,15 +53,27 @@ namespace Axi3._0
             
             services.AddTransient<CategoryDAL>()
                 .AddTransient<ICategoryDAL, CategoryDAL>(s => s.GetService<CategoryDAL>());
+            
+            
+            services.AddTransient<ShipmentDAL>()
+                .AddTransient<IShipmentDAL, ShipmentDAL>(s => s.GetService<ShipmentDAL>());
+            
+            services.AddTransient<RowDAL>()
+                .AddTransient<IRowDAL, RowDAL>(s => s.GetService<RowDAL>());
 
             
-            //Service Container; 
+            //Services for ContainerFactory; 
             services.AddTransient<TestDapperContainer>()
                 .AddTransient<ITestDapperContainer, TestDapperContainer>(s => s.GetService<TestDapperContainer>());
         
             services.AddTransient<ArticleContainer>()
                 .AddTransient<IArticleContainer, ArticleContainer>(s => s.GetService<ArticleContainer>());
             
+            services.AddTransient<ShipmentContainer>()
+                .AddTransient<IShipmentContainer, ShipmentContainer>(s => s.GetService<ShipmentContainer>());
+            
+            services.AddTransient<RowContainer>()
+                .AddTransient<IRowContainer, RowContainer>(s => s.GetService<RowContainer>());
             
             //DEPENDCY INJECTION    
 

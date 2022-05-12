@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using AxiDAL.DAL;
-using AxiLogic.Classes;
 using AxiLogic.Containers;
+using AxiLogic.Helpers;
 using AxiLogic.Interfaces;
 
-namespace AxiLogic.Helpers
+namespace AxiLogic.Factories
 {
     public class ContainerFactory
     {
         
         private readonly IServiceProvider _serviceProvider;
 
-        //public static ShipmentContainer ShipmentContainer = new(new ShipmentDAL()); 
-        //public static RowContainer RowContainer = new(new RowDAL());
         public static StockRowModelHelper StockRowModelHelper = new ();
         public static MoveArticleViewModelHelper PlaceTakeArticleViewModelHelper = new();
 
@@ -27,7 +22,6 @@ namespace AxiLogic.Helpers
         public ITestDapperContainer GetTestDapperContainer()
         {
             return (ITestDapperContainer)_serviceProvider.GetService(typeof(TestDapperContainer));
-
         }
 
         public IArticleContainer GetArticleContainer()
@@ -35,13 +29,18 @@ namespace AxiLogic.Helpers
             return (IArticleContainer)_serviceProvider.GetService(typeof(ArticleContainer));
         }
 
+        public IShipmentContainer GetShipmentContainer()
+        {
+            return (IShipmentContainer)_serviceProvider.GetService(typeof(ShipmentContainer));
+        }
+
+        public IRowContainer GetRowContainer()
+        {
+            return (IRowContainer)_serviceProvider.GetService(typeof(RowContainer));
+        }
+
         
         
-        
-
-
-
-
         // public static IArticleContainer Build()
         // {
         //   return new ArticleContainer();   

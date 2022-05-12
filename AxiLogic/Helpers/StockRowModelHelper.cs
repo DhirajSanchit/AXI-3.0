@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AxiLogic.Classes;
+using AxiLogic.Factories;
 
 namespace AxiLogic.Helpers
 {
@@ -8,17 +9,20 @@ namespace AxiLogic.Helpers
         /// <summary>
         /// Returns a row for any type of article within the stock.
         /// </summary>
-        public List<StockRow> GetStockRows()
-        {
-            var stockRows = new List<StockRow>();
-            //keeps track of id's of articles that have been added to stock rows
-            var addedArticles = new List<int>();
-            foreach (var row in ContainerFactory.RowContainer.Rows)
-            {
-                LoopRacks(row, addedArticles, stockRows);
-            }
-            return stockRows;
-        }
+        
+        
+        
+        // public List<StockRow> GetStockRows()
+        // {
+        //     var stockRows = new List<StockRow>();
+        //     //keeps track of id's of articles that have been added to stock rows
+        //     var addedArticles = new List<int>();
+        //     foreach (var row in ContainerFactory.RowContainer.Rows)
+        //     {
+        //         LoopRacks(row, addedArticles, stockRows);
+        //     }
+        //     return stockRows;
+        // }
 
         /// <summary>
         /// Loops through all racks in a row with the row's name.

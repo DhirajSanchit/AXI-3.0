@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AxiLogic.Classes;
+using AxiLogic.Factories;
 using AxiLogic.Helpers;
 
 namespace Axi3._0.Models
@@ -13,7 +14,7 @@ namespace Axi3._0.Models
         public void GetStockRows()
         {
             StockRows.Clear();
-            var stockRows = ContainerFactory.StockRowModelHelper.GetStockRows();
+            var stockRows = ContainerFactory.StockRowModelHelper;
             foreach (var row in stockRows)
             {
                 StockRows.Add(new StockRowModel()

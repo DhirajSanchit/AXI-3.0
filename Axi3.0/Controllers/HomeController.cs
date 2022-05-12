@@ -6,6 +6,7 @@ using Axi3._0.Models;
 using AxiDAL.DTOs;
 using AxiDAL.Interfaces;
 using AxiLogic.Classes;
+using AxiLogic.Factories;
 using AxiLogic.Helpers;
 using AxiLogic.Interfaces;
 
@@ -50,9 +51,10 @@ namespace Axi3._0.Controllers
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();
+            //articleViewModel._articleModels = _containerFactory.GetArticleContainer().GetAllArticles();
             //ContainerFactory.ArticleContainer.GetAllArticles();
-            articleViewModel.GetArticleModels(); //TODO < Should be from factory, not from articleViewModel
-            return View(articleViewModel);
+           // articleViewModel.GetArticleModels(); //TODO < Should be from factory, not from articleViewModel
+            return View(articleViewModel); 
         }
 
         [HttpPost]
