@@ -1,3 +1,4 @@
+@model ShipmentViewModel
 @{
     Layout = "_ScannerLayout";
 }
@@ -11,7 +12,7 @@
 <body>
 <div class="main-screen">
     <input type="search" class="search-bar" placeholder="&nbsp;Type to search...">    
-    @for (var i = 0; i < 10; i++)
+    @foreach (var shipment in Model.ShipmentModels)
     {
         <div class="delivery-container" onclick="showElement('delivery-modal')">
             <p id="delivery-container-name">TestDelivery</p>
