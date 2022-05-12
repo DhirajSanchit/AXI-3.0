@@ -18,11 +18,12 @@ namespace AxiDAL.DAL
         }
 
         //Get all pallets
-        public IList<PalletDto> GetAll()
+        public IList<PalletDto> GetAllFromPlank(PlankDto plank)
         {
             //Prepare query
             var sql = @"Select * " +
-                      "From [Pallet]";
+                      "From [Pallet] " +
+                      "Where PlankId = @Id";
 
             //Execute statement
             try
@@ -30,7 +31,10 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //execute query on database and return result
-                    return _dbConnection.Query<PalletDto>(sql).ToList();
+                    return _dbConnection.Query<PalletDto>(sql, new
+                    {
+                        plank.Id
+                    }).ToList();
                 }
             }
 
