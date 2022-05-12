@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AxiLogic.Classes;
 using System;
+using System.Collections;
 using AxiDAL.DTOs;
 using AxiDAL.Factories;
 using AxiDAL.Interfaces;
@@ -10,23 +11,11 @@ namespace AxiLogic.Containers
 {
     public class ArticleContainer : IArticleContainer
     {
-        private List<Article> _articles; 
+        private IList<Article> _articles; 
         private DalFactory _dalFactory;
         
         public ArticleContainer(DalFactory dalFactory)
         {
-            
-            /**
-             *factory = factory;
-            _articles = new List<Article>();
-            iArticleDAL = dal;
-            foreach (var articleDto in factory.GetArticleDal().GetAll())
-            {
-                _articles.Add(new Article(articleDto));
-            }
-             * 
-             **/
-            
             _dalFactory = dalFactory;
         }
 
@@ -35,8 +24,9 @@ namespace AxiLogic.Containers
             
         }
         
-        public IReadOnlyCollection<Article> GetArticles()
+        public IList<Article> GetArticles()
         {
+            
             return _articles;
         }
         
@@ -90,7 +80,7 @@ namespace AxiLogic.Containers
             return null;
         }
         
-        public void GetAllArticles()
+        public IList<Article> GetAllArticles()
         {
             var articleDTOs = _dalFactory.GetArticleDal().GetAll();
             List<Article> articles = new();
@@ -99,7 +89,7 @@ namespace AxiLogic.Containers
                 articles.Add(new Article(articleDTO));
             }
 
-            _articles = articles;
+            return _articles = articles;
         }
         
         // public Article AddArticle()

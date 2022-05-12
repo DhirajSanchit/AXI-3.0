@@ -18,4 +18,17 @@
       <ProjectReference Include="..\AxiLogic\AxiLogic.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="shipmentDalTest.cs" />
+      <Compile Remove="ContainerTests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="ContainerTests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="ContainerTests\**" />
+    </ItemGroup>
+
 </Project>

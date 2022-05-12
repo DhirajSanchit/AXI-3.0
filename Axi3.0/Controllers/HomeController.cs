@@ -51,8 +51,7 @@ namespace Axi3._0.Controllers
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();
-            //articleViewModel._articleModels = _containerFactory.GetArticleContainer().GetAllArticles();
-            //ContainerFactory.ArticleContainer.GetAllArticles();
+            articleViewModel.ArticleModels = _containerFactory.GetArticleContainer().GetAllArticles();
            // articleViewModel.GetArticleModels(); //TODO < Should be from factory, not from articleViewModel
             return View(articleViewModel); 
         }

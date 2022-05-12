@@ -8,8 +8,6 @@ namespace Axi3._0.Models
     public class StockModel
     {
         public List<StockRowModel> StockRows = new();
-
-        
         
         public void GetStockRows()
         {
