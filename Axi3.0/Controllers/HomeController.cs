@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -82,7 +83,15 @@ namespace Axi3._0.Controllers
 
         public IActionResult ScannerDelivery()
         {
-            return View();
+            //todo get data for shipment viewmodel
+            var model = new ShipmentViewModel();
+            var shipment = new ShipmentModel();
+            shipment.Id = 1;
+            shipment.Name = "Test shipment";
+            shipment.Date = DateTime.Now;
+            shipment.Processed = false;
+            model.ShipmentModels.Add(shipment);
+            return View(model);
         }
 
         public IActionResult ScannerOrder()

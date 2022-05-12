@@ -8,6 +8,38 @@ function showElement(elementId){
     document.getElementById(elementId).style.display = "block"
 }
 
+function openShipment(shipmentId) {
+    $("#info-box-back-wall").children().each(function(element){
+        $(element).hide();
+    });
+    var settings = {
+        "url": "https://localhost:5001/Shipment/GetShipmentArticles/" + shipmentId,//todo test this
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    };
+    $.ajax(settings).then((response) => {
+        let res = JSON.parse(response);
+        //fill in modal with data
+        $("#info-box-id").text(shipmentId);
+        $("#info-box-date").text(res.shipment.Date);
+        let x = 0;
+        res.shipmentArticles.forEach(element => {
+            clonedContent = $("#article-container").clone(true, true)
+                .attr('id', "shipmentArticle-" + x)
+                .show();
+            $("#delivery-modal").append($(clonedContent));
+            $(clonedContent).find(".article-container-name").attr('src', element.Article.Name)
+            $(clonedContent).find(".article-container-amount").attr('src', element.Article.Amount)
+            $(clonedContent).find(".article-image").attr('src', element.Article.ImgRef)
+            x++;
+        });
+        showElement('delivery-modal');
+    });
+}
+
 function showArticleElement(elementId, name, category, price, description, imgurl){
     $("#" + elementId).show()
     $("#articleImg").attr("src", imgurl)
@@ -45,3 +77,27 @@ function scrollMenuLeft(){
     menuOpen= !menuOpen;
 }
 // Write your JavaScript code.
+
+
+
+// var settings = {
+//         "url": "https://server.kattenradar.nl/CRB/contact-ticket",
+//         "method": "POST",
+//         "timeout": 0,
+//         "headers": {
+//             "Content-Type": "application/x-www-form-urlencoded"
+//         },
+//         "data": {
+//             tip: {
+//                 content: tip.content,
+// 
+//             },
+//             email: email,
+//             phone: phone
+//         }
+//     };
+//     $.ajax(settings).done(function (response) {
+//         if (response !== 'failed') {
+// 
+//         }
+//     });

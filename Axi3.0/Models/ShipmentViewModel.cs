@@ -8,6 +8,5 @@ namespace Axi3._0.Models
     public class ShipmentViewModel
     {
         public readonly List<ShipmentModel> ShipmentModels = new();
-
     }
 }
