@@ -29,6 +29,10 @@ namespace AxiDAL.Factories
             return (IShipmentDAL)serviceProvider.GetService(typeof(ShipmentDAL));
         }
 
+        public IShipmentArticleDAL GetShipmentArticleDAL()
+        {
+            return (IShipmentArticleDAL)serviceProvider.GetService(typeof(ShipmentArticleDAL));
+        }
         public IRowDAL GetRowDal()
         {
             return (IRowDAL)serviceProvider.GetService(typeof(RowDAL));

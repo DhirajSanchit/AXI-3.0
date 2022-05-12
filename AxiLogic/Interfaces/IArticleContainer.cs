@@ -7,7 +7,9 @@ namespace AxiLogic.Interfaces
 {
     public interface IArticleContainer
     {
-        public void GetAllArticles();
+        public IList<Article> GetAllArticles();
+        
+        //public void GetAllArticles();
         public Article GetArticleById(int articleID);
         public void AddArticle(Article article);
         public void RemoveArticle(Article article);

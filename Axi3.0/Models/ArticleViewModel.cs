@@ -10,7 +10,7 @@ namespace Axi3._0.Models
     public class ArticleViewModel
     { 
         
-        public readonly IList<ArticleModel> ArticleModels;
+        public IList<Article> ArticleModels;
         
        public void CreateArticle(string name, double price, string imgRef, string category, string description)
        {
@@ -30,7 +30,7 @@ namespace Axi3._0.Models
                Category = category, 
                Description = description
            };
-           ArticleModels.Add(articleModel);
+           //ArticleModels.Add(articleModel);
            //ContainerFactory.ArticleContainer.AddArticle(new Article(articleDto));
        }
        
