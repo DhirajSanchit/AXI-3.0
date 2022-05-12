@@ -30,7 +30,7 @@ namespace AxiDAL.DAL
             {
                 using (_dbConnection)
                 {
-                    //Execute query on Database, and return _dataset
+                    //Execute query on Database, and return result
                     return _dbConnection.Query<RowDto>(sql).ToList();
                 }
             }

@@ -12,20 +12,18 @@ namespace AxiDAL.DAL
     public class ShipmentDAL : IShipmentDAL
     {
         private IDbConnection _dbConnection;
-        private IList<ShipmentDto> _dataset;
-
-        public ShipmentDAL()
+        
+        public ShipmentDAL(IDbConnection dbConnection)
         {
-            _dbConnection =
-                new SqlConnection(
-                    "Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;");
+            _dbConnection = dbConnection;
         }
 
-        //Retrieves all Rows
+        //Retrieves all Shipments
         public IList<ShipmentDto> GetAll()
         {
             //Prepare Query
-            var sql = @"SELECT * FROM [Shipment]";
+            var sql = @"SELECT * " + 
+                      "FROM [Shipment]";
 
             //Execute statement
             try
@@ -33,8 +31,39 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //Execute query on Database, and return _dataset
-                    _dataset = _dbConnection.Query<ShipmentDto>(sql).ToList();
-                    return _dataset;
+                    return _dbConnection.Query<ShipmentDto>(sql).ToList();
+                }
+            }
+
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+
+            //Closes DB connection when finishing statement regardless of result(s)
+            finally
+            {
+                _dbConnection.Close();
+            }
+        } 
+        
+        //Retrieves all unfinished shipments
+        public IList<ShipmentDto> GetAllUnfinishedShipments()
+        {
+            //Prepare Query
+            var sql = @"SELECT * " + 
+                      "FROM [Shipment] " +
+                      "WHERE Processed = 0";
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database, and return _dataset
+                    return _dbConnection.Query<ShipmentDto>(sql).ToList();
                 }
             }
 
@@ -52,82 +81,95 @@ namespace AxiDAL.DAL
             }
         }
 
-        public bool
-            AddShipment(
-                ShipmentDto shipmentDto)
+        //Adds a new Shipment to the database and returns the id
+        public int AddShipment(ShipmentDto shipmentDto)
         {
-            const string sql =
-                "insert into [Shipment] ([ShipmentDate], [InvoiceID], [ShipmentName], [Processed]) values(@Date, @InvoiceId, @Name, @Processed)";
+            //Prepare Queries
+            var sql = @"insert into [Shipment] " +
+                      "values(@Date, @InvoiceId, @Name, @Processed)";
 
+            var sql2 = @"SELECT @@IDENTITY";
+            
+            //Execute statement
             try
             {
                 using (_dbConnection)
                 {
-                    var result = _dbConnection.Execute(sql, new
+                    //Execute query on Database, and return result
+                    _dbConnection.Execute(sql, new
                     {
                         shipmentDto.Date,
                         shipmentDto.InvoiceId,
                         shipmentDto.Name,
                         shipmentDto.Processed
-                    });
-                    //possibly replace bool with int rowsAffected?
-                    return true;
+                    }); 
+                    return _dbConnection.QuerySingle<int>(sql2);
                 }
             }
 
+            //Catches possible exceptions
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
 
+            //Closes DB connection when finishing statement regardless of result
             finally
             {
                 _dbConnection.Close();
             }
         }
 
-        public bool RemoveShipment(ShipmentDto shipmentDto)
+        //Removes a Shipment from the database
+        public void RemoveShipment(ShipmentDto shipmentDto)
         {
-            const string sql = "DELETE FROM [Shipment] WHERE [ShipmentID] = @ShipmentId";
+            //Prepare Query
+            var sql = @"DELETE FROM [Shipment] WHERE [Id] = @Id";
 
+            //Execute statement
             try
             {
                 using (_dbConnection)
                 {
-                    var result = _dbConnection.Execute(sql, shipmentDto.Id);
+                    //Execute query on Database
+                    _dbConnection.Execute(sql, shipmentDto.Id);
                 }
-
-                return true;
             }
 
+            
+            //Catches possible exceptions
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
 
+            //Closes DB connection when finishing statement regardless of result
             finally
             {
                 _dbConnection.Close();
             }
         }
 
-
-        public bool UpdateShipment(ShipmentDto shipmentDto)
+        //Updates a Shipment in the database
+        public void UpdateShipment(ShipmentDto shipmentDto)
         {
-            const string sql = "UPDATE [Shipment] " +
-                               "Set [ShipmentDate] = @Date," +
+            //Prepare Query
+            var sql = @"UPDATE [Shipment] " +
+                               "Set [Date] = @Date," +
                                "[InvoiceID] = @InvoiceId," +
-                               "[ShipmentName] = @Name," +
+                               "[Name] = @Name," +
                                "[Processed] = @Processed " +
-                               "WHERE [ShipmentID] = @Id";
+                               "WHERE [Id] = @Id";
 
+            //Execute statement
             try
             {
                 using (_dbConnection)
                 {
-                    var result = _dbConnection.Execute(sql, new
+                    //Execute query on Database
+                   _dbConnection.Execute(sql, new
                     {
                         shipmentDto.Date,
                         shipmentDto.InvoiceId,
@@ -135,16 +177,17 @@ namespace AxiDAL.DAL
                         shipmentDto.Processed,
                         shipmentDto.Id
                     });
-                    return true;
                 }
             }
 
+            //Catches possible exceptions
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
 
+            //Closes DB connection when finishing statement regardless of result
             finally
             {
                 _dbConnection.Close();

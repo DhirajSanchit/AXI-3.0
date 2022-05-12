@@ -7,12 +7,12 @@ namespace AxiLogic.Classes
     {
         public int Amount { get; private set; }
         public Article Article { get; private set; }
-        public int Id { get; private set; }
+        public int ShipmentId { get; private set; }
 
         public int ScannedAmount { get; private set; }
-        public ShipmentArticle(int id)
+        public ShipmentArticle(int shipmentId)
         {
-            Id = id;
+            ShipmentId = shipmentId;
         }
 
         public void SetAmount(int amount)
@@ -33,7 +33,7 @@ namespace AxiLogic.Classes
             {
                 Article = articleDto,
                 Amount = Amount,
-                Id = Id
+                ShipmentId = ShipmentId
             };
         }
     }

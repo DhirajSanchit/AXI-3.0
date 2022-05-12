@@ -20,12 +20,6 @@ namespace AxiLogic.Containers
             RowDal = iRowDal;
         }
 
-        // public RowContainer()
-        // {
-        //     var json = JObject.Parse(File.ReadAllText(@"../AxiLogic/Jsons/StockLayout.json"));
-        //     Rows = json["Rows"].ToObject<List<Row>>();
-        // }
-
         public void AddRow(Row row)
         {
             if (Rows.Contains(row))

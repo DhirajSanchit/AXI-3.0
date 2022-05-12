@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using AxiDAL.DAL;
 using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 
 namespace AxiLogic.Classes
 {
@@ -8,6 +10,7 @@ namespace AxiLogic.Classes
     {
         public readonly List <Rack> Racks = new ();
         public string Name;
+        private IRackDAL _rackDal;
 
         public Row(){}
         
