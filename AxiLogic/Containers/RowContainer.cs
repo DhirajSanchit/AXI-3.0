@@ -20,6 +20,7 @@ namespace AxiLogic.Containers
         public RowContainer(DalFactory dalFactory)
         {
             _dalFactory = dalFactory;
+            Rows = new List<Row>();
         }
 
         public void AddRow(Row row)
@@ -42,6 +43,11 @@ namespace AxiLogic.Containers
         
         public Row GetRowByName(string name)
         {
+            Rows.Clear();
+            foreach (var rowDto in _dalFactory.GetRowDal().GetAll())
+            {
+                Rows.Add(new Row(rowDto));
+            }
             foreach (var row in Rows)
             {
                 if (row.Name == name)
@@ -50,6 +56,17 @@ namespace AxiLogic.Containers
                 }
             }
             return null;
+        }
+        
+        //get all rows
+        public List<Row> GetRows()
+        {
+            Rows.Clear();
+             foreach (var rowDto in _dalFactory.GetRowDal().GetAll())
+             {
+                 Rows.Add(new Row(rowDto));
+             }
+            return Rows;
         }
     }
 }
