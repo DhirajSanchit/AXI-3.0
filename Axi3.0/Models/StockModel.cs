@@ -13,19 +13,19 @@ namespace Axi3._0.Models
         
         public void GetStockRows()
         {
-            StockRows.Clear();
-            var stockRows = ContainerFactory.StockRowModelHelper;
-            foreach (var row in stockRows)
-            {
-                StockRows.Add(new StockRowModel()
-                {
-                    ArticleName = row.ArticleName,
-                    ArticleId = row.ArticleId,
-                    Category = row.Category,
-                    Locations = row.Locations,
-                    Quantity = row.Quantity
-                });
-            }
+            // StockRows.Clear();
+            // var stockRows = ContainerFactory.StockRowModelHelper;
+            // foreach (var row in stockRows)
+            // {
+            //     StockRows.Add(new StockRowModel()
+            //     {
+            //         ArticleName = row.ArticleName,
+            //         ArticleId = row.ArticleId,
+            //         Category = row.Category,
+            //         Locations = row.Locations,
+            //         Quantity = row.Quantity
+            //     });
+            // }
         }
     }
 }
