@@ -1,15 +1,16 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-function hideElement(elementId){
+function hideElement(elementId) {
     document.getElementById(elementId).style.display = "none"
 }
-function showElement(elementId){
+
+function showElement(elementId) {
     document.getElementById(elementId).style.display = "block"
 }
 
 function openShipment(shipmentId) {
-    $("#info-box-back-wall").children().each(function(element){
+    $("#info-box-back-wall").children().each(function (element) {
         $(element).hide();
     });
     var settings = {
@@ -43,7 +44,7 @@ function openShipment(shipmentId) {
 
 //adds 1 to the amount of scanned articles from this barcode
 function scanArticle(barcode) {
-    $("#delivery-modal").children().each(function(element) {
+    $("#delivery-modal").children().each(function (element) {
         if ($(element).find(".article-barcode").text() === barcode) {
             let values = $(clonedContent).find(".article-container-amount").text().split("/");
             if (values[0] < values[1]) {
@@ -51,25 +52,29 @@ function scanArticle(barcode) {
             } else {
                 alert("Article max amount is already scanned");
             }
-        }            
+        }
     });
 }
 
 //adds the given amount to the amount of scanned articles from this barcode
 function scanArticleAmount(barcode, amount) {
-    $("#delivery-modal").children().each(function(element) {
-        if ($(element).find(".article-barcode").text() === barcode) {
-            let values = $(clonedContent).find(".article-container-amount").text().split("/");
-            if (values[0] + amount <= values[1]) {
-                $(element).find(".article-container-amount").text(parseInt(values[0]) + amount + "/" + values[1]);
-            } else {
-                alert("This amount is too high");
+    if (amount > 0) {
+        $("#delivery-modal").children().each(function (element) {
+            if ($(element).find(".article-barcode").text() === barcode) {
+                let values = $(clonedContent).find(".article-container-amount").text().split("/");
+                if (values[0] + amount <= values[1]) {
+                    $(element).find(".article-container-amount").text(parseInt(values[0]) + amount + "/" + values[1]);
+                } else {
+                    alert("This amount is too high");
+                }
             }
-        }            
-    });
+        });
+    } else {
+        alert("Amount must be greater than 0");
+    }
 }
 
-function showArticleElement(elementId, name, category, price, description, imgurl){
+function showArticleElement(elementId, name, category, price, description, imgurl) {
     $("#" + elementId).show()
     $("#articleImg").attr("src", imgurl)
     $("#articleName").text(name)
@@ -78,35 +83,36 @@ function showArticleElement(elementId, name, category, price, description, imgur
     $("#articleDescription").text(description)
 }
 
-function showArticleView(elementId, name, category, quantity, locations){
+function showArticleView(elementId, name, category, quantity, locations) {
     $("#" + elementId).show()
     $("#view-article-modal-name-label").text(name)
     $("#view-article-modal-category-label").text(category)
     $("#view-article-modal-quantity-label").text(quantity)
     $("#view-article-modal-textarea").text(locations)
 }
+
 let menuOpen;
-function scrollMenuLeft(){
-    if(menuOpen){
-        $('#slide-menu').each(function() {
+
+function scrollMenuLeft() {
+    if (menuOpen) {
+        $('#slide-menu').each(function () {
             $(this).animate({
                 left: '-30rem',
-            }, 300 );
+            }, 300);
         });
-        $('#hamburger-icon').attr("src","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png")
-    }
-    else{
-        $('#slide-menu').each(function() {
+        $('#hamburger-icon').attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png")
+    } else {
+        $('#slide-menu').each(function () {
             $(this).animate({
                 left: '0',
-            }, 300 );
+            }, 300);
         });
-        $('#hamburger-icon').attr("src","https://icons-for-free.com/download-icon-close+cross+delete+exit+remove+icon-1320085939816384527_512.png")
+        $('#hamburger-icon').attr("src", "https://icons-for-free.com/download-icon-close+cross+delete+exit+remove+icon-1320085939816384527_512.png")
     }
-    menuOpen= !menuOpen;
+    menuOpen = !menuOpen;
 }
-// Write your JavaScript code.
 
+// Write your JavaScript code.
 
 
 // var settings = {
