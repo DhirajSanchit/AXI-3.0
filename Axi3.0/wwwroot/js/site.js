@@ -32,7 +32,7 @@ function openShipment(shipmentId) {
                 .show();
             $("#delivery-modal").append($(clonedContent));
             $(clonedContent).find(".article-container-name").text(element.Article.Name)
-            $(clonedContent).find(".article-container-amount").text(element.Article.ScannedAmount + "/" + element.Article.Amount)
+            $(clonedContent).find(".article-container-amount").text(element.ScannedAmount + "/" + element.Amount)
             $(clonedContent).find(".article-image").attr('src', element.Article.ImgRef)
             x++;
         });
