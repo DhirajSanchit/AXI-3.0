@@ -13,8 +13,8 @@ namespace AxiLogic.Helpers
         
         private readonly IServiceProvider _serviceProvider;
 
-        //public static ShipmentContainer ShipmentContainer = new(new ShipmentDAL()); 
-        //public static RowContainer RowContainer = new(new RowDAL());
+        public static ShipmentContainer ShipmentContainer = new(new ShipmentDAL()); 
+        public static RowContainer RowContainer = new(new RowDAL());
         public static StockRowModelHelper StockRowModelHelper = new ();
         public static MoveArticleViewModelHelper PlaceTakeArticleViewModelHelper = new();
 
