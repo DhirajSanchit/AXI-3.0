@@ -41,6 +41,7 @@ function openShipment(shipmentId) {
     });
 }
 
+//adds 1 to the amount of scanned articles from this barcode
 function scanArticle(barcode) {
     $("#delivery-modal").children().each(function(element) {
         if ($(element).find(".article-barcode").text() === barcode) {
@@ -49,6 +50,20 @@ function scanArticle(barcode) {
                 $(element).find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
             } else {
                 alert("Article max amount is already scanned");
+            }
+        }            
+    });
+}
+
+//adds the given amount to the amount of scanned articles from this barcode
+function scanArticleAmount(barcode, amount) {
+    $("#delivery-modal").children().each(function(element) {
+        if ($(element).find(".article-barcode").text() === barcode) {
+            let values = $(clonedContent).find(".article-container-amount").text().split("/");
+            if (values[0] + amount <= values[1]) {
+                $(element).find(".article-container-amount").text(parseInt(values[0]) + amount + "/" + values[1]);
+            } else {
+                alert("This amount is too high");
             }
         }            
     });
