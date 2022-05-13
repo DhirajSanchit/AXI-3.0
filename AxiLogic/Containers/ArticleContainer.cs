@@ -59,8 +59,6 @@ namespace AxiLogic.Containers
             _dalFactory.GetArticleDal().DeleteArticle(article.ToDto());
             _articles.Remove(article);
         }
-
-
         
         public void ClearArticles()
         {
