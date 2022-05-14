@@ -26,9 +26,7 @@ function openShipment(shipmentId) {
         let date = new Date(res.shipment.Date)
         $("#info-box-date").text(date.toISOString().substring(0,10));
         let x = 0;
-        alert("0")
         res.shipmentArticles.forEach(element => {
-            alert("1")
             clonedContent = $("#article-container").clone(true, true)
                 .attr('id', "shipmentArticle-" + x)
                 .show();
@@ -40,7 +38,6 @@ function openShipment(shipmentId) {
             x++;
         });
         showElement('delivery-modal');
-        alert("2")
     });
 }
 
