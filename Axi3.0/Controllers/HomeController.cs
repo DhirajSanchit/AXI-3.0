@@ -86,8 +86,10 @@ namespace Axi3._0.Controllers
         [HttpGet]
         public IActionResult AddArticle()
         {
-            var articleModel = new ArticleModel();
-            articleModel.CategoryEnum = _containerFactory.GetCategoryContainer().GetAllCategories();
+            var articleModel = new ArticleModel
+            {
+                CategoryEnum = _containerFactory.GetCategoryContainer().GetAllCategories()
+            };
             return View(articleModel);
         }
 
@@ -155,17 +157,19 @@ namespace Axi3._0.Controllers
         [HttpGet]
         public IActionResult Categories()
         {
-            CategoryModel categoryModel = new();
-            categoryModel.Categories = _containerFactory.GetCategoryContainer().GetAllCategories();
+            CategoryModel categoryModel = new()
+            {
+                Categories = _containerFactory.GetCategoryContainer().GetAllCategories()
+            };
             return View(categoryModel);
         }
         
         [HttpPost]
-        public IActionResult AddCategory(CategoryModel model)
+        public IActionResult AddCategory(string categoryName)
         {
             _containerFactory.GetCategoryContainer().AddCategory(new CategoryDto()
             {
-                Name = model.Category.Name
+                Name = categoryName
             });
             return RedirectToAction("Categories", "Home");
         }
@@ -175,8 +179,8 @@ namespace Axi3._0.Controllers
         {
             _containerFactory.GetCategoryContainer().RemoveCategory(new CategoryDto()
             {
-                Name = model.Category.Name,
-                Id = model.Category.Id
+                Name = model.CategoryName,
+                Id = model.CategoryId
             });
             return RedirectToAction("Categories", "Home");
         }
@@ -186,8 +190,8 @@ namespace Axi3._0.Controllers
         {
             _containerFactory.GetCategoryContainer().UpdateCategory(new CategoryDto()
             {
-                Name = model.Category.Name,
-                Id = model.Category.Id
+                Name = model.CategoryName,
+                Id = model.CategoryId
             });
             return RedirectToAction("Categories", "Home");
         }

@@ -1,3 +1,4 @@
+@using AxiLogic.Classes
 @model CategoryModel
 @{
     Layout = null;
@@ -7,7 +8,7 @@
 
 <html lang="en">
 <head>
-    <title>title</title>
+    <title>Categories</title>
 </head>
 <body>
 <select size="@Model.Categories.Count" id="category-select">
@@ -19,7 +20,25 @@
 
 <button onclick='removeCategory($("#category-select").val())'>Remove Category</button>
 
-<input type="text" id="category-input">
-<button>Add Category</button>
+
+@using (Html.BeginForm("AddCategory", "Home", new{categoryName = Model.CategoryName} ,FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <p>@Html.LabelFor(model => model.CategoryName)</p>
+    @Html.TextBoxFor(model => model.CategoryName)
+
+    <button type="submit">Add Category</button>
+}
+
+@using (Html.BeginForm("UpdateCategory", "Home", new{categoryName = Model.CategoryName} ,FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <p>@Html.LabelFor(model => model.CategoryName)</p>
+    @Html.TextBoxFor(model => model.CategoryName)
+
+    <button type="submit">Update Category</button>
+}
 </body>
 </html>

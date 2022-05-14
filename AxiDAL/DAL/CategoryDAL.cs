@@ -54,7 +54,7 @@ namespace AxiDAL.DAL
         {
             //Prepare Query
             var sql = @"INSERT INTO [Category] " +
-                      "(Category) " +
+                      "(Name) " +
                       "VALUES (@Name)";
 
             //Execute statement
@@ -115,7 +115,7 @@ namespace AxiDAL.DAL
         public void UpdateCategory(CategoryDto categoryDto)
         {
             //Prepare Query
-            var sql = @"UPDATE [Category] SET [Category] = @Name WHERE [Id] = @Id";
+            var sql = @"UPDATE [Category] SET [Name] = @Name WHERE [Id] = @Id";
 
             //Execute statement
             try

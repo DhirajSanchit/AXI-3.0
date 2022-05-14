@@ -8,5 +8,7 @@ namespace Axi3._0.Models
     {
         public IList<CategoryDto> Categories;
         public Category Category;
+        public string CategoryName;
+        public int CategoryId;
     }
 }
