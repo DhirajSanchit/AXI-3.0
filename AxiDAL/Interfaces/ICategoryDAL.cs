@@ -10,5 +10,6 @@ namespace AxiDAL.Interfaces
         public void AddCategory(CategoryDto categoryDto);
 
         public void RemoveCategory(CategoryDto categoryDto);
+        public void UpdateCategory(CategoryDto categoryDto);
     }
 }

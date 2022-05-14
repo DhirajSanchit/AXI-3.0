@@ -110,5 +110,34 @@ namespace AxiDAL.DAL
             }
             
         }
+        
+        //update existing Category
+        public void UpdateCategory(CategoryDto categoryDto)
+        {
+            //Prepare Query
+            var sql = @"UPDATE [Category] SET [Category] = @Name WHERE [Id] = @Id";
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database
+                    _dbConnection.Execute(sql, new {categoryDto.Name, categoryDto.Id});
+                }
+            }
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+
+            // Closes DB connection when finishing statement regardless of result(s)
+            finally
+            {
+                _dbConnection.Close();
+            }
+        }
     }
 }

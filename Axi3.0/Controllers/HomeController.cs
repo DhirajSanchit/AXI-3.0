@@ -159,5 +159,39 @@ namespace Axi3._0.Controllers
             categoryModel.Categories = _containerFactory.GetCategoryContainer().GetAllCategories();
             return View(categoryModel);
         }
+        
+        [HttpPost]
+        public IActionResult AddCategory(CategoryModel model)
+        {
+            _containerFactory.GetCategoryContainer().AddCategory(new CategoryDto()
+            {
+                Name = model.Category.Name
+            });
+            return RedirectToAction("Categories", "Home");
+        }
+        
+        [HttpPost]
+        public IActionResult DeleteCategory(CategoryModel model)
+        {
+            _containerFactory.GetCategoryContainer().RemoveCategory(new CategoryDto()
+            {
+                Name = model.Category.Name,
+                Id = model.Category.Id
+            });
+            return RedirectToAction("Categories", "Home");
+        }
+        
+        [HttpPost]
+        public IActionResult UpdateCategory(CategoryModel model)
+        {
+            _containerFactory.GetCategoryContainer().UpdateCategory(new CategoryDto()
+            {
+                Name = model.Category.Name,
+                Id = model.Category.Id
+            });
+            return RedirectToAction("Categories", "Home");
+        }
+        
+        
     }
 }
