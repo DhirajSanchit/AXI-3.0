@@ -80,5 +80,15 @@ namespace AxiUnitTests.Scrubs
         {
             throw new System.NotImplementedException();
         }
+
+        public List<ArticleDto> GetByCategory(CategoryDto categoryDto)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void RemoveCategory(ArticleDto articleDto)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

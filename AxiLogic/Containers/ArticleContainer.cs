@@ -19,15 +19,21 @@ namespace AxiLogic.Containers
             _dalFactory = dalFactory;
         }
 
-        public ArticleContainer()
-        {
-            
-        }
-        
         public IList<Article> GetArticles()
         {
             
             return _articles;
+        }
+
+        public IList<Article> GetArticlesByCategory(CategoryDto categoryDto)
+        {
+            var articleDtOs = _dalFactory.GetArticleDal().GetByCategory(categoryDto);
+            List<Article> articles = new();
+            foreach (var articleDto in articleDtOs)
+            {
+                articles.Add(new Article(articleDto));
+            }
+            return _articles = articles;
         }
         
         public void AddArticle(Article article)
@@ -90,10 +96,17 @@ namespace AxiLogic.Containers
             return _articles = articles;
         }
         
-        // public Article AddArticle()
-        // {
-        //     
-        // }
+        public void RemoveCategoryFromArticles(CategoryDto categoryDto)
+        {
+            var articleDtOs = _dalFactory.GetArticleDal().GetByCategory(categoryDto);
+            List<Article> articles = new();
+            foreach (var articleDto in articleDtOs)
+            {
+                var article = new Article(articleDto);
+                article.Category = null;
+                _dalFactory.GetArticleDal().RemoveCategory(article.ToDto());
+            }
+        }
         
     
         public void UpdateArticle(Article article)

@@ -35,8 +35,11 @@ namespace AxiLogic.Containers
 
         public void RemoveCategory(CategoryDto categoryDto)
         {
+            //remove catyegory from articles
+            var articleContainer = new ArticleContainer(_dalFactory);
+            articleContainer.RemoveCategoryFromArticles(categoryDto);
+            //remove category from db
             _dalFactory.GetCategoryDal().RemoveCategory(categoryDto);
-            //todo this
         }
         
         public void UpdateCategory(CategoryDto categoryDto)

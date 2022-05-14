@@ -12,5 +12,7 @@ namespace AxiDAL.Interfaces
         public void UpdateArticle(ArticleDto articleDto);
         public void DeleteArticle(ArticleDto articleDto);
         public ArticleDto GetFromPallet(PalletDto palletDto);
+        public List<ArticleDto> GetByCategory(CategoryDto categoryDto);
+        public void RemoveCategory(ArticleDto articleDto);
     }
 }

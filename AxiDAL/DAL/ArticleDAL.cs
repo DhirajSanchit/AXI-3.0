@@ -232,5 +232,67 @@ namespace AxiDAL.DAL
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<ArticleDto> GetByCategory(CategoryDto categoryDto)
+        {
+            //Prepare Queries
+            var sql = "Select * from [Article] " +
+                "Where Category = @Id";
+            //todo change Category in article to categoryId?
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database and return results
+                    return _dbConnection.Query<ArticleDto>(sql, new
+                    {
+                        categoryDto.Id
+                    }).ToList();
+                }
+            }
+            
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+        }
+        
+        public void RemoveCategory(ArticleDto articleDto)
+        {
+            //Prepare Queries
+            var sql = "Update [Article] " +
+                "Set [Category] = null " +
+                "Where [Id] = @Id";
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database and return results
+                    _dbConnection.Execute(sql, new
+                    {
+                        articleDto.Id
+                    });
+                }
+            }
+            
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            
+            // Closes DB connection when finishing statement regardless of result
+            finally
+            {
+                _dbConnection.Close();
+            }
+        }
     }
 }
