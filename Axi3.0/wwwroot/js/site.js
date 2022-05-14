@@ -10,9 +10,7 @@ function showElement(elementId) {
 }
 
 function openShipment(shipmentId) {
-    $("#info-box-back-wall").children().each(function (element) {
-        $(element).hide();
-    });
+    $("#articleList").empty();
     var settings = {
         "url": "https://localhost:5001/Shipment/GetShipmentArticles/" + shipmentId,//todo test this
         "method": "GET",
@@ -28,11 +26,13 @@ function openShipment(shipmentId) {
         let date = new Date(res.shipment.Date)
         $("#info-box-date").text(date.toISOString().substring(0,10));
         let x = 0;
+        alert("0")
         res.shipmentArticles.forEach(element => {
+            alert("1")
             clonedContent = $("#article-container").clone(true, true)
                 .attr('id', "shipmentArticle-" + x)
                 .show();
-            $("#delivery-container").append($(clonedContent));
+            $("#articleList").append($(clonedContent));
             $(clonedContent).find(".article-container-name").text(element.Article.Name)
             $(clonedContent).find(".article-container-amount").text(element.ScannedAmount + "/" + element.Amount)
             $(clonedContent).find(".article-image").attr('src', element.Article.ImgRef)
@@ -40,6 +40,7 @@ function openShipment(shipmentId) {
             x++;
         });
         showElement('delivery-modal');
+        alert("2")
     });
 }
 
