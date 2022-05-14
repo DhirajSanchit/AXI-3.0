@@ -3,8 +3,8 @@ using AxiLogic.Classes;
 
 namespace AxiUnitTests.Scrubs
 {
-    public class EmployeeScrub : IEmployeeDAL
-    {
-        
-    }
+    // public class EmployeeScrub : IEmployeeDAL
+    // {
+    //     
+    // }
 }

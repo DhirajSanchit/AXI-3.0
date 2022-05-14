@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AxiLogic.Classes;
 
 namespace AxiLogic.Interfaces
@@ -7,5 +8,6 @@ namespace AxiLogic.Interfaces
         public void AddRow(Row row);
         public void RemoveRow(Row row);
         public Row GetRowByName(string name);
+        public List<Row> GetRows();
     }
 }

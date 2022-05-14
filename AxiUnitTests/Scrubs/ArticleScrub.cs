@@ -75,5 +75,10 @@ namespace AxiUnitTests.Scrubs
         {
             _articleDtos.Remove(articleDto);
         }
+
+        public ArticleDto GetFromPallet(PalletDto palletDto)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

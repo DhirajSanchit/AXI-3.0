@@ -23,6 +23,7 @@ namespace AxiLogic.Containers
         public ShipmentContainer(DalFactory dalFactory)
         {
             _dalFactory = dalFactory;
+            _shipments = new List<Shipment>();
         }
 
         public void ClearShipments()

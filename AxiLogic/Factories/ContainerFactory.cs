@@ -10,12 +10,14 @@ namespace AxiLogic.Factories
         
         private readonly IServiceProvider _serviceProvider;
 
-        public static StockRowModelHelper StockRowModelHelper = new ();
+        public static StockRowModelHelper StockRowModelHelper;
         public static MoveArticleViewModelHelper PlaceTakeArticleViewModelHelper = new();
 
         public ContainerFactory(IServiceProvider ServiceProvider)
         {
             _serviceProvider = ServiceProvider;
+            //todo change!!
+            StockRowModelHelper = new StockRowModelHelper(this);
         }
 
         //Method below is only used to return the test container. Used for proof of concept and testing of IoC and DI

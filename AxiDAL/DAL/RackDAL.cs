@@ -26,7 +26,7 @@ namespace AxiDAL.DAL
             //prepare query
             var sql = @"SELECT * " +
                       "FROM [Rack] " +
-                      "WHERE [RowId] = @RowId";
+                      "WHERE [RowId] = @Id";
 
             //execute statement
             try

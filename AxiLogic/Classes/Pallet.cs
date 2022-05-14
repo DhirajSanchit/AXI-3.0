@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Data.SqlClient;
+using AxiDAL.DAL;
 using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 
 namespace AxiLogic.Classes
 {
@@ -10,14 +13,19 @@ namespace AxiLogic.Classes
         public int Amount;
         public Article Article;
         public int Id;
-
+        private IArticleDAL _articleDAL;
+        
+        //todo implement factory
         public Pallet(int location)
         {
+            _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = location;
         }
         
         public Pallet(int location, int amount, Article article)
         {
+            _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
+
             Location = location;
             Amount = amount;
             Article = article;
@@ -25,10 +33,13 @@ namespace AxiLogic.Classes
 
         public Pallet(PalletDto palletDto)
         {
+            _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = palletDto.Location;
             Amount = palletDto.Amount;
-            Article = new Article(palletDto.Article);
+            Article = new Article(_articleDAL.GetFromPallet(palletDto));
         }
+        
+        
         public void PlaceArticle(Article article, int amount)
         {
             if (article != Article && Amount != 0) 

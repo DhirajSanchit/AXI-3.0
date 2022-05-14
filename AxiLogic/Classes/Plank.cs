@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using AxiDAL.DAL;
 using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 
 namespace AxiLogic.Classes
 {
@@ -8,29 +11,38 @@ namespace AxiLogic.Classes
     {
         public int Location;
         public readonly List<Pallet> Pallets = new();
+        private IPalletDAL _palletDAL;
 
         public IReadOnlyList<Pallet> GetPallets()
         {
             return Pallets;
         }
-
-        public Plank(){}
+        
+        //todo implement factory
+        
         
         public Plank(int location)
         {
+            _palletDAL = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = location;
         }
         
         public Plank(int location, List<Pallet> pallets)
         {
+            _palletDAL = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = location;
             Pallets = pallets;
         }
 
         public Plank(PlankDto plankDto)
         {
+            _palletDAL = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = plankDto.Location;
             Pallets = new List<Pallet>();
+            foreach (var palletDTO in _palletDAL.GetAllFromPlank(plankDto))
+            {
+               Pallets.Add(new Pallet(palletDTO));
+            }
         }
         
         public void AddPallet(Pallet pallet)

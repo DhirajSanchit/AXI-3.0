@@ -71,5 +71,18 @@ namespace AxiUnitTests.Classes
             //assert
             Assert.IsNotNull(plank);
         }
+        
+        [TestMethod]
+        public void TestGetPallets()
+        {
+            //arrange
+            var plank = new Plank(134);
+            var pallet = new Pallet(134);
+            plank.AddPallet(pallet);
+            //act
+            var pallets = plank.GetPallets();
+            //assert
+            Assert.IsTrue(pallets.Contains(pallet));
+        }
     }
 }

@@ -204,5 +204,33 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
+
+        //get article by AricleId in palletDTO
+        public ArticleDto GetFromPallet(PalletDto palletDto)
+        {
+            //Prepare Queries
+            var sql = "Select * from [Article] " +
+                "Where Id = @ArticleId";
+            
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database and return results
+                    return _dbConnection.QuerySingle<ArticleDto>(sql, new
+                    {
+                        palletDto.ArticleId
+                    });
+                }
+            }
+            
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

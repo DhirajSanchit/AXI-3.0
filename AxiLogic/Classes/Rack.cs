@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using AxiDAL.DAL;
 using AxiDAL.DTOs;
+using AxiDAL.Factories;
+using AxiDAL.Interfaces;
 
 namespace AxiLogic.Classes
 {
@@ -8,25 +12,31 @@ namespace AxiLogic.Classes
     {
         public int Location;
         public readonly List<Plank> Planks = new();
-        
-        public Rack(){}
+        private IPlankDAL _plankDal;
+        //todo implement factory
         
         public Rack(int location)
         {
             Location = location;
+            
+            _plankDal = new PlankDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
         }
         
         public Rack(int Location, List<Plank> Planks)
         {
             this.Location = Location;
             this.Planks = Planks;
+            _plankDal = new PlankDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
+
         }
 
         public Rack(RackDto rackDto)
         {
+            _plankDal = new PlankDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
+
             Location = rackDto.Location;
             Planks = new List<Plank>();
-            foreach (var plankDto in rackDto.plankDtos)
+            foreach (var plankDto in _plankDal.GetAllFromRack(rackDto))
             {
                 Planks.Add(new Plank(plankDto));
             }
