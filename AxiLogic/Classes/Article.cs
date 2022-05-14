@@ -14,10 +14,6 @@ namespace AxiLogic.Classes
         public int Id;
         public string Category;
 
-        public Article()
-        {
-        }
-
         public Article(string name, double price)
         {
             Name = name;
@@ -38,6 +34,7 @@ namespace AxiLogic.Classes
         {
             Id = articleDto.Id;
             Name = articleDto.Name;
+            Barcode = articleDto.Barcode;
             Price = articleDto.Price;
             ImgRef = articleDto.ImgRef;
             Category = articleDto.Category;

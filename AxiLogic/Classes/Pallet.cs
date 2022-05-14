@@ -9,8 +9,8 @@ namespace AxiLogic.Classes
         public int Location;
         public int Amount;
         public Article Article;
-        public Pallet(){}
-        
+        public int Id;
+
         public Pallet(int location)
         {
             Location = location;

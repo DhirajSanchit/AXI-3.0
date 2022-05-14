@@ -1,4 +1,5 @@
 ﻿using System;
+using AxiDAL.DTOs;
 using AxiLogic.Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -53,7 +54,7 @@ namespace AxiUnitTests.Classes
         
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void PlaceZeroAmount()
+        public void PlaceZero()
         {
             //arrange
             var pallet = new Pallet(461);
@@ -97,7 +98,7 @@ namespace AxiUnitTests.Classes
         
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void RemoveZeroAmount()
+        public void RemoveZero()
         {
             //arrange
             var pallet = new Pallet(1);
@@ -149,6 +150,145 @@ namespace AxiUnitTests.Classes
             var pallet = new Pallet(21);
             //assert
             Assert.IsNotNull(pallet);
+            Assert.AreEqual(21, pallet.Location);
+            Assert.AreEqual(0, pallet.Amount);
+            Assert.AreEqual(null, pallet.Article);
         }
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void CreatePalletWithNegativeLocation()
+        {
+            //arrange
+            //act
+            var pallet = new Pallet(-1);
+            //assert
+            Assert.IsNull(pallet);
+        }
+        
+        [TestMethod]
+        public void CreatePalletOverload()
+        {
+            //arrange
+            var article1 = new Article("testName",10.50);
+            //act
+            var pallet = new Pallet(21, 3, article1);
+            //assert
+            Assert.IsNotNull(pallet);
+            Assert.AreEqual(article1, pallet.Article);
+            Assert.AreEqual(3, pallet.Amount);
+            Assert.AreEqual(21, pallet.Location);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void CreatePalletOverloadWithNegativeLocation()
+        {
+            //arrange
+            var article1 = new Article("testName",10.50);
+            //act
+            var pallet = new Pallet(-1, 3, article1);
+            //assert
+            Assert.IsNull(pallet);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void CreatePalletOverloadWithNegativeAmount()
+        {
+            //arrange
+            var article1 = new Article("testName",10.50);
+            //act
+            var pallet = new Pallet(21, -1, article1);
+            //assert
+            Assert.IsNull(pallet);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void CreatePalletOverloadWithNullArticle()
+        {
+            //arrange
+            //act
+            var pallet = new Pallet(21, 3, null);
+            //assert
+            Assert.IsNull(pallet);
+        }
+        
+        [TestMethod]
+        public void CreatePalletFromDto()
+        {
+            //arrange
+            var article1 = new Article("testName",10.50);
+            var dto = new PalletDto(){Location = 21, Amount = 3, Article = article1.ToDto(), Id = 5};;
+            //act
+            var pallet = new Pallet(dto);
+            //assert
+            Assert.IsNotNull(pallet);
+            Assert.AreEqual(article1, pallet.Article);
+            Assert.AreEqual(3, pallet.Amount);
+            Assert.AreEqual(21, pallet.Location);
+            Assert.AreEqual(5, pallet.Id);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CreatePalletFromDtoWithNegativeLocation()
+        {
+            //arrange
+            var article1 = new Article("testName",10.50);
+            var dto = new PalletDto(){Location = -1, Amount = 3, Article = article1.ToDto(), Id = 5};;
+            //act
+            var pallet = new Pallet(dto);
+            //assert
+            Assert.IsNull(pallet);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CreatePalletFromDtoWithNegativeAmount()
+        {
+            //arrange
+            var article1 = new Article("testName",10.50);
+            var dto = new PalletDto(){Location = 21, Amount = -1, Article = article1.ToDto(), Id = 5};;
+            //act
+            var pallet = new Pallet(dto);
+            //assert
+            Assert.IsNull(pallet);
+        }
+        
+        //test todto
+        [TestMethod]
+        public void TestToDto()
+        {
+            //arrange
+            var article1 = new Article("testName",10.50);
+            var pallet = new Pallet(21, 3, article1);
+            //act
+            var dto = pallet.ToDto();
+            //assert
+            Assert.IsNotNull(dto);
+            Assert.AreEqual(article1.ToDto(), dto.Article);
+            Assert.AreEqual(3, dto.Amount);
+            Assert.AreEqual(21, dto.Location);
+            Assert.AreEqual(pallet.Id, dto.Id);
+        }
+        
+        //test todto with null article
+        [TestMethod]
+        public void TestToDtoWithNullArticle()
+        {
+            //arrange
+            var pallet = new Pallet(21, 3, null);
+            //act
+            var dto = pallet.ToDto();
+            //assert
+            Assert.IsNotNull(dto);
+            Assert.AreEqual(3, dto.Amount);
+            Assert.AreEqual(21, dto.Location);
+            Assert.AreEqual(pallet.Id, dto.Id);
+            Assert.IsNull(dto.Article);
+        }
+        
     }
 }
