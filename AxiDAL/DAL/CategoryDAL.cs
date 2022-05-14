@@ -19,10 +19,10 @@ namespace AxiDAL.DAL
         }
 
         //Get all categories
-        public IList<string> GetAllCategories()
+        public IList<CategoryDto> GetAllCategories()
         {
             //Prepare Query
-            var sql = @"SELECT Category FROM [Category]";
+            var sql = @"SELECT * FROM [Category]";
 
             //Execute statement
             try
@@ -30,7 +30,7 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //Execute query on Database, and return _dataset
-                    return _dbConnection.Query<string>(sql).ToList();
+                    return _dbConnection.Query<CategoryDto>(sql).ToList();
                 }
             }
 
@@ -47,14 +47,15 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
+        
 
         //add new category
-        public void AddCategory(string category)
+        public void AddCategory(CategoryDto categoryDto)
         {
             //Prepare Query
             var sql = @"INSERT INTO [Category] " +
                       "(Category) " +
-                      "VALUES (@Category)";
+                      "VALUES (@Name)";
 
             //Execute statement
             try
@@ -62,7 +63,7 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //Execute query on Database
-                    _dbConnection.Execute(sql, new {category});
+                    _dbConnection.Execute(sql, new {categoryDto.Name});
                 }
             }
 
@@ -78,6 +79,36 @@ namespace AxiDAL.DAL
             {
                 _dbConnection.Close();
             }
+        }
+        
+        //Remove existing Category
+        public void RemoveCategory(CategoryDto categoryDto)
+        {
+            //Prepare Query
+            var sql = @"DELETE FROM [Category] WHERE [Id] = @Id";
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database
+                    _dbConnection.Execute(sql, new {categoryDto.Id});
+                }
+            }
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+
+            // Closes DB connection when finishing statement regardless of result(s)
+            finally
+            {
+                _dbConnection.Close();
+            }
+            
         }
     }
 }

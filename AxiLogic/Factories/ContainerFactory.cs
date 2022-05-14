@@ -42,6 +42,11 @@ namespace AxiLogic.Factories
             return (IRowContainer)_serviceProvider.GetService(typeof(RowContainer));
         }
 
+        public ICategoryContainer GetCategoryContainer()
+        {
+            return (ICategoryContainer) _serviceProvider.GetService(typeof(CategoryContainer));
+        }
+
         
         
         // public static IArticleContainer Build()

@@ -1,0 +1,25 @@
+@model CategoryModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>title</title>
+</head>
+<body>
+<select size="@Model.Categories.Count" id="category-select">
+    @foreach (var category in Model.Categories)
+    {
+        <option value="@category.Id">@category.Name</option>
+    }
+</select>
+
+<button onclick='removeCategory($("#category-select").val())'>Remove Category</button>
+
+<input type="text" id="category-input">
+<button>Add Category</button>
+</body>
+</html>

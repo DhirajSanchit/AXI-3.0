@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using AxiDAL.DTOs;
 
-namespace AxiDAL.Interfaces
+namespace AxiLogic.Interfaces
 {
-    public interface ICategoryDAL
+    public interface ICategoryContainer
     {
         public IList<CategoryDto> GetAllCategories();
-
         public void AddCategory(CategoryDto categoryDto);
-
         public void RemoveCategory(CategoryDto categoryDto);
     }
 }

@@ -143,6 +143,10 @@ function scrollMenuLeft() {
     menuOpen = !menuOpen;
 }
 
+function removeCategory(){
+// todo replace with actual function 
+}
+
 // Write your JavaScript code.
 
 

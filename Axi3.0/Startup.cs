@@ -74,7 +74,9 @@ namespace Axi3._0
             
             services.AddTransient<RowContainer>()
                 .AddTransient<IRowContainer, RowContainer>(s => s.GetService<RowContainer>());
-            
+
+            services.AddTransient<CategoryContainer>()
+                .AddTransient<ICategoryContainer, CategoryContainer>(s => s.GetService<CategoryContainer>());
             //DEPENDCY INJECTION    
 
             //Data Absctraction Layers
@@ -82,9 +84,7 @@ namespace Axi3._0
  
             //Containers
             // services.AddScoped<IArticleContainer, ArticleContainer>();
-            //services.AddScoped<IArticleContainer, ArticleContainer>();
-            
-            services.AddScoped<ICategoryHelper, CategoryHelper>();
+            //services.AddScoped<IArticleContainer, ArticleContainer>()
 
             //TODO: Develop Proof of Concept below for SQLReader Version
             //services.AddScoped<ITestReaderContainer, TestReaderContainer>(); 

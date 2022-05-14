@@ -63,7 +63,7 @@ namespace AxiLogic.Classes
 
         public void RemoveArticle(Article article, int amount)
         {
-            if(article != Article)
+            if(article.Id != Article.Id)
             {
                 throw new ArgumentException("Articles do not match");
             }
@@ -81,6 +81,8 @@ namespace AxiLogic.Classes
                 Article = null;
             }
             Amount -= amount;
+            Article = article;
+            _palletDal.UpdatePallet(ToDto());
         }
 
         public PalletDto ToDto()

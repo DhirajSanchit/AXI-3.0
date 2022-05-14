@@ -17,16 +17,15 @@ namespace Axi3._0.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ITestDapperContainer _tdc;
-        private readonly ICategoryHelper _categoryHelper;
         public readonly ContainerFactory _containerFactory;
 
         public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc,
-            ContainerFactory ContainerFactory, ICategoryHelper CategoryHelper)
+            ContainerFactory ContainerFactory)
         {
             _logger = logger;
             _tdc = tdc;
             _containerFactory = ContainerFactory;
-            _categoryHelper = CategoryHelper;
+            
         }
 
         public IActionResult Index()
@@ -47,6 +46,17 @@ namespace Axi3._0.Controllers
         {
             var stockModel = new StockModel();
             stockModel.GetStockRows();
+            var categories = _containerFactory.GetCategoryContainer().GetAllCategories();
+            foreach (var row in stockModel.StockRows)
+            {
+                foreach (var categoryDto in categories)
+                {
+                    if (categoryDto.Id.ToString() == row.Category)
+                    {
+                        row.Category = categoryDto.Name;
+                    }
+                }
+            }
             return View(stockModel);
         }
 
@@ -77,7 +87,7 @@ namespace Axi3._0.Controllers
         public IActionResult AddArticle()
         {
             var articleModel = new ArticleModel();
-            articleModel.CategoryEnum = (List<string>) _categoryHelper.GetCategories();
+            articleModel.CategoryEnum = _containerFactory.GetCategoryContainer().GetAllCategories();
             return View(articleModel);
         }
 
@@ -126,12 +136,28 @@ namespace Axi3._0.Controllers
         {
             return View();
         }
-
+        
+        [HttpGet]
+        public IActionResult TakeArticle()
+        {
+            return View();
+        }
+        
         [HttpPost]
         public IActionResult TakeArticle(MoveArticleViewModel model)
         {
+            model.locationstring = model.RowName + "." + model.RackLocation + "." + model.PlankLocation + "." +
+                                   model.PalletLocation;
             model.TakeArticle();
-            return RedirectToAction("PlaceArticle", "Home");
+            return RedirectToAction("TakeArticle", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult Categories()
+        {
+            CategoryModel categoryModel = new();
+            categoryModel.Categories = _containerFactory.GetCategoryContainer().GetAllCategories();
+            return View(categoryModel);
         }
     }
 }

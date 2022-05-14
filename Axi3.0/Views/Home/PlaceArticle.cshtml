@@ -35,17 +35,6 @@
             Place Article
         </button>
     }
-    @using (Html.BeginForm("TakeArticle", "Home", FormMethod.Post))
-    {
-        <p>@Html.LabelFor(model => model.articleID, new { })</p>
-        @Html.TextBoxFor(model => model.articleID, new { })
-        <p>@Html.LabelFor(model => model.locationstring, new { })</p>
-        @Html.TextBoxFor(model => model.locationstring, new { })
-        <p>@Html.LabelFor(model => model.amount, new { })</p>
-        @Html.TextBoxFor(model => model.amount, new { })
-        <button type="submit">
-            Take Article
-        </button>
-    }
+    
 </body>
 </html>

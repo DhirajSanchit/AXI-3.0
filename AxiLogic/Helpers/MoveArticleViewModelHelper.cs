@@ -41,14 +41,15 @@ namespace AxiLogic.Helpers
             //to do: write test
             string[] locations = locationstring.Split('.');
 
-            // ArticleContainer articleContainer = new(); // = ContainerFactory.ArticleContainer;
-            // Article article = articleContainer.GetArticleById(articleID);
-            // RowContainer rowContainer = ContainerFactory.RowContainer;
-            // Row row = rowContainer.GetRowByName(locations[0]);
-            // Rack rack = row.GetRack(Convert.ToInt32(locations[1]));
-            // Plank plank = rack.GetPlankByLocation(Convert.ToInt32(locations[2]));
-            // Pallet pallet = plank.GetPallet(Convert.ToInt32(locations[3]));
-            // pallet.RemoveArticle(article, amount);
+            IArticleContainer articleContainer = _containerFactory.GetArticleContainer();
+            articleContainer.GetAllArticles();
+            Article article = articleContainer.GetArticleById(articleID);
+            IRowContainer rowContainer = _containerFactory.GetRowContainer();
+            Row row = rowContainer.GetRowByName(locations[0]);
+            Rack rack = row.GetRack(Convert.ToInt32(locations[1]));
+            Plank plank = rack.GetPlankByLocation(Convert.ToInt32(locations[2]));
+            Pallet pallet = plank.GetPallet(Convert.ToInt32(locations[3]));
+            pallet.RemoveArticle(article, amount);
         }
     }
 }
