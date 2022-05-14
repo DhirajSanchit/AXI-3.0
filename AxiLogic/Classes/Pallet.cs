@@ -11,21 +11,24 @@ namespace AxiLogic.Classes
     {
         public int Location;
         public int Amount;
+        public int PlankId;
         public Article Article;
         public int Id;
         private IArticleDAL _articleDAL;
+        private IPalletDAL _palletDal;
         
         //todo implement factory
         public Pallet(int location)
         {
             _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
+            _palletDal = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = location;
         }
         
         public Pallet(int location, int amount, Article article)
         {
             _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
-
+            _palletDal = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = location;
             Amount = amount;
             Article = article;
@@ -34,15 +37,18 @@ namespace AxiLogic.Classes
         public Pallet(PalletDto palletDto)
         {
             _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
+            _palletDal = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = palletDto.Location;
             Amount = palletDto.Amount;
+            PlankId = palletDto.PlankId;
+            Id = palletDto.Id;
             Article = new Article(_articleDAL.GetFromPallet(palletDto));
         }
         
         
         public void PlaceArticle(Article article, int amount)
         {
-            if (article != Article && Amount != 0) 
+            if (article.Id != Article.Id && Amount != 0 && article != null) 
             {
                 throw new ArgumentException("Articles do not match");
             }
@@ -52,6 +58,7 @@ namespace AxiLogic.Classes
             }
             Amount += amount;
             Article = article;
+            _palletDal.UpdatePallet(ToDto());
         }
 
         public void RemoveArticle(Article article, int amount)
@@ -78,10 +85,12 @@ namespace AxiLogic.Classes
 
         public PalletDto ToDto()
         {
-            ArticleDto articleDto = new();
-            Article.ToDto();
-            return new PalletDto {Article = articleDto,
-                                  Amount = Amount};
+            return new PalletDto {Article = Article.ToDto(),
+                                  Amount = Amount,
+                                  Id = Id,
+                                  Location = Location,
+                                  PlankId = PlankId
+            };
         }
     }
 }

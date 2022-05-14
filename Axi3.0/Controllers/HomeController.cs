@@ -20,7 +20,8 @@ namespace Axi3._0.Controllers
         private readonly ICategoryHelper _categoryHelper;
         public readonly ContainerFactory _containerFactory;
 
-        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc, ContainerFactory ContainerFactory, ICategoryHelper CategoryHelper)
+        public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc,
+            ContainerFactory ContainerFactory, ICategoryHelper CategoryHelper)
         {
             _logger = logger;
             _tdc = tdc;
@@ -53,8 +54,8 @@ namespace Axi3._0.Controllers
         {
             var articleViewModel = new ArticleViewModel();
             articleViewModel.ArticleModels = _containerFactory.GetArticleContainer().GetAllArticles();
-           // articleViewModel.GetArticleModels(); //TODO < Should be from factory, not from articleViewModel
-            return View(articleViewModel); 
+            // articleViewModel.GetArticleModels(); //TODO < Should be from factory, not from articleViewModel
+            return View(articleViewModel);
         }
 
         [HttpPost]
@@ -114,6 +115,8 @@ namespace Axi3._0.Controllers
         [HttpPost]
         public IActionResult PlaceArticle(MoveArticleViewModel model)
         {
+            model.locationstring = model.RowName + "." + model.RackLocation + "." + model.PlankLocation + "." +
+                                   model.PalletLocation;
             model.PlaceArticle();
             return RedirectToAction("PlaceArticle", "Home");
         }
