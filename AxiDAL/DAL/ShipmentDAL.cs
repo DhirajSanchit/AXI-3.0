@@ -156,7 +156,7 @@ namespace AxiDAL.DAL
         public void UpdateShipment(ShipmentDto shipmentDto)
         {
             //Prepare Query
-            var sql = @"UPDATE [Shipment] " +
+            var sql = @"UPDATE [Shipment] SET " +
                                "Set [Date] = @Date," +
                                "[InvoiceID] = @InvoiceId," +
                                "[Name] = @Name," +
@@ -207,6 +207,41 @@ namespace AxiDAL.DAL
                 {
                     //Execute query on Database
                     return _dbConnection.QuerySingle<ShipmentDto>(sql, new { id });
+                }
+            }
+
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+
+            //Closes DB connection when finishing statement regardless of result
+            finally
+            {
+                _dbConnection.Close();
+            }
+        }
+        
+        public void UpdateShipmentProgress(ShipmentDto shipmentDto)
+        {
+            //Prepare Query
+            var sql = @"UPDATE [Shipment] " +
+                               "Set [Processed] = @Processed " +
+                               "WHERE [Id] = @Id";
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database
+                    _dbConnection.Execute(sql, new
+                    {
+                        shipmentDto.Processed,
+                        shipmentDto.Id
+                    });
                 }
             }
 

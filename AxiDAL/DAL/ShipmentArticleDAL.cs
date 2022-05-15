@@ -162,5 +162,41 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
+        
+        public void UpdateShipmentArticleProgress(ShipmentArticleDto shipmentArticleDto)
+        {
+            //Prepare query
+            var sql = @"UPDATE [ShipmentArticle] " +
+                      "SET [ScannedAmount] = @ScannedAmount " +
+                      "WHERE [ShipmentId] = @ShipmentId " +
+                      "AND [ArticleId] = @ArticleId";
+            
+            //execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //execute query on database
+                    _dbConnection.Execute(sql, new
+                    {
+                        shipmentArticleDto.ScannedAmount,
+                        shipmentArticleDto.ShipmentId,
+                        shipmentArticleDto.ArticleId
+                    });
+                }
+            }
+            
+            //catches exceptions
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+            //closes database connection
+            finally
+            {
+                _dbConnection.Close();
+            }
+        }
     }
 }

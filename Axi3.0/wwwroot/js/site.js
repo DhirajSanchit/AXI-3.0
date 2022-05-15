@@ -1,6 +1,8 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
+let wait = false;
+
 function hideElement(elementId) {
     document.getElementById(elementId).style.display = "none"
 }
@@ -10,9 +12,14 @@ function showElement(elementId) {
 }
 
 function openShipment(shipmentId) {
+    //todo keep this?
+    if(wait) {
+        return;
+    }
+    wait = true;
     $("#article-list").empty();
     var settings = {
-        "url": "https://localhost:5001/Shipment/GetShipmentArticles/" + shipmentId,//todo test this
+        "url": "https://localhost:5001/Shipment/GetShipmentArticles/",//todo test this
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -35,17 +42,19 @@ function openShipment(shipmentId) {
             $(clonedContent).find(".article-container-name").text(element.Article.Name)
             $(clonedContent).find(".article-container-amount").text(element.ScannedAmount + "/" + element.Amount)
             $(clonedContent).find(".article-image").attr('src', element.Article.ImgRef)
-            $(clonedContent).find(".article-barcode").each(function(){$(this).text(element.Article.Barcode)})
+            $(clonedContent).find(".article-barcode").text(element.Article.Barcode)
+            $(clonedContent).find(".article-id").text(element.Article.Id)
             x++;
         });
         showElement('delivery-modal');
+        wait = false;
     });
 }
 
 //adds 1 to the amount of scanned articles from this barcode
 function scanDeliveryArticleAdd(barcode) {
     $(".add-btn-container").each(function (){
-        if($(this).find(".article-barcode").text() === barcode){
+        if ($(this).parent().find(".article-barcode").text() === barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
                     if (+values[0] < +values[1]) {
                         $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
@@ -58,7 +67,7 @@ function scanDeliveryArticleAdd(barcode) {
 
 function scanDeliveryArticleRemove(barcode) {
     $(".remove-btn-container").each(function () {
-        if ($(this).find(".article-barcode").text() === barcode) {
+        if ($(this).parent().find(".article-barcode").text() === barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
             if (+values[0] > 0) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
@@ -71,7 +80,7 @@ function scanDeliveryArticleRemove(barcode) {
 
 function scanOrderArticleAdd(barcode) {
     $(".add-btn-container").each(function (){
-        if($(this).find(".article-barcode").text() === barcode){
+        if ($(this).parent().find(".article-barcode").text() === barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
             if (+values[0] < +values[1]) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
@@ -84,7 +93,7 @@ function scanOrderArticleAdd(barcode) {
 
 function scanOrderArticleRemove(barcode) {
     $(".remove-btn-container").each(function () {
-        if ($(this).find(".article-barcode").text() === barcode) {
+        if ($(this).parent().find(".article-barcode").text() === barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
             if (+values[0] > 0) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
@@ -133,31 +142,34 @@ function setOrderArticleAmount(barcode, amount) {
 //submits the scanned articles to the server
 function submitShipment() {
     let shipmentId = $("#info-box-id").text();
-    let shipmentArticles = [];
-    $("#delivery-container").children().each(function (element) {
-        let values = $(element).find(".article-container-amount").text().split("/");
-        shipmentArticles.push({
-            ShipmentId: shipmentId,
-            ArticleId: $(element).find(".article-barcode").text(),
-            ScannedAmount: values[0]
+    let shipmentArticlesArr = [];
+    let processed = true;
+    $("#article-list").children().each(function () {
+        let values = $(this).find(".article-container-amount").text().split("/");
+        shipmentArticlesArr.push({
+                ShipmentId: shipmentId,
+                ArticleId: $(this).find(".article-id").text(),
+                ScannedAmount: values[0],
+                Amount: values[1]
         });
+        if(values[0] !== values[1]) {
+            processed = false;
+        }
     });
+    let shipmentArticles = JSON.stringify({shipmentArticles:shipmentArticlesArr});
     var settings = {
         "url": "https://localhost:5001/Shipment/PostShipmentProcess/",//todo test this
-        "method": "Post",
+        "method": "GET",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json"
         },
-        data: JSON.stringify(shipmentArticles)
+        data: {shipmentArticles: shipmentArticles, processed: processed}
     };
-    $.ajax(settings).done(function (response) {
-        if (response.success) {
-            hideElement('delivery-modal');
-            alert("Shipment submitted");
-        } else {
-            alert("Shipment could not be submitted");
-        }
+    $.ajax(settings).done(function () {
+        window.location.href = "https://localhost:5001/Home/ScannerDelivery";
+    }).catch(function () {
+        alert("Error submitting shipment");
     });
 }
 

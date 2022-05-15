@@ -11,5 +11,6 @@ namespace AxiDAL.Interfaces
         public void RemoveShipment(ShipmentDto shipmentDto);
         public void UpdateShipment(ShipmentDto shipmentDto);
         public ShipmentDto GetShipmentById(int id);
+        public void UpdateShipmentProgress(ShipmentDto shipmentDto);
     }
 }

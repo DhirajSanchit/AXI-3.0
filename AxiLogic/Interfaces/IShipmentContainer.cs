@@ -14,5 +14,6 @@ namespace AxiLogic.Interfaces
         public void RemoveShipment(Shipment shipment);
         public IList<ShipmentArticleDto> getShipmentArticles(int shipmentId);
         public ShipmentDto GetShipmentById(int shipmentId);
+        public void UpdateShipment(ShipmentDto shipmentDto);
     }
 }

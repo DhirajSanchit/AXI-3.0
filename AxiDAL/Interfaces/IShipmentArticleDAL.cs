@@ -9,6 +9,7 @@ namespace AxiDAL.Interfaces
         public int AddShipmentArticle(ShipmentArticleDto shipmentArticle);
         public void UpdateShipmentArticle(ShipmentArticleDto shipmentArticle);
         public void DeleteShipmentArticle(ShipmentArticleDto shipmentArticle);
+        public void UpdateShipmentArticleProgress(ShipmentArticleDto shipmentArticleDto);
 
     }
 }

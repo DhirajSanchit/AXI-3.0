@@ -84,5 +84,11 @@ namespace AxiLogic.Containers
         {
             return _dalFactory.GetShipmentDal().GetShipmentById(shipmentId);
         }
+        
+        public void UpdateShipment(ShipmentDto shipmentDto)
+        {
+            _dalFactory.GetShipmentDal().UpdateShipmentProgress(shipmentDto);
+            shipmentDto.ShipmentArticles.ForEach(x => _dalFactory.GetShipmentArticleDAL().UpdateShipmentArticleProgress(x));
+        }
     }
 }

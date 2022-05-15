@@ -53,5 +53,25 @@ namespace Axi3._0.Controllers
             jsonObj["shipment"] = JToken.FromObject(shipment);
             return jsonObj.ToString();
         }
+
+        public void PostShipmentProcess(string shipmentArticles, bool processed)
+        {
+            var jObject = JObject.Parse(shipmentArticles);
+            var shipmentDto = new ShipmentDto();
+            shipmentDto.ShipmentArticles = new List<ShipmentArticleDto>();
+            foreach (var obj in jObject["shipmentArticles"])
+            {
+                shipmentDto.ShipmentArticles.Add(new ShipmentArticleDto()
+                {
+                    Amount = (int)obj["Amount"],
+                    ArticleId = (int)obj["ArticleId"],
+                    ScannedAmount = (int)obj["ScannedAmount"],
+                    ShipmentId = (int)obj["ShipmentId"]
+                });
+            }
+            shipmentDto.Processed = processed;
+            shipmentDto.Id = jObject["shipmentArticles"].First()["ShipmentId"].Value<int>();    
+            _containerFactory.GetShipmentContainer().UpdateShipment(shipmentDto);
+        }
     }
 }
