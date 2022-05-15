@@ -42,7 +42,7 @@ function openShipment(shipmentId) {
 }
 
 //adds 1 to the amount of scanned articles from this barcode
-function scanArticle(barcode) {
+function scanDeliveryArticleAdd(barcode) {
     $("#delivery-container").children().each(function (element) {
         if ($(element).find(".article-barcode").text() === barcode) {
             let values = $(clonedContent).find(".article-container-amount").text().split("/");
@@ -55,10 +55,66 @@ function scanArticle(barcode) {
     });
 }
 
+function scanDeliveryArticleRemove(barcode) {
+    $("#delivery-container").children().each(function (element) {
+        if ($(element).find(".article-barcode").text() === barcode) {
+            let values = $(clonedContent).find(".article-container-amount").text().split("/");
+            if (values[0] > 0) {
+                $(element).find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
+            } else {
+                alert("Article amount is already 0");
+            }
+        }
+    });
+}
+
+function scanOrderArticleAdd(barcode) {
+    $("#order-container").children().each(function (element) {
+        if ($(element).find(".article-barcode").text() === barcode) {
+            let values = $(clonedContent).find(".article-container-amount").text().split("/");
+            if (values[0] < values[1]) {
+                $(element).find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
+            } else {
+                alert("Article max amount is already scanned");
+            }
+        }
+    });
+}
+
+function scanOrderArticleRemove(barcode) {
+    $("#order-container").children().each(function (element) {
+        if ($(element).find(".article-barcode").text() === barcode) {
+            let values = $(clonedContent).find(".article-container-amount").text().split("/");
+            if (values[0] > 0) {
+                $(element).find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
+            } else {
+                alert("Article amount is already 0");
+            }
+        }
+    });
+}
+
 //adds the given amount to the amount of scanned articles from this barcode
-function scanArticleAmount(barcode, amount) {
+function setDeliveryArticleAmount(barcode, amount) {
     if (amount > 0) {
         $("#delivery-container").children().each(function (element) {
+            if ($(element).find(".article-barcode").text() === barcode) {
+                let values = $(clonedContent).find(".article-container-amount").text().split("/");
+                if (values[0] + amount <= values[1]) {
+                    $(element).find(".article-container-amount").text(parseInt(values[0]) + amount + "/" + values[1]);
+                } else {
+                    alert("This amount is too high");
+                }
+            }
+        });
+    } else {
+        alert("Amount must be greater than 0");
+    }
+}
+
+function setOrderArticleAmount(barcode, amount) {
+    if (amount > 0) {
+        $("#order-container").children().each(function (element) {
             if ($(element).find(".article-barcode").text() === barcode) {
                 let values = $(clonedContent).find(".article-container-amount").text().split("/");
                 if (values[0] + amount <= values[1]) {
@@ -103,7 +159,37 @@ function submitShipment() {
         }
     });
 }
-        
+
+//submits the scanned articles to the server]
+function submitOrder() {
+    let orderId = $("#info-box-id").text();
+    let orderArticles = [];
+    $("#order-container").children().each(function (element) {
+        let values = $(element).find(".article-container-amount").text().split("/");
+        orderArticles.push({
+            OrderId: orderId,
+            ArticleId: $(element).find(".article-barcode").text(),
+            ScannedAmount: values[0]
+        });
+    });
+    var settings = {
+        "url": "https://localhost:5001/Order/PostOrderProcess/",//todo test this
+        "method": "Post",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(orderArticles)
+    };
+    $.ajax(settings).done(function (response) {
+        if (response.success) {
+            hideElement('order-modal');
+            alert("Order submitted");
+        } else {
+            alert("Order could not be submitted");
+        }
+    });
+}
 
 function showArticleElement(elementId, name, category, price, description, imgurl) {
     $("#" + elementId).show()
@@ -142,32 +228,3 @@ function scrollMenuLeft() {
     }
     menuOpen = !menuOpen;
 }
-
-function removeCategory(){
-// todo replace with actual function 
-}
-
-// Write your JavaScript code.
-
-
-// var settings = {
-//         "url": "https://server.kattenradar.nl/CRB/contact-ticket",
-//         "method": "POST",
-//         "timeout": 0,
-//         "headers": {
-//             "Content-Type": "application/x-www-form-urlencoded"
-//         },
-//         "data": {
-//             tip: {
-//                 content: tip.content,
-// 
-//             },
-//             email: email,
-//             phone: phone
-//         }
-//     };
-//     $.ajax(settings).done(function (response) {
-//         if (response !== 'failed') {
-// 
-//         }
-//     });
