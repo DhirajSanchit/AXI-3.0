@@ -31,7 +31,7 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //execute query on database and return result
-                    return _dbConnection.Query<ShipmentArticleDto>(sql, new {shipment.Id}).ToList();
+                    return _dbConnection.Query<ShipmentArticleDto>(sql, new {ShipmentId = shipment.Id}).ToList();
                 }
             }
 
@@ -67,7 +67,8 @@ namespace AxiDAL.DAL
                     {
                         shipmentArticle.ShipmentId,
                         shipmentArticle.Article.Id,
-                        shipmentArticle.Amount
+                        shipmentArticle.Amount,
+                        shipmentArticle.ScannedAmount
                     });
 
                     //get id of inserted shipment article

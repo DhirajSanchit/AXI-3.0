@@ -17,7 +17,8 @@ function openShipment(shipmentId) {
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json"
-        }
+        },
+        data: {shipmentId: shipmentId}
     };
     $.ajax(settings).then((response) => {
         let res = JSON.parse(response);

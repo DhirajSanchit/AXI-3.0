@@ -9,8 +9,10 @@ namespace AxiLogic.Interfaces
         public IReadOnlyCollection<Shipment> GetShipment();
         public void ClearShipments();
         public List<ShipmentDto> GetProcessableShipments();
-        public void LoadAllShipments();
+        public IList<ShipmentDto> GetAllUnfinishedShipments();
         public void AddShipment(Shipment shipment);
         public void RemoveShipment(Shipment shipment);
+        public IList<ShipmentArticleDto> getShipmentArticles(int shipmentId);
+        public ShipmentDto GetShipmentById(int shipmentId);
     }
 }

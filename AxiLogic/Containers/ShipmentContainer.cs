@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using AxiDAL.DTOs;
 using AxiDAL.Factories;
@@ -50,10 +51,10 @@ namespace AxiLogic.Containers
         /// <summary>
         /// Loads all shipments from DB.
         /// </summary>
-        public void LoadAllShipments()
+        public IList<ShipmentDto> GetAllUnfinishedShipments()
         {
-            //TODO get data from DB
-            //TODO make async?
+            //get all shipments from DB
+            return _dalFactory.GetShipmentDal().GetAllUnfinishedShipments();
         }
         
         public void AddShipment(Shipment shipment)
@@ -72,6 +73,16 @@ namespace AxiLogic.Containers
                 throw new ArgumentException("Can not remove non-contained shipment from list");
             }
             _shipments.Remove(shipment);
+        }
+
+        public IList<ShipmentArticleDto> getShipmentArticles(int shipmentId)
+        {
+            return _dalFactory.GetShipmentArticleDAL().GetAllShipmentArticlesFromShipment(new ShipmentDto() {Id = shipmentId});
+        }
+        
+        public ShipmentDto GetShipmentById(int shipmentId)
+        {
+            return _dalFactory.GetShipmentDal().GetShipmentById(shipmentId);
         }
     }
 }

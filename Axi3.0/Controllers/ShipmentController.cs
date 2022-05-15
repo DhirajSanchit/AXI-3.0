@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AxiDAL.DTOs;
+using AxiLogic.Factories;
 using Newtonsoft.Json.Linq;
 
 namespace Axi3._0.Controllers
@@ -14,12 +15,12 @@ namespace Axi3._0.Controllers
     public class ShipmentController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private ShipmentContainer _container;
-
-        public ShipmentController(ILogger<HomeController> logger)
+        public readonly ContainerFactory _containerFactory;
+        public ShipmentController(ILogger<HomeController> logger,
+            ContainerFactory containerFactory)
         {
             _logger = logger;
-            //_tdc = tdc;
+            _containerFactory = containerFactory;
         }
 
         // public IActionResult Shipments()
@@ -30,50 +31,23 @@ namespace Axi3._0.Controllers
         
         public string GetShipmentArticles(int shipmentId)
         {
-            //todo get actual shipment articles
-            var dto1 = new ShipmentArticleDto()
-            {
-                Amount = 3,
-                Article = new ArticleDto()
-                {
-                    Id = 1,
-                    Name = "Article 1",
-                    Price = 10,
-                    Barcode = "123",
-                    ImgRef = "/images/vector-Search.png",
-                    Category = "Test",
-                    Description = "Test"
-                },
-                ScannedAmount = 1,
-                ShipmentId = shipmentId
-            };
-            
-            var dto2 = new ShipmentArticleDto()
-            {
-                Amount = 6,
-                Article = new ArticleDto()
-                {
-                    Id = 2,
-                    Name = "Article 2",
-                    Price = 20,
-                    Barcode = "456",
-                    ImgRef = "/images/vector-Search.png",
-                    Category = "Test",
-                    Description = "Test"
-                },
-                ScannedAmount = 2,
-                ShipmentId = shipmentId
-            };
-
-            //todo get actual shipment data
-            var shipment = new ShipmentDto();
-            shipment.Id = shipmentId;
-            shipment.Name = "Shipment 1";
-            shipment.Date = DateTime.Now;
-            shipment.Processed = false;
+            //todo fix factory pattern
+            var articles = _containerFactory.GetShipmentContainer().getShipmentArticles(shipmentId);
+            var shipment = _containerFactory.GetShipmentContainer().GetShipmentById(shipmentId);
             var dtoList = new List<ShipmentArticleDto>();
-            dtoList.Add(dto1);
-            dtoList.Add(dto2);
+            foreach (var shipmentArticleDto in articles)
+            {
+               var article = _containerFactory.GetArticleContainer().GetArticleById(shipmentArticleDto.ArticleId);
+                
+                dtoList.Add(new ShipmentArticleDto()
+                {
+                    Amount = shipmentArticleDto.Amount,
+                    Article = article,
+                    ArticleId = article.Id,
+                    ScannedAmount = shipmentArticleDto.ScannedAmount,
+                    ShipmentId = shipment.Id
+                });
+            }
             var jsonObj = new JObject();
             jsonObj["shipmentArticles"] = JToken.FromObject(dtoList);
             jsonObj["shipment"] = JToken.FromObject(shipment);

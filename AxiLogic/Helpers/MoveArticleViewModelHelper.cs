@@ -26,7 +26,7 @@ namespace AxiLogic.Helpers
 
             IArticleContainer articleContainer = _containerFactory.GetArticleContainer();
             articleContainer.GetAllArticles();
-            Article article = articleContainer.GetArticleById(articleID);
+            Article article = new Article(articleContainer.GetArticleById(articleID));
             IRowContainer rowContainer = _containerFactory.GetRowContainer();
             Row row = rowContainer.GetRowByName(locations[0]);
             Rack rack = row.GetRack(Convert.ToInt32(locations[1]));
@@ -43,7 +43,7 @@ namespace AxiLogic.Helpers
 
             IArticleContainer articleContainer = _containerFactory.GetArticleContainer();
             articleContainer.GetAllArticles();
-            Article article = articleContainer.GetArticleById(articleID);
+            Article article = new Article(articleContainer.GetArticleById(articleID));
             IRowContainer rowContainer = _containerFactory.GetRowContainer();
             Row row = rowContainer.GetRowByName(locations[0]);
             Rack rack = row.GetRack(Convert.ToInt32(locations[1]));

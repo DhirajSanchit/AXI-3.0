@@ -294,5 +294,32 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
+
+        public ArticleDto GetArticleById(int Id)
+        {
+            //Prepare Queries
+            var sql = "Select * from [Article] " +
+                "Where Id = @Id";
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database and return results
+                    return _dbConnection.QuerySingle<ArticleDto>(sql, new
+                    {
+                        Id
+                    });
+                }
+            }
+            
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

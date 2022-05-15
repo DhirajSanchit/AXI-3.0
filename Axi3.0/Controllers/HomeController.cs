@@ -17,14 +17,14 @@ namespace Axi3._0.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ITestDapperContainer _tdc;
-        public readonly ContainerFactory _containerFactory;
+        public readonly ContainerFactory ContainerFactory;
 
         public HomeController(ILogger<HomeController> logger, ITestDapperContainer tdc,
-            ContainerFactory ContainerFactory)
+            ContainerFactory containerFactory)
         {
             _logger = logger;
             _tdc = tdc;
-            _containerFactory = ContainerFactory;
+            ContainerFactory = containerFactory;
             
         }
 
@@ -46,7 +46,7 @@ namespace Axi3._0.Controllers
         {
             var stockModel = new StockModel();
             stockModel.GetStockRows();
-            var categories = _containerFactory.GetCategoryContainer().GetAllCategories();
+            var categories = ContainerFactory.GetCategoryContainer().GetAllCategories();
             foreach (var row in stockModel.StockRows)
             {
                 foreach (var categoryDto in categories)
@@ -63,7 +63,7 @@ namespace Axi3._0.Controllers
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();
-            articleViewModel.ArticleModels = _containerFactory.GetArticleContainer().GetAllArticles();
+            articleViewModel.ArticleModels = ContainerFactory.GetArticleContainer().GetAllArticles();
             // articleViewModel.GetArticleModels(); //TODO < Should be from factory, not from articleViewModel
             return View(articleViewModel);
         }
@@ -71,7 +71,7 @@ namespace Axi3._0.Controllers
         [HttpPost]
         public IActionResult AddArticle(ArticleModel model)
         {
-            _containerFactory.GetArticleContainer().AddArticle(new Article(new ArticleDto()
+            ContainerFactory.GetArticleContainer().AddArticle(new Article(new ArticleDto()
             {
                 Name = model.Name,
                 Price = model.Price,
@@ -88,21 +88,26 @@ namespace Axi3._0.Controllers
         {
             var articleModel = new ArticleModel
             {
-                CategoryEnum = _containerFactory.GetCategoryContainer().GetAllCategories()
+                CategoryEnum = ContainerFactory.GetCategoryContainer().GetAllCategories()
             };
             return View(articleModel);
         }
 
         public IActionResult ScannerDelivery()
         {
-            //todo get data for shipment viewmodel
+            var shipments = ContainerFactory.GetShipmentContainer().GetAllUnfinishedShipments();
             var model = new ShipmentViewModel();
-            var shipment = new ShipmentModel();
-            shipment.Id = 1;
-            shipment.Name = "Test shipment";
-            shipment.Date = DateTime.Now;
-            shipment.Processed = false;
-            model.ShipmentModels.Add(shipment);
+            foreach (var shipmentDto in shipments)
+            {
+                model.ShipmentModels.Add(new ShipmentModel()
+                {
+                    Id = shipmentDto.Id,
+                    Name = shipmentDto.Name,
+                    Date = shipmentDto.Date,
+                    Processed = shipmentDto.Processed,
+                    InvoiceId = shipmentDto.InvoiceId
+                });
+            }
             return View(model);
         }
 
@@ -159,7 +164,7 @@ namespace Axi3._0.Controllers
         {
             CategoryModel categoryModel = new()
             {
-                Categories = _containerFactory.GetCategoryContainer().GetAllCategories()
+                Categories = ContainerFactory.GetCategoryContainer().GetAllCategories()
             };
             return View(categoryModel);
         }
@@ -167,7 +172,7 @@ namespace Axi3._0.Controllers
         [HttpPost]
         public IActionResult AddCategory(string categoryName)
         {
-            _containerFactory.GetCategoryContainer().AddCategory(new CategoryDto()
+            ContainerFactory.GetCategoryContainer().AddCategory(new CategoryDto()
             {
                 Name = categoryName
             });
@@ -177,7 +182,7 @@ namespace Axi3._0.Controllers
         [HttpPost]
         public IActionResult DeleteCategory(CategoryModel model)
         {
-            _containerFactory.GetCategoryContainer().RemoveCategory(new CategoryDto()
+            ContainerFactory.GetCategoryContainer().RemoveCategory(new CategoryDto()
             {
                 Name = model.CategoryName,
                 Id = model.CategoryId
@@ -188,7 +193,7 @@ namespace Axi3._0.Controllers
         [HttpPost]
         public IActionResult UpdateCategory(CategoryModel model)
         {
-            _containerFactory.GetCategoryContainer().UpdateCategory(new CategoryDto()
+            ContainerFactory.GetCategoryContainer().UpdateCategory(new CategoryDto()
             {
                 Name = model.CategoryName,
                 Id = model.CategoryId

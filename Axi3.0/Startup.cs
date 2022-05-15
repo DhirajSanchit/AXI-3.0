@@ -60,6 +60,9 @@ namespace Axi3._0
             
             services.AddTransient<RowDAL>()
                 .AddTransient<IRowDAL, RowDAL>(s => s.GetService<RowDAL>());
+            
+            services.AddTransient<ShipmentArticleDAL>()
+                .AddTransient<IShipmentArticleDAL, ShipmentArticleDAL>(s => s.GetService<ShipmentArticleDAL>());
 
             
             //Services for ContainerFactory; 

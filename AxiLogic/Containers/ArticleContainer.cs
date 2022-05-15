@@ -71,17 +71,9 @@ namespace AxiLogic.Containers
             _articles.Clear();
         }
         
-        public Article GetArticleById(int articleID)
+        public ArticleDto GetArticleById(int articleID)
         {
-            foreach (var article in _articles)
-            {
-                if (article.Id == articleID)
-                {
-                    return article;
-                }
-            }
-
-            return null;
+            return _dalFactory.GetArticleDal().GetArticleById(articleID);
         }
         
         public IList<Article> GetAllArticles()

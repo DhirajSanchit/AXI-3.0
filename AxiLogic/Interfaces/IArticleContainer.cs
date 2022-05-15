@@ -10,7 +10,7 @@ namespace AxiLogic.Interfaces
         public IList<Article> GetAllArticles();
         
         //public void GetAllArticles();
-        public Article GetArticleById(int articleID);
+        public ArticleDto GetArticleById(int articleID);
         public void AddArticle(Article article);
         public void RemoveArticle(Article article);
         public void UpdateArticle(Article article);

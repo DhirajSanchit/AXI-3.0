@@ -193,5 +193,35 @@ namespace AxiDAL.DAL
                 _dbConnection.Close();
             }
         }
+        
+        //get a specific shipment from database
+        public ShipmentDto GetShipmentById(int id)
+        {
+            //Prepare Query
+            var sql = @"SELECT * FROM [Shipment] WHERE [Id] = @Id";
+
+            //Execute statement
+            try
+            {
+                using (_dbConnection)
+                {
+                    //Execute query on Database
+                    return _dbConnection.QuerySingle<ShipmentDto>(sql, new { id });
+                }
+            }
+
+            //Catches possible exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+
+            //Closes DB connection when finishing statement regardless of result
+            finally
+            {
+                _dbConnection.Close();
+            }
+        }
     }
 }

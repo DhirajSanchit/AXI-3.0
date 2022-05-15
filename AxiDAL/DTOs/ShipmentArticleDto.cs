@@ -6,5 +6,6 @@ namespace AxiDAL.DTOs
         public int Amount;
         public ArticleDto Article;
         public int ShipmentId;
+        public int ArticleId;
     }
 }

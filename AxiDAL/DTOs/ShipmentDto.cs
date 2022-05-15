@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace AxiDAL.DTOs
 {
@@ -9,5 +10,6 @@ namespace AxiDAL.DTOs
         public string Name;
         public int Id;
         public bool Processed;
+        public List<ShipmentArticleDto> ShipmentArticles;
     }
 }

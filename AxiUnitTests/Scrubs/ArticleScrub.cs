@@ -90,5 +90,10 @@ namespace AxiUnitTests.Scrubs
         {
             throw new System.NotImplementedException();
         }
+
+        public ArticleDto GetArticleById(int Id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
