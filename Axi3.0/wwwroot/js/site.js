@@ -10,7 +10,7 @@ function showElement(elementId) {
 }
 
 function openShipment(shipmentId) {
-    $("#articleList").empty();
+    $("#article-list").empty();
     var settings = {
         "url": "https://localhost:5001/Shipment/GetShipmentArticles/" + shipmentId,//todo test this
         "method": "GET",
@@ -31,11 +31,11 @@ function openShipment(shipmentId) {
             clonedContent = $("#article-container").clone(true, true)
                 .attr('id', "shipmentArticle-" + x)
                 .show();
-            $("#articleList").append($(clonedContent));
+            $("#article-list").append($(clonedContent));
             $(clonedContent).find(".article-container-name").text(element.Article.Name)
             $(clonedContent).find(".article-container-amount").text(element.ScannedAmount + "/" + element.Amount)
             $(clonedContent).find(".article-image").attr('src', element.Article.ImgRef)
-            $(clonedContent).find(".article-barcode").text(element.Article.Barcode)
+            $(clonedContent).find(".article-barcode").each(function(){$(this).text(element.Article.Barcode)})
             x++;
         });
         showElement('delivery-modal');
@@ -44,24 +44,24 @@ function openShipment(shipmentId) {
 
 //adds 1 to the amount of scanned articles from this barcode
 function scanDeliveryArticleAdd(barcode) {
-    $("#delivery-container").children().each(function (element) {
-        if ($(element).find(".article-barcode").text() === barcode) {
-            let values = $(clonedContent).find(".article-container-amount").text().split("/");
-            if (values[0] < values[1]) {
-                $(element).find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
-            } else {
-                alert("Article max amount is already scanned");
-            }
+    $(".add-btn-container").each(function (){
+        if($(this).find(".article-barcode").text() === barcode){
+            let values = $(this).parent().find(".article-container-amount").text().split("/");
+                    if (+values[0] < +values[1]) {
+                        $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
+                    } else {
+                        alert("Article max amount is already scanned");
+                    }
         }
-    });
+    })
 }
 
 function scanDeliveryArticleRemove(barcode) {
-    $("#delivery-container").children().each(function (element) {
-        if ($(element).find(".article-barcode").text() === barcode) {
-            let values = $(clonedContent).find(".article-container-amount").text().split("/");
-            if (values[0] > 0) {
-                $(element).find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
+    $(".remove-btn-container").each(function () {
+        if ($(this).find(".article-barcode").text() === barcode) {
+            let values = $(this).parent().find(".article-container-amount").text().split("/");
+            if (+values[0] > 0) {
+                $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
             } else {
                 alert("Article amount is already 0");
             }
@@ -70,24 +70,24 @@ function scanDeliveryArticleRemove(barcode) {
 }
 
 function scanOrderArticleAdd(barcode) {
-    $("#order-container").children().each(function (element) {
-        if ($(element).find(".article-barcode").text() === barcode) {
-            let values = $(clonedContent).find(".article-container-amount").text().split("/");
-            if (values[0] < values[1]) {
-                $(element).find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
+    $(".add-btn-container").each(function (){
+        if($(this).find(".article-barcode").text() === barcode){
+            let values = $(this).parent().find(".article-container-amount").text().split("/");
+            if (+values[0] < +values[1]) {
+                $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
             } else {
                 alert("Article max amount is already scanned");
             }
         }
-    });
+    })
 }
 
 function scanOrderArticleRemove(barcode) {
-    $("#order-container").children().each(function (element) {
-        if ($(element).find(".article-barcode").text() === barcode) {
-            let values = $(clonedContent).find(".article-container-amount").text().split("/");
-            if (values[0] > 0) {
-                $(element).find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
+    $(".remove-btn-container").each(function () {
+        if ($(this).find(".article-barcode").text() === barcode) {
+            let values = $(this).parent().find(".article-container-amount").text().split("/");
+            if (+values[0] > 0) {
+                $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
             } else {
                 alert("Article amount is already 0");
             }
@@ -161,7 +161,7 @@ function submitShipment() {
     });
 }
 
-//submits the scanned articles to the server]
+//submits the scanned articles to the server
 function submitOrder() {
     let orderId = $("#info-box-id").text();
     let orderArticles = [];
