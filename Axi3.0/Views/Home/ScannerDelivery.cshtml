@@ -29,7 +29,8 @@
     }
     <div class="delivery-modal" id="delivery-modal">
         <div class="info-box">
-            <div class="delivery-modal-return" onclick="hideElement('delivery-modal')"> < </div> @*TODO shouldn't be on the page > confirm delivery button instead*@
+            <div class="delivery-modal-return" onclick="hideElement('delivery-modal')"> < </div> @*TODO shouldn't be on the page > submit delivery button instead*@
+            <button class="submit-button btn-active" style="position:absolute; right:3rem; margin-top: 8rem; height: 5rem; width: 18rem; font-size: 2rem">Submit Delivery</button>
             <p id="info-box-id">Invoice Id: 0</p>
             <p id="info-box-date">Date: @DateTime.Now</p>
         </div>
@@ -38,6 +39,8 @@
             <div class="article-image-box">
                 <img src="~/images/vector-Search.png" alt="article-image" class="article-image">
             </div>
+            <img src="~/images/add.png" alt="add-button" style="height:80px; width:auto; position:absolute; right:12rem; margin-top: 10.5rem">
+            <img src="~/images/remove.png" alt="remove-button" style="height:80px; width: auto; position:absolute; right:18rem; margin-top: 10.5rem">
             <p class="article-container-name">ArticleName</p>
             <p class="article-container-amount">0/10</p>
         </div>
