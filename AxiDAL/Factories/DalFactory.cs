@@ -38,6 +38,16 @@ namespace AxiDAL.Factories
             return (IRowDAL)serviceProvider.GetService(typeof(RowDAL));
         }
         
+        public IOrderArticleDAL GetOrderArticleDal()
+        {
+            return (IOrderArticleDAL)serviceProvider.GetService(typeof(IOrderArticleDAL));
+        }
+        
+        public IOrderDAL GetOrderDal()
+        {
+            return (IOrderDAL)serviceProvider.GetService(typeof(IOrderDAL));
+        }
+        
         
         //TODO: Revise with cleaner code
         public ICategoryDAL GetCategoryDal()
