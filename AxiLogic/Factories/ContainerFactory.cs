@@ -37,6 +37,11 @@ namespace AxiLogic.Factories
             return (IShipmentContainer)_serviceProvider.GetService(typeof(ShipmentContainer));
         }
 
+        public IOrderContainer GetOrderContainer()
+        {
+            return (IOrderContainer) _serviceProvider.GetService(typeof(OrderContainer));
+        }
+
         public IRowContainer GetRowContainer()
         {
             return (IRowContainer)_serviceProvider.GetService(typeof(RowContainer));

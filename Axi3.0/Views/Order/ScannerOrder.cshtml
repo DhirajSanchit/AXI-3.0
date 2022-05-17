@@ -1,0 +1,55 @@
+@model OrderViewModel
+@{
+    Layout = "_ScannerLayout";
+}
+
+<!DOCTYPE html>
+
+<html lang="eng">
+<head>
+    <title>Orders</title>
+</head>
+<body>
+<div class="main-screen">
+    <input type="search" class="search-bar" placeholder="&nbsp;Type to search...">
+    @if (Model.OrderModels != null)
+    {
+        foreach (var order in Model.OrderModels)
+        {
+            <div class="order-container" onclick="openOrder(@order.Id)">
+                <p id="order-container-name">@order.Name</p>
+                <p id="order-container-id">@order.InvoiceId</p>
+                <p id="order-container-date">@order.Date</p>
+            </div>
+        }
+    }
+    <div class="order-modal" id="order-modal">
+            <div class="info-box">
+                <div class="order-modal-return" onclick="hideElement('order-modal')"> < </div>
+                <button class="submit-button btn-active" style="position:absolute; right:3rem; margin-top: 8rem; height: 5rem; width: 18rem; font-size: 2rem" onclick="submitOrder()">Submit Order</button>
+                <p id="info-box-id">Invoice Id: 0</p>
+                <p id="info-box-date">Date: @DateTime.Now</p>
+            </div>
+        <div class="info-box-back-wall"></div>
+        <div class="article-container" id="article-container" style="display:none">
+                              <div class="article-image-box">
+                                  <img src="~/images/vector-Search.png" alt="article-image" class="article-image">
+                              </div>
+                              <div class="add-btn-container" onclick='scanOrderArticleAdd($(this).parent().find(".article-barcode").text())' style="height:80px; width:auto; position:absolute; right:12rem; margin-top: 10.5rem; cursor: pointer">
+                                  <img src="~/images/add.png" alt="add-button" style="height:80px; width:auto">
+                                  </div>
+                              <div class="remove-btn-container" onclick='scanOrderArticleRemove($(this).parent().find(".article-barcode").text())'  style="height:80px; width: auto; position:absolute; right:18rem; margin-top: 10.5rem; cursor: pointer">
+                                  <img src="~/images/remove.png" alt="remove-button" style="height:80px; width:auto">
+                              </div>
+                <p class="article-container-name">ArticleName</p>
+                <p class="article-container-amount">0/10</p>
+                <div class="article-barcode" style="visibility:hidden">Lorem</div>
+                <div class="article-id" style="visibility:hidden">Lorem</div>
+            </div>
+        <div id="article-list">
+            
+        </div>
+    </div>   
+</div>
+</body>
+</html>

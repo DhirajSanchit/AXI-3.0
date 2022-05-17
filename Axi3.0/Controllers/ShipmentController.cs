@@ -15,7 +15,7 @@ namespace Axi3._0.Controllers
     public class ShipmentController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        public readonly ContainerFactory _containerFactory;
+        private readonly ContainerFactory _containerFactory;
         public ShipmentController(ILogger<HomeController> logger,
             ContainerFactory containerFactory)
         {
@@ -28,7 +28,23 @@ namespace Axi3._0.Controllers
         //     var shipmentViewModel = new ShipmentViewModel();
         //     shipmentViewModel.
         // }
-        
+        public IActionResult ScannerDelivery()
+        {
+            var shipments = _containerFactory.GetShipmentContainer().GetAllUnfinishedShipments();
+            var model = new ShipmentViewModel();
+            foreach (var shipmentDto in shipments)
+            {
+                model.ShipmentModels.Add(new ShipmentModel()
+                {
+                    Id = shipmentDto.Id,
+                    Name = shipmentDto.Name,
+                    Date = shipmentDto.Date,
+                    Processed = shipmentDto.Processed,
+                    InvoiceId = shipmentDto.InvoiceId
+                });
+            }
+            return View(model);
+        }
         public string GetShipmentArticles(int shipmentId)
         {
             //todo fix factory pattern

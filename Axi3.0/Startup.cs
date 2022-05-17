@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AxiDAL.DAL;
 using AxiDAL.Factories;
 using AxiDAL.Interfaces;
+using AxiLogic.Classes;
 using AxiLogic.Containers;
 using AxiLogic.Factories;
 using AxiLogic.Helpers;
@@ -64,6 +65,11 @@ namespace Axi3._0
             services.AddTransient<ShipmentArticleDAL>()
                 .AddTransient<IShipmentArticleDAL, ShipmentArticleDAL>(s => s.GetService<ShipmentArticleDAL>());
 
+            services.AddTransient<OrderDAL>()
+                .AddTransient<IOrderDAL, OrderDAL>(s => s.GetService<OrderDAL>());
+
+            services.AddTransient<OrderArticleDAL>()
+                .AddTransient<IOrderArticleDAL, OrderArticleDAL>(s => s.GetService<OrderArticleDAL>());
             
             //Services for ContainerFactory; 
             services.AddTransient<TestDapperContainer>()
@@ -80,6 +86,9 @@ namespace Axi3._0
 
             services.AddTransient<CategoryContainer>()
                 .AddTransient<ICategoryContainer, CategoryContainer>(s => s.GetService<CategoryContainer>());
+
+            services.AddTransient<OrderContainer>()
+                .AddTransient<IOrderContainer, OrderContainer>(s=> s.GetService<OrderContainer>());
             //DEPENDCY INJECTION    
 
             //Data Absctraction Layers

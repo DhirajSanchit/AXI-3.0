@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using AxiDAL.DTOs;
+using AxiDAL.Interfaces;
 using Dapper;
 
 namespace AxiDAL.DAL
 {
-    public class OrderArticleDAL
+    public class OrderArticleDAL : IOrderArticleDAL
     {
          private IDbConnection _dbConnection;
 

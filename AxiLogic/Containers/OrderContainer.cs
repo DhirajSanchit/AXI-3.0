@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using AxiDAL.DTOs;
 using AxiDAL.Factories;
 using AxiLogic.Classes;
+using AxiLogic.Interfaces;
 
 namespace AxiLogic.Containers
 {
-    public class OrderContainer
+    public class OrderContainer : IOrderContainer
     {
         private List<Order> _orders;
         private DalFactory _dalFactory;

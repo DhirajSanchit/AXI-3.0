@@ -51,6 +51,45 @@ function openShipment(shipmentId) {
     });
 }
 
+function openOrder(orderId) {
+    //todo keep this?
+    if(wait) {
+        return;
+    }
+    wait = true;
+    $("#article-list").empty();
+    var settings = {
+        "url": "https://localhost:5001/Order/GetOrderArticles/",//todo test this
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        data: {orderId: orderId}
+    };
+    $.ajax(settings).then((response) => {
+        let res = JSON.parse(response);
+        //fill in modal with data
+        $("#info-box-id").text(orderId);
+        let date = new Date(res.order.Date)
+        $("#info-box-date").text(date.toISOString().substring(0,10));
+        let x = 0;
+        res.orderArticles.forEach(element => {
+            clonedContent = $("#article-container").clone(true, true)
+                .attr('id', "orderArticle-" + x)
+                .show();
+            $("#article-list").append($(clonedContent));
+            $(clonedContent).find(".article-container-name").text(element.Article.Name)
+            $(clonedContent).find(".article-container-amount").text(element.ScannedAmount + "/" + element.Amount)
+            $(clonedContent).find(".article-image").attr('src', element.Article.ImgRef)
+            $(clonedContent).find(".article-barcode").text(element.Article.Barcode)
+            $(clonedContent).find(".article-id").text(element.Article.Id)
+            x++;
+        });
+        showElement('order-modal');
+        wait = false;
+    });
+}
 //adds 1 to the amount of scanned articles from this barcode
 function scanDeliveryArticleAdd(barcode) {
     $(".add-btn-container").each(function (){
@@ -167,42 +206,74 @@ function submitShipment() {
         data: {shipmentArticles: shipmentArticles, processed: processed}
     };
     $.ajax(settings).done(function () {
-        window.location.href = "https://localhost:5001/Home/ScannerDelivery";
+        window.location.href = "https://localhost:5001/Shipment/ScannerDelivery";
     }).catch(function () {
         alert("Error submitting shipment");
     });
 }
-
-//submits the scanned articles to the server
 function submitOrder() {
     let orderId = $("#info-box-id").text();
-    let orderArticles = [];
-    $("#order-container").children().each(function (element) {
-        let values = $(element).find(".article-container-amount").text().split("/");
-        orderArticles.push({
-            OrderId: orderId,
-            ArticleId: $(element).find(".article-barcode").text(),
-            ScannedAmount: values[0]
+    let orderArticlesArr = [];
+    let processed = true;
+    $("#article-list").children().each(function () {
+        let values = $(this).find(".article-container-amount").text().split("/");
+        orderArticlesArr.push({
+                OrderId: orderId,
+                ArticleId: $(this).find(".article-id").text(),
+                ScannedAmount: values[0],
+                Amount: values[1]
         });
+        if(values[0] !== values[1]) {
+            processed = false;
+        }
     });
+    let orderArticles = JSON.stringify({orderArticles:orderArticlesArr});
     var settings = {
         "url": "https://localhost:5001/Order/PostOrderProcess/",//todo test this
-        "method": "Post",
+        "method": "GET",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json"
         },
-        data: JSON.stringify(orderArticles)
+        data: {orderArticles: orderArticles, processed: processed}
     };
-    $.ajax(settings).done(function (response) {
-        if (response.success) {
-            hideElement('order-modal');
-            alert("Order submitted");
-        } else {
-            alert("Order could not be submitted");
-        }
+    $.ajax(settings).done(function () {
+        window.location.href = "https://localhost:5001/Order/ScannerOrder";
+    }).catch(function () {
+        alert("Error submitting order");
     });
 }
+
+//submits the scanned articles to the server
+// function submitOrder() {
+//     let orderId = $("#info-box-id").text();
+//     let orderArticles = [];
+//     $("#order-container").children().each(function (element) {
+//         let values = $(element).find(".article-container-amount").text().split("/");
+//         orderArticles.push({
+//             OrderId: orderId,
+//             ArticleId: $(element).find(".article-barcode").text(),
+//             ScannedAmount: values[0]
+//         });
+//     });
+//     var settings = {
+//         "url": "https://localhost:5001/Order/PostOrderProcess/",//todo test this
+//         "method": "Post",
+//         "timeout": 0,
+//         "headers": {
+//             "Content-Type": "application/json"
+//         },
+//         data: JSON.stringify(orderArticles)
+//     };
+//     $.ajax(settings).done(function (response) {
+//         if (response.success) {
+//             hideElement('order-modal');
+//             alert("Order submitted");
+//         } else {
+//             alert("Order could not be submitted");
+//         }
+//     });
+// }
 
 function showArticleElement(elementId, name, category, price, description, imgurl) {
     $("#" + elementId).show()

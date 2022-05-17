@@ -23,7 +23,7 @@ namespace AxiDAL.DAL
         {
             //Prepare Query
             var sql = @"SELECT * " + 
-                      "FROM [Order]";
+                      "FROM [ClientOrder]";
 
             //Execute statement
             try
@@ -54,7 +54,7 @@ namespace AxiDAL.DAL
         {
             //Prepare Query
             var sql = @"SELECT * " + 
-                      "FROM [Order] " +
+                      "FROM [ClientOrder] " +
                       "WHERE Processed = 0";
 
             //Execute statement
@@ -85,7 +85,7 @@ namespace AxiDAL.DAL
         public int AddOrder(OrderDto orderDto)
         {
             //Prepare Queries
-            var sql = @"insert into [Order] " +
+            var sql = @"insert into [ClientOrder] " +
                       "values(@Date, @InvoiceId, @Name, @Processed)";
 
             var sql2 = @"SELECT @@IDENTITY";
@@ -125,7 +125,7 @@ namespace AxiDAL.DAL
         public void RemoveOrder(OrderDto orderDto)
         {
             //Prepare Query
-            var sql = @"DELETE FROM [Order] WHERE [Id] = @Id";
+            var sql = @"DELETE FROM [ClientOrder] WHERE [Id] = @Id";
 
             //Execute statement
             try
@@ -156,7 +156,7 @@ namespace AxiDAL.DAL
         public void UpdateOrder(OrderDto orderDto)
         {
             //Prepare Query
-            var sql = @"UPDATE [Order] SET " +
+            var sql = @"UPDATE [ClientOrder] SET " +
                                "Set [Date] = @Date," +
                                "[InvoiceID] = @InvoiceId," +
                                "[Name] = @Name," +
@@ -198,7 +198,7 @@ namespace AxiDAL.DAL
         public OrderDto GetOrderById(int id)
         {
             //Prepare Query
-            var sql = @"SELECT * FROM [Order] WHERE [Id] = @Id";
+            var sql = @"SELECT * FROM [ClientOrder] WHERE [Id] = @Id";
 
             //Execute statement
             try
@@ -227,7 +227,7 @@ namespace AxiDAL.DAL
         public void UpdateOrderProgress(OrderDto orderDto)
         {
             //Prepare Query
-            var sql = @"UPDATE [Order] " +
+            var sql = @"UPDATE [ClientOrder] " +
                                "Set [Processed] = @Processed " +
                                "WHERE [Id] = @Id";
 
