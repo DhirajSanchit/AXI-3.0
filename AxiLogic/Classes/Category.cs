@@ -4,7 +4,7 @@ namespace AxiLogic.Classes
 {
     public class Category
     {
-        public string Name;
-        public int Id;
+        public string Name ;
+        public int Id { get; }
     }
 }

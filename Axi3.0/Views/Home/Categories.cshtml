@@ -1,7 +1,7 @@
+@using AxiLogic.Classes 
 @model CategoryModel
 @{
-    Layout = null;
-}
+    Layout = null;}
 
 <!DOCTYPE html>
 
@@ -10,34 +10,36 @@
     <title>Categories</title>
 </head>
 <body>
-<select size="@Model.Categories.Count" id="category-select">
-    @foreach (var category in Model.Categories)
-    {
-        <option value="@category.Id">@category.Name</option>
-    }
-</select>
 
-<button onclick='removeCategory($("#category-select").val())'>Remove Category</button>
+ @{
+     var listItems = new List<SelectListItem>();
+            if (Model.Categories != null)
+            {
+                foreach (var category in Model.Categories)
+                {
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = @category.Name,
+                        Value = @category.Id.ToString()
+                    });
+                }
+            }
+ }
 
-
-@using (Html.BeginForm("AddCategory", "Home", new{categoryName = Model.CategoryName} ,FormMethod.Post))
+@using (Html.BeginForm())
 {
+    @Html.DropDownListFor(model => model.CategoryId, listItems, "Choose A Category", new { @class = "category-dropdown" })
+    <button type="submit" name="Remove Category" value="Remove Category" 
+            formaction="DeleteCategory" formmethod="post">Remove Category</button> 
+ 
     @Html.AntiForgeryToken()
-    
     <p>@Html.LabelFor(model => model.CategoryName)</p>
     @Html.TextBoxFor(model => model.CategoryName)
-
-    <button type="submit">Add Category</button>
-}
-
-@using (Html.BeginForm("UpdateCategory", "Home", new{categoryName = Model.CategoryName} ,FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    
-    <p>@Html.LabelFor(model => model.CategoryName)</p>
-    @Html.TextBoxFor(model => model.CategoryName)
-
-    <button type="submit">Update Category</button>
+    <button type="submit" name="Add Category" value="Add Category" 
+            formaction="AddCategory" formmethod="post">Add Category</button>
+                                                           
+    <button type="submit" name="Update Category" value="Update Category" 
+            formaction="UpdateCategory" formmethod="post">Update Category</button>  
 }
 </body>
 </html>

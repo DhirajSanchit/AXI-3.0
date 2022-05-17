@@ -6,9 +6,9 @@ namespace Axi3._0.Models
 {
     public class CategoryModel
     {
-        public IList<CategoryDto> Categories;
-        public Category Category;
-        public string CategoryName;
-        public int CategoryId;
+        public IList<CategoryDto> Categories { get; set; }
+        public Category Category { get; set; }
+        public string CategoryName { get; set; }
+        public int CategoryId { get; set; }
     }
 }

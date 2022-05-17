@@ -77,7 +77,8 @@ namespace Axi3._0.Controllers
                 Price = model.Price,
                 ImgRef = model.ImgRef,
                 Description = model.Description,
-                Category = model.Category
+                Category = model.Category,
+                CategoryId = Int32.Parse(model.Category)
             }));
 
             return RedirectToAction("AddArticle", "Home");
@@ -147,6 +148,8 @@ namespace Axi3._0.Controllers
         }
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public IActionResult AddCategory(string categoryName)
         {
             _containerFactory.GetCategoryContainer().AddCategory(new CategoryDto()
@@ -157,17 +160,16 @@ namespace Axi3._0.Controllers
         }
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteCategory(CategoryModel model)
         {
-            _containerFactory.GetCategoryContainer().RemoveCategory(new CategoryDto()
-            {
-                Name = model.CategoryName,
-                Id = model.CategoryId
-            });
+            
+            _containerFactory.GetCategoryContainer().RemoveCategory(model.CategoryId);
             return RedirectToAction("Categories", "Home");
         }
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult UpdateCategory(CategoryModel model)
         {
             _containerFactory.GetCategoryContainer().UpdateCategory(new CategoryDto()

@@ -33,13 +33,13 @@ namespace AxiLogic.Containers
             _dalFactory.GetCategoryDal().AddCategory(categoryDto);
         }
 
-        public void RemoveCategory(CategoryDto categoryDto)
+        public void RemoveCategory(int id)
         {
             //remove catyegory from articles
-            var articleContainer = new ArticleContainer(_dalFactory);
-            articleContainer.RemoveCategoryFromArticles(categoryDto);
+            //var articleContainer = new ArticleContainer(_dalFactory);
+            //articleContainer.RemoveCategoryFromArticles(categoryDto);
             //remove category from db
-            _dalFactory.GetCategoryDal().RemoveCategory(categoryDto);
+            _dalFactory.GetCategoryDal().RemoveCategory(id);
         }
         
         public void UpdateCategory(CategoryDto categoryDto)
