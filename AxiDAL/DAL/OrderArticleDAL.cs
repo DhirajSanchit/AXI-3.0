@@ -48,7 +48,7 @@ namespace AxiDAL.DAL
         }
 
         //Add new order article
-        public int AddOrderArticle(OrderArticleDto orderArticle)
+        public void AddOrderArticle(OrderArticleDto orderArticle)
         {
             //Prepare queries
             var sql = @"INSERT INTO [OrderArticle] " +
@@ -69,9 +69,6 @@ namespace AxiDAL.DAL
                         orderArticle.Amount,
                         orderArticle.ScannedAmount
                     });
-
-                    //get id of inserted order article
-                    return _dbConnection.QuerySingle<int>(sql2);
                 }
             }
 

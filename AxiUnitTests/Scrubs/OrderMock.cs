@@ -15,14 +15,27 @@ namespace AxiUnitTests.Scrubs
         public OrderMock(IDalFactory mockFactory)
         {
             _mockFactory = mockFactory;
-            _OrderDtos.Add(new OrderDto()
+            var orderDto1 = new OrderDto()
             {
-                Date = new DateTime(14,12,2001),
+                Date = new DateTime(14, 12, 2001),
                 Name = "TestName1",
                 Id = 1,
                 InvoiceId = 1,
-                OrderArticles = _mockFactory.GetOrderArticleDal().GetAllOrderArticlesFromOrder();
-            });
+                Processed = false
+            };
+            orderDto1.OrderArticles = (List<OrderArticleDto>) _mockFactory.GetOrderArticleDal().GetAllOrderArticlesFromOrder(orderDto1);
+            _OrderDtos.Add(orderDto1);
+            
+            var orderDto2 = new OrderDto()
+            {
+                Date = new DateTime(14, 12, 2002),
+                Name = "TestName2",
+                Id = 2,
+                InvoiceId = 2,
+                Processed = true
+            };
+            orderDto2.OrderArticles = (List<OrderArticleDto>) _mockFactory.GetOrderArticleDal().GetAllOrderArticlesFromOrder(orderDto2);
+            _OrderDtos.Add(orderDto2);
         }
         
         
