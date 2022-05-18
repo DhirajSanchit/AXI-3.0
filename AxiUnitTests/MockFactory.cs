@@ -20,17 +20,17 @@ namespace AxiUnitTests
 
         public IShipmentDAL GetShipmentDal()
         {
-            return new ShipmentMock();
+            return new ShipmentMock(this);
         }
 
         public IShipmentArticleDAL GetShipmentArticleDAL()
         {
-            return new ShipmentArticleMock();
+            return new ShipmentArticleMock(this);
         }
 
         public IRowDAL GetRowDal()
         {
-            return new RowMock();
+            return new RowMock(this);
         }
 
         public IOrderArticleDAL GetOrderArticleDal()
@@ -45,7 +45,7 @@ namespace AxiUnitTests
         
         public ICategoryDAL GetCategoryDal()
         {
-            return new CategoryMock();
+            return new CategoryMock(this);
         }
     }
 }
