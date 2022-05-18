@@ -14,9 +14,10 @@ namespace AxiLogic.Interfaces
         public void AddArticle(Article article);
         public void RemoveArticle(Article article);
         public void UpdateArticle(Article article);
-        
-        
-        
-        
+        public void removeCategoryFromArticles(int categoryId);
+
+
+
+
     }
 }

@@ -163,7 +163,7 @@ namespace Axi3._0.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteCategory(CategoryModel model)
         {
-            
+            _containerFactory.GetArticleContainer().removeCategoryFromArticles(model.CategoryId);
             _containerFactory.GetCategoryContainer().RemoveCategory(model.CategoryId);
             return RedirectToAction("Categories", "Home");
         }
