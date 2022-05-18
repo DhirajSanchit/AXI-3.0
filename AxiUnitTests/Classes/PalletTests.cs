@@ -210,9 +210,9 @@ namespace AxiUnitTests.Classes
         {
             //arrange
             //act
-            var pallet = new Pallet(21, 3, null);
+            var pallet = new Pallet(21, 0, null);
             //assert
-            Assert.IsNull(pallet);
+            Assert.IsNotNull(pallet);
         }
         
         [TestMethod]
@@ -279,15 +279,28 @@ namespace AxiUnitTests.Classes
         public void TestToDtoWithNullArticle()
         {
             //arrange
-            var pallet = new Pallet(21, 3, null);
+            var pallet = new Pallet(21, 0, null);
             //act
             var dto = pallet.ToDto();
             //assert
             Assert.IsNotNull(dto);
-            Assert.AreEqual(3, dto.Amount);
+            Assert.AreEqual(0, dto.Amount);
             Assert.AreEqual(21, dto.Location);
             Assert.AreEqual(pallet.Id, dto.Id);
             Assert.IsNull(dto.Article);
+        }
+
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestToDtoWithNullArticleAndIncorrectAmount()
+        {
+            //arrange
+            var pallet = new Pallet(21, 3, null);
+            //act
+            var dto = pallet.ToDto();
+            //assert
+            Assert.IsNull(dto, "dto should throw an exception if there is an amount for no article");
         }
         
     }
