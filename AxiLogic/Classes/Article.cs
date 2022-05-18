@@ -16,12 +16,28 @@ namespace AxiLogic.Classes
 
         public Article(string name, double price)
         {
+            if (name == null || name == "")
+            {
+                throw new ArgumentException("Name cannot be empty");
+            }
+            if (price < 0)
+            {
+                throw new ArgumentOutOfRangeException("Price cannot be negative");
+            }
             Name = name;
             Price = price;
         }
         
         public Article(string name, double price, string barcode, string imgRef, string description, string category)
         {
+            if (name == null || name == "")
+            {
+                throw new ArgumentException("Name cannot be empty");
+            }
+            if (price < 0)
+            {
+                throw new ArgumentOutOfRangeException("Price cannot be negative");
+            }
             Name = name;
             Price = price;
             Barcode = barcode;
@@ -32,6 +48,14 @@ namespace AxiLogic.Classes
         
         public Article(ArticleDto articleDto)
         {
+            if(articleDto.Name == null || articleDto.Name == "")
+            {
+                throw new ArgumentException("Name cannot be empty");
+            }
+            if(articleDto.Price < 0)
+            {
+                throw new ArgumentOutOfRangeException("Price cannot be negative");
+            }
             Id = articleDto.Id;
             Name = articleDto.Name;
             Barcode = articleDto.Barcode;
@@ -43,6 +67,10 @@ namespace AxiLogic.Classes
         
         public void SetName(string name)
         {
+            if(name == null || name == "")
+            {
+                throw new ArgumentException("Name cannot be empty");
+            }
             Name = name;
         }
         
@@ -68,6 +96,10 @@ namespace AxiLogic.Classes
         
         public void SetPrice(double price)
         {
+            if(price < 0)
+            {
+                throw new ArgumentOutOfRangeException("Price cannot be negative");
+            }
             Price = price;
         }
 

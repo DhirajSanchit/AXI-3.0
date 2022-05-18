@@ -44,7 +44,7 @@ namespace AxiLogic.Containers
         
         public void UpdateCategory(CategoryDto categoryDto)
         {
-            _dalFactory.GetCategoryDal().UpdateCategory(categoryDto);
+            new Category(categoryDto).UpdateCategory();
         }
     }
 }

@@ -49,7 +49,7 @@ namespace AxiUnitTests.Classes
         }
 
         [TestCategory("ArticleTests-ConstructorNamePrice"), TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestArticleConstructorWithNegativePrice()
         {
             //arrange
@@ -117,7 +117,7 @@ namespace AxiUnitTests.Classes
         }
         
         [TestCategory("ArticleTests-ConstructorOverload"), TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestArticleConstructorOverloadWithNegativePrice()
         {
             //arrange
@@ -198,7 +198,7 @@ namespace AxiUnitTests.Classes
         }
         
         [TestCategory("ArticleTests-ConstructorDto"), TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestArticleConstructorDtoWithNegativePrice()
         {
             //arrange
@@ -282,7 +282,7 @@ namespace AxiUnitTests.Classes
         }
         
         [TestCategory("ArticleTests-SetPrice"), TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestArticleSetPriceWithNegativePrice()
         {
             //arrange
