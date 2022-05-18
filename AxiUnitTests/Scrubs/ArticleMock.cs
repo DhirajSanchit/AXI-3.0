@@ -5,11 +5,11 @@ using AxiLogic.Classes;
 
 namespace AxiUnitTests.Scrubs
 {
-    public class ArticleScrub : IArticleDAL
+    public class ArticleMock : IArticleDAL
     {
         public List<ArticleDto> _articleDtos = new();
         
-        public ArticleScrub()
+        public ArticleMock()
         {
             _articleDtos.Add(new ArticleDto()
             {

@@ -4,7 +4,7 @@ using AxiDAL.Interfaces;
 
 namespace AxiDAL.Factories
 {
-    public class DalFactory
+    public class DalFactory : IDalFactory
     {
         private IServiceProvider serviceProvider;
 

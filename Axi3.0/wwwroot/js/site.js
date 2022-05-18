@@ -1,16 +1,19 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
-
+let menuOpen;
 let wait = false;
 
+//
 function hideElement(elementId) {
     document.getElementById(elementId).style.display = "none"
 }
 
+//
 function showElement(elementId) {
     document.getElementById(elementId).style.display = "block"
 }
 
+//
 function openShipment(shipmentId) {
     //todo keep this?
     if(wait) {
@@ -51,6 +54,7 @@ function openShipment(shipmentId) {
     });
 }
 
+//
 function openOrder(orderId) {
     //todo keep this?
     if(wait) {
@@ -90,6 +94,7 @@ function openOrder(orderId) {
         wait = false;
     });
 }
+
 //adds 1 to the amount of scanned articles from this barcode
 function scanDeliveryArticleAdd(barcode) {
     $(".add-btn-container").each(function (){
@@ -104,6 +109,7 @@ function scanDeliveryArticleAdd(barcode) {
     })
 }
 
+//
 function scanDeliveryArticleRemove(barcode) {
     $(".remove-btn-container").each(function () {
         if ($(this).parent().find(".article-barcode").text() === barcode) {
@@ -117,6 +123,7 @@ function scanDeliveryArticleRemove(barcode) {
     });
 }
 
+//
 function scanOrderArticleAdd(barcode) {
     $(".add-btn-container").each(function (){
         if ($(this).parent().find(".article-barcode").text() === barcode) {
@@ -130,6 +137,7 @@ function scanOrderArticleAdd(barcode) {
     })
 }
 
+//
 function scanOrderArticleRemove(barcode) {
     $(".remove-btn-container").each(function () {
         if ($(this).parent().find(".article-barcode").text() === barcode) {
@@ -161,6 +169,7 @@ function setDeliveryArticleAmount(barcode, amount) {
     }
 }
 
+//
 function setOrderArticleAmount(barcode, amount) {
     if (amount > 0) {
         $("#order-container").children().each(function (element) {
@@ -211,6 +220,8 @@ function submitShipment() {
         alert("Error submitting shipment");
     });
 }
+
+//
 function submitOrder() {
     let orderId = $("#info-box-id").text();
     let orderArticlesArr = [];
@@ -244,37 +255,7 @@ function submitOrder() {
     });
 }
 
-//submits the scanned articles to the server
-// function submitOrder() {
-//     let orderId = $("#info-box-id").text();
-//     let orderArticles = [];
-//     $("#order-container").children().each(function (element) {
-//         let values = $(element).find(".article-container-amount").text().split("/");
-//         orderArticles.push({
-//             OrderId: orderId,
-//             ArticleId: $(element).find(".article-barcode").text(),
-//             ScannedAmount: values[0]
-//         });
-//     });
-//     var settings = {
-//         "url": "https://localhost:5001/Order/PostOrderProcess/",//todo test this
-//         "method": "Post",
-//         "timeout": 0,
-//         "headers": {
-//             "Content-Type": "application/json"
-//         },
-//         data: JSON.stringify(orderArticles)
-//     };
-//     $.ajax(settings).done(function (response) {
-//         if (response.success) {
-//             hideElement('order-modal');
-//             alert("Order submitted");
-//         } else {
-//             alert("Order could not be submitted");
-//         }
-//     });
-// }
-
+//
 function showArticleElement(elementId, name, category, price, description, imgurl) {
     $("#" + elementId).show()
     $("#articleImg").attr("src", imgurl)
@@ -284,6 +265,7 @@ function showArticleElement(elementId, name, category, price, description, imgur
     $("#articleDescription").text(description)
 }
 
+//
 function showArticleView(elementId, name, category, quantity, locations) {
     $("#" + elementId).show()
     $("#view-article-modal-name-label").text(name)
@@ -292,8 +274,7 @@ function showArticleView(elementId, name, category, quantity, locations) {
     $("#view-article-modal-textarea").text(locations)
 }
 
-let menuOpen;
-
+//
 function scrollMenuLeft() {
     if (menuOpen) {
         $('#slide-menu').each(function () {

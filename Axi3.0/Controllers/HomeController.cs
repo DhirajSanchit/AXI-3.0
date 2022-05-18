@@ -149,7 +149,6 @@ namespace Axi3._0.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public IActionResult AddCategory(string categoryName)
         {
             _containerFactory.GetCategoryContainer().AddCategory(new CategoryDto()
