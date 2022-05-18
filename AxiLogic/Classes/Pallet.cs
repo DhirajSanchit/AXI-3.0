@@ -23,12 +23,25 @@ namespace AxiLogic.Classes
             _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             _palletDal = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             Location = location;
+            if (location < 0)
+            {
+                throw new ArgumentOutOfRangeException("Location can't be negative");
+            }
         }
         
         public Pallet(int location, int amount, Article article)
         {
             _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             _palletDal = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
+            if(location < 0)
+            {
+                throw new ArgumentOutOfRangeException("Location can't be negative");
+            }
+            if (amount < 0)
+            {
+                throw new ArgumentOutOfRangeException("Amount can't be negative");
+            }
+        
             Location = location;
             Amount = amount;
             Article = article;
@@ -38,6 +51,10 @@ namespace AxiLogic.Classes
         {
             _articleDAL = new ArticleDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
             _palletDal = new PalletDAL(new SqlConnection(@"Server=mssqlstud.fhict.local;Database=dbi484674;User Id=dbi484674;Password=DatabaseAXItim;"));
+            if (palletDto.Location < 0)
+            {
+                throw new ArgumentOutOfRangeException("Location can't be negative");
+            }
             Location = palletDto.Location;
             Amount = palletDto.Amount;
             PlankId = palletDto.PlankId;
@@ -48,14 +65,14 @@ namespace AxiLogic.Classes
         
         public void PlaceArticle(Article article, int amount)
         {
-            if (article.Id != Article.Id && Amount != 0 && article != null) 
-            {
-                throw new ArgumentException("Articles do not match");
-            }
             if (amount <= 0)
             {
                 throw new ArgumentOutOfRangeException("Can not add negative amount");
             }
+            if (article.Id != Article.Id && Amount != 0 && article != null) 
+            {
+                throw new ArgumentException("Articles do not match");
+            }   
             Amount += amount;
             Article = article;
             _palletDal.UpdatePallet(ToDto());
@@ -87,12 +104,21 @@ namespace AxiLogic.Classes
 
         public PalletDto ToDto()
         {
-            return new PalletDto {Article = Article.ToDto(),
-                                  Amount = Amount,
-                                  Id = Id,
-                                  Location = Location,
-                                  PlankId = PlankId
+
+            var dto = new PalletDto
+            {
+
+                Amount = Amount,
+                Id = Id,
+                Location = Location,
+                PlankId = PlankId
             };
+
+            if (Article != null)
+            {
+                dto.Article = Article.ToDto();
+            }
+            return dto;
         }
     }
 }
