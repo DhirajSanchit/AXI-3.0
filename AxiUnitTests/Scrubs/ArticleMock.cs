@@ -9,8 +9,12 @@ namespace AxiUnitTests.Scrubs
     {
         public List<ArticleDto> _articleDtos = new();
         
-        public ArticleMock()
+        private IDalFactory _mockFactory;
+
+
+        public ArticleMock(IDalFactory mockFactory)
         {
+            _mockFactory = mockFactory;
             _articleDtos.Add(new ArticleDto()
             {
                 Id = 1,

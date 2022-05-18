@@ -10,7 +10,7 @@ namespace AxiUnitTests
         
         public IArticleDAL GetArticleDal()
         {
-            return new ArticleMock();
+            return new ArticleMock(this);
         }
 
         public ITestDAL GetTestDal()
@@ -35,12 +35,12 @@ namespace AxiUnitTests
 
         public IOrderArticleDAL GetOrderArticleDal()
         {
-            return new OrderArticleMock();
+            return new OrderArticleMock(this);
         }
 
         public IOrderDAL GetOrderDal()
         {
-            return new OrderMock();
+            return new OrderMock(this);
         }
         
         public ICategoryDAL GetCategoryDal()

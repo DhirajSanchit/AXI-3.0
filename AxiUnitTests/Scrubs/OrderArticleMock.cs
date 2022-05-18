@@ -15,7 +15,8 @@ namespace AxiUnitTests.Scrubs
             OrderArticleDtos.Add(new OrderArticleDto()
             {
                 Amount = 1,
-                Article = _mockFactory.GetArticleDal().
+                Article = _mockFactory.GetArticleDal().GetAll()[0],
+                
             });
         }
 
