@@ -78,7 +78,7 @@ namespace Axi3._0.Controllers
                 ImgRef = model.ImgRef,
                 Description = model.Description,
                 Category = model.Category,
-                CategoryId = Int32.Parse(model.Category)
+                Id = Int32.Parse(model.Category)
             }));
 
             return RedirectToAction("AddArticle", "Home");
