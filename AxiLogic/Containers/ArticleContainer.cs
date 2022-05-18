@@ -100,6 +100,16 @@ namespace AxiLogic.Containers
             }
         }
         
+        public void removeCategoryFromArticles(int categoryId)
+        {
+            var articleDtOs = _dalFactory.GetArticleDal().GetByCategory(new CategoryDto() { Id = categoryId });
+            foreach (var articleDto in articleDtOs)
+            {
+                var article = new Article(articleDto);
+                article.Category = null;
+                _dalFactory.GetArticleDal().RemoveCategory(article.ToDto());
+            }
+        }
     
         public void UpdateArticle(Article article)
         {
