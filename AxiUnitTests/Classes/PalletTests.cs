@@ -205,7 +205,6 @@ namespace AxiUnitTests.Classes
         }
         
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void CreatePalletOverloadWithNullArticle()
         {
             //arrange
