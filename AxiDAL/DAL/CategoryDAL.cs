@@ -85,7 +85,7 @@ namespace AxiDAL.DAL
         public void RemoveCategory(int id)
         {
             //Prepare Query
-            var sql = @"DELETE FROM [Category] WHERE [Id] = @Id";
+            var sql1 = @"DELETE FROM [Category] WHERE [Id] = @Id";
 
             //Execute statement
             try
@@ -93,9 +93,8 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //Execute query on Database
-                    _dbConnection.Execute(sql, new {Id = id});
+                    _dbConnection.Execute(sql1, new {Id = id});
                     //var affectedRows = _dbConnection.Execute(delete_sql, new {CheckinId = id});
-
                 }
             }
             //Catches possible exceptions
