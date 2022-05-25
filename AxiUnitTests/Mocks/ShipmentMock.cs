@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AxiDAL.DTOs;
 using AxiDAL.Interfaces;
 
@@ -7,10 +8,21 @@ namespace AxiUnitTests.Scrubs
     public class ShipmentMock : IShipmentDAL
     {
         private IDalFactory _mockFactory;
-        
+        public List<ShipmentDto> ShipmentDtos = new();
+
         public ShipmentMock(IDalFactory mockFactory)
         {
             _mockFactory = mockFactory;
+            
+            ShipmentDtos.Add(new ShipmentDto()
+            {
+                Date = new DateTime(2001, 1, 1),
+                Id = 1,
+                InvoiceId = 1,
+                Name = "Name1",
+                Processed = true,
+                // ShipmentArticles = 
+            });
         }
         
         
