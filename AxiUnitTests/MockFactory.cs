@@ -7,10 +7,22 @@ namespace AxiUnitTests
 {
     public class MockFactory : IDalFactory
     {
+        public ArticleMock ArticleMock { get; set; }
+        public ShipmentMock ShipmentMock { get; set; }
+        public ShipmentArticleMock ShipmentArticleMock { get; set; }
+        public RowMock RowMock { get; set; }
+        public OrderArticleMock OrderArticleMock { get; set; }
+        public OrderMock OrderMock { get; set; }
+        public CategoryMock CategoryMock { get; set; }
+        
+        public MockFactory()
+        {
+            
+        }
         
         public IArticleDAL GetArticleDal()
         {
-            return new ArticleMock(this);
+            return ArticleMock;
         }
 
         public ITestDAL GetTestDal()
@@ -20,32 +32,32 @@ namespace AxiUnitTests
 
         public IShipmentDAL GetShipmentDal()
         {
-            return new ShipmentMock(this);
+            return ShipmentMock;
         }
 
         public IShipmentArticleDAL GetShipmentArticleDAL()
         {
-            return new ShipmentArticleMock(this);
+            return ShipmentArticleMock;
         }
 
         public IRowDAL GetRowDal()
         {
-            return new RowMock(this);
+            return RowMock;
         }
 
         public IOrderArticleDAL GetOrderArticleDal()
         {
-            return new OrderArticleMock(this);
+            return OrderArticleMock;
         }
 
         public IOrderDAL GetOrderDal()
         {
-            return new OrderMock(this);
+            return OrderMock;
         }
         
         public ICategoryDAL GetCategoryDal()
         {
-            return new CategoryMock(this);
+            return CategoryMock;
         }
     }
 }
