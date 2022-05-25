@@ -17,7 +17,13 @@ namespace AxiUnitTests
         
         public MockFactory()
         {
-            
+            ArticleMock = new ArticleMock(this);
+            ShipmentMock = new ShipmentMock(this);
+            ShipmentArticleMock = new ShipmentArticleMock(this);
+            RowMock = new RowMock(this);
+            OrderArticleMock = new OrderArticleMock(this);
+            OrderMock = new OrderMock(this);
+            CategoryMock = new CategoryMock(this);
         }
         
         public IArticleDAL GetArticleDal()
