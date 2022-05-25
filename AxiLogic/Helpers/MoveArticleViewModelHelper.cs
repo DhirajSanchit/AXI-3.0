@@ -22,16 +22,16 @@ namespace AxiLogic.Helpers
         
         public void PlaceArticle(int articleID, string locationstring, int amount)
         {
-            string[] locations = locationstring.Split(".");
+            var locations = locationstring.Split(".");
 
-            IArticleContainer articleContainer = _containerFactory.GetArticleContainer();
+            var articleContainer = _containerFactory.GetArticleContainer();
             articleContainer.GetAllArticles();
-            Article article = new Article(articleContainer.GetArticleById(articleID));
-            IRowContainer rowContainer = _containerFactory.GetRowContainer();
-            Row row = rowContainer.GetRowByName(locations[0]);
-            Rack rack = row.GetRack(Convert.ToInt32(locations[1]));
-            Plank plank = rack.GetPlankByLocation(Convert.ToInt32(locations[2]));
-            Pallet pallet = plank.GetPallet(Convert.ToInt32(locations[3]));
+            var article = new Article(articleContainer.GetArticleById(articleID));
+            var rowContainer = _containerFactory.GetRowContainer();
+            var row = rowContainer.GetRowByName(locations[0]);
+            var rack = row.GetRack(Convert.ToInt32(locations[1]));
+            var plank = rack.GetPlankByLocation(Convert.ToInt32(locations[2]));
+            var pallet = plank.GetPallet(Convert.ToInt32(locations[3]));
             pallet.PlaceArticle(article, amount);
             
         }
@@ -39,16 +39,16 @@ namespace AxiLogic.Helpers
         public void TakeArticle(int articleID, string locationstring, int amount)
         {
             //to do: write test
-            string[] locations = locationstring.Split('.');
+            var locations = locationstring.Split('.');
 
-            IArticleContainer articleContainer = _containerFactory.GetArticleContainer();
+            var articleContainer = _containerFactory.GetArticleContainer();
             articleContainer.GetAllArticles();
-            Article article = new Article(articleContainer.GetArticleById(articleID));
-            IRowContainer rowContainer = _containerFactory.GetRowContainer();
-            Row row = rowContainer.GetRowByName(locations[0]);
-            Rack rack = row.GetRack(Convert.ToInt32(locations[1]));
-            Plank plank = rack.GetPlankByLocation(Convert.ToInt32(locations[2]));
-            Pallet pallet = plank.GetPallet(Convert.ToInt32(locations[3]));
+            var article = new Article(articleContainer.GetArticleById(articleID));
+            var rowContainer = _containerFactory.GetRowContainer();
+            var row = rowContainer.GetRowByName(locations[0]);
+            var rack = row.GetRack(Convert.ToInt32(locations[1]));
+            var plank = rack.GetPlankByLocation(Convert.ToInt32(locations[2]));
+            var pallet = plank.GetPallet(Convert.ToInt32(locations[3]));
             pallet.RemoveArticle(article, amount);
         }
     }

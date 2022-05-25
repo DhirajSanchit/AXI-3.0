@@ -28,8 +28,8 @@ namespace AxiLogic.Containers
         public IList<PocTest> GetAll()
         {
             dt = new List<PocTest>();
-            IList<TestDTO> TestDtoList = _dalFactory.GetTestDal().GetAllTestData();
-            foreach (TestDTO dto in TestDtoList)
+            var TestDtoList = _dalFactory.GetTestDal().GetAllTestData();
+            foreach (var dto in TestDtoList)
             {
                 dt.Add(new PocTest(dto));
             }

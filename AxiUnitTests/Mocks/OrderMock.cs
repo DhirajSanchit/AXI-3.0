@@ -41,37 +41,69 @@ namespace AxiUnitTests.Scrubs
         
         public IList<OrderDto> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _OrderDtos;
         }
 
         public IList<OrderDto> GetAllUnfinishedOrders()
         {
-            throw new System.NotImplementedException();
+            List<OrderDto> returnList = new();
+            foreach (var dto in _OrderDtos)
+            {
+                if (dto.Processed == false)
+                {
+                    returnList.Add(dto);
+                }
+            }
+
+            return returnList;
         }
 
+        //todo maybe void this?
         public int AddOrder(OrderDto orderDto)
         {
-            throw new System.NotImplementedException();
+            var id = 0;
+            id = orderDto.Id;
+            _OrderDtos.Add(orderDto);
+            return id;
         }
 
         public void RemoveOrder(OrderDto orderDto)
         {
-            throw new System.NotImplementedException();
+            _OrderDtos.Remove(orderDto);
         }
 
         public void UpdateOrder(OrderDto orderDto)
         {
-            throw new System.NotImplementedException();
+            var thisDto = new OrderDto();
+            for (var i = 0; i < _OrderDtos.Count; i++)
+            {
+                if (_OrderDtos[i].Id == orderDto.Id)
+                {
+                    thisDto = _OrderDtos[i];
+                    _OrderDtos.Remove(_OrderDtos[i]);
+                }
+            }
+            _OrderDtos.Add(thisDto);
         }
 
         public OrderDto GetOrderById(int id)
         {
-            throw new System.NotImplementedException();
+            var returnDto = new OrderDto();
+            foreach (var dto in _OrderDtos)
+            {
+                if (dto.Id == id)
+                {
+                    returnDto = dto;
+                }
+            }
+
+            return returnDto;
         }
 
         public void UpdateOrderProgress(OrderDto orderDto)
         {
-            throw new System.NotImplementedException();
+            _OrderDtos.Remove(GetOrderById(orderDto.Id));
+            _OrderDtos.Add(orderDto);
         }
     }
 }
