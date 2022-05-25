@@ -163,7 +163,10 @@ namespace Axi3._0.Controllers
         public IActionResult DeleteCategory(CategoryModel model)
         {
             _containerFactory.GetArticleContainer().removeCategoryFromArticles(model.CategoryId);
-            _containerFactory.GetCategoryContainer().RemoveCategory(model.CategoryId);
+            _containerFactory.GetCategoryContainer().RemoveCategory(new CategoryDto()
+            {
+                Id = model.CategoryId //todo validate this
+            });
             return RedirectToAction("Categories", "Home");
         }
         
