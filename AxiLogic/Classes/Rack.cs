@@ -53,7 +53,7 @@ namespace AxiLogic.Classes
 
         public void RemovePlank(Plank plank)
         {
-            for (int i = 0; i < Planks.Count; i++)
+            for (var i = 0; i < Planks.Count; i++)
             {
                 if (plank != Planks[i])
                 {

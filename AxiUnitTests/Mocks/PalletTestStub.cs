@@ -14,7 +14,7 @@ namespace AxiUnitTests.Mocks
 
         public PalletTestStub()
         {
-            PalletDto palletDto1 = new PalletDto()
+            var palletDto1 = new PalletDto()
             {
                 Id = 1,
                 PlankId = 2,
@@ -24,7 +24,7 @@ namespace AxiUnitTests.Mocks
                 Location = 2,
             };
 
-            PalletDto palletDto2 = new PalletDto()
+            var palletDto2 = new PalletDto()
             {
                 Id = 2,
                 PlankId = 3,
@@ -46,7 +46,7 @@ namespace AxiUnitTests.Mocks
 
         public void DeletePallet(PalletDto palletDto)
         {
-            for (int i = 0; i < pallets.Count; i++)
+            for (var i = 0; i < pallets.Count; i++)
             {
                 if (pallets[i].Id == palletDto.Id)
                 {
@@ -57,8 +57,8 @@ namespace AxiUnitTests.Mocks
 
         public IList<PalletDto> GetAllFromPlank(PlankDto plank)
         {
-            List<PalletDto> palletDtos = new List<PalletDto>();
-            foreach (PalletDto palletDto in pallets)
+            var palletDtos = new List<PalletDto>();
+            foreach (var palletDto in pallets)
             {
                 if (palletDto.Id == plank.Id)
                 {

@@ -56,7 +56,7 @@ namespace AxiLogic.Classes
 
         public void RemovePallet(Pallet pallet)
         {
-            for (int i = 0; i < Pallets.Count; i++)
+            for (var i = 0; i < Pallets.Count; i++)
             {
                 if (pallet != Pallets[i])
                 {
