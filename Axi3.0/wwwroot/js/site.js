@@ -132,7 +132,7 @@ function scanOrderArticleAdd(barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
             if (+values[0] < +values[1]) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
-                submitShipment();
+                submitOrder();
             } else {
                 alert("Article max amount is already scanned");
             }
@@ -147,7 +147,7 @@ function scanOrderArticleRemove(barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
             if (+values[0] > 0) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
-                submitShipment();
+                submitOrder();
             } else {
                 alert("Article amount is already 0");
             }
@@ -219,7 +219,6 @@ function submitShipment() {
         data: {shipmentArticles: shipmentArticles, processed: processed}
     };
     $.ajax(settings).done(function () {
-        // window.location.href = "https://localhost:5001/Shipment/ScannerDelivery";
     }).catch(function () {
         alert("Error submitting shipment");
     });
