@@ -43,18 +43,13 @@ namespace AxiUnitTests.Mocks
         public int AddPallet(PalletDto palletDto)
         {
             pallets.Add(palletDto);
-            return 1;
+            var index = pallets.Count - 1;
+            return index;
         }
 
         public void DeletePallet(PalletDto palletDto)
         {
-            for (var i = 0; i < pallets.Count; i++)
-            {
-                if (pallets[i].Id == palletDto.Id)
-                {
-                    pallets.Remove(pallets[i]);
-                }
-            }
+            pallets.Remove(palletDto);
         }
 
         public IList<PalletDto> GetAllFromPlank(PlankDto plank)
@@ -67,12 +62,19 @@ namespace AxiUnitTests.Mocks
                     palletDtos.Add(palletDto);
                 }
             }
-            return pallets;
+            return palletDtos;
         }
 
         public void UpdatePallet(PalletDto palletDto)
         {
-            throw new NotImplementedException();
+            foreach (var dto in pallets)
+            {
+                if (dto.Id == palletDto.Id)
+                {
+                    pallets.Remove(dto);
+                    pallets.Add(palletDto);
+                }
+            }
         }
     }
 }
