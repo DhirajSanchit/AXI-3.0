@@ -82,7 +82,7 @@ namespace AxiDAL.DAL
         }
         
         //Remove existing Category
-        public void RemoveCategory(int id)
+        public void RemoveCategory(CategoryDto categoryDto)
         {
             //Prepare Query
             var sql1 = @"DELETE FROM [Category] WHERE [Id] = @Id";
@@ -93,7 +93,7 @@ namespace AxiDAL.DAL
                 using (_dbConnection)
                 {
                     //Execute query on Database
-                    _dbConnection.Execute(sql1, new {Id = id});
+                    _dbConnection.Execute(sql1, new {categoryDto.Id});
                     //var affectedRows = _dbConnection.Execute(delete_sql, new {CheckinId = id});
                 }
             }
