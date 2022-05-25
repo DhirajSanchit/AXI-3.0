@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AxiDAL.DTOs;
 using AxiDAL.Factories;
+using AxiDAL.Interfaces;
 using AxiLogic.Classes;
 using AxiLogic.Interfaces;
 
@@ -10,7 +11,7 @@ namespace AxiLogic.Containers
     public class OrderContainer : IOrderContainer
     {
         private List<Order> _orders;
-        private DalFactory _dalFactory;
+        private IDalFactory _dalFactory;
         
         public IReadOnlyCollection<Order> GetOrder()
         {

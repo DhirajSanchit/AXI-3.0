@@ -12,7 +12,7 @@ namespace AxiLogic.Containers
     public class ShipmentContainer : IShipmentContainer
     {
         private List<Shipment> _shipments;
-        private DalFactory _dalFactory;
+        private IDalFactory _dalFactory;
         
         public IReadOnlyCollection<Shipment> GetShipment()
         {

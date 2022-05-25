@@ -15,7 +15,7 @@ namespace AxiLogic.Containers
     public class TestDapperContainer : ITestDapperContainer
     {
 
-        private DalFactory _dalFactory;
+        private IDalFactory _dalFactory;
         
         public IList<PocTest> dt { get; set; }
  

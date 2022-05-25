@@ -133,7 +133,8 @@
     color: black;
     margin-top: 185px;
     font-weight: bold;
-    text-align: right;
+    vertical-align: central;
+    text-align: center;
 }
 
     .name-column-top-articles, .price-column-top-articles, .category-column-top-articles {

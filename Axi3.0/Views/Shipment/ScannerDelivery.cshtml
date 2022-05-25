@@ -20,7 +20,7 @@
                 {
                     <div class="delivery-container" onclick="openShipment(@shipment.Id)">
                         <p id="delivery-container-name">@shipment.Name</p>
-                        <p id="delivery-container-id">@shipment.InvoiceId</p>
+                        @* <p id="delivery-container-id">@shipment.InvoiceId</p> *@
                         <p id="delivery-container-date">@shipment.Date</p>
                     </div>
                 }
@@ -41,20 +41,18 @@
             </div>
             <div class="add-btn-container" onclick='scanDeliveryArticleAdd($(this).parent().find(".article-barcode").text())' style="height:80px; width:auto; position:absolute; right:12rem; margin-top: 10.5rem; cursor: pointer">
                 <img src="~/images/add.png" alt="add-button" style="height:80px; width:auto">
-                </div>
-            <div class="remove-btn-container" onclick='scanDeliveryArticleRemove($(this).parent().find(".article-barcode").text())'  style="height:80px; width: auto; position:absolute; right:18rem; margin-top: 10.5rem; cursor: pointer">
+            </div>
+            <div class="remove-btn-container" onclick='scanDeliveryArticleRemove($(this).parent().find(".article-barcode").text())' style="height:80px; width: auto; position:absolute; right:18rem; margin-top: 10.5rem; cursor: pointer">
                 <img src="~/images/remove.png" alt="remove-button" style="height:80px; width:auto">
             </div>
             <p class="article-container-name">ArticleName</p>
             <p class="article-container-amount">0/10</p>
-             <div class="article-barcode" style="visibility:hidden">Lorem</div>
-             <div class="article-id" style="visibility:hidden">Lorem</div>
+            <div class="article-barcode" style="visibility:hidden">Lorem</div>
+            <div class="article-id" style="visibility:hidden">Lorem</div>
         </div>
-        <div id = "article-list">
-            
+        <div id="article-list">
         </div>
-        </div>
-
+    </div>
 </div>
 </body>
 </html>
