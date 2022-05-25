@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AxiDAL.DTOs;
 using AxiDAL.Interfaces;
 using AxiLogic.Classes;
@@ -82,22 +83,55 @@ namespace AxiUnitTests.Scrubs
 
         public ArticleDto GetFromPallet(PalletDto palletDto)
         {
-            throw new System.NotImplementedException();
+            var returnDto = new ArticleDto();
+            foreach (var dto in _articleDtos)
+            {
+                if (dto.Id == palletDto.Id)
+                {
+                    returnDto = dto;
+                }
+            }
+            return returnDto;
         }
 
         public List<ArticleDto> GetByCategory(CategoryDto categoryDto)
         {
-            throw new System.NotImplementedException();
+            List<ArticleDto> returnList = new();
+            foreach (var dto in _articleDtos)
+            {
+                if (dto.Category == categoryDto.Name)
+                {
+                    returnList.Add(dto);
+                }
+            }
+            return returnList;
         }
 
         public void RemoveCategory(ArticleDto articleDto)
         {
-            throw new System.NotImplementedException();
+            var thisDto = new ArticleDto();
+            for (var i = 0; i < _articleDtos.Count; i++)
+            {
+                if (articleDto.Id == _articleDtos[i].Id)
+                {
+                    thisDto = _articleDtos[i];
+                    _articleDtos.Remove(_articleDtos[i]);
+                }
+            }
+            _articleDtos.Add(thisDto);
         }
 
         public ArticleDto GetArticleById(int Id)
         {
-            throw new System.NotImplementedException();
+            var returnDto = new ArticleDto();
+            foreach (var dto in _articleDtos)
+            {
+                if (dto.Id == Id)
+                {
+                    returnDto = dto;
+                }
+            }
+            return returnDto;
         }
     }
 }
