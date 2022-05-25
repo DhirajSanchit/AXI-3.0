@@ -5,21 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AxiUnitTests.Scrubs;
 
 namespace AxiUnitTests.Mocks
 {
-    public class PalletTestStub : IPalletDAL
+    public class PalletMock : IPalletDAL
     {
-        public List<PalletDto> pallets = new List<PalletDto>();
-
-        public PalletTestStub()
+        public List<PalletDto> pallets = new();
+        private IDalFactory _mockFactory;
+        public PalletMock(IDalFactory mockfactory)
         {
+            _mockFactory = mockfactory;
             var palletDto1 = new PalletDto()
             {
                 Id = 1,
                 PlankId = 2,
                 ArticleId = 3,
-             //   Article = ArticleDto(),
+                Article = mockfactory.GetArticleDal().GetAll()[0],
                 Amount = 2,
                 Location = 2,
             };
@@ -29,7 +31,7 @@ namespace AxiUnitTests.Mocks
                 Id = 2,
                 PlankId = 3,
                 ArticleId = 4,
-                //   Article = ArticleDto(),
+                Article = mockfactory.GetArticleDal().GetAll()[1],
                 Amount = 1,
                 Location = 1,
             };
