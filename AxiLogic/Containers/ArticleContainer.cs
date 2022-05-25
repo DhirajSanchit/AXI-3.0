@@ -12,11 +12,11 @@ namespace AxiLogic.Containers
     public class ArticleContainer : IArticleContainer
     {
         private IList<Article> _articles; 
-        private DalFactory _dalFactory;
+        private IDalFactory _idalFactory;
         
-        public ArticleContainer(DalFactory dalFactory)
+        public ArticleContainer(IDalFactory idalFactory)
         {
-            _dalFactory = dalFactory;
+            _idalFactory = idalFactory;
         }
 
         public IList<Article> GetArticles()
@@ -27,7 +27,7 @@ namespace AxiLogic.Containers
 
         public IList<Article> GetArticlesByCategory(CategoryDto categoryDto)
         {
-            var articleDtOs = _dalFactory.GetArticleDal().GetByCategory(categoryDto);
+            var articleDtOs = _idalFactory.GetArticleDal().GetByCategory(categoryDto);
             List<Article> articles = new();
             foreach (var articleDto in articleDtOs)
             {
@@ -51,7 +51,7 @@ namespace AxiLogic.Containers
                 Description = article.Description,
                 Category = article.Category
             };
-            article.Id = _dalFactory.GetArticleDal().AddArticle(articleDto);
+            article.Id = _idalFactory.GetArticleDal().AddArticle(articleDto);
             _articles.Add(article);
         }
         
@@ -62,7 +62,7 @@ namespace AxiLogic.Containers
                 throw new ArgumentException("Article does not exist");
             }
 
-            _dalFactory.GetArticleDal().DeleteArticle(article.ToDto());
+            _idalFactory.GetArticleDal().DeleteArticle(article.ToDto());
             _articles.Remove(article);
         }
         
@@ -73,12 +73,12 @@ namespace AxiLogic.Containers
         
         public ArticleDto GetArticleById(int articleID)
         {
-            return _dalFactory.GetArticleDal().GetArticleById(articleID);
+            return _idalFactory.GetArticleDal().GetArticleById(articleID);
         }
         
         public IList<Article> GetAllArticles()
         {
-            var articleDTOs = _dalFactory.GetArticleDal().GetAll();
+            var articleDTOs = _idalFactory.GetArticleDal().GetAll();
             List<Article> articles = new();
             foreach (var articleDTO in articleDTOs)
             {
@@ -90,24 +90,24 @@ namespace AxiLogic.Containers
         
         public void RemoveCategoryFromArticles(CategoryDto categoryDto)
         {
-            var articleDtOs = _dalFactory.GetArticleDal().GetByCategory(categoryDto);
+            var articleDtOs = _idalFactory.GetArticleDal().GetByCategory(categoryDto);
             List<Article> articles = new();
             foreach (var articleDto in articleDtOs)
             {
                 var article = new Article(articleDto);
                 article.Category = null;
-                _dalFactory.GetArticleDal().RemoveCategory(article.ToDto());
+                _idalFactory.GetArticleDal().RemoveCategory(article.ToDto());
             }
         }
         
         public void removeCategoryFromArticles(int categoryId)
         {
-            var articleDtOs = _dalFactory.GetArticleDal().GetByCategory(new CategoryDto() { Id = categoryId });
+            var articleDtOs = _idalFactory.GetArticleDal().GetByCategory(new CategoryDto() { Id = categoryId });
             foreach (var articleDto in articleDtOs)
             {
                 var article = new Article(articleDto);
                 article.Category = null;
-                _dalFactory.GetArticleDal().RemoveCategory(article.ToDto());
+                _idalFactory.GetArticleDal().RemoveCategory(article.ToDto());
             }
         }
     
