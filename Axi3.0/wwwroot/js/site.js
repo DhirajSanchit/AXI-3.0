@@ -219,7 +219,7 @@ function submitShipment() {
         data: {shipmentArticles: shipmentArticles, processed: processed}
     };
     $.ajax(settings).done(function () {
-        window.location.href = "https://localhost:5001/Shipment/ScannerDelivery";
+        // window.location.href = "https://localhost:5001/Shipment/ScannerDelivery";
     }).catch(function () {
         alert("Error submitting shipment");
     });
