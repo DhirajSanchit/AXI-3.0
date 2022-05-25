@@ -102,15 +102,8 @@ namespace AxiUnitTests.Scrubs
 
         public void UpdateOrderProgress(OrderDto orderDto)
         {
-            for (var i = 0; i < _OrderDtos.Count; i++)
-            {
-                if (orderDto.Id == _OrderDtos[i].Id)
-                {
-                    _OrderDtos[i].Processed = orderDto.Processed;
-                    break;
-                }
-            }
-            
+            _OrderDtos.Remove(GetOrderById(orderDto.Id));
+            _OrderDtos.Add(orderDto);
         }
     }
 }
