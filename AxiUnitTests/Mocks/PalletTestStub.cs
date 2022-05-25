@@ -60,7 +60,7 @@ namespace AxiUnitTests.Mocks
             List<PalletDto> palletDtos = new List<PalletDto>();
             foreach (PalletDto palletDto in pallets)
             {
-                if (palletDto.Id == plank)
+                if (palletDto.Id == plank.Id)
                 {
                     palletDtos.Add(palletDto);
                 }
