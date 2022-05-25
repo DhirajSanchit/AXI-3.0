@@ -12,7 +12,7 @@ namespace AxiLogic.Containers
     public class ArticleContainer : IArticleContainer
     {
         private IList<Article> _articles; 
-        private DalFactory _idalFactory;
+        private IDalFactory _idalFactory;
         
         public ArticleContainer(DalFactory idalFactory)
         {

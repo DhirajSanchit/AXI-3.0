@@ -102,6 +102,7 @@ function scanDeliveryArticleAdd(barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
                     if (+values[0] < +values[1]) {
                         $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
+                        submitShipment();
                     } else {
                         alert("Article max amount is already scanned");
                     }
@@ -116,6 +117,7 @@ function scanDeliveryArticleRemove(barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
             if (+values[0] > 0) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
+                submitShipment();
             } else {
                 alert("Article amount is already 0");
             }
@@ -130,6 +132,7 @@ function scanOrderArticleAdd(barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
             if (+values[0] < +values[1]) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
+                submitShipment();
             } else {
                 alert("Article max amount is already scanned");
             }
@@ -144,6 +147,7 @@ function scanOrderArticleRemove(barcode) {
             let values = $(this).parent().find(".article-container-amount").text().split("/");
             if (+values[0] > 0) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
+                submitShipment();
             } else {
                 alert("Article amount is already 0");
             }
@@ -206,7 +210,7 @@ function submitShipment() {
     });
     let shipmentArticles = JSON.stringify({shipmentArticles:shipmentArticlesArr});
     var settings = {
-        "url": "https://localhost:5001/Shipment/PostShipmentProcess/",//todo test this
+        "url": "https://localhost:5001/Shipment/PostShipmentProcess/",
         "method": "GET",
         "timeout": 0,
         "headers": {

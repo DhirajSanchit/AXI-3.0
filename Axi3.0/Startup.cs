@@ -38,6 +38,7 @@ namespace Axi3._0
             //var ConnectionString = Configuration.GetConnectionString("Default"); 
             services.AddScoped<ContainerFactory>();
             services.AddScoped<DalFactory>();
+            services.AddScoped<IDalFactory, DalFactory>();
 
             //SELF-SERVICE SERVER INSTANCE | Wijst het toe aan de connectie van het project
             services.AddTransient<IDbConnection>(sp => new SqlConnection(Configuration.GetConnectionString("Default")));

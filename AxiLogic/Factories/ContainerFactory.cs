@@ -16,7 +16,6 @@ namespace AxiLogic.Factories
         public ContainerFactory(IServiceProvider ServiceProvider)
         {
             _serviceProvider = ServiceProvider;
-            //todo change!!
             StockRowModelHelper = new StockRowModelHelper(this);
             MoveArticleViewModelHelper = new MoveArticleViewModelHelper(this);
         }

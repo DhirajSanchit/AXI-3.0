@@ -15,7 +15,7 @@ namespace AxiLogic.Containers
     public class RowContainer : IRowContainer
     {
         public readonly List<Row> Rows;
-        private DalFactory _dalFactory;
+        private IDalFactory _dalFactory;
 
         public RowContainer(DalFactory dalFactory)
         {
