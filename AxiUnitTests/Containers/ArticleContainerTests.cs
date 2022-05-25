@@ -19,14 +19,13 @@ namespace AxiUnitTests.Containers
         {
             //arrange
             MockFactory mockFactory = new();
-            ArticleMock articleMock = new(mockFactory);
             ArticleContainer articleContainer = new(mockFactory);
+            var dtos = mockFactory.ArticleMock._articleDtos;
             //act
-            IList<Article> articles = articleContainer.GetAllArticles();
-            IList<ArticleDto> dtos = articleMock.GetAll();
+            var articles = articleContainer.GetAllArticles();
             //assert
             Assert.AreEqual(articles.Count(), dtos.Count());
-            for(int i = 0; i <articles.Count(); i++)
+            for(var i = 0; i <articles.Count(); i++)
             {
                 Assert.AreEqual(articles[i].Id, dtos[i].Id);
             }

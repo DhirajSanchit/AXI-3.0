@@ -17,7 +17,7 @@ namespace AxiUnitTests.Scrubs
             _mockFactory = mockFactory;
             var orderDto1 = new OrderDto()
             {
-                Date = new DateTime(14, 12, 2001),
+                Date = new DateTime(2001, 3, 1),
                 Name = "TestName1",
                 Id = 1,
                 InvoiceId = 1,
@@ -28,7 +28,7 @@ namespace AxiUnitTests.Scrubs
             
             var orderDto2 = new OrderDto()
             {
-                Date = new DateTime(14, 12, 2002),
+                Date = new DateTime(2001, 3, 2),
                 Name = "TestName2",
                 Id = 2,
                 InvoiceId = 2,
