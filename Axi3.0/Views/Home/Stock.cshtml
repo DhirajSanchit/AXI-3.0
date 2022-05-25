@@ -28,10 +28,10 @@
             }
             locations = locations.Substring(0, locations.Length - 2);
             <div class="name-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.ArticleName</div>
-            <div class="id-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.ArticleId</div>
-            <div class="quantity-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.Quantity</div>
+            <div class="id-column" style="text-align:right" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.ArticleId</div>
+            <div class="quantity-column" style="text-align:right" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.Quantity</div>
             <div class="category-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">@row.Category</div>
-            <div class="location-column" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">
+            <div class="location-column" style="text-align:right" onclick="showArticleView('view-article-modal', '@row.ArticleName', '@row.Category', '@row.Quantity', '@locations'); showElement('modal-background')">
                 @locations
             </div>
         }
