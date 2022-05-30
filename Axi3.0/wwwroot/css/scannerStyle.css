@@ -295,3 +295,9 @@ overflow:auto;
     margin-top:6rem;
     margin-left:16px;
 }
+
+/*  sorry stijn :(  */
+.disabled{
+    pointer-events:none;
+    opacity: 0.2;
+}

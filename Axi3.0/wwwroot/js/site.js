@@ -14,7 +14,7 @@ function showElement(elementId) {
 }
 
 //
-function openShipment(shipmentId) {
+function openShipment(shipmentId, name) {
     //todo keep this?
     if(wait) {
         return;
@@ -33,7 +33,8 @@ function openShipment(shipmentId) {
     $.ajax(settings).then((response) => {
         let res = JSON.parse(response);
         //fill in modal with data
-        $("#info-box-id").text(shipmentId);
+        $("#info-box-id").text(name);
+        $("#info-box-realId").text(shipmentId);
         let date = new Date(res.shipment.Date)
         $("#info-box-date").text(date.toISOString().substring(0,10));
         let x = 0;
@@ -50,12 +51,13 @@ function openShipment(shipmentId) {
             x++;
         });
         showElement('delivery-modal');
+        checkButtons();
         wait = false;
     });
 }
 
 //
-function openOrder(orderId) {
+function openOrder(orderId, name) {
     //todo keep this?
     if(wait) {
         return;
@@ -74,7 +76,8 @@ function openOrder(orderId) {
     $.ajax(settings).then((response) => {
         let res = JSON.parse(response);
         //fill in modal with data
-        $("#info-box-id").text(orderId);
+        $("#info-box-id").text(name);
+        $("#info-box-realId").text(orderId);
         let date = new Date(res.order.Date)
         $("#info-box-date").text(date.toISOString().substring(0,10));
         let x = 0;
@@ -103,6 +106,7 @@ function scanDeliveryArticleAdd(barcode) {
                     if (+values[0] < +values[1]) {
                         $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
                         submitShipment();
+                        checkButtons();
                     } else {
                         alert("Article max amount is already scanned");
                     }
@@ -118,6 +122,7 @@ function scanDeliveryArticleRemove(barcode) {
             if (+values[0] > 0) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
                 submitShipment();
+                checkButtons();
             } else {
                 alert("Article amount is already 0");
             }
@@ -133,6 +138,7 @@ function scanOrderArticleAdd(barcode) {
             if (+values[0] < +values[1]) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) + 1 + "/" + values[1]);
                 submitOrder();
+                checkButtons();
             } else {
                 alert("Article max amount is already scanned");
             }
@@ -148,6 +154,7 @@ function scanOrderArticleRemove(barcode) {
             if (+values[0] > 0) {
                 $(this).parent().find(".article-container-amount").text(parseInt(values[0]) - 1 + "/" + values[1]);
                 submitOrder();
+                checkButtons();
             } else {
                 alert("Article amount is already 0");
             }
@@ -193,7 +200,7 @@ function setOrderArticleAmount(barcode, amount) {
 
 //submits the scanned articles to the server
 function submitShipment() {
-    let shipmentId = $("#info-box-id").text();
+    let shipmentId = $("#info-box-realId").text();
     let shipmentArticlesArr = [];
     let processed = true;
     $("#article-list").children().each(function () {
@@ -296,3 +303,22 @@ function scrollMenuLeft() {
     }
     menuOpen = !menuOpen;
 }
+
+//checks if the buttons should be enabled
+function checkButtons() {
+    $(".article-list").children().each(function (){
+        let values = $(this).find(".article-container-amount").text().split("/");
+        if (+values[0] >= +values[1]) {
+            $(this).find(".add-btn-container").addClass("disabled");
+        } else {
+            $(this).find(".add-btn-container").removeClass("disabled");
+        }
+        if (+values[0] <= 0) {
+            $(this).find(".remove-btn-container").addClass("disabled");
+        } else {
+            $(this).find(".remove-btn-container").removeClass("disabled");
+        }
+    })
+}
+
+

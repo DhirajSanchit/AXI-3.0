@@ -18,7 +18,7 @@
             {
                 foreach (var shipment in Model.ShipmentModels)
                 {
-                    <div class="delivery-container" onclick="openShipment(@shipment.Id)">
+                    <div class="delivery-container" onclick="openShipment(@shipment.Id, '@shipment.Name')">
                         <p id="delivery-container-name">@shipment.Name</p>
                         @* <p id="delivery-container-id">@shipment.InvoiceId</p> *@
                         <p id="delivery-container-date">@shipment.Date</p>
@@ -31,7 +31,8 @@
         <div class="info-box">
             <div class="delivery-modal-return" onclick="hideElement('delivery-modal')"> < </div> @*TODO shouldn't be on the page > submit delivery button instead*@
             <button class="submit-button btn-active" style="position:absolute; right:3rem; margin-top: 8rem; height: 5rem; width: 18rem; font-size: 2rem" onclick="submitShipment()">Submit Delivery</button>
-            <p id="info-box-id">Invoice Id: 0</p>
+            <p id="info-box-realId" style="visibility: hidden"> </p>
+            <p id="info-box-id">ShipmentName: </p>
             <p id="info-box-date">Date: @DateTime.Now</p>
         </div>
         <div class="info-box-back-wall" id="info-box-back-wall"></div>
@@ -50,7 +51,7 @@
             <div class="article-barcode" style="visibility:hidden">Lorem</div>
             <div class="article-id" style="visibility:hidden">Lorem</div>
         </div>
-        <div id="article-list">
+        <div id="article-list" class="article-list">
         </div>
     </div>
 </div>
