@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Axi3._0.Models;
+using Axi3._0.Models.Statistics;
 using AxiDAL.DTOs;
+using AxiDAL.DTOs.Statistics;
 using AxiDAL.Interfaces;
 using AxiLogic.Classes;
 using AxiLogic.Factories;
@@ -180,6 +184,48 @@ namespace Axi3._0.Controllers
                 Id = model.CategoryId
             });
             return RedirectToAction("Categories", "Home");
+        }
+        
+        [HttpGet]
+        public IActionResult Statistics()
+        {
+            var model = new StatModel();
+            var (categoryAmounts, ordersPerMonth, popularProducts, productiveEmployee) 
+                = _containerFactory.GetStatContainer().GetStatistics();
+
+            foreach (var amountInCategoryDto in categoryAmounts)
+            {
+                model.CategoryAmounts.Add(new CategoryAmount()
+                {
+                    Amount = amountInCategoryDto.Amount,
+                    CategoryName = amountInCategoryDto.CategoryName
+                });
+            }
+            foreach (var order in ordersPerMonth)
+            {
+                model.OrdersPerMonth.Add(new OrdersPerMonth()
+                {
+                    Month = order.Month,
+                    Orders = order.Amount
+                });
+            }
+            foreach (var product in popularProducts)
+            {
+                model.PopularProduct.Add(new PopularProduct()
+                {
+                    Name = product.Name,
+                    Total = product.Total
+                });
+            }
+            foreach (var employee in productiveEmployee)
+            {
+                model.ProductiveEmployees.Add(new ProductiveEmployee()
+                {
+                    Name = employee.Name,
+                    TotalProcessed = employee.Total
+                });
+            }
+            return View(model);
         }
     }
 }
