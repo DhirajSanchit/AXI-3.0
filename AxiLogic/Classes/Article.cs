@@ -13,6 +13,7 @@ namespace AxiLogic.Classes
         public string Description;
         public int Id;
         public string Category;
+        public bool Disabled;
 
         public Article(string name, double price)
         {

@@ -9,5 +9,6 @@ namespace AxiDAL.DTOs
         public string Description;
         public int Id;
         public string Category;
+        public bool Disabled;
     }
 }

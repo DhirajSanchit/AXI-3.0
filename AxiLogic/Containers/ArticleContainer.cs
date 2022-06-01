@@ -113,7 +113,11 @@ namespace AxiLogic.Containers
     
         public void UpdateArticle(Article article)
         {
-            throw new NotImplementedException();
+            if (!_articles.Contains(article))
+            {
+                throw new ArgumentException("Article does not exist");
+            }
+            _idalFactory.GetArticleDal().UpdateArticle(article.ToDto());
         }
     }
 }
