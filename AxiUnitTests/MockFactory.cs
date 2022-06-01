@@ -36,6 +36,11 @@ namespace AxiUnitTests
             throw new NotImplementedException();
         }
 
+        public IStatisticsDAL GetStatisticsDal()
+        {
+            throw new NotImplementedException();
+        }
+
         public IShipmentDAL GetShipmentDal()
         {
             return ShipmentMock;

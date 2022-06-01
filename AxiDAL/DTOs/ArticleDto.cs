@@ -1,3 +1,5 @@
+using System;
+
 namespace AxiDAL.DTOs
 {
     public struct ArticleDto
@@ -8,6 +10,8 @@ namespace AxiDAL.DTOs
         public string Name;
         public string Description;
         public int Id;
-        public string Category;
+        public string CategoryName;
+        public int CategoryId;
+        public bool Disabled;
     }
 }

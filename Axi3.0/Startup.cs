@@ -75,6 +75,11 @@ namespace Axi3._0
             services.AddTransient<StockDAL>()
                 .AddTransient<IStockDAL, StockDAL>(s => s.GetService<StockDAL>());
             
+            
+            services.AddTransient<StatisticsDAL>()
+                .AddTransient<IStatisticsDAL, StatisticsDAL>(s=> s.GetService<StatisticsDAL>());
+            
+            
             //Services for ContainerFactory; 
             services.AddTransient<TestDapperContainer>()
                 .AddTransient<ITestDapperContainer, TestDapperContainer>(s => s.GetService<TestDapperContainer>());
@@ -96,6 +101,9 @@ namespace Axi3._0
 
             services.AddTransient<StockContainer>()
                 .AddTransient<IStockContainer, StockContainer>(s => s.GetService<StockContainer>());
+
+            services.AddTransient<StatContainer>()
+                .AddTransient<IStatContainer, StatContainer>(s => s.GetService<StatContainer>());
             //DEPENDCY INJECTION    
 
             //Data Absctraction Layers

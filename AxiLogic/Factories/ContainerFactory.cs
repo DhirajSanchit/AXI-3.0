@@ -56,7 +56,10 @@ namespace AxiLogic.Factories
             return (IStockContainer)_serviceProvider.GetService(typeof(StockContainer));
         }
 
-        
+        public IStatContainer GetStatContainer()
+        {
+            return (IStatContainer)_serviceProvider.GetService(typeof(StatContainer));
+        }
         
         // public static IArticleContainer Build()
         // {

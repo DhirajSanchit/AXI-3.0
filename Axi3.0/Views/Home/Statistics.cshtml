@@ -1,0 +1,96 @@
+﻿@model Axi3._0.Models.Statistics.StatModel
+
+@{
+    Layout = Layout;
+}
+
+<!DOCTYPE html>
+
+<html>
+<script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div style="display: flex">
+    <div>
+        <p>Number of products in top 5 categories</p>
+        <div id="container1">
+
+        </div>
+    </div>
+    <div>
+    <p>Top 5 sold products</p>
+    <div id="container2">
+</div>
+    </div>
+</div>
+<div style="display: flex">
+    <div>
+        <p>Top 5 productive employees</p>
+        <div id="container3">
+        </div>
+    </div>
+    <div>
+    <p>Top 5 busiest months</p>
+    <div id="container4">
+</div>
+    </div>
+</div>
+</body>
+<script>
+// create data
+var graph1data = [
+["@Model.CategoryAmounts[0].CategoryName",@Model.CategoryAmounts[0].Amount],
+["@Model.CategoryAmounts[1].CategoryName",@Model.CategoryAmounts[1].Amount],
+["@Model.CategoryAmounts[2].CategoryName",@Model.CategoryAmounts[2].Amount],
+["@Model.CategoryAmounts[3].CategoryName",@Model.CategoryAmounts[3].Amount],
+["@Model.CategoryAmounts[4].CategoryName",@Model.CategoryAmounts[4].Amount],
+];
+var graph2data = [
+  ["@Model.PopularProduct[0].Name", @Model.PopularProduct[0].Total],
+  ["@Model.PopularProduct[1].Name", @Model.PopularProduct[1].Total],
+  ["@Model.PopularProduct[2].Name", @Model.PopularProduct[2].Total],
+  ["@Model.PopularProduct[3].Name", @Model.PopularProduct[3].Total],
+  ["@Model.PopularProduct[4].Name", @Model.PopularProduct[4].Total],
+];
+var graph3data = [
+  ["@Model.ProductiveEmployees[0].Name", @Model.ProductiveEmployees[0].TotalProcessed],
+  ["@Model.ProductiveEmployees[1].Name", @Model.ProductiveEmployees[1].TotalProcessed],
+  ["@Model.ProductiveEmployees[2].Name", @Model.ProductiveEmployees[2].TotalProcessed],
+  ["@Model.ProductiveEmployees[3].Name", @Model.ProductiveEmployees[3].TotalProcessed],
+  ["@Model.ProductiveEmployees[4].Name", @Model.ProductiveEmployees[4].TotalProcessed],
+];
+var graph4data = [
+  ["@Model.OrdersPerMonth[0].Month", @Model.OrdersPerMonth[0].Orders],
+  ["@Model.OrdersPerMonth[1].Month", @Model.OrdersPerMonth[1].Orders],
+  ["@Model.OrdersPerMonth[2].Month", @Model.OrdersPerMonth[2].Orders],
+  ["@Model.OrdersPerMonth[3].Month", @Model.OrdersPerMonth[3].Orders],
+  ["@Model.OrdersPerMonth[4].Month", @Model.OrdersPerMonth[4].Orders],
+];
+
+// create a chart
+chart1 = anychart.bar();
+chart2 = anychart.bar();
+chart3 = anychart.bar();
+chart4 = anychart.bar();
+
+// create a bar series and set the data
+var series = chart1.bar(graph1data);
+var series2 = chart2.bar(graph2data);
+var series3 = chart3.bar(graph3data);
+var series4 = chart4.bar(graph4data);
+
+// set the container id
+chart1.container("container1");
+chart2.container("container2");
+chart3.container("container3");
+chart4.container("container4");
+
+// initiate drawing the chart
+chart1.draw();
+chart2.draw();
+chart3.draw();
+chart4.draw();
+</script>
+</html>

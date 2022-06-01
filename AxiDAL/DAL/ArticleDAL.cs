@@ -26,8 +26,11 @@ namespace AxiDAL.DAL
         public IList<ArticleDto> GetAll()
         {   
             //Prepare Query
-            var sql = @"SELECT * " +
-                      "FROM [Article]";
+            var sql =
+                @"SELECT A.ID, A.Name, Category AS CategoryId, C.Name AS CategoryName, Price,BarCode, Img, A.Disabled
+                         FROM Article A
+                         JOIN Category C on Category = C.ID 
+                         WHERE Disabled = 0 ";
                 
             //Execute statement
                 try
@@ -56,7 +59,7 @@ namespace AxiDAL.DAL
         public ArticleDto GetByBarcode(ArticleDto articleDto)
         {
             //Prepare Query
-            var sql = "Select * From [Article] Where Barcode = @Barcode";
+            var sql = "Select * From [Article] Where Barcode = @Barcode AND Disabled = 0";
             
             //Execute statement
             try
@@ -108,7 +111,7 @@ namespace AxiDAL.DAL
                             articleDto.Name, 
                             articleDto.Price,
                             articleDto.ImgRef,
-                            articleDto.Category,
+                            articleDto.CategoryName,
                             articleDto.Description 
                         });
                     return _dbConnection.QuerySingle<int>(sql2);
@@ -136,8 +139,9 @@ namespace AxiDAL.DAL
                 "Set [Name] = @Name," +
                 "[Price] = @Price," +
                 "[ImgRef] = @ImgRef " +
-                "[Category] = @Category " +
+                "[CategoryName] = @CategoryName " +
                 "[Description] = @Description " +
+                "[Disabled] = @Disabled" +
                 "Where Barcode = @Barcode";
 
             //Execute statement
@@ -151,9 +155,10 @@ namespace AxiDAL.DAL
                         articleDto.Name,
                         articleDto.Price,
                         articleDto.ImgRef,
-                        articleDto.Category,
+                        articleDto.CategoryName,
                         articleDto.Description,
-                        articleDto.Barcode
+                        articleDto.Barcode,
+                        articleDto.Disabled
                     });
                 }
             }
@@ -237,8 +242,7 @@ namespace AxiDAL.DAL
         {
             //Prepare Queries
             var sql = "Select * from [Article] " +
-                "Where Category = @Id";
-            //todo change Category in article to categoryId?
+                "Where Category = @Id AND Disabled = 0";
 
             //Execute statement
             try

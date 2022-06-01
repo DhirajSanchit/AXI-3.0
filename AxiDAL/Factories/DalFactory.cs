@@ -48,12 +48,16 @@ namespace AxiDAL.Factories
             return (IOrderDAL)serviceProvider.GetService(typeof(IOrderDAL));
         }
         
-        
-        //TODO: Revise with cleaner code
         public ICategoryDAL GetCategoryDal()
         {
             return (ICategoryDAL)serviceProvider.GetService(typeof(CategoryDAL));
         }
+        
+        public IStatisticsDAL GetStatisticsDal()
+        {
+            return (IStatisticsDAL)serviceProvider.GetService(typeof(StatisticsDAL));
+        }
+        
 
         public IStockDAL GetStockDAL()
         {

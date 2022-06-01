@@ -14,7 +14,7 @@ namespace AxiLogic.Containers
         private IList<Article> _articles; 
         private IDalFactory _idalFactory;
         
-        public ArticleContainer(DalFactory idalFactory)
+        public ArticleContainer(IDalFactory idalFactory)
         {
             _idalFactory = idalFactory;
         }
@@ -49,7 +49,7 @@ namespace AxiLogic.Containers
                 Barcode = article.Barcode,
                 ImgRef = article.ImgRef,
                 Description = article.Description,
-                Category = article.Category
+                CategoryName = article.Category
             };
             article.Id = _idalFactory.GetArticleDal().AddArticle(articleDto);
             _articles.Add(article);
@@ -113,7 +113,11 @@ namespace AxiLogic.Containers
     
         public void UpdateArticle(Article article)
         {
-            throw new NotImplementedException();
+            if (!_articles.Contains(article))
+            {
+                throw new ArgumentException("Article does not exist");
+            }
+            _idalFactory.GetArticleDal().UpdateArticle(article.ToDto());
         }
     }
 }

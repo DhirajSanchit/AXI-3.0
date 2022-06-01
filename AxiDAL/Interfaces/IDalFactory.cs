@@ -11,5 +11,6 @@
         public IArticleDAL GetArticleDal();
         public ITestDAL GetTestDal();
         public IStockDAL GetStockDAL();
+        public IStatisticsDAL GetStatisticsDal();
     }
 }
