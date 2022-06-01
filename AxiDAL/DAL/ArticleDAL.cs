@@ -23,7 +23,7 @@ namespace AxiDAL.DAL
         public IList<ArticleDto> GetAll()
         {   
             //Prepare Query
-            var sql = @"SELECT A.ID, A.Name, Category AS CategoryId, C.Name AS CategoryName, Price,BarCode, Img, A.Disabled
+            var sql = @"SELECT A.ID, A.Name, Description, Category AS CategoryId, C.Name AS CategoryName, Price,BarCode, Img, A.Disabled
                          FROM Article A
                          JOIN Category C on Category = C.ID"; 
                 
