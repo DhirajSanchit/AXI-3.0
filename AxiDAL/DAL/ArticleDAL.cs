@@ -111,7 +111,7 @@ namespace AxiDAL.DAL
                             articleDto.Name, 
                             articleDto.Price,
                             articleDto.ImgRef,
-                            articleDto.Category,
+                            articleDto.CategoryName,
                             articleDto.Description 
                         });
                     return _dbConnection.QuerySingle<int>(sql2);
@@ -243,9 +243,6 @@ namespace AxiDAL.DAL
             //Prepare Queries
             var sql = "Select * from [Article] " +
                 "Where Category = @Id AND Disabled = 0";
-            //todo change Category in article to categoryId?
-                "Where CategoryName = @Id";
-            //todo change CategoryName in article to categoryId?
 
             //Execute statement
             try

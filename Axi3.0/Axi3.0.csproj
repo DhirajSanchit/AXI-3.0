@@ -20,24 +20,27 @@
     <ItemGroup>
       <Compile Remove="Data\**" />
       <Compile Remove="Views\Articles\Articles.cshtml.cs" />
+      <Compile Remove="Designs\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Data\**" />
+      <EmbeddedResource Remove="Designs\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Data\**" />
+      <None Remove="Designs\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="Data\**" />
       <Content Include="Areas\.DS_Store" />
       <Content Remove="Views\Articles\Articles.cshtml" />
+      <Content Remove="Designs\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Designs" />
       <Folder Include="wwwroot\images" />
     </ItemGroup>
 
