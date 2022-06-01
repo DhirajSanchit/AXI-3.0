@@ -14,7 +14,7 @@ namespace AxiLogic.Containers
         private IList<Article> _articles; 
         private IDalFactory _idalFactory;
         
-        public ArticleContainer(DalFactory idalFactory)
+        public ArticleContainer(IDalFactory idalFactory)
         {
             _idalFactory = idalFactory;
         }
