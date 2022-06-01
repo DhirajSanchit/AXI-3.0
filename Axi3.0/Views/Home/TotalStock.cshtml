@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model TotalStockViewModel
+@{
+    ViewData["Title"] = "Stock";
+    Layout = "_Layout";
+}
+<body>
+    @* searchbar *@
+    <input type="text" class="search-bar" placeholder="Type to start searching...">
+    @*Sheet containing info about articles*@
+    <div class="sheet-top">
+        <div class="name-column-top-articletotal">Name</div>
+        <div class="quantity-column-top-articletotal">Quantity</div>
+    </div>
+    <div class="article-sheet">
+        @*For loop to create divs containing stock info*@
+        @if (Model.StockModels != null)
+        {
+            foreach (var stock in Model.StockModels)
+            {
+                <div class="name-column-articletotal">
+                    @stock.ArticleName
+                </div>
+                <div class="quantity-column-articletotal">
+                    <p>@stock.Quantity</p>
+                </div>
+            }
+        }
+    </div>
+</body>

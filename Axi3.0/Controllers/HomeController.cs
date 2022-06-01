@@ -60,6 +60,13 @@ namespace Axi3._0.Controllers
             return View(stockModel);
         }
 
+        public IActionResult TotalStock()
+        {
+            var totalStockViewModel = new TotalStockViewModel();
+            totalStockViewModel.StockModels = _containerFactory.GetStockContainer().GetAllStocks();
+            return View(totalStockViewModel);
+        }
+
         public IActionResult Articles()
         {
             var articleViewModel = new ArticleViewModel();

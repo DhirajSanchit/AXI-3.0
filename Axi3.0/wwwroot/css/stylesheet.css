@@ -111,6 +111,34 @@
     box-shadow:1px 3px black;
     transform: translateY(4px);
 }
+.name-column-top-articletotal, .quantity-column-top-articletotal {
+    width: 49%;
+    height: 35px;
+    display: inline-block;
+    color: black;
+    margin-top: 185px;
+    font-weight: bold;
+}
+    .name-column-top-articletotal{
+    margin-left: 1.5%;
+}
+
+.name-column-articletotal, .quantity-column-articletotal {
+    width: 49%;
+    height: 35px;
+    border: 1px solid black;
+    display: inline-block;
+    color: black;
+    user-select: text;
+}
+.quantity-column-articletotal p{
+    text-align:right;
+    margin-right:5px;
+    color:black;
+}
+.name-column-articletotal {
+    margin-left: 1.5%;
+}
 /*Style for stock article-sheet*/
 .sheet-top{
     position:absolute;
