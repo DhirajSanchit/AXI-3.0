@@ -12,7 +12,7 @@ namespace AxiLogic.Classes
         public string Name;
         public string Description;
         public int Id;
-        public string Category;
+        public string Category { get; set; }
         public bool Disabled;
 
         public Article(string name, double price)
@@ -62,7 +62,7 @@ namespace AxiLogic.Classes
             Barcode = articleDto.Barcode;
             Price = articleDto.Price;
             ImgRef = articleDto.ImgRef;
-            Category = articleDto.Category;
+            Category = articleDto.CategoryName;
             Description = articleDto.Description;
         }
         
@@ -114,7 +114,8 @@ namespace AxiLogic.Classes
                 ImgRef = ImgRef,
                 Price = Price,
                 Barcode = Barcode,
-                Category = Category
+                CategoryName = Category,
+                CategoryId = Int32.Parse(Category)
             };
         }
        

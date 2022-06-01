@@ -49,7 +49,7 @@ namespace AxiLogic.Containers
                 Barcode = article.Barcode,
                 ImgRef = article.ImgRef,
                 Description = article.Description,
-                Category = article.Category
+                CategoryName = article.Category
             };
             article.Id = _idalFactory.GetArticleDal().AddArticle(articleDto);
             _articles.Add(article);

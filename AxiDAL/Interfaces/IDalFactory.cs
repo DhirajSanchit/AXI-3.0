@@ -10,5 +10,6 @@
         public IShipmentDAL GetShipmentDal();
         public IArticleDAL GetArticleDal();
         public ITestDAL GetTestDal();
+        public IStatisticsDAL GetStatisticsDal();
     }
 }

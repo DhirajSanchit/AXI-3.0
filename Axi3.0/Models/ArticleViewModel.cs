@@ -19,7 +19,7 @@ namespace Axi3._0.Models
                Name = name,
                Price = price,
                ImgRef = imgRef,
-               Category = category,
+               CategoryName = category,
                Description = description
            };
            var articleModel = new ArticleModel()

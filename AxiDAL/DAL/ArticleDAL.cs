@@ -26,8 +26,11 @@ namespace AxiDAL.DAL
         public IList<ArticleDto> GetAll()
         {   
             //Prepare Query
-            var sql = @"SELECT * " +
-                      "FROM [Article] WHERE Disabled = 0";
+            var sql =
+                @"SELECT A.ID, A.Name, Category AS CategoryId, C.Name AS CategoryName, Price,BarCode, Img, A.Disabled
+                         FROM Article A
+                         JOIN Category C on Category = C.ID 
+                         WHERE Disabled = 0 ";
                 
             //Execute statement
                 try
@@ -136,7 +139,7 @@ namespace AxiDAL.DAL
                 "Set [Name] = @Name," +
                 "[Price] = @Price," +
                 "[ImgRef] = @ImgRef " +
-                "[Category] = @Category " +
+                "[CategoryName] = @CategoryName " +
                 "[Description] = @Description " +
                 "[Disabled] = @Disabled" +
                 "Where Barcode = @Barcode";
@@ -152,7 +155,7 @@ namespace AxiDAL.DAL
                         articleDto.Name,
                         articleDto.Price,
                         articleDto.ImgRef,
-                        articleDto.Category,
+                        articleDto.CategoryName,
                         articleDto.Description,
                         articleDto.Barcode,
                         articleDto.Disabled
@@ -241,6 +244,8 @@ namespace AxiDAL.DAL
             var sql = "Select * from [Article] " +
                 "Where Category = @Id AND Disabled = 0";
             //todo change Category in article to categoryId?
+                "Where CategoryName = @Id";
+            //todo change CategoryName in article to categoryId?
 
             //Execute statement
             try

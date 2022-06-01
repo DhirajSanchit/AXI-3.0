@@ -20,7 +20,7 @@ namespace AxiUnitTests.Scrubs
             {
                 Id = 1,
                 Barcode = "1",
-                Category = "Tools",
+                CategoryName = "Tools",
                 Description = "description1",
                 ImgRef = "someUrl1",
                 Name = "name1",
@@ -30,7 +30,7 @@ namespace AxiUnitTests.Scrubs
             {
                 Id = 2,
                 Barcode = "2",
-                Category = "Tools",
+                CategoryName = "Tools",
                 Description = "description2",
                 ImgRef = "someUrl2",
                 Name = "name2",
@@ -99,7 +99,7 @@ namespace AxiUnitTests.Scrubs
             List<ArticleDto> returnList = new();
             foreach (var dto in _articleDtos)
             {
-                if (dto.Category == categoryDto.Name)
+                if (dto.CategoryName == categoryDto.Name)
                 {
                     returnList.Add(dto);
                 }
