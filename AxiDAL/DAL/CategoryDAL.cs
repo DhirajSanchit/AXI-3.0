@@ -81,7 +81,7 @@ namespace AxiDAL.DAL
             }
         }
         
-        //Remove existing Category
+        //Remove existing CategoryName
         public void RemoveCategory(CategoryDto categoryDto)
         {
             //Prepare Query
@@ -112,7 +112,7 @@ namespace AxiDAL.DAL
             
         }
         
-        //update existing Category
+        //update existing CategoryName
         public void UpdateCategory(CategoryDto categoryDto)
         {
             //Prepare Query

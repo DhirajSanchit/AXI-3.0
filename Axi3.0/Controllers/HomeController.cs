@@ -81,8 +81,8 @@ namespace Axi3._0.Controllers
                 Price = model.Price,
                 ImgRef = model.ImgRef,
                 Description = model.Description,
-                CategoryName = model.Category,
-                Id = Int32.Parse(model.Category)
+                CategoryName = model.CategoryName,
+                Id = Int32.Parse(model.CategoryName)
             }));
 
             return RedirectToAction("AddArticle", "Home");
@@ -173,6 +173,23 @@ namespace Axi3._0.Controllers
             });
             return RedirectToAction("Categories", "Home");
         }
+
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateArticle()
+        {
+            
+            return View();
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateArticle(ArticleModel model)
+        {
+            
+            return View();
+        }
+
         
         [HttpPost]
         [ValidateAntiForgeryToken]
