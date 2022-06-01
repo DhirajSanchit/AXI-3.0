@@ -81,7 +81,7 @@ namespace Axi3._0.Controllers
                 Price = model.Price,
                 ImgRef = model.ImgRef,
                 Description = model.Description,
-                Category = model.Category,
+                CategoryName = model.Category,
                 Id = Int32.Parse(model.Category)
             }));
 

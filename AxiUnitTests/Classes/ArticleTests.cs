@@ -144,7 +144,7 @@ namespace AxiUnitTests.Classes
                 Barcode = "barcode",
                 ImgRef = "imgRef",
                 Description = "description",
-                Category = "category"
+                CategoryName = "category"
             };
             //act
             var article = new Article(dto);
@@ -154,7 +154,7 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(dto.Barcode, article.Barcode);
             Assert.AreEqual(dto.ImgRef, article.ImgRef);
             Assert.AreEqual(dto.Description, article.Description);
-            Assert.AreEqual(dto.Category, article.Category);
+            Assert.AreEqual(dto.CategoryName, article.Category);
         }
 
         [TestCategory("ArticleTests-ConstructorDto"), TestMethod]
@@ -169,7 +169,7 @@ namespace AxiUnitTests.Classes
                 Barcode = "barcode",
                 ImgRef = "imgRef",
                 Description = "description",
-                Category = "category"
+                CategoryName = "category"
             };
             //act
             var article = new Article(dto);
@@ -189,7 +189,7 @@ namespace AxiUnitTests.Classes
                 Barcode = "barcode",
                 ImgRef = "imgRef",
                 Description = "description",
-                Category = "category"
+                CategoryName = "category"
             };
             //act
             var article = new Article(dto);
@@ -209,7 +209,7 @@ namespace AxiUnitTests.Classes
                 Barcode = "barcode",
                 ImgRef = "imgRef",
                 Description = "description",
-                Category = "category"
+                CategoryName = "category"
             };
             //act
             var article = new Article(dto);
@@ -335,7 +335,7 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(article.Barcode, dto.Barcode);
             Assert.AreEqual(article.ImgRef, dto.ImgRef);
             Assert.AreEqual(article.Description, dto.Description);
-            Assert.AreEqual(article.Category, dto.Category);
+            Assert.AreEqual(article.Category, dto.CategoryName);
         }
     }
 }

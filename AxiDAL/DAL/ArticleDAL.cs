@@ -6,16 +6,13 @@ using System.Linq;
 using AxiDAL.DTOs;
 using AxiDAL.Interfaces;
 using Dapper;
-
+ 
 namespace AxiDAL.DAL
 {
     public class ArticleDAL : IArticleDAL
     {
 
         private IDbConnection _dbConnection;
-          
-        //private IList<ArticleDto> _dataset;
-        //private const string connectionstring = ""Server=mssqlstud.fhict.local;Database=dbi484674;User Id = dbi484674; Password=DatabaseAXItim;"
 
         public ArticleDAL(IDbConnection dbConnection)
         {
@@ -26,8 +23,9 @@ namespace AxiDAL.DAL
         public IList<ArticleDto> GetAll()
         {   
             //Prepare Query
-            var sql = @"SELECT * " +
-                      "FROM [Article]";
+            var sql = @"SELECT A.ID, A.Name, Category AS CategoryId, C.Name AS CategoryName, Price,BarCode, Img, A.Disabled
+                         FROM Article A
+                         JOIN Category C on Category = C.ID"; 
                 
             //Execute statement
                 try
@@ -87,16 +85,20 @@ namespace AxiDAL.DAL
 
         public int AddArticle(ArticleDto articleDto)
         {
+            var parser = int.Parse(articleDto.CategoryName);
+            var sql = @"insert into [Article](Name, Price, CategoryName, Description) values(@Name, @Price," + parser  + ", @Description)";
+            
             //Prepare Queries
-            var sql = "insert into [Article] " + 
-                               "values(@Name, " +
-                               "@Price, " +
-                               "@ImgRef, " +
-                               "@Category, " +
-                               "@Description)";
+            // var sql = @"insert into [Article] " + 
+            //                    "values(@Name, " +
+            //                    "@Price, " +
+            //                    "@ImgRef, " +
+            //                    "@CategoryName," +
+            //                    "@Description)";
             
             var sql2 = @"Select @@IDENTITY";
-           
+            //var parser = Int32.Parse(articleDto.CategoryName);
+            
             //Execute statement
             try
             {
@@ -107,14 +109,16 @@ namespace AxiDAL.DAL
                         {
                             articleDto.Name, 
                             articleDto.Price,
-                            articleDto.ImgRef,
-                            articleDto.Category,
+                            //articleDto.ImgRef,
+                            parser,
                             articleDto.Description 
                         });
-                    return _dbConnection.QuerySingle<int>(sql2);
+                    var identity =  _dbConnection.QuerySingle<int>(sql2);
+                    return identity;
                 }
             }
-
+            
+            //TODO: BARCODE SET TO NOT NULL, GAVE SQL EXCEPTION WHEN INSERTING ARTICLE
             //Catches possible exceptions
             catch (Exception ex)
             {
@@ -136,7 +140,7 @@ namespace AxiDAL.DAL
                 "Set [Name] = @Name," +
                 "[Price] = @Price," +
                 "[ImgRef] = @ImgRef " +
-                "[Category] = @Category " +
+                "[CategoryName] = @CategoryName " +
                 "[Description] = @Description " +
                 "Where Barcode = @Barcode";
 
@@ -150,8 +154,8 @@ namespace AxiDAL.DAL
                     {
                         articleDto.Name,
                         articleDto.Price,
-                        articleDto.ImgRef,
-                        articleDto.Category,
+                        ImgRef = articleDto.ImgRef,
+                        Category = articleDto.CategoryName,
                         articleDto.Description,
                         articleDto.Barcode
                     });
@@ -237,8 +241,8 @@ namespace AxiDAL.DAL
         {
             //Prepare Queries
             var sql = "Select * from [Article] " +
-                "Where Category = @Id";
-            //todo change Category in article to categoryId?
+                "Where CategoryName = @Id";
+            //todo change CategoryName in article to categoryId?
 
             //Execute statement
             try
@@ -265,7 +269,7 @@ namespace AxiDAL.DAL
         {
             //Prepare Queries
             var sql = "Update [Article] " +
-                "Set [Category] = null " +
+                "Set [CategoryName] = null " +
                 "Where [Id] = @Id";
 
             //Execute statement
