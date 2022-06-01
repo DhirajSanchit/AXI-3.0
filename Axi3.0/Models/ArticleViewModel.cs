@@ -12,23 +12,29 @@ namespace Axi3._0.Models
         
         public IList<Article> ArticleModels;
         
-       public void CreateArticle(string name, double price, string imgRef, string category, string description)
+       public void CreateArticle(string name, double price, string imgRef, string categoryname, int categoryid, string description, bool disabled)
        {
            var articleDto = new ArticleDto()
            {
                Name = name,
                Price = price,
                ImgRef = imgRef,
-               CategoryName = category,
-               Description = description
+               CategoryName = categoryname,
+               CategoryId =  categoryid,
+               Description = description,
+               Disabled = disabled
+               
+               
            };
            var articleModel = new ArticleModel()
            {
                Name = name,
                Price = price,
                ImgRef = imgRef,
-               Category = category, 
-               Description = description
+               CategoryName = categoryname,
+               CategoryId = categoryid,
+               Description = description,
+               Disabled = disabled
            };
            //ArticleModels.Add(articleModel);
            //ContainerFactory.ArticleContainer.AddArticle(new Article(articleDto));
