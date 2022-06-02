@@ -193,8 +193,19 @@ namespace Axi3._0.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult UpdateArticle(ArticleModel model)
         {
-            
-            return View();
+            _containerFactory.GetArticleContainer().UpdateArticle(new Article(new ArticleDto()
+            {
+                Name = model.Name,
+                Barcode = model.Barcode,
+                CategoryName = model.CategoryName,
+                CategoryId = model.CategoryId,
+                Description = model.Description,
+                Disabled = model.Disabled,
+                Id = model.Id,
+                ImgRef = model.ImgRef,
+                Price = model.Price
+            }));
+            return RedirectToAction("Articles", "Home");
         }
 
         
