@@ -1,7 +1,7 @@
 @using AxiLogic.Classes 
 @model CategoryModel
 @{
-    Layout = null;}
+    Layout = Layout;}
 
 <!DOCTYPE html>
 
@@ -25,21 +25,33 @@
                 }
             }
  }
+    <div class="update-container">
+        @using (Html.BeginForm())
+        {
+            @Html.DropDownListFor(model => model.CategoryId, listItems, "Choose A Category", new { @class = "category-dropdown" })
+            @*<button type="submit" name="Remove Category" value="Remove Category"
+                    formaction="DeleteCategory" formmethod="post">
+                Remove Category
+            </button>*@
 
-@using (Html.BeginForm())
-{
-    @Html.DropDownListFor(model => model.CategoryId, listItems, "Choose A Category", new { @class = "category-dropdown" })
-    <button type="submit" name="Remove Category" value="Remove Category" 
-            formaction="DeleteCategory" formmethod="post">Remove Category</button> 
- 
-    @Html.AntiForgeryToken()
-    <p>@Html.LabelFor(model => model.CategoryName)</p>
-    @Html.TextBoxFor(model => model.CategoryName)
-    <button type="submit" name="Add Category" value="Add Category" 
-            formaction="AddCategory" formmethod="post">Add Category</button>
-                                                           
-    <button type="submit" name="Update Category" value="Update Category" 
-            formaction="UpdateCategory" formmethod="post">Update Category</button>  
-}
+            @Html.AntiForgeryToken()
+            <p>@Html.LabelFor(model => model.CategoryName)</p>
+            @Html.TextBoxFor(model => model.CategoryName)
+            <button type="submit" name="Add Category" value="Add Category"
+                    formaction="AddCategory" formmethod="post">
+                Add Category
+            </button>
+
+            <button type="submit" name="Update Category" value="Update Category"
+                    formaction="UpdateCategory" formmethod="post">
+                Update Category
+            </button>
+
+            <button type="submit" name="Remove Category" value="Remove Category"
+                    formaction="DeleteCategory" formmethod="post">
+                Remove Category
+            </button>
+        }
+    </div>
 </body>
 </html>
