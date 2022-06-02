@@ -19,17 +19,17 @@
     margin-top:20px;
 }
 .top_nav_button_container{
-    position:relative;
-    float:right;
+    position:absolute;
+    right:10px;
     height:70px;
-    width:600px;
+    width:69vw;
 }
 /*Style for each href in top_nav*/
 .top_nav_button_container a {
     display: inline-block;
     height: 70px;
-    width: 150px;
-    margin-left: -4px;
+    width: 10vw;
+    margin-left: -10px;
 }
 .top_nav_button_container a p{
     text-align:center;
@@ -111,7 +111,7 @@
     box-shadow:1px 3px black;
     transform: translateY(4px);
 }
-.name-column-top-articletotal, .quantity-column-top-articletotal {
+.name-column-top-article-total, .quantity-column-top-article-total {
     width: 49%;
     height: 35px;
     display: inline-block;
@@ -119,11 +119,11 @@
     margin-top: 185px;
     font-weight: bold;
 }
-    .name-column-top-articletotal{
+    .name-column-top-article-total{
     margin-left: 1.5%;
 }
 
-.name-column-articletotal, .quantity-column-articletotal {
+.name-column-article-total, .quantity-column-article-total {
     width: 49%;
     height: 35px;
     border: 1px solid black;
@@ -131,12 +131,12 @@
     color: black;
     user-select: text;
 }
-.quantity-column-articletotal p{
+.quantity-column-article-total p{
     text-align:right;
     margin-right:5px;
     color:black;
 }
-.name-column-articletotal {
+.name-column-article-total {
     margin-left: 1.5%;
 }
 /*Style for stock article-sheet*/
@@ -153,6 +153,7 @@
     color: black;
     margin-top:185px;
     font-weight:bold;
+    text-align: center;
 }
 .id-column-top, .quantity-column-top, .location-column-top {
     width: 19%;
@@ -185,7 +186,7 @@
 
 .article-sheet{
     position:absolute;
-    height:650px;
+    height:620px;
     width:80%;
     max-width:1100px;
     border:1px solid black;

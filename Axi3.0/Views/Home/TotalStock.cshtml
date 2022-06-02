@@ -9,8 +9,8 @@
     <input type="text" class="search-bar" placeholder="Type to start searching...">
     @*Sheet containing info about articles*@
     <div class="sheet-top">
-        <div class="name-column-top-articletotal">Name</div>
-        <div class="quantity-column-top-articletotal">Quantity</div>
+        <div class="name-column-top-article-total">Name</div>
+        <div class="quantity-column-top-article-total">Quantity</div>
     </div>
     <div class="article-sheet">
         @*For loop to create divs containing stock info*@
@@ -18,10 +18,10 @@
         {
             foreach (var stock in Model.StockModels)
             {
-                <div class="name-column-articletotal">
+                <div class="name-column-article-total">
                     @stock.ArticleName
                 </div>
-                <div class="quantity-column-articletotal">
+                <div class="quantity-column-article-total">
                     <p>@stock.Quantity</p>
                 </div>
             }
