@@ -10,8 +10,73 @@
     <title>Categories</title>
 </head>
 <body>
+@* Button to add article *@
+<div class="btn-add-article btn-active">
+    <a asp-controller="Home" asp-action="">
+        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+           </svg>
+            Add Category
+        </p></a>
+</div>
 
- @{
+<div class="sheet-top">
+    <div class="name-column-top-articles">Id</div>
+    <div class="price-column-top-articles">Name</div>
+ </div>
+
+<div class="article-sheet">
+    @*For loop to create divs containing article info*@
+    @if (Model != null)
+    {
+        foreach(var article in Model.Categories)
+        {
+            <a asp-controller="Home" asp-action="UpdateArticle" asp-route-id="@article.Id">
+                @* <p>BUTTON</p> *@
+            </a>
+            <div class="name-column-articles"
+                 @* onclick="showArticleElement('view-article-modal'); showElement('modal-background')" *@
+                 >
+                @article.Id
+            </div>
+            <div class="price-column-articles" style="text-align: right"
+                 @* onclick="showArticleElement('view-article-modal'); showElement('modal-background')" *@
+                 >
+                @article.Name
+            </div> 
+            <div class="btn border-dark" style="position: relative; width: 11rem; padding: 0;margin: 0;"
+                 onclick="showArticleElement('view-article-modal'); showElement('modal-background')">
+                <p class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    </svg>
+                </p>
+            </div>
+            <div class="btn border-dark" style="position: relative; width: 11rem; padding: 0; margin: 0;"
+                 onclick="";>
+                <p class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                      <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                    </svg>
+                </p>
+            </div>
+            
+            @* <div class="btn btn-primary" style="text-align: right" *@
+            @*      onclick="showArticleElement('view-article-modal'); showElement('modal-background')"> *@
+            @*     @article.Name *@
+            @* </div>  *@
+            @* *@
+            @* <div class="btn btn-primary" style="text-align: right" *@
+            @*      onclick="showArticleElement('view-article-modal'); showElement('modal-background')"> *@
+            @*     @article.Name *@
+            @* </div>  *@
+             
+        }
+    }
+</div>
+
+@{
      var listItems = new List<SelectListItem>();
             if (Model.Categories != null)
             {
@@ -24,34 +89,47 @@
                     });
                 }
             }
- }
-    <div class="update-container">
-        @using (Html.BeginForm())
-        {
-            @Html.DropDownListFor(model => model.CategoryId, listItems, "Choose A Category", new { @class = "category-dropdown" })
-            @*<button type="submit" name="Remove Category" value="Remove Category"
-                    formaction="DeleteCategory" formmethod="post">
-                Remove Category
-            </button>*@
+}
+@* *@
+@* <div class="update-container"> *@
+@*     @using (Html.BeginForm()) *@
+@*     { *@
+@*         @Html.DropDownListFor(model => model.CategoryId, listItems, "Choose A Category", new { @class = "category-dropdown" }) *@
+@*             @*<button type="submit" name="Remove Category" value="Remove Category" *@
+@*                     formaction="DeleteCategory" formmethod="post"> *@
+@*                 Remove Category *@
+@*             </button>*@ 
+@* *@
+@*         @Html.AntiForgeryToken() *@
+@*         <p>@Html.LabelFor(model => model.CategoryName)</p> *@
+@*         @Html.TextBoxFor(model => model.CategoryName) *@
+@*         <button type="submit" name="Add Category" value="Add Category" *@
+@*                 formaction="AddCategory" formmethod="post"> *@
+@*             Add Category *@
+@*         </button> *@
+@* *@
+@*         <button type="submit" name="Update Category" value="Update Category" *@
+@*                 formaction="UpdateCategory" formmethod="post"> *@
+@*             Update Category *@
+@*         </button> *@
+@* *@
+@*         <button type="submit" name="Remove Category" value="Remove Category" *@
+@*                 formaction="DeleteCategory" formmethod="post"> *@
+@*             Remove Category *@
+@*         </button> *@
+@*     } *@
+@* </div> *@
 
-            @Html.AntiForgeryToken()
-            <p>@Html.LabelFor(model => model.CategoryName)</p>
-            @Html.TextBoxFor(model => model.CategoryName)
-            <button type="submit" name="Add Category" value="Add Category"
-                    formaction="AddCategory" formmethod="post">
-                Add Category
-            </button>
-
-            <button type="submit" name="Update Category" value="Update Category"
-                    formaction="UpdateCategory" formmethod="post">
-                Update Category
-            </button>
-
-            <button type="submit" name="Remove Category" value="Remove Category"
-                    formaction="DeleteCategory" formmethod="post">
-                Remove Category
-            </button>
-        }
+@*Modal for showing existing articles*@
+<dv class="view-article-modal" id="view-article-modal">
+    <div class="view-article-modal-image-box">
+        <img src="~/images/vector-Search.png" alt="Search-Icon" id="articleImg">
     </div>
+    <div class="exit-cross-container">
+        <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('view-article-modal')">
+    </div>
+    <p class="view-article-modal-name-label" id="articleName">!Name!</p>
+    <p class="view-article-modal-category-label" id="articleCategory">!CategoryName</p> 
+</dv> 
 </body>
 </html>
