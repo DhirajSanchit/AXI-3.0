@@ -14,6 +14,7 @@ namespace AxiUnitTests
         public OrderArticleMock OrderArticleMock { get; set; }
         public OrderMock OrderMock { get; set; }
         public CategoryMock CategoryMock { get; set; }
+
         
         public MockFactory()
         {
@@ -32,11 +33,6 @@ namespace AxiUnitTests
         }
 
         public ITestDAL GetTestDal()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IStockDAL GetStockDAL()
         {
             throw new NotImplementedException();
         }
