@@ -18,6 +18,9 @@
         {
             foreach (var stock in Model.StockModels)
             {
+                <a asp-controller="Home" asp-action="UpdateArticle" asp-route-id="@stock.Id">
+                    X
+                </a>
                 <div class="name-column-article-total">
                     @stock.ArticleName
                 </div>

@@ -9,5 +9,6 @@ namespace Axi3._0.Models
     {
         public string ArticleName;
         public int Quantity;
+        public int Id;
     }
 }

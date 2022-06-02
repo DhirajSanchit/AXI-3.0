@@ -33,9 +33,7 @@ namespace AxiLogic.Containers
             {
                 stocks.Add(new Stock(stockDTO));
             }
-
             return _stocks = stocks;
         }
-
     }
 }
