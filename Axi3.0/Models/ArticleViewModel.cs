@@ -18,7 +18,7 @@ namespace Axi3._0.Models
            {
                Name = name,
                Price = price,
-               ImgRef = imgRef,
+               Img = imgRef,
                CategoryName = categoryname,
                CategoryId =  categoryid,
                Description = description,

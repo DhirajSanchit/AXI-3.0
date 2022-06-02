@@ -11,11 +11,13 @@ namespace AxiLogic.Classes
     {
         public string ArticleName;
         public int Quantity;
+        public int Id;
 
         public Stock(StockDto stockDto)
         {
             ArticleName = stockDto.Name;
             Quantity = stockDto.Amount;
+            Id = stockDto.Id;
         }
     }
 }

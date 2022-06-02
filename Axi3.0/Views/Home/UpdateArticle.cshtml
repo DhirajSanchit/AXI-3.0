@@ -11,6 +11,20 @@
     <title>title</title>
 </head>
 <body>
+ @{
+     var listItems = new List<SelectListItem>();
+            if (Model.CategoryEnum != null)
+            {
+                foreach (var category in Model.CategoryEnum)
+                {
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = @category.Name,
+                        Value = @category.Id.ToString()
+                    });
+                }
+            }
+ }
 @using (Html.BeginForm())
 {
     
@@ -18,7 +32,7 @@
     
     <div class="new-article-modal" id="new-article-modal">
         <div class="new-article-modal-image-box">
-            <img src="~/images/vector-Search.png" alt="Search-Icon">
+            <img src="@Model.ImgRef" alt="Search-Icon">
         </div>
         
         <button type="submit" class="btn-submit-article btn-active">
@@ -30,9 +44,9 @@
             @* <div class="form-group"> *@
         <p>@Html.LabelFor(model => model.Name, new {@class = "new-article-modal-name-input-label "})</p>
            @Html.TextBoxFor(model => model.Name, new {@class = "new-article-modal-name-input "})
- 
-        <p>@Html.LabelFor(model => model.CategoryName, new {@class = "new-article-modal-categoryname-input-label"})</p>
-            @Html.TextBoxFor(model => model.CategoryName, new {@class = "new-article-modal-categoryname-input"})
+        
+        <p>@Html.LabelFor(model => model.CategoryName, new {@class = "category-dropdown-label"})</p>
+        @Html.DropDownListFor(model => model.CategoryId, listItems, "Choose A Category", new { @class = "category-dropdown" })
             
         <p>@Html.LabelFor(model => model.Price, new {@class = "new-article-modal-price-input-label"})</p>
         @Html.TextBoxFor(model => model.Price, new {@class = "new-article-modal-price-input"})

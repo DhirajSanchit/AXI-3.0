@@ -23,7 +23,7 @@ namespace AxiDAL.DAL
         public IList<StockDto> GetAll()
         {
             //Prepare Query
-            var sql = @"SELECT Name, Amount " +
+            var sql = @"SELECT Name, Amount,  Id " +
                        "FROM Article, Stock " +
                        "WHERE Article.Id = Stock.ArticleId";
 

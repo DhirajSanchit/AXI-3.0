@@ -86,7 +86,7 @@ namespace Axi3._0.Controllers
             {
                 Name = model.Name,
                 Price = model.Price,
-                ImgRef = model.ImgRef,
+                Img = model.ImgRef,
                 Description = model.Description,
                 CategoryName = model.CategoryName,
                 Id = Int32.Parse(model.CategoryName)
@@ -182,17 +182,15 @@ namespace Axi3._0.Controllers
         }
 
         [HttpGet]
-        [ValidateAntiForgeryToken]
         public IActionResult UpdateArticle(int id)
         {
             var article = _containerFactory.GetArticleContainer().GetArticleById(id);
             var CategoryDtos = _containerFactory.GetCategoryContainer().GetAllCategories();
             var articleModel = new ArticleModel()
             {
-                //Price, Barcode, ImgRef, Name, Description, Id, CategoryName, CategoryId, Disabled, CategoryEnum
                 Price = article.Price,
                 Barcode = article.Barcode,
-                ImgRef = article.ImgRef,
+                ImgRef = article.Img,
                 Name = article.Name,
                 Description = article.Description,
                 Id = article.Id,
@@ -211,13 +209,13 @@ namespace Axi3._0.Controllers
             _containerFactory.GetArticleContainer().UpdateArticle(new Article(new ArticleDto()
             {
                 Name = model.Name,
-                Barcode = model.Barcode,
-                CategoryName = model.CategoryName,
-                CategoryId = model.CategoryId,
+                // Barcode = model.Barcode,
+                // CategoryName = model.CategoryName,
+                // CategoryId = model.CategoryId,
                 Description = model.Description,
-                Disabled = model.Disabled,
+                // Disabled = model.Disabled,
                 Id = model.Id,
-                ImgRef = model.ImgRef,
+                Img = model.ImgRef,
                 Price = model.Price
             }));
             return RedirectToAction("Articles", "Home");

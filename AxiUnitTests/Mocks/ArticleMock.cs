@@ -22,7 +22,7 @@ namespace AxiUnitTests.Scrubs
                 Barcode = "1",
                 CategoryName = "Tools",
                 Description = "description1",
-                ImgRef = "someUrl1",
+                Img = "someUrl1",
                 Name = "name1",
                 Price = 90.30
             });
@@ -32,7 +32,7 @@ namespace AxiUnitTests.Scrubs
                 Barcode = "2",
                 CategoryName = "Tools",
                 Description = "description2",
-                ImgRef = "someUrl2",
+                Img = "someUrl2",
                 Name = "name2",
                 Price = 8.15
             });
