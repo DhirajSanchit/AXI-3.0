@@ -47,7 +47,7 @@ namespace AxiLogic.Containers
                 Name = article.Name, 
                 Price = article.Price,
                 Barcode = article.Barcode,
-                ImgRef = article.ImgRef,
+                Img = article.ImgRef,
                 Description = article.Description,
                 CategoryName = article.Category
             };
@@ -113,11 +113,16 @@ namespace AxiLogic.Containers
     
         public void UpdateArticle(Article article)
         {
-            if (!_articles.Contains(article))
+            GetAllArticles();
+            foreach (var refArticle in _articles)
             {
-                throw new ArgumentException("Article does not exist");
+                if (refArticle.Id == article.Id)
+                {
+                    _idalFactory.GetArticleDal().UpdateArticle(article.ToDto());
+                    return;
+                }
             }
-            _idalFactory.GetArticleDal().UpdateArticle(article.ToDto());
+            throw new ArgumentException("Article does not exist");
         }
     }
 }

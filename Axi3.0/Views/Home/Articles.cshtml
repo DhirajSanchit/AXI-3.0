@@ -24,6 +24,9 @@
     {
         foreach(var article in Model.ArticleModels)
         {
+            <a asp-controller="Home" asp-action="UpdateArticle" asp-route-id="@article.Id">
+                <p>X</p>
+            </a>
             <div class="name-column-articles"
                  onclick="showArticleElement('view-article-modal', '@article.Name', '@article.Category', '@article.Price', '@article.Description', '@article.ImgRef'); showElement('modal-background')">
                 @article.Name
@@ -67,7 +70,7 @@
 @*     </form> *@
 @* </div> *@
 @*Modal for showing existing articles*@
-<div class="view-article-modal" id="view-article-modal">
+<dv class="view-article-modal" id="view-article-modal">
     <div class="view-article-modal-image-box">
         <img src="~/images/vector-Search.png" alt="Search-Icon" id="articleImg">
     </div>
@@ -78,5 +81,5 @@
     <p class="view-article-modal-category-label" id="articleCategory">!CategoryName</p>
     <h4 class="view-article-modal-price-label" id="articlePrice">!Price!</h4>
     <textarea class="view-article-modal-textarea" id="articleDescription">!Description!</textarea>
-</div>
+</dv>
 </body>

@@ -110,7 +110,7 @@ namespace AxiDAL.DAL
                         {
                             articleDto.Name, 
                             articleDto.Price,
-                            articleDto.ImgRef,
+                            ImgRef = articleDto.Img,
                             articleDto.CategoryName,
                             articleDto.Description 
                         });
@@ -135,14 +135,27 @@ namespace AxiDAL.DAL
         public void UpdateArticle(ArticleDto articleDto)
         {
             //Prepare Queries
-            var sql = @"Update [Article] " +
-                "Set [Name] = @Name," +
-                "[Price] = @Price," +
-                "[ImgRef] = @ImgRef " +
-                "[CategoryName] = @CategoryName " +
-                "[Description] = @Description " +
-                "[Disabled] = @Disabled" +
-                "Where Barcode = @Barcode";
+            string sql;
+            if (articleDto.Barcode != null)
+            {
+                sql = @"Update [Article] " +
+                      "Set [Name] = @Name," +
+                      "[Price] = @Price," +
+                      "[Img] = @ImgRef," +
+                      "[Description] = @Description," +
+                      "[Disabled] = @Disabled " +
+                      "Where Barcode = @Barcode";
+            }
+            else
+            {
+                sql = @"Update [Article] " +
+                      "Set [Name] = @Name," +
+                      "[Price] = @Price," +
+                      "[Img] = @ImgRef," +
+                      "[Description] = @Description," +
+                      "[Disabled] = @Disabled " +
+                      "Where [Id] = @Id";
+            }
 
             //Execute statement
             try
@@ -154,11 +167,10 @@ namespace AxiDAL.DAL
                     {
                         articleDto.Name,
                         articleDto.Price,
-                        articleDto.ImgRef,
-                        articleDto.CategoryName,
+                        ImgRef = articleDto.Img,
                         articleDto.Description,
-                        articleDto.Barcode,
-                        articleDto.Disabled
+                        articleDto.Disabled,
+                        articleDto.Id
                     });
                 }
             }

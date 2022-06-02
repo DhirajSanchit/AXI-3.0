@@ -61,7 +61,7 @@ namespace AxiLogic.Classes
             Name = articleDto.Name;
             Barcode = articleDto.Barcode;
             Price = articleDto.Price;
-            ImgRef = articleDto.ImgRef;
+            ImgRef = articleDto.Img;
             Category = articleDto.CategoryName;
             Description = articleDto.Description;
         }
@@ -106,17 +106,23 @@ namespace AxiLogic.Classes
 
         public ArticleDto ToDto()
         {
-            return new ArticleDto
+            var dto = new ArticleDto
             {
                 Name = Name,
                 Id = Id,
                 Description = Description,
-                ImgRef = ImgRef,
+                Img = ImgRef,
                 Price = Price,
                 Barcode = Barcode,
                 CategoryName = Category,
-                CategoryId = Int32.Parse(Category)
             };
+            
+            if(Category != null)
+            {
+                dto.CategoryId = int.Parse(Category);
+            }
+
+            return dto;
         }
        
     }

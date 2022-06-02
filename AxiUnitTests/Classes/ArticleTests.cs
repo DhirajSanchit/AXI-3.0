@@ -142,7 +142,7 @@ namespace AxiUnitTests.Classes
                 Name = "articleName",
                 Price = 10.50,
                 Barcode = "barcode",
-                ImgRef = "imgRef",
+                Img = "imgRef",
                 Description = "description",
                 CategoryName = "category"
             };
@@ -152,7 +152,7 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(dto.Name, article.Name);
             Assert.AreEqual(dto.Price, article.Price);
             Assert.AreEqual(dto.Barcode, article.Barcode);
-            Assert.AreEqual(dto.ImgRef, article.ImgRef);
+            Assert.AreEqual(dto.Img, article.ImgRef);
             Assert.AreEqual(dto.Description, article.Description);
             Assert.AreEqual(dto.CategoryName, article.Category);
         }
@@ -167,7 +167,7 @@ namespace AxiUnitTests.Classes
                 Name = null,
                 Price = 10.50,
                 Barcode = "barcode",
-                ImgRef = "imgRef",
+                Img = "imgRef",
                 Description = "description",
                 CategoryName = "category"
             };
@@ -187,7 +187,7 @@ namespace AxiUnitTests.Classes
                 Name = "",
                 Price = 10.50,
                 Barcode = "barcode",
-                ImgRef = "imgRef",
+                Img = "imgRef",
                 Description = "description",
                 CategoryName = "category"
             };
@@ -207,7 +207,7 @@ namespace AxiUnitTests.Classes
                 Name = "articleName",
                 Price = -10.50,
                 Barcode = "barcode",
-                ImgRef = "imgRef",
+                Img = "imgRef",
                 Description = "description",
                 CategoryName = "category"
             };
@@ -333,7 +333,7 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(article.Name, dto.Name);
             Assert.AreEqual(article.Price, dto.Price);
             Assert.AreEqual(article.Barcode, dto.Barcode);
-            Assert.AreEqual(article.ImgRef, dto.ImgRef);
+            Assert.AreEqual(article.ImgRef, dto.Img);
             Assert.AreEqual(article.Description, dto.Description);
             Assert.AreEqual(article.Category, dto.CategoryName);
         }

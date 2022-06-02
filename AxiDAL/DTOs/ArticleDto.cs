@@ -6,7 +6,7 @@ namespace AxiDAL.DTOs
     {
         public double Price;
         public string Barcode;
-        public string ImgRef;
+        public string Img;
         public string Name;
         public string Description;
         public int Id;
