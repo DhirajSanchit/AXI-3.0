@@ -307,8 +307,8 @@
 .category-dropdown{
     position:absolute;
     width:200px;
-    left:40px;
-    top:50%;
+    left:0px;
+    top:5em;
 }
 .btn-submit-article{
     position:absolute;
@@ -412,4 +412,9 @@
 }
 select{
     color:black;
+}
+/*style for CategoryUpdate*/
+.update-container{
+    position: absolute;
+    margin-top: 15%;
 }
