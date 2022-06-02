@@ -183,10 +183,25 @@ namespace Axi3._0.Controllers
 
         [HttpGet]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateArticle()
+        public IActionResult UpdateArticle(int id)
         {
-            
-            return View();
+            var article = _containerFactory.GetArticleContainer().GetArticleById(id);
+            var CategoryDtos = _containerFactory.GetCategoryContainer().GetAllCategories();
+            var articleModel = new ArticleModel()
+            {
+                //Price, Barcode, ImgRef, Name, Description, Id, CategoryName, CategoryId, Disabled, CategoryEnum
+                Price = article.Price,
+                Barcode = article.Barcode,
+                ImgRef = article.ImgRef,
+                Name = article.Name,
+                Description = article.Description,
+                Id = article.Id,
+                CategoryName = article.CategoryName,
+                CategoryId = article.CategoryId,
+                Disabled = article.Disabled,
+                CategoryEnum = CategoryDtos
+            };
+            return View(articleModel);
         }
         
         [HttpPost]
