@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - ProftaakAXI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/stylesheet.css" asp-append-version="true"/>
     <link rel="icon" type="image/png" href="~/images/AXI_logo.ico" sizes="32x32" />
@@ -19,26 +19,31 @@
         </div>
         <div class="top_nav_button_container" id="top_nav_button_container">
             <a asp-controller="Home" asp-action="Index">
-                <p>Home</p></a>
+                <p>Home</p>
+            </a>
             <a asp-controller="Home" asp-action="Stock">
-                <p>Available</p></a>
+                <p>Available</p>
+            </a>
             <a asp-controller="Home" asp-action="TotalStock">
-                <p>Stock</p></a>
+                <p>Stock</p>
+            </a>
             <a asp-controller="Home" asp-action="Articles">
                 <p>Articles</p>
             </a>
             <a asp-controller="Shipment" asp-action="ScannerDelivery">
                 <p>Scanner</p>
-            </a><a asp-controller="Home" asp-action="Categories">
+            </a>
+            <a asp-controller="Home" asp-action="Categories">
                 <p>Categories</p>
             </a>
             <a asp-controller="Home" asp-action="Statistics">
-            <p>Statistics</p>
+                <p>Statistics</p>
             </a >
         </div>
     </div>
 </header>
-<div class="container"> @*Contains main body of page*@
+<div class="container">
+    @*Contains main body of page*@
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
