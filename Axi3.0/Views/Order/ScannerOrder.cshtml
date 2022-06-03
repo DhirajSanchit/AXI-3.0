@@ -6,11 +6,13 @@
 <!DOCTYPE html>
 
 <html lang="eng">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 <head>
     <title>Orders</title>
 </head>
 <body>
 <div class="main-screen">
+
     <input type="search" class="search-bar" placeholder="&nbsp;Type to search...">
     @if (Model.OrderModels != null)
     {
@@ -24,32 +26,76 @@
         }
     }
     <div class="order-modal" id="order-modal">
-            <div class="info-box">
-                <div class="order-modal-return" onclick="hideElement('order-modal')"> < </div>
-                <button class="submit-button btn-active" style="position:absolute; right:3rem; margin-top: 8rem; height: 5rem; width: 18rem; font-size: 2rem" onclick="submitOrder()">Submit Order</button>
-                <p id="info-box-realId" style="visibility: hidden"> </p>
-                <p id="info-box-id">Invoice id: 0</p>
-                <p id="info-box-date">Date: @DateTime.Now</p>
-            </div>
+        <div class="info-box">
+            <div class="order-modal-return" onclick="hideElement('order-modal')"> < </div>
+            <button class="submit-button btn-active" style="position:absolute; right:3rem; margin-top: 8rem; height: 5rem; width: 18rem; font-size: 2rem" onmousedown="startScan()" onmouseup="stopScan()" onmouseleave="stopScan()">Scan</button>
+            <p id="info-box-realId" style="visibility: hidden"> </p>
+            <p id="info-box-id">Invoice id: 0</p>
+            <p id="info-box-date">Date: @DateTime.Now</p>
+        </div>
         <div class="info-box-back-wall"></div>
         <div class="article-container" id="article-container" style="display:none">
-                              <div class="article-image-box">
-                                  <img src="~/images/vector-Search.png" alt="article-image" class="article-image">
-                              </div>
-                              <div class="add-btn-container" onclick='scanOrderArticleAdd($(this).parent().find(".article-barcode").text())' style="height:80px; width:auto; position:absolute; right:12rem; margin-top: 10.5rem; cursor: pointer">
-                                  <img src="~/images/add.png" alt="add-button" style="height:80px; width:auto">
-                                  </div>
-                              <div class="remove-btn-container" onclick='scanOrderArticleRemove($(this).parent().find(".article-barcode").text())'  style="height:80px; width: auto; position:absolute; right:18rem; margin-top: 10.5rem; cursor: pointer">
-                                  <img src="~/images/remove.png" alt="remove-button" style="height:80px; width:auto">
-                              </div>
-                <p class="article-container-name">ArticleName</p>
-                <p class="article-container-amount">0/10</p>
-                <div class="article-barcode" style="visibility:hidden">Lorem</div>
-                <div class="article-id" style="visibility:hidden">Lorem</div>
+            <div class="article-image-box">
+                <img src="~/images/vector-Search.png" alt="article-image" class="article-image">
             </div>
-        <div id="article-list">
+            <div class="add-btn-container" onclick='scanOrderArticleAdd($(this).parent().find(".article-barcode").text())' style="height:80px; width:auto; position:absolute; right:12rem; margin-top: 10.5rem; cursor: pointer">
+                <img src="~/images/add.png" alt="add-button" style="height:80px; width:auto">
+            </div>
+            <div class="remove-btn-container" onclick='scanOrderArticleRemove($(this).parent().find(".article-barcode").text())' style="height:80px; width: auto; position:absolute; right:18rem; margin-top: 10.5rem; cursor: pointer">
+                <img src="~/images/remove.png" alt="remove-button" style="height:80px; width:auto">
+            </div>
+            <p class="article-container-name">ArticleName</p>
+            <p class="article-container-amount">0/10</p>
+            <div class="article-barcode" style="visibility:hidden">Lorem</div>
+            <div class="article-id" style="visibility:hidden">Lorem</div>
         </div>
-    </div>   
+        <div id="article-list" class="article-list">
+            
+        </div>
+    </div>
+    <div id="interactive" class="viewport" style="position: absolute; left: 0; bottom:0; height:200px; width: 400px; visibility: hidden" >
+                          <video autoplay="true" preload="auto" style="height:200px; width: 400px"></video>
+                      </div>
 </div>
+ 
 </body>
+<script>
+let scanning = false;
+let scannable = true;
+
+Quagga.init({
+    inputStream : {
+        name: "Live",
+        type: "LiveStream",
+    },
+    decoder : {
+      readers : ["code_39_reader"]
+    }
+  }, function(err) {
+      if (err) {
+          console.log(err);
+          return
+      }
+      console.log("Initialization finished. Ready to start");
+      Quagga.start();
+  });
+
+
+Quagga.onDetected((data)=>{if (scanning === true && scannable === true){
+    scannable = false;
+    console.log(data.codeResult.code);
+    scanOrderArticleAdd(data.codeResult.code);
+}else{
+    console.log("not scanning")
+}});
+
+function startScan() {
+    scanning = true;
+}
+//
+function stopScan(){
+    scanning = false;
+    scannable = true
+}
+</script>
 </html>

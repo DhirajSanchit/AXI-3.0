@@ -2,7 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 let menuOpen;
 let wait = false;
-
+let url = "https://562f-145-93-124-111.ngrok.io";
 //
 function hideElement(elementId) {
     document.getElementById(elementId).style.display = "none"
@@ -22,7 +22,7 @@ function openShipment(shipmentId, name) {
     wait = true;
     $("#article-list").empty();
     var settings = {
-        "url": "https://localhost:5001/Shipment/GetShipmentArticles/",//todo test this
+        "url": `${url}/Shipment/GetShipmentArticles/`,//todo test this
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -65,7 +65,7 @@ function openOrder(orderId, name) {
     wait = true;
     $("#article-list").empty();
     var settings = {
-        "url": "https://localhost:5001/Order/GetOrderArticles/",//todo test this
+        "url": `${url}/Order/GetOrderArticles/`,//todo test this
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -94,6 +94,7 @@ function openOrder(orderId, name) {
             x++;
         });
         showElement('order-modal');
+        checkButtons();
         wait = false;
     });
 }
@@ -217,7 +218,7 @@ function submitShipment() {
     });
     let shipmentArticles = JSON.stringify({shipmentArticles:shipmentArticlesArr});
     var settings = {
-        "url": "https://localhost:5001/Shipment/PostShipmentProcess/",
+        "url": `${url}/Shipment/PostShipmentProcess/`,
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -233,7 +234,7 @@ function submitShipment() {
 
 //
 function submitOrder() {
-    let orderId = $("#info-box-id").text();
+    let orderId = $("#info-box-realId").text();
     let orderArticlesArr = [];
     let processed = true;
     $("#article-list").children().each(function () {
@@ -250,7 +251,7 @@ function submitOrder() {
     });
     let orderArticles = JSON.stringify({orderArticles:orderArticlesArr});
     var settings = {
-        "url": "https://localhost:5001/Order/PostOrderProcess/",//todo test this
+        "url": `${url}/Order/PostOrderProcess/`,//todo test this
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -259,7 +260,6 @@ function submitOrder() {
         data: {orderArticles: orderArticles, processed: processed}
     };
     $.ajax(settings).done(function () {
-        window.location.href = "https://localhost:5001/Order/ScannerOrder";
     }).catch(function () {
         alert("Error submitting order");
     });

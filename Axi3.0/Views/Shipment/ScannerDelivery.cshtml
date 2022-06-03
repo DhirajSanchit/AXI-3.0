@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 <head>
     <title>Deliveries</title>
 </head>
@@ -31,7 +31,8 @@
     <div class="delivery-modal" id="delivery-modal">
         <div class="info-box">
             <div class="delivery-modal-return" onclick="hideElement('delivery-modal')"> < </div> @*TODO shouldn't be on the page > submit delivery button instead*@
-            <button class="submit-button btn-active" style="position:absolute; right:3rem; margin-top: 8rem; height: 5rem; width: 18rem; font-size: 2rem" onclick="submitShipment()">Submit Delivery</button>
+            <button class="submit-button btn-active" style="position:absolute; right:3rem; margin-top: 8rem; height: 5rem; width: 18rem; font-size: 2rem" onmousedown="startScan()" onmouseup="stopScan()" onmouseleave="stopScan()">Scan</button>
+
             <p id="info-box-realId" style="visibility: hidden"> </p>
             <p id="info-box-id">ShipmentName: </p>
             <p id="info-box-date">Date: @DateTime.Now</p>
@@ -55,6 +56,48 @@
         <div id="article-list" class="article-list">
         </div>
     </div>
+    <div id="interactive" class="viewport" style="position: absolute; left: 0; bottom:0; height:200px; width: 400px; visibility: hidden" >
+                    <video autoplay="true" preload="auto" style="height:200px; width: 400px"></video>
+                </div>
 </div>
+
 </body>
+<script>
+let scanning = false;
+let scannable = true;
+
+Quagga.init({
+    inputStream : {
+        name: "Live",
+        type: "LiveStream",
+    },
+    decoder : {
+      readers : ["code_39_reader"]
+    }
+  }, function(err) {
+      if (err) {
+          console.log(err);
+          return
+      }
+      console.log("Initialization finished. Ready to start");
+      Quagga.start();
+  });
+
+
+Quagga.onDetected((data)=>{if (scanning === true && scannable === true){
+    scannable = false;
+    console.log(data.codeResult.code);
+    scanDeliveryArticleAdd(data.codeResult.code)
+}});
+
+function startScan() {
+    scanning = true;
+}
+//
+function stopScan(){
+    scanning = false;
+    scannable = true
+}
+</script>
+
 </html>
