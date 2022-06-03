@@ -45,7 +45,6 @@
         <p>@Html.LabelFor(model => model.Name, new {@class = "new-article-modal-name-input-label "})</p>
            @Html.TextBoxFor(model => model.Name, new {@class = "new-article-modal-name-input "})
         
-        <p>@Html.LabelFor(model => model.CategoryName, new {@class = "category-dropdown-label"})</p>
         @Html.DropDownListFor(model => model.CategoryId, listItems, "Choose A Category", new { @class = "category-dropdown" })
             
         <p>@Html.LabelFor(model => model.Price, new {@class = "new-article-modal-price-input-label"})</p>

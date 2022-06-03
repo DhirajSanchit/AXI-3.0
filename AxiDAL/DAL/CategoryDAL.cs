@@ -48,7 +48,7 @@ namespace AxiDAL.DAL
             }
         }
         
-
+        
         //add new category
         public void AddCategory(CategoryDto categoryDto)
         {
