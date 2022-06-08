@@ -51,7 +51,8 @@
             
         @Html.TextBoxFor(model => model.ImgRef, new {@class = "new-article-modal-add-img-input"})
         @Html.TextAreaFor(model => model.Description, new {@class = "new-article-modal-description-input"})
-        @Html.CheckBoxFor(model => model.Disabled)
+        <p id="disable-label">Disable:</p>
+        @Html.CheckBoxFor(model => model.Disabled, new{@class = "update-article-checkbox"})
  
           
     <div class="exit-cross-container">

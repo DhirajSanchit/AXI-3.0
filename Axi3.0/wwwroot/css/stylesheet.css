@@ -214,6 +214,7 @@
     overflow:hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border-radius:2px;
 }
 
 /*To prevent columns from lining up on the left side of div while not giving every column a margin*/
@@ -250,7 +251,7 @@
     position:fixed;
     background-color:white;
     border:1px solid black;
-    margin-top:175px;
+    margin-top:125px;
     height:700px;
     width:80%;
     max-width:1250px;
@@ -427,4 +428,19 @@ select{
 .update-container{
     position: absolute;
     margin-top: 15%;
+}
+
+.update-article-checkbox{
+    position:absolute;
+    bottom:17.5%;
+    left:10px;
+    height:1.2rem;
+}
+#disable-label{
+    bottom:15%;
+    margin-left:25px;
+    margin-top:25%;
+    position:absolute;
+    color:black;
+    font-weight:bold;
 }

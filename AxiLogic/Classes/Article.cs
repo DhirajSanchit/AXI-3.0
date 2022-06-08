@@ -13,7 +13,7 @@ namespace AxiLogic.Classes
         public string Description;
         public int Id;
         public string Category { get; set; }
-        public bool Disabled;
+        public bool Disabled { get; set; }
 
         public Article(string name, double price)
         {
@@ -29,7 +29,7 @@ namespace AxiLogic.Classes
             Price = price;
         }
         
-        public Article(string name, double price, string barcode, string imgRef, string description, string category)
+        public Article(string name, double price, string barcode, string imgRef, string description, string category, bool disabled)
         {
             if (name == null || name == "")
             {
@@ -45,6 +45,7 @@ namespace AxiLogic.Classes
             ImgRef = imgRef;
             Description = description;
             Category = category;
+            Disabled = disabled;
         }
         
         public Article(ArticleDto articleDto)
@@ -64,6 +65,7 @@ namespace AxiLogic.Classes
             ImgRef = articleDto.Img;
             Category = articleDto.CategoryName;
             Description = articleDto.Description;
+            Disabled = articleDto.Disabled;
         }
         
         public void SetName(string name)
@@ -115,6 +117,7 @@ namespace AxiLogic.Classes
                 Price = Price,
                 Barcode = Barcode,
                 CategoryName = Category,
+                Disabled = Disabled
             };
             
             if(Category != null)

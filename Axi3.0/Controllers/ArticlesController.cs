@@ -26,7 +26,7 @@ namespace Axi3._0.Controllers
         [HttpPost]
         public IActionResult AddArticle(ArticleModel articleModel)
         {
-            _container.AddArticle(new Article(articleModel.Name, articleModel.Price, articleModel.Barcode, articleModel.ImgRef, articleModel.Description, articleModel.CategoryName));
+            _container.AddArticle(new Article(articleModel.Name, articleModel.Price, articleModel.Barcode, articleModel.ImgRef, articleModel.Description, articleModel.CategoryName, articleModel.Disabled));
             return RedirectToAction("AddArticle", "Articles");
         }
         
