@@ -38,7 +38,6 @@
         <button type="submit" class="btn-submit-article btn-active">
             <h4>Save</h4>
         </button>
-        
         @*todo Create functions to check if name and price are null or whitespace > exception*@
         @*Inputs fields and labels*@
             @* <div class="form-group"> *@
@@ -52,14 +51,14 @@
             
         @Html.TextBoxFor(model => model.ImgRef, new {@class = "new-article-modal-add-img-input"})
         @Html.TextAreaFor(model => model.Description, new {@class = "new-article-modal-description-input"})
+        @Html.CheckBoxFor(model => model.Disabled)
  
           
-        <div class="exit-cross-container"> 
+    <div class="exit-cross-container">
+        <a asp-controller="Home" asp-action="Articles" class="">
             <img src="~/images/exit-Cross.png" alt="Exit-Cross" onclick="hideElement('new-article-modal')">
-            @*TODO: Implement redirect action below on exit cross img *@
-            @* <a asp-controller="Home" asp-action="Articles" class=""></a> *@
-            
-        </div>
+            </a>
+    </div>
     </div>
 }
 </body>
