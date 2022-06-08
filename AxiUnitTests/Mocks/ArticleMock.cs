@@ -10,7 +10,7 @@ namespace AxiUnitTests.Scrubs
     {
         public List<ArticleDto> _articleDtos = new();
         
-        private IDalFactory _mockFactory;
+        private IDalFactory _mockFactory; 
 
 
         public ArticleMock(IDalFactory mockFactory)
