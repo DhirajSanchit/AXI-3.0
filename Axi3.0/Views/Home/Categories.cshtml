@@ -1,7 +1,26 @@
-@using AxiLogic.Classes 
 @model CategoryModel
 @{
-    Layout = Layout;}
+    Layout = Layout;
+    
+}
+
+
+@{
+     var listItems = new List<SelectListItem>();
+            if (Model.Categories != null)
+            {
+                foreach (var category in Model.Categories)
+                {
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = @category.Name,
+                        Value = @category.Id.ToString()
+                    });
+                }
+            }
+}
+
+
 
 <!DOCTYPE html>
 
@@ -29,22 +48,22 @@
     @*For loop to create divs containing article info*@
     @if (Model != null)
     {
-        foreach(var article in Model.Categories)
+        foreach(var category in Model.Categories)
         {
-            <a asp-controller="Home" asp-action="UpdateArticle" asp-route-id="@article.Id">
+            <a asp-controller="Home" asp-action="UpdateArticle" asp-route-id="@category.Id">
                 @* <p>BUTTON</p> *@
             </a>
             <div class="name-column-articles"
                  @* onclick="showArticleElement('view-article-modal'); showElement('modal-background')" *@
                  >
-                @article.Id
+                @category.Id
             </div>
-            <div class="price-column-articles" style="text-align: right"
+            <div class="price-column-articles" 
                  @* onclick="showArticleElement('view-article-modal'); showElement('modal-background')" *@
                  >
-                @article.Name
+                @category.Name
             </div> 
-            <div class="btn border-dark" style="position: relative; width: 11rem; padding: 0;margin: 0;"
+            <div class="btn btn-category border-dark " 
                  onclick="showArticleElement('view-article-modal'); showElement('modal-background')">
                 <p class="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -53,7 +72,7 @@
                     </svg>
                 </p>
             </div>
-            <div class="btn border-dark" style="position: relative; width: 11rem; padding: 0; margin: 0;"
+            <div class="btn btn-category border-dark" 
                  onclick="";>
                 <p class="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
@@ -61,35 +80,11 @@
                     </svg>
                 </p>
             </div>
-            
-            @* <div class="btn btn-primary" style="text-align: right" *@
-            @*      onclick="showArticleElement('view-article-modal'); showElement('modal-background')"> *@
-            @*     @article.Name *@
-            @* </div>  *@
-            @* *@
-            @* <div class="btn btn-primary" style="text-align: right" *@
-            @*      onclick="showArticleElement('view-article-modal'); showElement('modal-background')"> *@
-            @*     @article.Name *@
-            @* </div>  *@
              
         }
     }
 </div>
 
-@{
-     var listItems = new List<SelectListItem>();
-            if (Model.Categories != null)
-            {
-                foreach (var category in Model.Categories)
-                {
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = @category.Name,
-                        Value = @category.Id.ToString()
-                    });
-                }
-            }
-}
 @* *@
 @* <div class="update-container"> *@
 @*     @using (Html.BeginForm()) *@
@@ -133,3 +128,49 @@
 </dv> 
 </body>
 </html>
+
+
+
+ @* Snippet            *@
+@* <div class="btn btn-primary" style="text-align: right" *@
+@*      onclick="showArticleElement('view-article-modal'); showElement('modal-background')"> *@
+@*     @article.Name *@
+@* </div>  *@
+@* *@
+@* <div class="btn btn-primary" style="text-align: right" *@
+@*      onclick="showArticleElement('view-article-modal'); showElement('modal-background')"> *@
+@*     @article.Name *@
+@* </div>  *@
+
+
+
+@* *@
+@* *@
+@* <div class="update-container"> *@
+@*     @using (Html.BeginForm()) *@
+@*     { *@
+@*         @Html.DropDownListFor(model => model.CategoryId, listItems, "Choose A Category", new { @class = "category-dropdown" }) *@
+@*             <button type="submit" name="Remove Category" value="Remove Category" *@
+@*                     formaction="DeleteCategory" formmethod="post"> *@
+@*                 Remove Category *@
+@*             </button>  *@
+@* *@
+@*         @Html.AntiForgeryToken() *@
+@*         <p>@Html.LabelFor(model => model.CategoryName)</p> *@
+@*         @Html.TextBoxFor(model => model.CategoryName) *@
+@*         <button type="submit" name="Add Category" value="Add Category" *@
+@*                 formaction="AddCategory" formmethod="post"> *@
+@*             Add Category *@
+@*         </button> *@
+@* *@
+@*         <button type="submit" name="Update Category" value="Update Category" *@
+@*                 formaction="UpdateCategory" formmethod="post"> *@
+@*             Update Category *@
+@*         </button> *@
+@* *@
+@*         <button type="submit" name="Remove Category" value="Remove Category" *@
+@*                 formaction="DeleteCategory" formmethod="post"> *@
+@*             Remove Category *@
+@*         </button> *@
+@*     } *@
+@* </div> *@
