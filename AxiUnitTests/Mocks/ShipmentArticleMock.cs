@@ -41,7 +41,6 @@ namespace AxiUnitTests.Scrubs
                     returnList.Add(dto);
                 }
             }
-
             return returnList;
         }
 

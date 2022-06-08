@@ -12,5 +12,6 @@
         public ITestDAL GetTestDal();
         public IStockDAL GetStockDAL();
         public IStatisticsDAL GetStatisticsDal();
+        public IPlankDAL GetPlankDAL();
     }
 }
