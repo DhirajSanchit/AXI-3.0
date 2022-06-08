@@ -1,5 +1,5 @@
 @{
-    Layout = null;
+    Layout = "_ScannerLayout";
 }
 @model MoveArticleViewModel
 
@@ -9,31 +9,29 @@
 <head>
     <title>Place Article</title>
 </head>
-<style>
-    *{
-    font-size: 2rem;
-    }
-</style>
+
 <body>
-    @using (Html.BeginForm())
-    {
-        <p>@Html.LabelFor(model => model.articleID, new { })</p>
-        @Html.TextBoxFor(model => model.articleID, new { })
-        <p>@Html.LabelFor(model => model.RowName, new { })</p>
-        @Html.TextBoxFor(model => model.RowName, new { })
-        <p>@Html.LabelFor(model => model.RackLocation, new { })</p>
-        @Html.TextBoxFor(model => model.RackLocation, new { })
-        <p>@Html.LabelFor(model => model.PlankLocation, new { })</p>
-        @Html.TextBoxFor(model => model.PlankLocation, new { })
-        <p>@Html.LabelFor(model => model.PalletLocation, new { })</p>
-        @Html.TextBoxFor(model => model.PalletLocation, new { })
-        <p>@Html.LabelFor(model => model.amount, new { })</p>
-        @Html.TextBoxFor(model => model.amount, new { })
+<div class="place-take-article-main">
+@using (Html.BeginForm())
+{
+    <p>Article ID:</p>
+    @Html.TextBoxFor(model => model.articleID, new {})
+    <p>Row Name:</p>
+    @Html.TextBoxFor(model => model.RowName, new {})
+    <p>Rack Location:</p>
+    @Html.TextBoxFor(model => model.RackLocation, new {})
+    <p>Plank Location:</p>
+    @Html.TextBoxFor(model => model.PlankLocation, new {})
+    <p>Pallet Location:</p>
+    @Html.TextBoxFor(model => model.PalletLocation, new {})
+    <p>Amount:</p>
+    @Html.TextBoxFor(model => model.amount, new {})
         @*<button type="submit" style="height:5rem; width: 10rem" value="Place Article">Place Article</button>
             <button type="submit" style="height:5rem; width: 10rem" value="Take Article">Take Article</button>*@
-        <button type="submit">
-            Place Article
-        </button>
-    }
+    <button type="submit">
+        Place Article
+    </button>
+}
+</div>
 </body>
 </html>

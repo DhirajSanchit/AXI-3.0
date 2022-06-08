@@ -37,6 +37,11 @@ namespace AxiUnitTests
             throw new NotImplementedException();
         }
 
+        public IStockDAL GetStockDAL()
+        {
+            throw new NotImplementedException();
+        }
+
         public IStatisticsDAL GetStatisticsDal()
         {
             throw new NotImplementedException();

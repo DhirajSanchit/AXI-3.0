@@ -72,7 +72,17 @@ namespace AxiUnitTests.Scrubs
 
         public void UpdateShipmentArticleProgress(ShipmentArticleDto shipmentArticleDto)
         {
-            throw new System.NotImplementedException(); //todo this
+            var thisDto = new ShipmentArticleDto();
+            
+            foreach (var dto in ShipmentArticleDtos)
+            {
+                if (shipmentArticleDto.ArticleId == dto.ArticleId && shipmentArticleDto.ShipmentId == dto.ShipmentId)
+                {
+                    thisDto = dto;
+                    ShipmentArticleDtos.Remove(dto);
+                }
+            }
+            ShipmentArticleDtos.Add(thisDto);
         }
     }
 }
