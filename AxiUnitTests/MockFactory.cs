@@ -1,6 +1,7 @@
 ﻿using System;
 using AxiDAL.DAL;
 using AxiDAL.Interfaces;
+using AxiUnitTests.Mocks;
 using AxiUnitTests.Scrubs;
 
 namespace AxiUnitTests
@@ -14,6 +15,7 @@ namespace AxiUnitTests
         public OrderArticleMock OrderArticleMock { get; set; }
         public OrderMock OrderMock { get; set; }
         public CategoryMock CategoryMock { get; set; }
+        public PlankMock PlankMock { get; set; }
 
         
         public MockFactory()
@@ -25,6 +27,7 @@ namespace AxiUnitTests
             OrderArticleMock = new OrderArticleMock(this);
             OrderMock = new OrderMock(this);
             CategoryMock = new CategoryMock(this);
+            PlankMock = new PlankMock(this);
         }
         
         public IArticleDAL GetArticleDal()
@@ -75,6 +78,11 @@ namespace AxiUnitTests
         public ICategoryDAL GetCategoryDal()
         {
             return CategoryMock;
+        }
+
+        public IPlankDAL GetPlankDAL()
+        {
+            return PlankMock;
         }
     }
 }

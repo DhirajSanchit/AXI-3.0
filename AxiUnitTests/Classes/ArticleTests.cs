@@ -72,8 +72,9 @@ namespace AxiUnitTests.Classes
             var imgRef = "imgRef";
             var description = "description";
             var category = "category";
+            var disabled = false;
             //act
-            var article = new Article(name, price, barcode, imgRef, description, category);
+            var article = new Article(name, price, barcode, imgRef, description, category, disabled);
             //assert
             Assert.AreEqual(name, article.Name);
             Assert.AreEqual(price, article.Price);
@@ -81,6 +82,7 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(imgRef, article.ImgRef);
             Assert.AreEqual(description, article.Description);
             Assert.AreEqual(category, article.Category);
+            Assert.AreEqual(disabled, article.Disabled);
         }
 
         [TestCategory("ArticleTests-ConstructorOverload"), TestMethod]
@@ -93,8 +95,9 @@ namespace AxiUnitTests.Classes
             var imgRef = "imgRef";
             var description = "description";
             var category = "category";
+            var disabled = false;
             //act
-            var article = new Article(null, price, barcode, imgRef, description, category);
+            var article = new Article(null, price, barcode, imgRef, description, category, disabled);
             //assert
             Assert.AreEqual(null, article);
         }
@@ -110,8 +113,9 @@ namespace AxiUnitTests.Classes
             var imgRef = "imgRef";
             var description = "description";
             var category = "category";
+            var disabled = false;
             //act
-            var article = new Article(name, price, barcode, imgRef, description, category);
+            var article = new Article(name, price, barcode, imgRef, description, category, disabled);
             //assert
             Assert.AreEqual(null, article);
         }
@@ -127,8 +131,9 @@ namespace AxiUnitTests.Classes
             var imgRef = "imgRef";
             var description = "description";
             var category = "category";
+            var disabled = false;
             //act
-            var article = new Article(name, price, barcode, imgRef, description, category);
+            var article = new Article(name, price, barcode, imgRef, description, category, disabled);
             //assert
             Assert.AreEqual(null, article);
         }
@@ -144,7 +149,8 @@ namespace AxiUnitTests.Classes
                 Barcode = "barcode",
                 Img = "imgRef",
                 Description = "description",
-                CategoryName = "category"
+                CategoryName = "category",
+                Disabled = false
             };
             //act
             var article = new Article(dto);
@@ -155,6 +161,7 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(dto.Img, article.ImgRef);
             Assert.AreEqual(dto.Description, article.Description);
             Assert.AreEqual(dto.CategoryName, article.Category);
+            Assert.AreEqual(dto.Disabled, article.Disabled);
         }
 
         [TestCategory("ArticleTests-ConstructorDto"), TestMethod]
@@ -169,7 +176,8 @@ namespace AxiUnitTests.Classes
                 Barcode = "barcode",
                 Img = "imgRef",
                 Description = "description",
-                CategoryName = "category"
+                CategoryName = "category",
+                Disabled = false
             };
             //act
             var article = new Article(dto);
@@ -189,7 +197,8 @@ namespace AxiUnitTests.Classes
                 Barcode = "barcode",
                 Img = "imgRef",
                 Description = "description",
-                CategoryName = "category"
+                CategoryName = "category",
+                Disabled = false
             };
             //act
             var article = new Article(dto);
@@ -209,7 +218,8 @@ namespace AxiUnitTests.Classes
                 Barcode = "barcode",
                 Img = "imgRef",
                 Description = "description",
-                CategoryName = "category"
+                CategoryName = "category",
+                Disabled = false
             };
             //act
             var article = new Article(dto);
@@ -325,10 +335,9 @@ namespace AxiUnitTests.Classes
         public void TestArticleToDto()
         {
             //arrange
-            var article = new Article("articleName", 10.50, "barCode", "description", "category", "img");
-            var dto = new ArticleDto();
+            var article = new Article("articleName", 10.50, "barCode", "img", "description", "12",  false);
             //act
-            dto = article.ToDto();
+            var dto = article.ToDto();
             //assert
             Assert.AreEqual(article.Name, dto.Name);
             Assert.AreEqual(article.Price, dto.Price);
@@ -336,6 +345,7 @@ namespace AxiUnitTests.Classes
             Assert.AreEqual(article.ImgRef, dto.Img);
             Assert.AreEqual(article.Description, dto.Description);
             Assert.AreEqual(article.Category, dto.CategoryName);
+            Assert.AreEqual(article.Disabled, dto.Disabled);
         }
     }
 }
