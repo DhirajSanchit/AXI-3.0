@@ -40,12 +40,7 @@ namespace AxiUnitTests.Scrubs
         public IList<ShipmentDto> GetAll()
         {
             return ShipmentDtos;
-        }
-
-        public IList<ShipmentDto> GetAllUnfinishedShipments()
-        {
-            throw new System.NotImplementedException();
-        }
+        }       
 
         public int AddShipment(ShipmentDto shipmentDto)
         {
@@ -69,6 +64,11 @@ namespace AxiUnitTests.Scrubs
                     ShipmentDtos.Add(shipmentDto);
                 }
             }
+        }
+
+        public IList<ShipmentDto> GetAllUnfinishedShipments()
+        {
+            throw new System.NotImplementedException();
         }
 
         public ShipmentDto GetShipmentById(int id)
