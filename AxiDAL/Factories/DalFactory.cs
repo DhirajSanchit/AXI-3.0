@@ -63,6 +63,11 @@ namespace AxiDAL.Factories
         {
             return (IStockDAL)serviceProvider.GetService(typeof(StockDAL));
         }
+
+        public IPlankDAL GetPlankDAL()
+        {
+            return (IPlankDAL)serviceProvider.GetService(typeof(PlankDAL));
+        }
     }
 }
 
