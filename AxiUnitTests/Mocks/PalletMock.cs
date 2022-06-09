@@ -13,6 +13,7 @@ namespace AxiUnitTests.Mocks
     {
         public List<PalletDto> pallets = new();
         private IDalFactory _mockFactory;
+
         public PalletMock(IDalFactory mockfactory)
         {
             _mockFactory = mockfactory;

@@ -28,7 +28,7 @@ namespace AxiUnitTests.Mocks
             {
                 Location = 2,
                 RackId = 3,
-                Id = 4, 
+                Id = 4,
             };
             planks.Add(plank1);
             planks.Add(plank2);

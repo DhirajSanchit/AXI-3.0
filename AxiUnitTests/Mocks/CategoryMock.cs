@@ -7,7 +7,6 @@ namespace AxiUnitTests.Scrubs
     public class CategoryMock : ICategoryDAL
     {
         private IDalFactory _mockFactory;
-
         private List<CategoryDto> _categoryDtos = new();
 
         public CategoryMock(IDalFactory mockFactory)
@@ -24,8 +23,7 @@ namespace AxiUnitTests.Scrubs
                 Name = "B"
             });
         }
-        
-        
+
         public IList<CategoryDto> GetAllCategories()
         {
             return _categoryDtos;

@@ -9,9 +9,7 @@ namespace AxiUnitTests.Scrubs
     public class ArticleMock : IArticleDAL
     {
         public List<ArticleDto> _articleDtos = new();
-        
-        private IDalFactory _mockFactory; 
-
+        private IDalFactory _mockFactory;
 
         public ArticleMock(IDalFactory mockFactory)
         {
@@ -37,7 +35,7 @@ namespace AxiUnitTests.Scrubs
                 Price = 8.15
             });
         }
-        
+
         public IList<ArticleDto> GetAll()
         {
             return _articleDtos;

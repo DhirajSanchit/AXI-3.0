@@ -12,7 +12,7 @@ namespace AxiUnitTests.Scrubs
         public ShipmentArticleMock(IDalFactory mockFactory)
         {
             _mockFactory = mockFactory;
-            
+
             ShipmentArticleDtos.Add(new ShipmentArticleDto()
             {
                 Amount = 1,
@@ -21,6 +21,7 @@ namespace AxiUnitTests.Scrubs
                 ScannedAmount = 1,
                 ShipmentId = 1
             });
+
             ShipmentArticleDtos.Add(new ShipmentArticleDto()
             {
                 Amount = 2,
@@ -30,7 +31,7 @@ namespace AxiUnitTests.Scrubs
                 ShipmentId = 2
             });
         }
-        
+
         public IList<ShipmentArticleDto> GetAllShipmentArticlesFromShipment(ShipmentDto shipment)
         {
             List<ShipmentArticleDto> returnList = new();
@@ -72,7 +73,7 @@ namespace AxiUnitTests.Scrubs
         public void UpdateShipmentArticleProgress(ShipmentArticleDto shipmentArticleDto)
         {
             var thisDto = new ShipmentArticleDto();
-            
+
             foreach (var dto in ShipmentArticleDtos)
             {
                 if (shipmentArticleDto.ArticleId == dto.ArticleId && shipmentArticleDto.ShipmentId == dto.ShipmentId)

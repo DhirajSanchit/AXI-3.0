@@ -12,6 +12,7 @@ namespace AxiUnitTests.Scrubs
 
         public List<OrderDto> _OrderDtos = new();
         private IDalFactory _mockFactory;
+
         public OrderMock(IDalFactory mockFactory)
         {
             _mockFactory = mockFactory;
@@ -23,9 +24,9 @@ namespace AxiUnitTests.Scrubs
                 InvoiceId = 1,
                 Processed = false
             };
-            orderDto1.OrderArticles = (List<OrderArticleDto>) _mockFactory.GetOrderArticleDal().GetAllOrderArticlesFromOrder(orderDto1);
+            orderDto1.OrderArticles = (List<OrderArticleDto>)_mockFactory.GetOrderArticleDal().GetAllOrderArticlesFromOrder(orderDto1);
             _OrderDtos.Add(orderDto1);
-            
+
             var orderDto2 = new OrderDto()
             {
                 Date = new DateTime(2001, 3, 2),
@@ -34,10 +35,10 @@ namespace AxiUnitTests.Scrubs
                 InvoiceId = 2,
                 Processed = true
             };
-            orderDto2.OrderArticles = (List<OrderArticleDto>) _mockFactory.GetOrderArticleDal().GetAllOrderArticlesFromOrder(orderDto2);
+            orderDto2.OrderArticles = (List<OrderArticleDto>)_mockFactory.GetOrderArticleDal().GetAllOrderArticlesFromOrder(orderDto2);
             _OrderDtos.Add(orderDto2);
         }
-        
+
         public IList<OrderDto> GetAll()
         {
             return _OrderDtos;
@@ -95,7 +96,6 @@ namespace AxiUnitTests.Scrubs
                     returnDto = dto;
                 }
             }
-
             return returnDto;
         }
 

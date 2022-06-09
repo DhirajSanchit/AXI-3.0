@@ -5,7 +5,7 @@ using AxiDAL.Interfaces;
 
 namespace AxiUnitTests.Scrubs
 {
-    public class ShipmentMock : IShipmentDAL
+    public class ShipmentMock : IShipmentDAL // to do
     {
         private IDalFactory _mockFactory;
         public List<ShipmentDto> ShipmentDtos = new();
@@ -13,8 +13,8 @@ namespace AxiUnitTests.Scrubs
         public ShipmentMock(IDalFactory mockFactory)
         {
             _mockFactory = mockFactory;
-            
-            ShipmentDtos.Add(new ShipmentDto()
+
+            var shipment1 = new ShipmentDto()
             {
                 Date = new DateTime(2001, 1, 1),
                 Id = 1,
@@ -22,13 +22,24 @@ namespace AxiUnitTests.Scrubs
                 Name = "Name1",
                 Processed = true,
                 // ShipmentArticles = 
-            });
+            };
+
+            var shipment2 = new ShipmentDto()
+            {
+                Date = new DateTime(2002, 2, 2),
+                Id = 2,
+                InvoiceId = 2,
+                Name = "Name2",
+                Processed = true,
+            };
+            ShipmentDtos.Add(shipment1);
+            ShipmentDtos.Add(shipment2);
         }
         
         
         public IList<ShipmentDto> GetAll()
         {
-            throw new System.NotImplementedException();
+            return ShipmentDtos;
         }
 
         public IList<ShipmentDto> GetAllUnfinishedShipments()
@@ -38,17 +49,26 @@ namespace AxiUnitTests.Scrubs
 
         public int AddShipment(ShipmentDto shipmentDto)
         {
-            throw new System.NotImplementedException();
+            ShipmentDtos.Add(shipmentDto);
+            var index = ShipmentDtos.Count - 1;
+            return index;
         }
 
         public void RemoveShipment(ShipmentDto shipmentDto)
         {
-            throw new System.NotImplementedException();
+            ShipmentDtos.Remove(shipmentDto);
         }
 
         public void UpdateShipment(ShipmentDto shipmentDto)
         {
-            throw new System.NotImplementedException();
+            foreach (var dto in ShipmentDtos)
+            {
+                if (dto.Id == shipmentDto.Id)
+                {
+                    ShipmentDtos.Remove(dto);
+                    ShipmentDtos.Add(shipmentDto);
+                }
+            }
         }
 
         public ShipmentDto GetShipmentById(int id)
