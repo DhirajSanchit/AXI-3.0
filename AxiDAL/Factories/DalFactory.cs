@@ -57,7 +57,6 @@ namespace AxiDAL.Factories
         {
             return (IStatisticsDAL)serviceProvider.GetService(typeof(StatisticsDAL));
         }
-        
 
         public IStockDAL GetStockDAL()
         {

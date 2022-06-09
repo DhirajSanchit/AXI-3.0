@@ -4,10 +4,10 @@
     // Page for Proof of concept to check if DBconnection works
 
     ViewData["Title"] = "Home Page";
-    Layout = "_Layout";
- }
+    Layout = null;
+}
 
-
+<link rel="stylesheet" href="~/css/stylesheet.css" asp-append-version="true"/>
 
 <body>
 @* <div class="twin-container"> *@
@@ -18,7 +18,82 @@
 @*         <h1>Placeholder</h1> *@
 @*     </div> *@
 @* </div> *@
+<div class="top-nav-index" id="top-nav" style="left:0; position: fixed; width: 100%; height: 70px;">
+    <div class="top_nav_logo" id="top_nav_logo">
+        <img src="https://www.axi.nl/themes/custom/novsubtheme/img/logos/logo.svg" alt="logo_axi_purple"/>
+    </div>
+</div>
 
+<div class="nav-container">
+    <div class="nav-flexbox">
+        <div class="nav-box">
+            <a asp-controller="Home" asp-action="Articles">
+                <div class="nav-image-container">
+                    <img src="images/Articles.jpg" alt="articles-icon">
+                </div>
+                <div class="nav-info-strip">
+                    <p>Articles</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="nav-box">
+            <a asp-controller="Home" asp-action="Stock">
+                <div class="nav-image-container">
+                    <img src="images/Stock.jpg" alt="stock-icon">
+                </div>
+                <div class="nav-info-strip">
+                    <p>Stock</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="nav-box">
+            <a asp-controller="Home" asp-action="TotalStock">
+                <div class="nav-image-container">
+                    <img src="images/Availability.jpg" alt="availability-icon">
+                </div>
+                <div class="nav-info-strip">
+                    <p>Availablity</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="nav-box">
+            <a asp-controller="Shipment" asp-action="ScannerDelivery">
+                <div class="nav-image-container">
+                    <img src="~/images/barcode.jpg" alt="scanner-icon">
+                </div>
+                <div class="nav-info-strip">
+                    <p>Scanner</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="nav-box">
+            <a asp-controller="Home" asp-action="Categories">
+                <div class="nav-image-container">
+                    <img src="images/Categories.jpg" alt="categories-icon">
+                </div>
+                <div class="nav-info-strip">
+                    <p>Categories</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="nav-box">
+            <a asp-controller="Home" asp-action="Statistics">
+                <div class="nav-image-container">
+                    <img src="images/Statistics.jpg" alt="statics-icon">
+                </div>
+                <div class="nav-info-strip">
+                    <p>Statistics</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
 
 <div>
     @if (Model is not null)
@@ -27,10 +102,9 @@
         {
             @*<h1 class="display-4">@record.id</h1>*@
             <p>@record.value</p>
-
         }
     }
-     
+
 </div>
 
 </body>

@@ -40,39 +40,94 @@
 /*End top_nav*/
 
 /*Style for index page*/
-.twin-container{
+/*.twin-container{*/
+/*    position:absolute;*/
+/*    margin-top:240px;*/
+/*    height:640px;*/
+/*    width:100%;*/
+/*    margin-left:-21.1%;*/
+/*    background-color:#f5f5f5*/
+/*}*/
+/*.left-twin{*/
+/*    position:relative;*/
+/*    height:100%;*/
+/*    width:49%;*/
+/*    flex-direction:column;*/
+/*    display:inline-block;*/
+/*    background-color:#7b42fa;*/
+/*    color: #fff;*/
+/*}*/
+/*.left-twin h1{*/
+/*    color:white;*/
+/*    text-align:center;*/
+/*    margin-top:20px;*/
+/*}*/
+/*.right-twin{*/
+/*    position:absolute;*/
+/*    height:100%;*/
+/*    width:49%;*/
+/*    display:inline-block;*/
+/*    background-color:#f5f5f5;*/
+/*}*/
+/*.right-twin h1{*/
+/*    margin-top:20px;*/
+/*    color:#7b42fa;*/
+/*    text-align:center;*/
+/*}*/
+
+.nav-container{
     position:absolute;
-    margin-top:240px;
-    height:640px;
-    width:100%;
-    margin-left:-21.1%;
-    background-color:#f5f5f5
+    left:10%;
+    top:90px;
+    width:80%;
+    height:0;
 }
-.left-twin{
-    position:relative;
-    height:100%;
-    width:49%;
-    flex-direction:column;
-    display:inline-block;
-    background-color:#7b42fa;
-    color: #fff;
+.nav-flexbox{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
 }
-.left-twin h1{
+.nav-box{
+    margin-left:1%;
+    margin-right:1%;
+    margin-bottom:2%;
+    padding: 10vw 8vw;
+    font-size:30px;
+    box-shadow: 3px 3px 3px 1px grey;
+    border: 1px solid black;
     color:white;
-    text-align:center;
-    margin-top:20px;
+    cursor:pointer;
 }
-.right-twin{
+
+.nav-image-container{
     position:absolute;
-    height:100%;
-    width:49%;
-    display:inline-block;
-    background-color:#f5f5f5;
+    width:16vw;
+    margin-left:-8vw;
+    height:10vw;
 }
-.right-twin h1{
-    margin-top:20px;
-    color:#7b42fa;
-    text-align:center;
+.nav-image-container img{
+    width:16vw;
+    height:12vw;
+    margin-top:-8.5vw;
+}
+
+.nav-info-strip{
+    position:absolute;
+    margin-top:3.95vw;
+    width:16vw;
+    margin-left:-8vw;
+    background-color:#7b42fa;
+    border-top: 1px solid black;
+    height:6vw;
+}
+.nav-info-strip p{
+    vertical-align: center;
+    color:white;
+    font-size:2.5vw;
+    text-align: center;
+    font-weight: bold;
 }
 /*Style for Stock page*/
 
