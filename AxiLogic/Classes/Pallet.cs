@@ -69,10 +69,13 @@ namespace AxiLogic.Classes
             {
                 throw new ArgumentOutOfRangeException("Can not add negative amount");
             }
-            if (article.Id != Article.Id && Amount != 0 && article != null) 
+            if (Article != null)
             {
-                throw new ArgumentException("Articles do not match");
-            }   
+                if (article.Id != Article.Id && Amount != 0 && article != null)
+                {
+                    throw new ArgumentException("Articles do not match");
+                }
+            }
             Amount += amount;
             Article = article;
             _palletDal.UpdatePallet(ToDto());
@@ -97,8 +100,11 @@ namespace AxiLogic.Classes
             {
                 Article = null;
             }
+            else
+            {
+                Article = article;
+            }
             Amount -= amount;
-            Article = article;
             _palletDal.UpdatePallet(ToDto());
         }
 
