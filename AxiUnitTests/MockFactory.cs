@@ -16,6 +16,7 @@ namespace AxiUnitTests
         public OrderMock OrderMock { get; set; }
         public CategoryMock CategoryMock { get; set; }
         public PlankMock PlankMock { get; set; }
+        public PalletMock PalletMock { get; set; }
 
         
         public MockFactory()
@@ -28,6 +29,7 @@ namespace AxiUnitTests
             OrderMock = new OrderMock(this);
             CategoryMock = new CategoryMock(this);
             PlankMock = new PlankMock(this);
+            PalletMock = new PalletMock(this);
         }
         
         public IArticleDAL GetArticleDal()
@@ -83,6 +85,10 @@ namespace AxiUnitTests
         public IPlankDAL GetPlankDAL()
         {
             return PlankMock;
+        }
+        public IPalletDAL GetPalletDAL()
+        {
+            return PalletMock;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace AxiUnitTests.Mocks
 
         public PlankMock(IDalFactory mockFactory)
         {
-            planks = (List<PlankDto>)mockFactory;
+            planks = mockFactory as List<PlankDto>;
 
             var plank1 = new PlankDto()
             {
