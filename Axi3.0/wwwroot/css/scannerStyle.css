@@ -185,6 +185,7 @@ overflow:auto;
     width:100%;
 }
 .info-box p {
+    margin-top:-20px;
     margin-left: 125px;
     font-size: 3rem;
 }
