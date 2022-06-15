@@ -2,7 +2,8 @@
 // for details on configuring this project to bundle and minify static web assets.
 let menuOpen;
 let wait = false;
-let url = "https://562f-145-93-124-111.ngrok.io";
+let url = "https://08ea-145-93-124-57.ngrok.io";
+
 //
 function hideElement(elementId) {
     document.getElementById(elementId).style.display = "none"
